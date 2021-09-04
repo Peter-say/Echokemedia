@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-    }
+
+        Paginator::useBootstrap();
+        
+        view()->composer('*',function($view){
+            $view->with([
+                'admin_assets' => url('/').env('RESOURCE_URL').'/admin',
+            ]);
+        });
+
+
+    } 
+    
+   
 }

@@ -15,6 +15,10 @@ class CreateMusicsTable extends Migration
     {
         Schema::create('musics', function (Blueprint $table) {
             $table->id();
+            $table->string('music_title');
+            $table->text('music_description');
+            $table->string('cover_image');
+            $table->string('publish_by');
             $table->timestamps();
         });
     }
