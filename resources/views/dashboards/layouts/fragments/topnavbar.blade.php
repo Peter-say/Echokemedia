@@ -55,19 +55,26 @@
                                       <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                   </svg> Lock Screen</a>
                           </div>
+
+                          @guest
+                          @if (Route::has('register'))
+                          helo
+                          @endif
+                          @else
                           <div class="dropdown-item">
 
-                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              <form id="logout-form" action="{{ route('logout') }}" method="PUT" class="d-none">
                                   @csrf
-                                  </form>
-                              <a class="" href="{{ route('logout') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
-                                      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                      <polyline points="16 17 21 12 16 7"></polyline>
-                                      <line x1="21" y1="12" x2="9" y2="12"></line>
-                                  </svg> Sign Out</a>
 
-                                  
+                                  <a class="" href="{{ route('logout') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                          <polyline points="16 17 21 12 16 7"></polyline>
+                                          <line x1="21" y1="12" x2="9" y2="12"></line>
+                                      </svg> Sign Out</a>
+                              </form>
+
                           </div>
+                          @endguest
                       </div>
                   </div>
               </li>

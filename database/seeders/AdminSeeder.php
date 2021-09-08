@@ -17,6 +17,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         User::create([
+            
             'name' => 'Admin Admin',
             'email' => 'admin@gmail.com',
             'username' => 'Media Creator',
