@@ -19,6 +19,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'avatar',
         'name',
         'email',
         'username',
@@ -44,6 +45,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, "id", "avatar_id");
+    }
 
-    
+    public function avatarUrl()
+    {
+        $avatar = $this->avatar;
+
+        $filepath = optional($avatar)->path;
+
+        if (!empty($filepath)) {
+            return readFileUrl("encrypt", $filepath);
+        }
+
+        return my_asset("user.png");
+    }
 }
