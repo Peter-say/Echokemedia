@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{route('admin.create.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('admin.over_view')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-book" style="font-size:30px;color:black"></i>
                             <span>Create</span>
@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="{{route('admin.earnings.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="map_jvector.html" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-dollar" style="font-size:30px;color:black"></i>
                             <span>Earnings</span>
@@ -47,14 +47,7 @@
                     </a>
                 </li>
 
-                <li class="menu">
-                    <a  href="{{route('admin.users.index')}}" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <i class="fa fa-users" style="font-size:30px;color:black"></i>
-                            <span>Users</span>
-                        </div>
-                    </a>
-                </li>
+               
 
                 <li class="menu">
 

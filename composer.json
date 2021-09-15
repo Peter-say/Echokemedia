@@ -30,6 +30,11 @@
             "Database\\Seeders\\": "database/seeders/"
         }
     },
+
+    "files" : [
+        "app/Helpers/app_functions.php"
+    ],
+    
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
@@ -62,4 +67,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+
+   
 }

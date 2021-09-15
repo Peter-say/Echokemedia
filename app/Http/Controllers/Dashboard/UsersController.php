@@ -1,24 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     
-
-
     public function index()
     {
-      return view('users.dashboard');
+       return view('dashboards.users.index');
     }
 
     /**

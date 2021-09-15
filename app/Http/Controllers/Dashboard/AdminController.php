@@ -23,9 +23,9 @@ class AdminController extends Controller
     }
 
 
-    public function profile()
+    public function create()
     {
-        return view('dashboards.profile');
+        return view('dashboards.');
     }
 
     public function store(Request $request , User $user)

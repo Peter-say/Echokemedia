@@ -8,10 +8,6 @@
 
     <div class="overlay"></div>
     <div class="search-overlay"></div>
-
-
-
-
     <!--  BEGIN CONTENT PART  -->
     <div id="content" class="main-content">
         <div class="layout-px-spacing">

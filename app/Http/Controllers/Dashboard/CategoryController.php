@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\PostCategory;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     
-
-
     public function index()
     {
-      return view('users.dashboard');
+        $categories = [];// PostCategory::find(1);
+        // return view('dashboards.posts.index' , [
+        //   'categories' => $categories  
+        // ]);
     }
 
     /**
@@ -39,7 +39,12 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data  = $request->validate([
+          'name' => 'required|max:20',
+        ]);
+
+        $data = PostCategory::create($data);
+        return back()->with('success_message', 'Category added successfully');
     }
 
     /**
