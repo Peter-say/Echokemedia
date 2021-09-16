@@ -10,7 +10,6 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'category_id',
         'name',
         'content_type',
@@ -18,6 +17,8 @@ class Post extends Model
         'cover_image',
         'content_desccription',
     ];
+
+    protected $primaryKey = 'user_id';
 
     public function user()
     {

@@ -56,6 +56,7 @@ class PostController extends Controller
 
     public function storePost(Request $request , User $user)
     {
+        // dd($request->all());
        
         $request->validate([
            'category_id' => 'required|numeric|exists:post_categories,id',
@@ -68,6 +69,11 @@ class PostController extends Controller
         ]);
 
        $request = Post::create([
+        'name' =>  $request->input('name') ,
+        'content_desccription' =>  $request->input('content_desccription'),
+        'content_type' =>  $request->input('content_type') ,
+        'cover_image' => $request->file('cover_image'),
+        'cover_video' => $request->file('cover_video'),
         'user_id' => $user->id
        ]);
 

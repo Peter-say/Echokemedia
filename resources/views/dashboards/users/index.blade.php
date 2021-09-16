@@ -31,31 +31,25 @@
                         <thead>
                             <tr>
                                 <th class="">S/N</th>
-                                <th class="">User</th>
-                                <th class="">Referrence</th>
-                                <th class="">Amount</th>
-                                <th class="">Fee</th>
-                                <th class="">Total</th>
-                                <th class="">Type</th>
-                                <th class="">Description</th>
+                                <th class="">User-name</th>
+                                <th class="">User Email</th>
+                                <th class="">Role</th>
+                                <th class="">no. of post</th>
+                                <th class="">Profile</th>
                                 <th class="">Status</th>
                                 <th class="">Created At</th>
                             </tr>
                         </thead>
                         <tbody>
-                          
+                            foreach($users as $user)
                                 <tr>
-                                    <td></td>
-                                    <td>
-                                     
-                                    </td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{Auth::user()->id}}</td>
+                                    <td>{{Auth::user()->name}}</td>
+                                    <td>{{Auth::user()->email}}</td>
+                                    <td>{{Auth::user()->role}}</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td>td>
-                                    <td </td>
+                                    <td><td>
                                     <td></td>
                                     <td>
 
@@ -78,7 +72,8 @@
                                         </ul>
                                     </td>
                                 </tr>
-                           
+                          
+                           {{$user->links () }}
                         </tbody>
                     </table>
                    
