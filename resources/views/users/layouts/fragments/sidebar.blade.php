@@ -11,7 +11,7 @@
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
-                    <a href="{{route('admin.dashboard')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="" aria-expanded="false" class="dropdown-toggle">
 
                         <div class="">
                             <i class="fa fa-home" style="font-size:30px;color:black"></i>
@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{route('admin.over_view')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('user.post.index')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-book" style="font-size:30px;color:black"></i>
                             <span>Create</span>
@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="map_jvector.html" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('user.earnings')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-dollar" style="font-size:30px;color:black"></i>
                             <span>Earnings</span>

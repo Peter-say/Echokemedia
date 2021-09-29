@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-
+use app\Helpers\Constants;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,23 +43,19 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime',
     ];
 
-    public function profile()
+   
+    public function user()
     {
-        return $this->hasOne(Profile::class, "id", "avatar_id");
+        return $this->hasOne(Profile::class);
     }
 
-    public function avatarUrl()
+    public function scopeApproved($query)
     {
-        $avatar = $this->avatar;
-
-        $filepath = optional($avatar)->path;
-
-        if (!empty($filepath)) {
-            return readFileUrl("encrypt", $filepath);
-        }
-
-        return my_asset("user.png");
+        return $query->where("status");
     }
+
+
 }

@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="{{route('admin.earnings.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-dollar" style="font-size:30px;color:black"></i>
                             <span>Earnings</span>

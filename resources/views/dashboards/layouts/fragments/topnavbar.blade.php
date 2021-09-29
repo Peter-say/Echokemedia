@@ -33,7 +33,7 @@
 
               <li class="nav-item dropdown user-profile-dropdown">
                   <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      <img src="assets/img/profile-16.jpg" alt="avatar">
+                      <img class="img-fluid" src="{{ asset(auth()->user()->avatar) }}" alt="avatar">
                   </a>
                   <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                       <div class="">
@@ -59,7 +59,7 @@
                          
                           <div class="dropdown-item">
 
-                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              <form id="logout-form" action="" method="POST" class="">
                                  
 
                                   <a class="" href="{{ route('logout') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-
 use App\Http\Controllers\Controller;
+use App\Models\Creator;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class UsersController extends Controller
 {
@@ -14,7 +15,12 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function index()
+    {
+        $users = User::orderby("created_at", "desc")
+        ->paginate(20);
+        return view('dashboards.users.index', ['users' => $users]);
+    }
    
 
     /**
@@ -78,8 +84,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back()->with("error_message" , "Deleted successfully!");
     }
 }

@@ -4,8 +4,7 @@
 
 
 
-<div class="main-container" id="container">
-
+<div class="main-container " id="container">
     <div class="overlay"></div>
     <div class="search-overlay"></div>
     <!--  BEGIN CONTENT PART  -->
@@ -29,7 +28,7 @@
                             <div class="col-md-12 mb-4">
                                 <div id="select_menu" class="form-group mb-4">
                                     <select name="role" class="custom-select" required>
-                                        <option value="">Select  Title</option>
+                                        <option value="">Select Title</option>
                                         <option value="Students">Students</option>
                                         <option value="self-employed"> self-employed </option>
                                         <option value="Employed">Employed</option>
@@ -65,16 +64,17 @@
 
                             <button class="btn btn-primary mt-3" type="submit">Submit form</button>
                     </form>
-                   
+
 
 
             </div>
 
-          
-            
+
+
             <!--  END CONTENT PART  -->
 
         </div>
     </div>
 
     @endsection
+</div>

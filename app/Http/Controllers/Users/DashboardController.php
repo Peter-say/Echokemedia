@@ -21,6 +21,8 @@ class DashboardController extends Controller
       return view('users.dashboard');
     }
 
+     
+
     /**
      * Show the form for creating a new resource.
      *
@@ -85,5 +87,10 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function earnings()
+    {
+      return view('users.earning');
     }
 }

@@ -90,9 +90,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id , User $user)
+    { 
+         $user = auth()->user();
+        return view('dashboards.profile.edit' , [
+            'user' => $user
+         ] );
     }
 
     /**

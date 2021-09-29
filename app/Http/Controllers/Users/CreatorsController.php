@@ -11,11 +11,7 @@ class CreatorsController extends Controller
 {
     public function approved_creators()
     {
-      $creators = Creator::approved()->whereHas("user")
-      ->with("user")
-      ->orderby("created_at", "desc")
-      ->paginate(20);
-      return view('dashboards.users.index' , [ 'creators' => $creators]);
+     
     }
 
 

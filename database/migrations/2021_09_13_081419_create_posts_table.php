@@ -15,8 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->contrained()->onDelete('cascade');
-            $table->unsignedBigInteger('category_id')->contrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->default(1)->contrained()->onDelete('cascade');
+            $table->unsignedBigInteger('category_id')->default(1)->contrained()->onDelete('cascade');
+            $table->string('status')->default("Pending");
             $table->string('cover_image');
             $table->string('cover_video');
             $table->string('name');

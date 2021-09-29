@@ -16,6 +16,7 @@ class Post extends Model
         'cover_video',
         'cover_image',
         'content_desccription',
+        'user_id'
     ];
 
     protected $primaryKey = 'user_id';
@@ -29,6 +30,6 @@ class Post extends Model
     public function post()
 
     {
-        return $this->belongsTo(PostCategory::class,  'category_id');
+        return $this->belongsTo(PostCategory::class,  'category_id' , 'user_id');
     }
 }
