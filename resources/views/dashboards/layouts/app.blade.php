@@ -44,6 +44,9 @@
     <link href="{{ $admin_assets}}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
     <!--  END CUSTOM STYLE FILE  -->
 
+    <link href="{{ $admin_assets}}/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="{{ $admin_assets}}/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
