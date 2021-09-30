@@ -10,10 +10,7 @@ class EarningsController extends Controller
 {
     public function earnings()
     {
-
-    
-        return view('dashboards.earnings' , [
-           
-        ]);
+        
+        return view('dashboards.earnings', []);
     }
 }

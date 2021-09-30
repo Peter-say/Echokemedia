@@ -8,4 +8,9 @@ namespace app\Helpers;
      const  PENDING = "pending";
      const  REJECTED = "rejected";
 
+
+     const DEBIT_TRANSACTION = "Debit";
+     const CREDIT_TRANSACTION = "Credit";
+
+
  }

@@ -37,7 +37,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
   Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
-  // Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
+  Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
   Route::get('/create', [App\Http\Controllers\Dashboard\PostController::class, 'index'])->name('create.index');
   Route::post('/create', [App\Http\Controllers\Dashboard\PostController::class, 'storePost'])->name('create.post');
 

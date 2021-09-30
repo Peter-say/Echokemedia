@@ -16,9 +16,11 @@ class CreateEarningsTable extends Migration
     {
         Schema::create('earnings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->Constrainted();
-            $table->string('amout_earned')->default(50);
+            $table->unsignedBigInteger('user_id')->Constrained();
+            $table->string('amout_earned')->default(0);
+            $table->string('pin')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

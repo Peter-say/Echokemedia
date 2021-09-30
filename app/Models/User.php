@@ -46,7 +46,7 @@ class User extends Authenticatable
         'created_at' => 'datetime',
     ];
 
-   
+
     public function user()
     {
         return $this->hasOne(Profile::class);
@@ -58,4 +58,16 @@ class User extends Authenticatable
     }
 
 
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, "user_id");
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, "user_id")
+            ->whereHas("user")
+            ->with("user")
+            ->orderby("created_at", "desc");
+    }
 }

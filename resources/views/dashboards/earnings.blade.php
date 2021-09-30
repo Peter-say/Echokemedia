@@ -16,77 +16,42 @@
                 @include('notifications.flash_messages')
 
 
-                <div id="tableCheckbox" class="">
-        <div class="statbox widget box box-shadow mt-5">
-            <div class="widget-header">
-                <div class="row">
-                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4></h4>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                    <div class="widget widget-account-invoice-two">
+                        <div class="widget-content">
+                            <div class="account-box">
+                                <div class="info">
+                                    <div class="inv-title">
+                                        <h5 class="">Total Balance</h5>
+                                    </div>
+                                    <div class="inv-balance-info">
+
+                                        <p class="inv-balance">$ 41,741.42</p>
+
+                                        <span class="inv-stats balance-credited">+ 2453</span>
+
+                                    </div>
+                                </div>
+                                <div class="acc-action">
+                                    <div class="">
+                                        <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg></a>
+                                        <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card">
+                                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                                            </svg></a>
+                                    </div>
+                                    <a href="javascript:void(0);">Upgrade</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="widget-content widget-content-area">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
-                        <thead>
-                            <tr>
-                                <th class="">S/N</th>
-                                <th class="">User</th>
-                                <th class="">Referrence</th>
-                                <th class="">Amount</th>
-                                <th class="">Fee</th>
-                                <th class="">Total</th>
-                                <th class="">Type</th>
-                                <th class="">Description</th>
-                                <th class="">Status</th>
-                                <th class="">Created At</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                     
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>td>
-                                    <td </td>
-                                    <td></td>
-                                    <td>
 
-                                        <ul class="table-controls">
-                                            <li class="mb-3">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle btn-sm" type="button" id="dropdownMenuButton"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Change Status
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                       
-                                                            <a class="dropdown-item" onclick="return confirm('Are you sure of the action?')"
-                                                               
-                                                            </a>
-                                                       
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                           
-                        </tbody>
-                    </table>
-                   
-                </div>
-            </div>
-        </div>
-    </div>
-            
+
             <!--  END CONTENT PART  -->
 
         </div>
