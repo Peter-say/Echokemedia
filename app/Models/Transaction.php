@@ -15,4 +15,20 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class , "user_id");
     }
+
+    public static function genReference(){
+
+        // Generate a random code
+        $code = strtoupper(getRandomToken(6));
+
+        // Check if the code exists in the user table
+        if(self::where("reference" , $code)->count() > 0){
+
+            // If it is in the database , call the function again
+            return self::genReference();
+        }
+
+        // Else return the generated code
+        return $code;
+    }
 }

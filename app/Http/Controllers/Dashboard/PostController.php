@@ -16,12 +16,34 @@ class PostController extends Controller
 
 
 
-    public function index()
-    {
-        $categories = PostCategory::get();
-        return view('dashboards.posts.index' , compact('categories'));
-       
-    }
+      public function postlist()
+      {
+          $posts = Post::whereHas("user")->get();
+          return view('dashboards.post-list' ,[
+              'posts' => $posts
+          ]);
+      }
+
+   
+        public function index( User $user , Post $categories)
+        {
+
+            $maxPost = 2;
+            $todays_post = Post::where('user_id' , auth()->id())
+            ->whereDate("created_at" , today())->count();
+
+    
+            if ($todays_post > $maxPost) {
+                return view('dashboards.503_error');
+                
+            } 
+            else{
+            $categories = PostCategory::latest()->get();
+            return view('dashboards.posts.index', compact('categories'));
+    
+            }
+        }
+   
 
 
    
@@ -42,7 +64,7 @@ class PostController extends Controller
            'content_desccription' => 'required:string',
            'content_type' => 'required|string' ,
            'cover_image' => 'required|image' ,
-           "cover_video" => "mimes:mp4,ogx,oga,ogv,ogg,webm",
+           "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
         //    $image = $request->file('cover_image')->getClientOriginalName(),    
         //    $video = $request->file('cover_video')->getClientOriginalName()
 
@@ -72,5 +94,11 @@ class PostController extends Controller
        ]);
 
        return back()->with('success_message', 'Post added successfully');
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return back()->with("error_message" , "Deleted successfully!");
     }
 }

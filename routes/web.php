@@ -7,8 +7,7 @@ use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Users\PostController;
-
-
+use App\Mail\NewUserWelcomeMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +41,16 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::post('/create', [App\Http\Controllers\Dashboard\PostController::class, 'storePost'])->name('create.post');
 
 
+  Route::get('/post_list', [App\Http\Controllers\Dashboard\PostController::class, 'postlist'])->name('post_list');
+
   Route::resource('category', CategoryController::class);
   Route::resource('profile', ProfileController::class);
   Route::resource('users', UsersController::class);
+  Route::get('users/status/{id}/{status}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
+
+  Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
+
+
 });
 
 
@@ -61,4 +67,9 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::resource('category', CategoryController::class);
   Route::resource('post', PostController::class);
 
+});
+
+
+Route::get('/email' , function() {
+  return new NewUserWelcomeMail();
 });

@@ -17,7 +17,6 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->default(1)->contrained()->onDelete('cascade');
             $table->unsignedBigInteger('category_id')->default(1)->contrained()->onDelete('cascade');
-            $table->string('status')->default("Pending");
             $table->string('cover_image');
             $table->string('cover_video');
             $table->string('name');

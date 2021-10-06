@@ -42,9 +42,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        @foreach($users as $user )
+                                        @php
+                                        $statusColor = "";
+                                        $status = $user->status;
+                                        if($status == "Pending"){
+                                        $statusColor = "text-info";
+                                        }
+                                        if($status == "Approved"){
+                                        $statusColor = "text-success";
+                                        }
+                                        if($status == "Suspended"){
+                                        $statusColor = "text-danger";
+                                        }
+                                        @endphp
                                         <tr>
-                                            @foreach($users as $user)
+
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
@@ -55,29 +68,30 @@
                                                     <img class="img-fluid" src="{{ asset(auth()->user()->avatar) }}" alt="avatar">
                                                 </a>
                                             </td>
-                                            <td></td>
+                                            <td class="{{$statusColor}}">{{ $user->status }}</td>
                                             <td>{{$user->created_at}}
                                             <td>
-                                            <td></td>
+                                                <h3>{{$user->post->count()}}</h3>
+                                            </td>
                                             <td>
-
                                                 <ul class="table-controls">
                                                     <li class="mb-3">
                                                         <div class="dropdown">
                                                             <button class="btn dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 Change Status
                                                             </button>
-
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a href="" class="btn btn-success mb-3  ml-4 mt-3">Admin</a>
-                                                                <a href="" class="btn btn-success mb-3  ml-4">User</a>
-
-                                                                <a class="dropdown-item" onclick="return confirm('Are you sure of the action?')" </a>
+                                                                @foreach (['Pending', 'Approved' , 'Suspended'] as $status)
+                                                                <a class="dropdown-item" onclick="return confirm('Are you sure of the action?')"
+                                                                href="{{ route('admin.users_status', ['id' => $user->id, 'status' => $status]) }}">
+                                                                
+                                                                    Mark as {{ ucfirst($status) }}
+                                                                </a>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </li>
                                                 </ul>
-                                            </td>
                                             <td>
                                                 <form action="{{ route('admin.users.destroy', $user->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                     @csrf

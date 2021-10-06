@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="inv-balance-info">
 
-                                    <p class="inv-balance">$ 41,741.42</p>
+                                    <p class="inv-balance">${{$total}}</p>
 
                                     <span class="inv-stats balance-credited">+ 2453</span>
 

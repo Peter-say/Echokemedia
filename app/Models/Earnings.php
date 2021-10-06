@@ -15,4 +15,16 @@ class Earnings extends Model
         return $this->belongsTo(User::class , 'user_id');
     }
       
+
+    public function getEarnigs( Post $post, User $user)
+    {
+        // $post = 2;
+        // $money = 50;
+        // if($post == 2  || $post > 2)
+        // {
+        //    echo $money * $post ;
+        // }else{
+        //     echo 'not qualify';
+        // }
+    }
 }

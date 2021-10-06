@@ -23,13 +23,19 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class );
+        return $this->belongsTo(User::class);
     }
 
 
-    public function post()
+    public function post(User $user)
 
     {
-        return $this->belongsTo(PostCategory::class,  'category_id' , 'user_id');
+       
+        return $this->belongsTo(PostCategory::class,  'category_id', 'user_id');
+    }
+
+    public function index(User $user)
+    {  
+        
     }
 }

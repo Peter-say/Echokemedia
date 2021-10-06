@@ -15,10 +15,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user, Post $categories)
     {
-        $categories = PostCategory::get();
-        return view('users.posts.create', compact('categories'));
+
+        $maxPost = 2;
+        $todays_post = Post::where('user_id', auth()->id())
+            ->whereDate("created_at", today())->count();
+
+        if ($todays_post > $maxPost) { {
+                return view('users.503_error');
+            }
+        } else {
+            $categories = PostCategory::get();
+            return view('users.posts.create', compact('categories'));
+        }
     }
 
     /**
@@ -37,7 +47,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , User $user   )
+    public function store(Request $request, User $user)
     {
         $request->validate([
             'category_id' => 'required|numeric|exists:post_categories,id',
@@ -45,23 +55,26 @@ class PostController extends Controller
             'content_desccription' => 'required:string',
             'content_type' => 'required|string',
             'cover_image' => 'required|image',
-            "cover_video" => "mimes:mp4,ogx,oga,ogv,ogg,webm",
+            "cover_video" => "mimes:mp4, ogx,oga,ogv,ogg,webm",
 
         ]);
-
         $meidiaImage = time() . '_' . $request->name . '.' .
             $request->cover_image->extension();
 
         $request->cover_image->move(public_path('postImages'), $meidiaImage);
 
 
+        $meidiaVideo = time() . '-' . $request->name . '.' .
+            $request->cover_video->extension();
+        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
+
         $request = Post::create([
             'name' =>  $request->input('name'),
             'content_desccription' =>  $request->input('content_desccription'),
             'content_type' =>  $request->input('content_type'),
             'cover_image' => $meidiaImage,
-            // 'cover_video' =>$meidiaVideo,
-            // 'user_id' => $user->id
+            'cover_video' => $meidiaVideo,
+            'user_id' => auth()->user()->id,
         ]);
 
         return back()->with('success_message', 'Post added successfully');

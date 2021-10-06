@@ -15,7 +15,7 @@
 
     <!-- clone bootstrap -->
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpg" />
         <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -43,6 +43,16 @@
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ $admin_assets}}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
     <!--  END CUSTOM STYLE FILE  -->
+
+    <!-- earnings css -->
+    
+    <link href="{{ $admin_assets}}/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="{{ $admin_assets}}/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
+
+    <!-- error css -->
+
+    <link href="{{ $admin_assets}}/assets/css/pages/error/style-503.css" rel="stylesheet" type="text/css" />
+    
 
 </head>
 

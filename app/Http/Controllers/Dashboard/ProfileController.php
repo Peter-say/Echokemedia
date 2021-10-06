@@ -67,7 +67,7 @@ class ProfileController extends Controller
             'user_id' => $user->id
         ]);
         
-        return back()->with('success_message', ' Post added successfully!');
+        return back()->with('success_message', ' Profile added successfully!');
            
 
     

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use app\Helpers\Constants;
+use App\Mail\NewUserWelcomeMail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -24,6 +26,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'is_email_verified'
     ];
 
     /**
@@ -42,22 +45,30 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'created_at' => 'datetime',
     ];
 
 
-    public function user()
+
+
+    public function post()
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasMany(Post::class, 'user_id');
     }
+
 
     public function scopeApproved($query)
     {
-        return $query->where("status");
+        return $query->where("status", Constants::APPROVED);
     }
 
 
+    public function user($user)
+    {
+       
+        return $this->hasOne(Profile::class, 'user_id');
+        Mail::to($user->email)->send(new NewUserWelcomeMail());
+    }
 
     public function wallet()
     {

@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpg" />
     <title>{{ config('app.name', 'Media-Creator') }}</title>
 
     <!-- Scripts -->
@@ -45,6 +45,8 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
+            <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpg" />
+
             <a class="navbar-brand" href="#page-top">Media_Creator</a>
 
 
@@ -58,7 +60,8 @@
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Become A Creator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Register</a></li>
 
 
                     @endif
@@ -70,7 +73,7 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('admin.dashboard')}}">back</a></li>
-                   
+
 
                     @endguest
                 </ul>

@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
             'username' => 'Media Creator',
             'role' => 'Admin',
             'password' => bcrypt('#123456'),
-            'email_verified_at' => now(),
+            'email_verified_at' => null,
             'remember_token' => Str::random(10),
         ]);
     }

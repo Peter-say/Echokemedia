@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Nette\Utils\Floats;
 
 class DashboardController extends Controller
 {
@@ -13,7 +15,22 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+
+    public function error()
+    {
+        return view('users.503_error');
+    }
+
+      public function earnings()
+      {
+       
+        $money = 0.05 ;
+        $posts_count  = Post::where('user_id', auth()->id())->count();
+        $total = $posts_count * $money;
+           return view('users.earning' , [
+               'total' => $total,
+           ]);
+      }
 
 
     public function index()
@@ -89,8 +106,7 @@ class DashboardController extends Controller
         //
     }
 
-    public function earnings()
-    {
-      return view('users.earning');
-    }
+   
+    
+
 }

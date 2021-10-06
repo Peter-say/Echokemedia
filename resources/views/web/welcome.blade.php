@@ -71,7 +71,7 @@
  </section>
 
  <!-- Portfolio-->
- <div id="portfolio">
+ <!-- <div id="portfolio">
      <div class="container-fluid p-0">
          <div class="row g-0">
              @foreach($posts as $post)
@@ -92,7 +92,9 @@
      </div>
      {{ $posts->links () }}
  </div>
- 
+  -->
+
+  @include('layouts.fragments.video')
 
  <!-- Call to action-->
  <section class="page-section bg-dark text-white">

@@ -19,6 +19,7 @@ class UsersController extends Controller
     {
         $users = User::orderby("created_at", "desc")
         ->paginate(20);
+        $users->firstItem();
         return view('dashboards.users.index', ['users' => $users]);
     }
    
@@ -84,6 +85,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function status(Request $request)
+    {
+        $status = $request->status;
+        User::findOrFail($request->id)->update([
+            "status" => $status,
+        ]);
+
+        return back()->with("success_message", "Status updated successfully!");
+    }
+
+
+
     public function destroy(User $user)
     {
         $user->delete();

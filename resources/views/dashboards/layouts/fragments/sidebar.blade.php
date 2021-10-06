@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="charts_apex.html" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('admin.post_list')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-archive" style="font-size:30px;color:black"></i>
                             <span>Posts</span>

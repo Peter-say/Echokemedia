@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title> Admin ||{{ Auth::user()->name }} </title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpg" />
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
     <script src="assets/js/loader.js"></script>
 
 
     <!-- clone bootstrap -->
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/admin/img/m-icon" /> -->
         <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -46,7 +46,8 @@
 
     <link href="{{ $admin_assets}}/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="{{ $admin_assets}}/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-
+    <link href="{{ $admin_assets}}/assets/css/pages/error/style-503.css" rel="stylesheet" type="text/css" />
+ 
 </head>
 
 <body>
