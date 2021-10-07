@@ -21,3 +21,7 @@
     </div>
 </div>
 @endsection
+
+
+
+this authentically is what everyone seem tto think is the right thing to do in avery long time with much much sense

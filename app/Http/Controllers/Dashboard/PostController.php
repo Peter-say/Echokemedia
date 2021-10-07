@@ -96,7 +96,50 @@ class PostController extends Controller
        return back()->with('success_message', 'Post added successfully');
     }
 
-    public function destroy(Post $post)
+
+    public function editPost()
+    {
+        $posts= Post::find(1);
+        $categories =  PostCategory::get();
+        return view('dashboards.posts.edit_post' , 
+        ['categories' => $categories,
+         'posts' =>  $posts,
+    ]);
+    }
+
+    public function updatePost(Request $request , User $user)
+    {
+        // dd($request->all());
+        $request->validate([
+           'category_id' => 'required|numeric|exists:post_categories,id',
+           'name' => 'required|string' ,
+           'content_desccription' => 'required:string',
+           'content_type' => 'required|string' ,
+           'cover_image' => 'required|image' ,
+           "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
+        
+     ]);
+
+    
+
+
+     $meidiaImage = time() . '_' . $request->name . '.' .  
+     $request->cover_image->extension();
+
+     $request->cover_image->move(public_path('postImages'), $meidiaImage);
+
+
+     $meidiaVideo =time() . '-' . $request->name . '.' .  
+     $request->cover_video->extension();
+     $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
+
+
+       return back()->with('success_message', 'Post Updated successfully');
+    }
+
+    
+    public function deletePost(Post $post)
+    
     {
         $post->delete();
         return back()->with("error_message" , "Deleted successfully!");

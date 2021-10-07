@@ -30,7 +30,7 @@ class Post extends Model
     public function post(User $user)
 
     {
-       
+    
         return $this->belongsTo(PostCategory::class,  'category_id', 'user_id');
     }
 

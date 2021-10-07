@@ -39,6 +39,9 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
   Route::get('/create', [App\Http\Controllers\Dashboard\PostController::class, 'index'])->name('create.index');
   Route::post('/create', [App\Http\Controllers\Dashboard\PostController::class, 'storePost'])->name('create.post');
+  Route::delete('/post/delete', [App\Http\Controllers\Dashboard\PostController::class, 'deletePost'])->name('post.delete');
+  Route::get('/post/edit', [App\Http\Controllers\Dashboard\PostController::class, 'editPost'])->name('post.edit');
+  Route::put('/post/update', [App\Http\Controllers\Dashboard\PostController::class, 'updatePost'])->name('post.update');
 
 
   Route::get('/post_list', [App\Http\Controllers\Dashboard\PostController::class, 'postlist'])->name('post_list');
