@@ -64,7 +64,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = user::findOrFail($id);
+        return view("dashboards.users.edit", ["user" => $user]);
     }
 
     /**
