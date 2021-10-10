@@ -27,15 +27,19 @@ class Post extends Model
     }
 
 
-    public function post(User $user)
-
+    public function post()
     {
-    
+
         return $this->belongsTo(PostCategory::class,  'category_id', 'user_id');
     }
 
-    public function index(User $user)
-    {  
-        
+    public function scopeSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query = $query->where("title", "like", "%$keyword%");
+        }
+        return $query;
     }
+
+   
 }

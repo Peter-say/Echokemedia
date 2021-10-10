@@ -14,7 +14,22 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    
+    public function search(Request $request)
+    {
+        $searchKeyword = $request->search;
+        $posts = Post::search($searchKeyword)->orderby("created_at", "desc")->paginate(10);
+        $posts->appends($request->query());
+        return view("users.posts.posts_list", array_merge([
+            "searchKeyword" => $searchKeyword,
+            "posts" => $posts,
+        ]));
+    }
+     public function postslist()
+     {
+        $posts = Post::whereHas("user")->get();
+         return view('users.posts.posts_list' , ['posts' => $posts]);
+     }
 
     public function error()
     {
@@ -24,7 +39,7 @@ class DashboardController extends Controller
       public function earnings()
       {
        
-        $money = 0.05 ;
+        $money = 0.005 ;
         $posts_count  = Post::where('user_id', auth()->id())->count();
         $total = $posts_count * $money;
            return view('users.earning' , [

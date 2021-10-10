@@ -37,17 +37,14 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
-  Route::get('/create', [App\Http\Controllers\Dashboard\PostController::class, 'index'])->name('create.index');
-  Route::post('/create', [App\Http\Controllers\Dashboard\PostController::class, 'storePost'])->name('create.post');
-  Route::delete('/post/delete', [App\Http\Controllers\Dashboard\PostController::class, 'deletePost'])->name('post.delete');
-  Route::get('/post/edit', [App\Http\Controllers\Dashboard\PostController::class, 'editPost'])->name('post.edit');
-  Route::put('/post/update', [App\Http\Controllers\Dashboard\PostController::class, 'updatePost'])->name('post.update');
+ 
+  Route::resource('post', PostController::class);
 
-
-  Route::get('/post_list', [App\Http\Controllers\Dashboard\PostController::class, 'postlist'])->name('post_list');
+  Route::get('/post_list', [App\Http\Controllers\Dashboard\AdminController::class, 'postlist'])->name('post_list');
 
   Route::resource('category', CategoryController::class);
   Route::resource('profile', ProfileController::class);
+
   Route::resource('users', UsersController::class);
   Route::get('users/status/{id}/{status}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
 
@@ -65,6 +62,8 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');
    
   Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
+  Route::get('/posts_list', [App\Http\Controllers\Users\DashboardController::class, 'postslist'])->name('posts_list');
+  Route::get('/search', [App\Http\Controllers\Users\DashboardController::class, 'search'])->name('search');
 
 
   Route::resource('category', CategoryController::class);

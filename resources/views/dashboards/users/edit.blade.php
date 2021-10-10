@@ -16,8 +16,8 @@
                     @method('PUT')
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="{{ $user->avatar }}" target="_blank">
-                                <img src="{{ $user->avatar }}" alt="logo" class="img-fluid">
+                            <a href="{{ asset(auth()->user()->avatar) }}" target="_blank">
+                                <img src="{{ asset(auth()->user()->avatar) }}" alt="avatar" class="img-fluid">
                             </a>
                             <div class="form-group">
                                 <label for="avatar">Logo (Optional)</label>
@@ -28,12 +28,12 @@
                             <div class="form-group">
                                 <label for="username">User-name</label>
                                 <input type="text" class="form-control" required name="username"
-                                    placeholder="Name" value="{{ $user->username }}" />
+                                    placeholder="Name" value="{{$user->name}}" />
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address</label>
                                 <input type="text" class="form-control" required name="email"
-                                    placeholder="E-mail" value="{{ $user->email }}" />
+                                    placeholder="E-mail" value="{{$user->email}}" />
                             </div>
 
                             <div class="form-group">

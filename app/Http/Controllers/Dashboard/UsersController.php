@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Creator;
+use App\Models\Post;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -94,6 +95,8 @@ class UsersController extends Controller
             "status" => $status,
         ]);
 
+      
+
         return back()->with("success_message", "Status updated successfully!");
     }
 
@@ -104,4 +107,6 @@ class UsersController extends Controller
         $user->delete();
         return back()->with("error_message" , "Deleted successfully!");
     }
+
+    
 }
