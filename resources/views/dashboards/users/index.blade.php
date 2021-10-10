@@ -99,7 +99,7 @@
                                                     <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
                                                 </form>
                                                 {{-- <button class="btn btn-primary">Edit</button> --}}
-                                                  <a href="{{ route('admin.users.edit',$user->id ) }}" class="btn btn-success btn-block" data-toggle="tooltip" data-placement="top"
+                                                  <a href="{{ route('admin.users.edit',$user->id ) }}" class="btn btn-success btn-block disable" data-toggle="tooltip" data-placement="top"
                                                     title="Edit"><i><i data-feather="edit-2" class="text-info"></i>Edit
                                                   </a>
                                             </td>

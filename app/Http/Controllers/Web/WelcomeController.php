@@ -39,4 +39,24 @@ class WelcomeController extends Controller
      
   }
 
+  public function about()
+  {
+      return view('web.about');
+  }
+
+
+  public function blog()
+  {
+      return view('web.blog_entries');
+  }
+
+  public function contact()
+  {
+      return view('web.contact');
+  }
+
+  public function post()
+  {
+      return view('web.post_details');
+  }
 }

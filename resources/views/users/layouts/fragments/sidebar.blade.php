@@ -11,7 +11,7 @@
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
-                    <a href="" aria-expanded="false" class="dropdown-toggle">
+                    <a href="/" aria-expanded="false" class="dropdown-toggle">
 
                         <div class="">
                             <i class="fa fa-home" style="font-size:30px;color:black"></i>

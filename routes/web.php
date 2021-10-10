@@ -24,6 +24,13 @@ Route::get('/', [App\Http\Controllers\Web\WelcomeController::class, 'index'])->n
 Route::post('/', [App\Http\Controllers\Web\WelcomeController::class, 'storeContactMessage'])->name('contact_us');
 Route::get('/music_list', [App\Http\Controllers\Web\MediaController::class, 'music_list'])->name('music_list');
 
+Route::prefix("media")->as("media.")->group(function () {
+  Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
+  Route::get('/contact', [App\Http\Controllers\Web\WelcomeController::class, 'contact'])->name('contact_us');
+  Route::get('/posts', [App\Http\Controllers\Web\WelcomeController::class, 'post'])->name('posts');
+  Route::get('/blogs', [App\Http\Controllers\Web\WelcomeController::class, 'blog'])->name('blogs');
+
+});
 
 Auth::routes();
 
