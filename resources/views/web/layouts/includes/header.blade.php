@@ -1,7 +1,11 @@
 <header class="">
     <nav class=" navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+    {{-- <a class="navbar-brand" href="{{ route("media.about") }}">
+        <img src="{{$admin_assets}}/assets/img/m-logo.png"  alt="">
+        <h2>Media Creator<em>.</em></h2>
+    </a> --}}
+        <a class="navbar-brand" href="/">
             <h2>Media Creator<em>.</em></h2>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -29,8 +33,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('media.contact_us') }}">Contact Us</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign-in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign-up</a>
                         </li>
 
                     @endif
@@ -55,7 +59,11 @@
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
+<<<<<<< HEAD
                             <a href=""  class="nav-link " type="submit">Logout</a>
+=======
+                            <button class="dropdown-item text-white" type="submit">sign-out</button>
+>>>>>>> 7bd2ae88f6d0715684296711d5dcec8592017ab9
                         </form>
                     </li>
 

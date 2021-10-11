@@ -11,7 +11,15 @@
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
+<<<<<<< HEAD
                     <a href="/" aria-expanded="false" class="dropdown-toggle">
+=======
+<<<<<<< HEAD
+                    <a href="/" aria-expanded="false" class="dropdown-toggle">
+=======
+                    <a href="{{route('user.dashboard.index')}}" aria-expanded="false" class="dropdown-toggle">
+>>>>>>> 78cdeddc6b0f2ec03bafb7635f9178e800932631
+>>>>>>> 7bd2ae88f6d0715684296711d5dcec8592017ab9
 
                         <div class="">
                             <i class="fa fa-home" style="font-size:30px;color:black"></i>
