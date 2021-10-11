@@ -20,9 +20,9 @@
                       <circle cx="11" cy="11" r="8"></circle>
                       <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
-                  <form class="form-inline search-full form-inline search" role="search" action="{{route('user.search')}}">
+                  <form class="form-inline search-full form-inline search" role="search" action="">
                       <div class="search-bar">
-                          <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search..." value="{{ $searchKeyword ?? '' }}">
+                          <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search..." value="">
                       </div>
                   </form>
               </li>
@@ -45,16 +45,34 @@
                                   </svg> Profile</a>
                           </div>
                        
-                          <div class="dropdown-item">
+<div class="dropdown-item">
+                          <a class="" href=" apps_mailbox.html"><svg xmlns="http://www.w3.org/2000/svg"
+                                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                  class="feather feather-inbox">
+                                  <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                                  <path
+                                      d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+                                  </path>
+                              </svg> Inbox</a>
+                      </div>
 
-                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                 
 
-                                  <a class="" href="{{ route('logout') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
-                                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                          <polyline points="16 17 21 12 16 7"></polyline>
-                                          <line x1="21" y1="12" x2="9" y2="12"></line>
-                                      </svg> Sign Out</a>
+
+                      <div class="dropdown-item">
+                          {{-- <form action="{{ route('logout')}}" method="post"
+                              class="">@csrf --}}
+                          <form action="{{ route('logout') }}" method="post">@csrf
+                              <button class="dropdown-item text-danger" type="submit"><svg
+                                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round" class="feather feather-log-out">
+                                      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                      <polyline points="16 17 21 12 16 7"></polyline>
+                                      <line x1="21" y1="12" x2="9" y2="12"></line>
+                                  </svg>Sign-Out</button>
+                          </form>
+
                               </form>
 
                           </div>

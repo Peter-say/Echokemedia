@@ -17,7 +17,7 @@ class CreateContactUsTable extends Migration
             $table->id();
             $table->text('name');
             $table->string('email');
-            $table->string('phone_number');
+            $table->string('subject');
             $table->text('message');
             $table->timestamps();
         });

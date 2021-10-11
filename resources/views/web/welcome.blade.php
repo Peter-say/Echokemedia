@@ -1,120 +1,284 @@
- @extends('layouts.welcome_app')
+ @extends('web.layouts.app')
 
 
- @section('content')
+ @section('contents')
 
+ <body>
 
- <!-- Masthead-->
- <header class="masthead">
-     <div class="container px-4 px-lg-5 h-100">
-         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-             <div class="col-lg-8 align-self-end">
-                 <h1 class="text-white font-weight-bold">Your Favorite Place for Free Bootstrap Themes</h1>
-                 <hr class="divider" />
+     <!-- ***** Preloader Start ***** -->
+     <!-- <div id="preloader">
+             <div class="jumper">
+                 <div></div>
+                 <div></div>
+                 <div></div>
              </div>
-             <div class="col-lg-8 align-self-baseline">
-                 <p class="text-white-75 mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
-                 <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
-             </div>
-         </div>
-     </div>
- </header>
+         </div> -->
+     <!-- ***** Preloader End ***** -->
 
 
- <!-- Portfolio-->
- <div id="portfolio">
-     <div class="container-fluid p-0">
-         <div class="row g-0">
-             @foreach($posts as $post)
-             <div class="col-lg-4 col-sm-6">
-                 <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="Project Name">
-                     <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="..." />
-                     <div class="portfolio-box-caption">
-                         <div class="project-category text-white-50">Category</div>
-                         <div class="project-name">Project Name</div>
+     <!-- Page Content -->
+     <!-- Banner Starts Here -->
+     <div class="main-banner header-text">
+         <div class="container-fluid">
+             <div class="owl-banner owl-carousel">
+                 <div class="item">
+                     <img src="{{ $admin_assets}}/assets/images/banner-item-01.jpg" alt="">
+                     <div class="item-content">
+                         <div class="main-content">
+                             <div class="meta-category">
+                                 <span>Fashion</span>
+                             </div>
+                             <a href="post-details.html">
+                                 <h4>Morbi dapibus condimentum</h4>
+                             </a>
+                             <ul class="post-info">
+                                 <li><a href="#">Admin</a></li>
+                                 <li><a href="#">May 12, 2020</a></li>
+                                 <li><a href="#">12 Comments</a></li>
+                             </ul>
+                         </div>
                      </div>
-                     @endforeach
-                 </a>
-             </div>
-
-
-         </div>
-     </div>
- </div>
-
-
- @include('layouts.fragments.video')
-
- <!-- Call to action-->
- <section class="page-section bg-dark text-white">
-     <div class="container px-4 px-lg-5 text-center">
-         <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-     </div>
- </section>
- <!-- Contact-->
- <section class="page-section" id="contact">
-     <div class="container px-4 px-lg-5">
-         <div class="row gx-4 gx-lg-5 justify-content-center">
-             <div class="col-lg-8 col-xl-6 text-center">
-                 <h2 class="mt-0">Let's Get In Touch!</h2>
-                 <hr class="divider" />
-                 <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p>
-             </div>
-         </div>
-         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-             <div class="col-lg-6">
-                 <div>
-                     @include('notifications.flash_messages')
                  </div>
-                 <form action="{{ route('contact_us')}}" method="POST" enctype="multipart/form-data">
-                     @csrf
-                     <!-- Name input-->
-                     <div class="form-floating mb-3">
-                         <input class="form-control" id="name" type="text" name="name" placeholder="Enter your name..." data-sb-validations="required" />
-                         <label for="name">Full name</label>
-                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                 <div class="item">
+                     <img src="{{ $admin_assets}}/assets/images/banner-item-02.jpg" alt="">
+                     <div class="item-content">
+                         <div class="main-content">
+                             <div class="meta-category">
+                                 <span>Nature</span>
+                             </div>
+                             <a href="post-details.html">
+                                 <h4>Donec porttitor augue at velit</h4>
+                             </a>
+                             <ul class="post-info">
+                                 <li><a href="#">Admin</a></li>
+                                 <li><a href="#">May 14, 2020</a></li>
+                                 <li><a href="#">24 Comments</a></li>
+                             </ul>
+                         </div>
                      </div>
-                     <!-- Email address input-->
-                     <div class="form-floating mb-3">
-                         <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                         <label for="email">Email address</label>
-                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                 </div>
+                 <div class="item">
+                     <img src="{{ $admin_assets}}/assets/images/banner-item-03.jpg" alt="">
+                     <div class="item-content">
+                         <div class="main-content">
+                             <div class="meta-category">
+                                 <span>Lifestyle</span>
+                             </div>
+                             <a href="post-details.html">
+                                 <h4>Best HTML Templates on TemplateMo</h4>
+                             </a>
+                             <ul class="post-info">
+                                 <li><a href="#">Admin</a></li>
+                                 <li><a href="#">May 16, 2020</a></li>
+                                 <li><a href="#">36 Comments</a></li>
+                             </ul>
+                         </div>
                      </div>
-                     <!-- Phone number input-->
-                     <div class="form-floating mb-3">
-                         <input class="form-control" id="phone" name="phone_number" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                         <label for="phone">Phone number</label>
-                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                 </div>
+                 <div class="item">
+                     <img src="{{ $admin_assets}}/assets/images/banner-item-04.jpg" alt="">
+                     <div class="item-content">
+                         <div class="main-content">
+                             <div class="meta-category">
+                                 <span>Fashion</span>
+                             </div>
+                             <a href="post-details.html">
+                                 <h4>Responsive and Mobile Ready Layouts</h4>
+                             </a>
+                             <ul class="post-info">
+                                 <li><a href="#">Admin</a></li>
+                                 <li><a href="#">May 18, 2020</a></li>
+                                 <li><a href="#">48 Comments</a></li>
+                             </ul>
+                         </div>
                      </div>
-                     <!-- Message input-->
-                     <div class="form-floating mb-3">
-                         <textarea class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                         <label for="message">Message</label>
-                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                 </div>
+                 <div class="item">
+                     <img src="{{ $admin_assets}}/assets/images/banner-item-05.jpg" alt="">
+                     <div class="item-content">
+                         <div class="main-content">
+                             <div class="meta-category">
+                                 <span>Nature</span>
+                             </div>
+                             <a href="post-details.html">
+                                 <h4>Cras congue sed augue id ullamcorper</h4>
+                             </a>
+                             <ul class="post-info">
+                                 <li><a href="#">Admin</a></li>
+                                 <li><a href="#">May 24, 2020</a></li>
+                                 <li><a href="#">64 Comments</a></li>
+                             </ul>
+                         </div>
                      </div>
-
-
-                     <div class="d-none" id="submitErrorMessage">
-                         <div class="text-center text-danger mb-3">Error sending message!</div>
-                     </div>
-                     <!-- Submit Button-->
-                     <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button></div>
-                 </form>
-             </div>
-         </div>
-         <div class="row gx-4 gx-lg-5 justify-content-center">
-             <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                 <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                 <div>+1 (555) 123-4567</div>
+                 </div>
+                
              </div>
          </div>
      </div>
- </section>
- <!-- Footer-->
- <footer class="bg-light py-5">
-     <div class="container px-4 px-lg-5">
-         <div class="small text-center text-muted">Copyright &copy; 2021 - Company Name</div>
-     </div>
- </footer>
+     <!-- Banner Ends Here -->
+
+     <section class="call-to-action">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="main-content">
+                         <div class="row">
+                             <div class="col-lg-8">
+                                 <span></span>
+                                 <h4>Creative HTML Template For Bloggers!</h4>
+                             </div>
+                             <div class="col-lg-4">
+                                 <div class="main-button">
+                                     <a rel="nofollow" href="https://templatemo.com/tm-551-stand-blog" target="_parent">Download Now!</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+     <section class="blog-posts">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-8">
+                     <div class="all-blog-posts">
+                         <div class="row">
+                             <div class="col-lg-12">
+                                 <div class="blog-post">
+                                     <div class="blog-thumb">
+                                         <img src="assets/images/blog-post-01.jpg" alt="">
+                                     </div>
+                                     @foreach($posts as $post)
+                                     <div class="down-content">
+                                        
+                                         <a href="{{route('post.show' , $post->id)}}">
+                                             <h4>{{$post->name}}</h4>
+                                         </a>
+                                         <ul class="post-info">
+                                             <li><a href="#">{{$post->user->name}}</a></li>
+                                             <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
+                                             <li><a href="#">12 Comments</a></li>
+                                         </ul>
+                                         <p>Stand Blog is a free HTML CSS template for your CMS theme. You can easily
+                                             adapt or customize it for any kind of CMS or website builder. You are
+                                             allowed to use it for your business. You are NOT allowed to re-distribute
+                                             the template ZIP file on any template collection site for the download
+                                             purpose. for more info. Thank you.</p>
+                                         <div class="mb-5">
+                                             <img class="img-fluid" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                         </div>
+                                         <div class="post-options">
+                                             <div class="row">
+                                                 <div class="col-6">
+                                                     <ul class="post-tags">
+                                                         <li><i class="fa fa-tags"></i></li>
+                                                         <li><a class="btn btn-success text-white" href="{{route('admin.post.show' , $post->id)}}">Download</a></li>
+                                                         <li><a href="#">Nature</a></li>
+                                                     </ul>
+                                                 </div>
+                                                 <div class="col-6">
+                                                     <ul class="post-share">
+                                                         <li><i class="fa fa-share-alt"></i></li>
+                                                         <li><a href="#">Facebook</a>,</li>
+                                                         <li><a href="#"> Twitter</a></li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     @endforeach
+                                 </div>
+                             </div>
+
+                             <div class="col-lg-12">
+                                 <div class="main-button">
+                                     <a href="{{route('media.blogs')}}">View All Posts</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4">
+                     <div class="sidebar">
+                         <div class="row">
+                             <div class="col-lg-12">
+                                 <div class="sidebar-item search">
+                                     <form id="search_form" name="gs" method="GET" action="{{route('web.search')}}">
+                                         <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on" value="{{ $searchKeyword ?? "" }}">
+                                     </form>
+                                 </div>
+                             </div>
+                             <div class="col-lg-12">
+                                 <div class="sidebar-item recent-posts">
+                                     <div class="sidebar-heading">
+                                         <h2>Recent Posts</h2>
+                                     </div>
+                                     <div class="content">
+                                         <ul>
+                                             @if ($posts->count())
+                                             @foreach($posts as $post)
+                                             <li><a href="post-details.html">
+                                                     <h5>{{$post->name}}
+                                                     </h5>
+                                                     <span>{{$post->created_at->diffForHumans()}}</span>
+                                                 </a></li>
+                                             @endforeach
+                                             @else
+                                             <div>no post</div>
+                                             @endif
+
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-lg-12">
+                                 <div class="sidebar-item categories">
+                                     <div class="sidebar-heading">
+                                         <h2>Categories</h2>
+                                     </div>
+                                     <div class="content">
+                                         <ul>
+                                             <li><a href="#">-</a></li>
+                                             <!-- <li><a href="#">- Awesome Layouts</a></li>
+                                                 <li><a href="#">- Creative Ideas</a></li>
+                                                 <li><a href="#">- Responsive Templates</a></li>
+                                                 <li><a href="#">- HTML5 / CSS3 Templates</a></li>
+                                                 <li><a href="#">- Creative &amp; Unique</a></li> -->
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-lg-12">
+                                 <div class="sidebar-item tags">
+                                     <div class="sidebar-heading">
+                                         <h2>Tag Clouds</h2>
+                                     </div>
+                                     <div class="content">
+                                         <ul>
+                                             <li><a href="#">Lifestyle</a></li>
+                                             <li><a href="#">Creative</a></li>
+                                             <li><a href="#">HTML5</a></li>
+                                             <li><a href="#">Inspiration</a></li>
+                                             <li><a href="#">Motivation</a></li>
+                                             <li><a href="#">PSD</a></li>
+                                             <li><a href="#">Responsive</a></li>
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+
+
+ </body>
+
  @endsection

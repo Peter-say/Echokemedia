@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -89,7 +90,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $download = Post::find($id);
+        return Storage::download($download->path , $download->name);
+        return back();
     }
 
     /**

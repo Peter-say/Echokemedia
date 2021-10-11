@@ -15,16 +15,7 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function search(Request $request)
-    {
-        $searchKeyword = $request->search;
-        $posts = Post::search($searchKeyword)->orderby("created_at", "desc")->paginate(10);
-        $posts->appends($request->query());
-        return view("users.posts.posts_list", array_merge([
-            "searchKeyword" => $searchKeyword,
-            "posts" => $posts,
-        ]));
-    }
+   
      public function postslist()
      {
         $posts = Post::whereHas("user")->get();
