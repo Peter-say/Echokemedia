@@ -1,7 +1,11 @@
 <header class="">
     <nav class=" navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+    {{-- <a class="navbar-brand" href="{{ route("media.about") }}">
+        <img src="{{$admin_assets}}/assets/img/m-logo.png"  alt="">
+        <h2>Media Creator<em>.</em></h2>
+    </a> --}}
+        <a class="navbar-brand" href="/">
             <h2>Media Creator<em>.</em></h2>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
