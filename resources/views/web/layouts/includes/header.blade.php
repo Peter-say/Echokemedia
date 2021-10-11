@@ -33,8 +33,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('media.contact_us') }}">Contact Us</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign-in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign-up</a>
                         </li>
 
                     @endif
@@ -61,7 +61,7 @@
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button class="dropdown-item text-white" type="submit">Logout</button>
+                            <button class="dropdown-item text-white" type="submit">sign-out</button>
                         </form>
                     </li>
 

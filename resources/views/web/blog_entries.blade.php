@@ -54,7 +54,7 @@
                   <div class="col-lg-6">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-thumb-01.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-thumb-01.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>
@@ -82,7 +82,7 @@
                   <div class="col-lg-6">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-thumb-02.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-thumb-02.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>
@@ -110,7 +110,7 @@
                   <div class="col-lg-6">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-thumb-03.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-thumb-03.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>
@@ -138,7 +138,7 @@
                   <div class="col-lg-6">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-thumb-04.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-thumb-04.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>
@@ -166,7 +166,7 @@
                   <div class="col-lg-6">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-thumb-05.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-thumb-05.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>
@@ -194,7 +194,7 @@
                   <div class="col-lg-6">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-thumb-06.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-thumb-06.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>

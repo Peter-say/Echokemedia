@@ -54,7 +54,7 @@
                   <div class="col-lg-12">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
+                        <img src="{{ $admin_assets}}/asap/images/blog-post-02.jpg" alt="">
                       </div>
                       <div class="down-content">
                         <span>Lifestyle</span>
@@ -96,7 +96,7 @@
                         <ul>
                           <li>
                             <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/assets/images/comment-author-01.jpg" alt="">
+                              <img src="{{ $admin_assets}}/asap/images/comment-author-01.jpg" alt="">
                             </div>
                             <div class="right-content">
                               <h4>Charles Kate<span>May 16, 2020</span></h4>
@@ -105,7 +105,7 @@
                           </li>
                           <li class="replied">
                             <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/assets/images/comment-author-02.jpg" alt="">
+                              <img src="{{ $admin_assets}}/asap/images/comment-author-02.jpg" alt="">
                             </div>
                             <div class="right-content">
                               <h4>Thirteen Man<span>May 20, 2020</span></h4>
@@ -114,7 +114,7 @@
                           </li>
                           <li>
                             <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/assets/images/comment-author-03.jpg" alt="">
+                              <img src="{{ $admin_assets}}/asap/images/comment-author-03.jpg" alt="">
                             </div>
                             <div class="right-content">
                               <h4>Belisimo Mama<span>May 16, 2020</span></h4>
@@ -123,7 +123,7 @@
                           </li>
                           <li class="replied">
                             <div class="author-thumb">
-                              <img src="assets/images/comment-author-02.jpg" alt="">
+                              <img src="{{ $admin_assets}}/asap/images/comment-author-02.jpg" alt="">
                             </div>
                             <div class="right-content">
                               <h4>Thirteen Man<span>May 22, 2020</span></h4>
