@@ -63,11 +63,10 @@ class User extends Authenticatable
     }
 
 
-    public function user($user)
+    public function profile()
     {
-       
+
         return $this->hasOne(Profile::class, 'user_id');
-        Mail::to($user->email)->send(new NewUserWelcomeMail());
     }
 
     public function wallet()

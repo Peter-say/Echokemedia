@@ -11,7 +11,11 @@
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
+<<<<<<< HEAD
                     <a href="/" aria-expanded="false" class="dropdown-toggle">
+=======
+                    <a href="{{route('user.dashboard.index')}}" aria-expanded="false" class="dropdown-toggle">
+>>>>>>> 78cdeddc6b0f2ec03bafb7635f9178e800932631
 
                         <div class="">
                             <i class="fa fa-home" style="font-size:30px;color:black"></i>
@@ -39,7 +43,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="charts_apex.html" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('user.posts_list')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-archive" style="font-size:30px;color:black"></i>
                             <span>Posts</span>

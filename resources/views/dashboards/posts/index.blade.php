@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.create.post')}}" method="POST"> @csrf
+                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.post.store')}}" method="POST"> @csrf
 
 
                                 <div class="form-group col-md-4">
@@ -61,7 +61,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Video <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_video">
+                                    <input class="form-control" type="file" name="cover_video" value="">
                                 </div>
 
                                 <div class="form-group col-md-4">

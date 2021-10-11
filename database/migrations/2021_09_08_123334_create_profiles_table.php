@@ -15,8 +15,13 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->constrained('users');
             $table->string('avatar')->nullable();
             $table->text('location')->default('');
+            $table->string('linkedin_username');
+            $table->string('facebook_username');
+            $table->string('twitter_username');
+            $table->string('github_username');
             $table->string('phone')->default(0);
             $table->enum('role' , ['Student' , 'Self_employed' , 'Employed'])->default('Student');
             $table->text('description')->default('');

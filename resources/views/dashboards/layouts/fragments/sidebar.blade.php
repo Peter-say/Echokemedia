@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{route('admin.create.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('admin.post.index')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-book" style="font-size:30px;color:black"></i>
                             <span>Create</span>
