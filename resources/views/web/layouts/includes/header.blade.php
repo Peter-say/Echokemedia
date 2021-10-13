@@ -25,13 +25,11 @@
                             <a class="nav-link" href="{{ route('media.about') }}">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('media.blogs') }}">Blog Entries</a>
+                            <a class="nav-link" href="{{ route('media.blogs') }}">Blog </a>
                         </li>
+                       
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('media.posts') }}">Post Details</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('media.contact_us') }}">Contact Us</a>
+                            <a class="nav-link" href="">Contact Us</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign-in</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign-up</a>
@@ -57,14 +55,9 @@
                         <a class="nav-link" href="">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-<<<<<<< HEAD
-                            <a href=""  class="nav-link " type="submit">Logout</a>
-=======
-                            <button class="dropdown-item text-white" type="submit">sign-out</button>
->>>>>>> 7bd2ae88f6d0715684296711d5dcec8592017ab9
-                        </form>
+                    <form action="{{ route('logout')}}" method="post">@csrf
+                        <button class="nav-link" type="submit">LogOut</button>
+                    </form>
                     </li>
 
                 @endguest

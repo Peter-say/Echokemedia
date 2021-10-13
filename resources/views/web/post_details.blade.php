@@ -12,7 +12,7 @@
               <div class="col-lg-12">
                 <div class="text-content">
                   <h4>Post Details</h4>
-                  <h2>Single blog post</h2>
+                  <h2>www</h2>
                 </div>
               </div>
             </div>
@@ -34,11 +34,11 @@
                   <div class="col-lg-12">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $admin_assets}}/asap/images/blog-post-02.jpg" alt="">
+                        <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
                       </div>
                       <div class="down-content">
-                      
-                        <a href="post-details.html"><h4>{{$posts->name}}</h4></a>
+                      <span><img class="rounded-profile"  src="{{ $admin_assets}}avatar\default-avatar-profile-icon.jpg" alt=""></span>
+                        <a class="text-success" href=""><h4>{{$posts->name}}</h4></a>
                         <ul class="post-info">
                           <li><a href="#">{{$posts->user->name}}</a></li>
                           <li><a href="#">{{$posts->created_at->diffForHumans()}}</a></li>
@@ -78,44 +78,23 @@
                       </div>
                       <div class="content">
                         <ul>
+                          @foreach($comments as $comment)
                           <li>
                             <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/asap/images/comment-author-01.jpg" alt="">
+                              <img src="{{ $admin_assets}}/assets/images/comment-author-01.jpg" alt="">
                             </div>
                             <div class="right-content">
-                              <h4><span>May 16, 2020</span></h4>
-                              <p>{{$posts->comments->comment}}</p>
+                              <h4><span>{{$comment->created_at->diffForHumans()}}<span></h4>
+                              <p>{{$comment->comment}}</p>
                             </div>
+                            @endforeach
                           </li>
                           <li class="replied">
                             <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/asap/images/comment-author-02.jpg" alt="">
+                              <img src="{{ $admin_assets}}/assets/images/comment-author-02.jpg" alt="">
                             </div>
                           
                            
-                            <div class="right-content">
-                              <h4>Thirteen Man<span>May 20, 2020</span></h4>
-                              <p>In porta urna sed venenatis sollicitudin. Praesent urna sem, pulvinar vel mattis eget.</p>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/asap/images/comment-author-03.jpg" alt="">
-                            </div>
-                            <div class="right-content">
-                              <h4>Belisimo Mama<span>May 16, 2020</span></h4>
-                              <p>Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.</p>
-                            </div>
-                          </li>
-                          <li class="replied">
-                            <div class="author-thumb">
-                              <img src="{{ $admin_assets}}/asap/images/comment-author-02.jpg" alt="">
-                            </div>
-                            <div class="right-content">
-                              <h4>Thirteen Man<span>May 22, 2020</span></h4>
-                              <p>Mauris sit amet justo vulputate, cursus massa congue, vestibulum odio. Aenean elit nunc, gravida in erat sit amet, feugiat viverra leo.</p>
-                            </div>
-                          </li>
                         </ul>
                       </div>
                     </div>
@@ -150,7 +129,7 @@
                               <fieldset>
                                 <button type="submit" id="form-submit" class="main-button">Submit</button>
                               </fieldset>
-                            </div>
+                        </div>
                           </div>
                         </form>
                       </div>
@@ -160,6 +139,10 @@
               </div>
             </div>
           
+            <div class="col-4">
+                <h4> feature ads</h4>
+             </div>
+
           </div>
         </div>
       </section>

@@ -11,22 +11,19 @@
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
-<<<<<<< HEAD
                     <a href="/" aria-expanded="false" class="dropdown-toggle">
-=======
-<<<<<<< HEAD
-                    <a href="/" aria-expanded="false" class="dropdown-toggle">
-=======
-                    <a href="{{route('user.dashboard.index')}}" aria-expanded="false" class="dropdown-toggle">
->>>>>>> 78cdeddc6b0f2ec03bafb7635f9178e800932631
->>>>>>> 7bd2ae88f6d0715684296711d5dcec8592017ab9
 
-                        <div class="">
-                            <i class="fa fa-home" style="font-size:30px;color:black"></i>
-                            <span>Home</span>
-                        </div>
+                        <a href="/" aria-expanded="false" class="dropdown-toggle">
 
-                    </a>
+                            <a href="{{route('user.dashboard.index')}}" aria-expanded="false" class="dropdown-toggle">
+
+
+                                <div class="">
+                                    <i class="fa fa-home" style="font-size:30px;color:black"></i>
+                                    <span>Home</span>
+                                </div>
+
+                            </a>
                 </li>
                 <li class="menu">
                     <a href="{{route('user.post.index')}}" aria-expanded="false" class="dropdown-toggle">
@@ -55,7 +52,7 @@
                     </a>
                 </li>
 
-               
+
 
                 <li class="menu">
 

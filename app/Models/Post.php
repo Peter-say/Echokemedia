@@ -28,14 +28,15 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->hasMany(Comment::class , 'user_id' , 'post_id');
+
     }
 
 
-    public function post()
+    public function category()
     {
 
-        return $this->belongsTo(PostCategory::class,  'category_id', 'user_id');
+        return $this->belongsTo(PostCategory::class,  'category_id');
     }
 
     public function scopeSearch($query, $keyword)
