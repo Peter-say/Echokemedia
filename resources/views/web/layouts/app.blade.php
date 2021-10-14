@@ -5,7 +5,7 @@
     .rounded-profile{
         width: 80px;
         height: 80px;
-        background: gray;
+        background: gray;        
         border-radius: 40px;
     }
 </style>

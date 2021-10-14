@@ -125,7 +125,7 @@
                          <div class="row">
                              <div class="col-lg-8">
                                  <span></span>
-                                 <h4>Creative HTML Template For Bloggers!</h4>
+                                 <h4>!</h4>
                              </div>
                              <div class="col-lg-4">
                                  <div class="main-button">
