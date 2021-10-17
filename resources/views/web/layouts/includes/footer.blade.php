@@ -3,15 +3,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="social-icons">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Behance</a></li>
-                    <li><a href="#">Linkedin</a></li>
-                    <li><a href="#">Dribbble</a></li>
+                    <li><a href="#">facebook</a></li>
+                    <li><a href="#">twitter</a></li>
+                    {{-- <li><a href="#">Behance</a></li> --}}
+                    <li><a href="#">linkedin</a></li>
+                    {{-- <li><a href="#">Dribbble</a></li> --}}
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button class="dropdown-item text-white" type="submit">Logout</button>
+                            <button class="dropdown-item text-white" type="submit">sign-out</button>
                         </form>
                     </li>
                 </ul>
