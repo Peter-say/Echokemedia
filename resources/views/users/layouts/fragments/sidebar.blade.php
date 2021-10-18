@@ -10,7 +10,15 @@
         <nav id="sidebar">
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
-                <li class="menu">
+            <li class="menu">
+                    <a href="{{route('user.dashboard.index')}}" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa fa-dashboard" style="font-size:30px;color:black"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                </li>
+                <!-- <li class="menu">
                     <a href="/" aria-expanded="false" class="dropdown-toggle">
 
                         <a href="/" aria-expanded="false" class="dropdown-toggle">
@@ -20,11 +28,11 @@
 
                                 <div class="">
                                     <i class="fa fa-home" style="font-size:30px;color:black"></i>
-                                    <span>Home</span>
+                                    <span>Dashboard</span>
                                 </div>
 
                             </a>
-                </li>
+                </li> -->
                 <li class="menu">
                     <a href="{{route('user.post.index')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
@@ -51,7 +59,14 @@
                         </div>
                     </a>
                 </li>
-
+                <li class="menu">
+                    <a href="/" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa fa-home" style="font-size:30px;color:black"></i>
+                            <span>Home</span>
+                        </div>
+                    </a>
+                </li>
 
 
                 <li class="menu">

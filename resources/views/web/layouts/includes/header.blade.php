@@ -54,11 +54,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="">Contact Us</a>
                     </li>
-                    {{-- <li class="nav-item">
+                   <!-- <li class="nav-item">
                     <form action="{{ route('logout')}}" method="post">@csrf
                         <button class="nav-link" type="submit">LogOut</button>
                     </form>
-                    </li> --}}
+                    
+                    </li>  -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('user.dashboard.index')}}">Dashboard</a>
+                    </li>
 
                 @endguest
             </ul>

@@ -14,8 +14,8 @@
                     <a href="{{route('admin.dashboard')}}" aria-expanded="false" class="dropdown-toggle">
 
                         <div class="">
-                            <i class="fa fa-home" style="font-size:30px;color:black"></i>
-                            <span>Home</span>
+                            <i class="fa fa-dashboard" style="font-size:30px;color:black"></i>
+                            <span>Dashboard</span>
                         </div>
 
                     </a>
@@ -53,6 +53,17 @@
                             <i class="fa fa-users" style="font-size:30px;color:black"></i>
                             <span>Users</span>
                         </div>
+                    </a>
+                </li>
+
+                <li class="menu">
+                    <a href="/" aria-expanded="false" class="dropdown-toggle">
+
+                        <div class="">
+                            <i class="fa fa-home" style="font-size:30px;color:black"></i>
+                            <span>Home</span>
+                        </div>
+
                     </a>
                 </li>
 
