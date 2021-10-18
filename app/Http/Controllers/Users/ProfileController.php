@@ -26,7 +26,7 @@ class ProfileController extends Controller
 
     public function update(Request $request , User $user)
     {
-
+// 
         // dd($request->all());
 
         $user = auth()->user();
@@ -41,19 +41,19 @@ class ProfileController extends Controller
 
         ]);
 
-        
+          return  Profile::saved($request->all());
 
-        $request = Profile::create([
-            'name' =>  $request->input('name'),
-            'email' =>  $request->input('email'),
-            'linkedin-username' =>  $request->input('linkedin-username'),
-            'facebook-username' =>  $request->input('facebook-username'),
-            'twitter-username' =>  $request->input('twitter-username'),
-            'github-username' =>  $request->input('github-username'),
-            'user_id' => auth()->user()->id,
-        ]);
+        // $request = Profile::create([
+        //     'name' =>  $request->input('name'),
+        //     'email' =>  $request->input('email'),
+        //     'linkedin_username' =>  $request->input('linkedin_username'),
+        //     'facebook-username' =>  $request->input('facebook-username'),
+        //     'twitter-username' =>  $request->input('twitter-username'),
+        //     'github-username' =>  $request->input('github-username'),
+        //     'user_id' => auth()->user()->id,
+        // ]);
 
-    return back()
+        $user->update($data)
     ->with('success_message' , 'Profile updated successfully');
     }
 }

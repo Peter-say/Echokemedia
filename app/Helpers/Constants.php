@@ -13,4 +13,14 @@ namespace app\Helpers;
      const CREDIT_TRANSACTION = "Credit";
 
 
+     const ACTIVE = 1;
+     const INACTIVE = 0;
+
+     const BOOL_OPTIONS = [
+        self::ACTIVE => "Yes",
+        self::INACTIVE => "No",
+     ];
+
+     const MUSIC = "Blog";
+     const VIDEO = "Vlog";
  }

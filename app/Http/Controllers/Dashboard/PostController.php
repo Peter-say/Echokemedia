@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use app\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
@@ -18,6 +19,9 @@ class PostController extends Controller
      */
     public function index(User $user, Post $categories)
     {
+        $boolOptions = Constants::BOOL_OPTIONS;
+        $postCategories = PostCategory::where("is_active", Constants::ACTIVE)->get();
+        $types = [Constants::VIDEO, Constants::MUSIC];
         $maxPost = 2;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
@@ -50,14 +54,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
+        $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $request->validate([
             'category_id' => 'required|numeric|exists:post_categories,id',
             'name' => 'required|string',
             'content_desccription' => 'required:string',
-            'content_type' => 'required|string',
+            "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
             "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
-
+            "is_sponsored" => "required|string|in:$allowedOptions",
+            "is_top_story" => "required|string|in:$allowedOptions",
+            "is_featured" => "required|string|in:$allowedOptions",
+            "is_published" => "required|string|in:$allowedOptions",
+            "can_comment" => "required|string|in:$allowedOptions",
         ]);
 
         $meidiaImage = time() . '_' . $request->name . '.' .
@@ -73,10 +83,15 @@ class PostController extends Controller
         $request = Post::create([
             'name' =>  $request->input('name'),
             'content_desccription' =>  $request->input('content_desccription'),
-            'content_type' =>  $request->input('content_type'),
+            'type' =>  $request->input('type'),
             'cover_image' => $meidiaImage,
             'cover_video' => $meidiaVideo,
+            'is_sponsored' => $request->input('is_sponsored'),
+            'is_top_story' => $request->input('"is_top_story'),
+            'is_featured' => $request->input('is_featured'),
+            'can_comment' => $request->input('can_comment'),
             'user_id' => auth()->user()->id,
+           
         ]);
 
         return back()->with('success_message', 'Post added successfully');

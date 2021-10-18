@@ -28,8 +28,23 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class , 'user_id' , 'post_id');
+        return $this->morphMany(Comment::class,'commentable')->whereNull('parent_id' , 'user_id' , 'post_id');
+    }
 
+
+    public function scopeActive($query)
+    {
+        return $query->where("is_published", Constants::ACTIVE);
+    }
+
+    public function scopeBlog($query)
+    {
+        return $query->active()->where("type", Constants::VIDEO);
+    }
+
+    public function scopeVlog($query)
+    {
+        return $query->active()->where("type", Constants::MUSIC);
     }
 
 

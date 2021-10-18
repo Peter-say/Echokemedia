@@ -68,9 +68,9 @@
                                     <label for=""> Category<span class="required">*</span></label>
                                     <select name="category_id" class="form-control" id="">
                                         <option value="" disabled selected>Select Category</option>
-                                        @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
+                                        @foreach ($types as $type)
+                                <option value="{{ $type }}">{{ $type }}</option>
+                            @endforeach
                                     </select>
 
                                 </div>

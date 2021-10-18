@@ -12,7 +12,7 @@
               <div class="col-lg-12">
                 <div class="text-content">
                   <h4>Post Details</h4>
-                  <h2>www</h2>
+                 
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@
                         <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
                       </div>
                       <div class="down-content">
-                      <span><img class="rounded-profile"  src="{{ $admin_assets}}avatar\default-avatar-profile-icon.jpg" alt=""></span>
+                      <span><img class="rounded-profile"  src="avatar\default-avatar-profile-icon.jpg" alt=""></span>
                         <a class="text-success" href=""><h4>{{$posts->name}}</h4></a>
                         <ul class="post-info">
                           <li><a href="#">{{$posts->user->name}}</a></li>
@@ -84,8 +84,8 @@
                               <img src="{{ $admin_assets}}/assets/images/comment-author-01.jpg" alt="">
                             </div>
                             <div class="right-content">
-                              <h4><span>{{$comment->created_at->diffForHumans()}}<span></h4>
-                              <p>{{$comment->comment}}</p>
+                              <h4>{{$comment->username}}<span>{{$comment->created_at->diffForHumans()}}<span></h4>
+                              <p>{{$comment->body}}</p>
                             </div>
                             @endforeach
                           </li>
@@ -111,7 +111,7 @@
                             @csrf
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Your name" required="">
+                                <input name="username" type="text" id="name" placeholder="Your name" required="">
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -121,7 +121,8 @@
                             </div>
                             <div class="col-md-12 col-sm-12">
                               <fieldset>
-                                <input name="comment" type="text" id="subject" placeholder="Your Comment">
+                                <input name="body" type="text" id="subject" placeholder="Your Comment">
+                                <input type="hidden" name="post_id" value="{{ $posts->id }}" />
                               </fieldset>
                             </div>
                            
@@ -140,7 +141,9 @@
             </div>
           
             <div class="col-4">
+                <div class="jumbotron bg-alert">
                 <h4> feature ads</h4>
+                </div>
              </div>
 
           </div>

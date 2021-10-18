@@ -71,7 +71,9 @@
                                             <td class="{{$statusColor}}">{{ $user->status }}</td>
                                             <td>{{$user->created_at}}
                                             <td>
-                                                <h3>{{$user->post->count()}}</h3>
+                                                <h3>
+
+                                                </h3>
                                             </td>
                                             <td>
                                                 <ul class="table-controls">
@@ -82,9 +84,8 @@
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                                 @foreach (['Pending', 'Approved' , 'Suspended'] as $status)
-                                                                <a class="dropdown-item" onclick="return confirm('Are you sure of the action?')"
-                                                                href="{{ route('admin.users_status', ['id' => $user->id, 'status' => $status]) }}">
-                                                                
+                                                                <a class="dropdown-item" onclick="return confirm('Are you sure of the action?')" href="{{ route('admin.users_status', ['id' => $user->id, 'status' => $status]) }}">
+
                                                                     Mark as {{ ucfirst($status) }}
                                                                 </a>
                                                                 @endforeach
@@ -99,9 +100,8 @@
                                                     <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
                                                 </form>
                                                 {{-- <button class="btn btn-primary">Edit</button> --}}
-                                                  <a href="{{ route('admin.users.edit',$user->id ) }}" class="btn btn-success btn-block disable" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"><i><i data-feather="edit-2" class="text-info"></i>Edit
-                                                  </a>
+                                                <a href="{{ route('admin.users.edit',$user->id ) }}" class="btn btn-success btn-block disable" data-toggle="tooltip" data-placement="top" title="Edit"><i><i data-feather="edit-2" class="text-info"></i>Edit
+                                                </a>
                                             </td>
                                             <td>
                                             </td>
