@@ -79,7 +79,7 @@
 
     <div class="limiter" >
         <div class="container-login100">
-            <div class="wrap-login100">
+            {{-- <div class="wrap-login100"> --}}
                 <div  class="row justify-content-center">
                     <form method="POST" action="{{ route('login') }}" class="login100-form validate-form" class="login100-more" style="background-image: url('{{ $web_source }}/assets/images/bg-01.jpg');"> @csrf
                         <span class="login100-form-title p-b-43">
