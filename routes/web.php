@@ -37,7 +37,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\Web\WelcomeController::class, 'search'])->name('web.search');
 Route::get('/post/{id}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
-Route::get('/download/{$post}', [App\Http\Controllers\Web\WelcomeController::class, 'download'])->name('post.download');
+Route::get('/download/{$filePath}', [App\Http\Controllers\Web\WelcomeController::class, 'download'])->name('post.download');
 
 
 

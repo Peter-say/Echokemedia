@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+Hello  {{$user->user->name}}
 
 @component('mail::button', ['url' => route("admin.dashboard")])
 Button Text

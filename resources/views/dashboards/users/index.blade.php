@@ -72,7 +72,7 @@
                                             <td>{{$user->created_at}}
                                             <td>
                                                 <h3>
-                                                    {{$user->posts->count()}}
+                                                    
                                                 </h3>
                                             </td>
                                             <td>
