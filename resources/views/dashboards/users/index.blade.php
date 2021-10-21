@@ -72,7 +72,7 @@
                                             <td>{{$user->created_at}}
                                             <td>
                                                 <h3>
-
+                                                    {{$user->posts->count()}}
                                                 </h3>
                                             </td>
                                             <td>
@@ -84,8 +84,7 @@
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                                 @foreach (['Pending', 'Approved' , 'Suspended'] as $status)
-                                                                <a class="dropdown-item" onclick="return confirm('Are you sure of the action?')" href="{{ route('admin.users_status', ['id' => $user->id, 'status' => $status]) }}">
-
+                                                                <a class="dropdown-item" onclick="return  confirm ('Are you sure of the action?')" href="{{ route('admin.users_status', ['id' => $user->id, 'status' => $status]) }}">
                                                                     Mark as {{ ucfirst($status) }}
                                                                 </a>
                                                                 @endforeach

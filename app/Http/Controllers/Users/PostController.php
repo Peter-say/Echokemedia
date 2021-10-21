@@ -19,8 +19,9 @@ class PostController extends Controller
     public function index(User $user, Post $categories)
     {
         $boolOptions = Constants::BOOL_OPTIONS;
-        $postCategories = PostCategory::where("is_active", Constants::ACTIVE)->get();
+        $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
+        
         $maxPost = 2;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
@@ -30,7 +31,10 @@ class PostController extends Controller
             }
         } else {
             $categories = PostCategory::get();
-            return view('users.posts.create', compact('categories'));
+            return view('users.posts.create', [
+                'categories' => $categories,
+                  'types' => $types,
+            ]);
         }
     }
 
@@ -62,11 +66,11 @@ class PostController extends Controller
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
             "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
-            "is_sponsored" => "required|string|in:$allowedOptions",
-            "is_top_story" => "required|string|in:$allowedOptions",
-            "is_featured" => "required|string|in:$allowedOptions",
-            "is_published" => "required|string|in:$allowedOptions",
-            "can_comment" => "required|string|in:$allowedOptions",
+            // "is_sponsored" => "required|string|in:$allowedOptions",
+            // "is_top_story" => "required|string|in:$allowedOptions",
+            // "is_featured" => "required|string|in:$allowedOptions",
+            // "is_published" => "required|string|in:$allowedOptions",
+            // "can_comment" => "required|string|in:$allowedOptions",
         ]);
         $meidiaImage = time() . '_' . $request->name . '.' .
             $request->cover_image->extension();

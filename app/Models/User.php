@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(Post::class, 'user_id');
+        return $this->hasMany(Post::class,'post_id');
     }
 
     public function comment()
@@ -62,17 +62,17 @@ class User extends Authenticatable
 
     }
 
+    public function user()
+    {
+        return $this->hasOne(Creator::class , "user_id" , "id");
+    }
+
+
     public function scopeApproved($query)
     {
-        return $query->where("status", Constants::APPROVED);
+        return $query->where("status" , Constants::APPROVED);
     }
 
-
-    public function profile()
-    {
-
-        return $this->hasOne(Profile::class, 'user_id');
-    }
 
     public function wallet()
     {

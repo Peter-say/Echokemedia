@@ -13,35 +13,7 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
                 <div id="tableCheckbox" class="">
-               <a href="{{route('admin.category.index')}}" class="btn btn-primary btn-lg"> pls 
-                   click me to to create a category</a>
-                    <div class="statbox widget box box-shadow mt-5">
-                        <div class="widget-header">
-                            <div class="row">
-                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Create New Category</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-content widget-content-area">
-                            <form enctype="multipart/form-data" class="form-row" action="{{route('user.category.store')}}" method="POST"> @csrf
-
-
-                                <div class="form-group col-md-3">
-                                    <label for="">Category <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="name">
-
-                                </div>
-
-                                <div class="form-group col-12">
-                                    <button class="btn btn-primary btn-lg">Submit</button>
-                                </div>
-
-
-                            </form>
-                        </div>
-                    </div>
-
+                   
                     <div class="statbox widget box box-shadow mt-5">
                         <div class="widget-header">
                             <div class="row">
@@ -81,12 +53,13 @@
                                     <input class="form-control" type="text" name="name" placeholder="......">
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="">Type <span class="required">*</span></label>
-                                    <select name="content_type" class="form-control" id="">
-                                        <option value="" disabled selected>Select Option</option>
-                                        <option value="music">Music</option>
-                                        <option value="video">Video</option>
+                                    <select name="type" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Type</option>
+                                        @foreach ($types as $type)
+                                        <option value="{{ $type }}">{{ $type }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

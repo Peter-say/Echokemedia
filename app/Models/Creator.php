@@ -15,4 +15,15 @@ class Creator extends Model
 
 
 
+     
+    public function user()
+    {
+        return $this->belongsTo(User::class , "user_id");
+    }
+    
+    public function scopeApproved($query)
+    {
+        return $query->where("status" , Constants::APPROVED);
+    }
+
 }

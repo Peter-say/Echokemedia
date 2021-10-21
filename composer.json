@@ -28,13 +28,15 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-
+        },
+        
     "files" : [
         "app/Helpers/Constants.php",
-        "app/Helpers/app_functions.php"
-    ],
+        "app/Helpers/app_function.php"
+    ]
+
+    },
+
     
     "autoload-dev": {
         "psr-4": {

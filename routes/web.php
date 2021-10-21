@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Users\PostController;
+use App\Http\Controllers\Dashboard\AdminPostController;
 use App\Mail\NewUserWelcomeMail;
 
 /*
@@ -35,7 +36,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\Web\WelcomeController::class, 'search'])->name('web.search');
-Route::get('/post/{post}/show', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
+Route::get('/post/{id}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
+Route::get('/download/{$post}', [App\Http\Controllers\Web\WelcomeController::class, 'download'])->name('post.download');
 
 
 
@@ -44,8 +46,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
-
-  Route::resource('post', PostController::class);
+  Route::resource('post', AdminPostController::class);
 
   Route::get('/post_list', [App\Http\Controllers\Dashboard\AdminController::class, 'postlist'])->name('post_list');
 
@@ -54,7 +55,6 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
 
   Route::resource('users', UsersController::class);
   Route::get('users/status/{id}/{status}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
-
   Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
 });
 
@@ -68,7 +68,6 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
 
   Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
   Route::get('/posts_list', [App\Http\Controllers\Users\DashboardController::class, 'postslist'])->name('posts_list');
-
 
   Route::resource('category', CategoryController::class);
   Route::resource('post', PostController::class);

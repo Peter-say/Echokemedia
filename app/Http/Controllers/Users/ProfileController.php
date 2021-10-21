@@ -53,7 +53,6 @@ class ProfileController extends Controller
         //     'user_id' => auth()->user()->id,
         // ]);
 
-        $user->update($data)
-    ->with('success_message' , 'Profile updated successfully');
-    }
+        }
+    
 }

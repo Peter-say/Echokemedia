@@ -22,13 +22,22 @@ class PostController extends Controller
         $boolOptions = Constants::BOOL_OPTIONS;
         $postCategories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
+
+        $approve = 'accept';
         $maxPost = 2;
+
+        $status = User::where('status' , 'approved');
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
 
 
         if ($todays_post > $maxPost) {
             return view('dashboards.503_error');
+         
+            if($status != $approve){
+                return  view('web.about');
+            }
+
         } else {
             $categories = PostCategory::latest()->get();
             return view('dashboards.posts.index', compact('categories'));

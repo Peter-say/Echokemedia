@@ -37,15 +37,15 @@
                         <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
                       </div>
                       <div class="down-content">
-                      <span><img class="rounded-profile"  src="avatar\default-avatar-profile-icon.jpg" alt=""></span>
-                        <a class="text-success" href=""><h4>{{$posts->name}}</h4></a>
+                        <a class="text-success"><h4>{{$post->name}}</h4></a>
                         <ul class="post-info">
-                          <li><a href="#">{{$posts->user->name}}</a></li>
-                          <li><a href="#">{{$posts->created_at->diffForHumans()}}</a></li>
+                        <span><img class="rounded-profile width-50" src="avatar\default-avatar-profile-icon.jpg"></span>
+                          <li><a href="#">{{$post->user->name}}</a></li>
+                          <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
                           <li><a href="#">10 Comments</a></li>
                         </ul>
                          <div>
-                         <img class="img-fluid" src="{{asset('postImages/' . $posts->cover_image)}}" alt="..." />
+                         <img class="img-fluid" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                          </div>
                         <p>You can browse different tags such as <a rel="nofollow" href="https://templatemo.com/tag/multi-page" target="_parent">multi-page</a>, <a rel="nofollow" href="https://templatemo.com/tag/resume" target="_parent">resume</a>, <a rel="nofollow" href="https://templatemo.com/tag/video" target="_parent">video</a>, etc. to see more CSS templates. Sed hendrerit rutrum arcu, non malesuada nisi. Sed id facilisis turpis. Donec justo elit, dapibus vel ultricies in, molestie sit amet risus. In nunc augue, rhoncus sed libero et, tincidunt tempor nisl. Donec egestas, quam eu rutrum ultrices, sapien ante posuere nisl, ac eleifend eros orci vel ante. Pellentesque vitae eleifend velit. Etiam blandit felis sollicitudin vestibulum feugiat.
                         <br><br>Donec tincidunt leo nec magna gravida varius. Suspendisse felis orci, egestas ac sodales quis, venenatis et neque. Vivamus facilisis dignissim arcu et blandit. Maecenas finibus dui non pulvinar lacinia. Ut lacinia finibus lorem vel porttitor. Suspendisse et metus nec libero ultrices varius eget in risus. Cras id nibh at erat pulvinar malesuada et non ipsum. Suspendisse id ipsum leo.</p>
@@ -55,7 +55,7 @@
                               <ul class="post-tags">
                                 <li><i class="fa fa-tags"></i></li>
                               
-                                <li><a  class="btn btn-success text-white" href="#">Download</a></li>
+                                <li><a  class="btn btn-success text-white" href="{{route('post.download' , $post->id)}}">Download</a></li>
                               </ul>
                             </div>
                             <div class="col-6">
@@ -122,7 +122,7 @@
                             <div class="col-md-12 col-sm-12">
                               <fieldset>
                                 <input name="body" type="text" id="subject" placeholder="Your Comment">
-                                <input type="hidden" name="post_id" value="{{ $posts->id }}" />
+                                <input type="hidden" name="post_id" value="{{ $post->id }}" />
                               </fieldset>
                             </div>
                            

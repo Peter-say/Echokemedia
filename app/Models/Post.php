@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,7 @@ class Post extends Model
 
     protected $fillable = [
         'category_id',
-        'name',
+         'name',
         'content_type',
         'cover_video',
         'cover_image',
@@ -23,12 +24,12 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class );
     }
 
     public function comments()
     {
-        return $this->morphMany(Comment::class,'commentable')->whereNull('parent_id' , 'user_id' , 'post_id');
+        return $this->morphMany(Comment::class,'commentable')->whereNull('parent_id' , 'user_id' );
     }
 
 

@@ -10,11 +10,15 @@ use App\Models\PostCategory;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use File ;
+use Illuminate\Support\Facades\Storage;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
+
+         // dd($request->all());
         $posts = Post::latest()->get();
         $categories = PostCategory::latest()->get();
         return view('web.welcome', [
@@ -22,17 +26,6 @@ class WelcomeController extends Controller
             'categories' => $categories,
         ]);
     }
-
-    public function show()
-    {
-        $posts = Post::latest()->find(1);
-        $comments = Comment::latest()->get();
-        return view('web.post_details', [
-            'posts' => $posts,
-            'comments' => $comments
-        ]);
-    }
-
 
 
     public function storeComment(Request $request , User $user)
@@ -79,9 +72,14 @@ class WelcomeController extends Controller
         return view('web.contact');
     }
 
-    public function post()
+    public function show($id)
     {
-        return view('web.post_details');
+         $comments = Comment::get();
+        $post = Post::where("id" , $id)->first();
+        return view('web.post_details', [
+            'post' => $post,
+             'comments' =>  $comments,
+        ]);
     }
 
     public function search(Request $request)
@@ -94,4 +92,16 @@ class WelcomeController extends Controller
             "posts" => $posts,
         ]));
     }
+
+     public function download(Post $post){ 
+        return $post ;
+
+        // $filePath = Storage::files(public_path());
+        // $fileName = time(). ' .Mp4' ;
+        //  return response()->download($filePath, $fileName);
+        // $filePath = public_path('postVideos');
+        // $files = File::files($filePath);
+        //  return back()->with('success_message'  , 'downding');
+
+     }
 }

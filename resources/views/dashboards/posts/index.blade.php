@@ -13,8 +13,8 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
                 <div id="tableCheckbox" class="">
-               <a href="{{route('admin.category.index')}}" class="btn btn-primary btn-lg"> pls 
-                   click me to to create a category</a>
+                    <a href="{{route('admin.category.index')}}" class="btn btn-primary btn-lg"> pls
+                        click me to to create a category</a>
                     <div class="statbox widget box box-shadow mt-5">
                         <div class="widget-header">
                             <div class="row">
@@ -68,9 +68,9 @@
                                     <label for=""> Category<span class="required">*</span></label>
                                     <select name="category_id" class="form-control" id="">
                                         <option value="" disabled selected>Select Category</option>
-                                        @foreach ($types as $type)
-                                <option value="{{ $type }}">{{ $type }}</option>
-                            @endforeach
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
 
                                 </div>
@@ -81,12 +81,13 @@
                                     <input class="form-control" type="text" name="name" placeholder="......">
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="">Type <span class="required">*</span></label>
-                                    <select name="content_type" class="form-control" id="">
-                                        <option value="" disabled selected>Select Option</option>
-                                        <option value="music">Music</option>
-                                        <option value="video">Video</option>
+                                    <select name="type" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Type</option>
+                                        @foreach ($types as $type)
+                                        <option value="{{ $type }}">{{ $type }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -94,6 +95,55 @@
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
                                     <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="">Is Sponsored <span class="required">*</span></label>
+                                    <select name="is_sponsored" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Option</option>
+                                        @foreach ($boolOptions as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="">Is Top Story <span class="required">*</span></label>
+                                    <select name="is_top_story" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Option</option>
+                                        @foreach ($boolOptions as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="">Is Featured <span class="required">*</span></label>
+                                    <select name="is_featured" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Option</option>
+                                        @foreach ($boolOptions as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="">Is Published <span class="required">*</span></label>
+                                    <select name="is_published" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Option</option>
+                                        @foreach ($boolOptions as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="">Enable Comments <span class="required">*</span></label>
+                                    <select name="can_comment" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select Option</option>
+                                        @foreach ($boolOptions as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group col-12">

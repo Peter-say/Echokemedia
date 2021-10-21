@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Helpers;
+namespace App\Helpers;
 
  class  Constants{
 
@@ -21,6 +21,6 @@ namespace app\Helpers;
         self::INACTIVE => "No",
      ];
 
-     const MUSIC = "Blog";
-     const VIDEO = "Vlog";
+     const MUSIC = "music";
+     const VIDEO = "video";
  }
