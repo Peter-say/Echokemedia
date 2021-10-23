@@ -82,9 +82,9 @@
           <div class="row">
             <div class="col-lg-12">
               <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                <li><a href="https://www.facebook.com/petpea.downloader"><i class="fa fa-facebook"></i></a></li>
+                <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                <li><a href="https://instagram.com/pet_pea_downloader?utm_medium=copy_link"><i class="fa fa-instagram"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
               </ul>
             </div>
