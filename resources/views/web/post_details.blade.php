@@ -11,8 +11,12 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="text-content">
-            <h4>Post Details</h4>
-
+           
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="jumbotron bg-alert">
+          <h4> feature ads</h4>
+        </div>
+      </div>
           </div>
         </div>
       </div>
@@ -132,17 +136,13 @@
                           <input type="hidden" name="post_id" value="{{ $post->id }}" />
                         </fieldset>
                       </div>
-                      @guest
                      
-                        <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
-                       
-                      @else
                       <div class="col-lg-12">
                         <fieldset>
                           <button type="submit" id="form-submit" class="main-button">Submit</button>
                         </fieldset>
                       </div>
-                      @endguest
+                     
                     </div>
                   </form>
                 </div>
@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      <div class="col-4">
+      <div class="col-xl-4 col-lg-4 col-md-12 col-xs-12">
         <div class="jumbotron bg-alert">
           <h4> feature ads</h4>
         </div>
