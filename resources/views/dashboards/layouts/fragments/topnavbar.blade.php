@@ -3,12 +3,15 @@
       <header class="header navbar navbar-expand-sm">
 
           <ul class="navbar-item theme-brand flex-row  text-center">
-              <li class="nav-item theme-logo">
-                  <a href="index.html">
-                      <img src="{{ $admin_assets }}/assets/img/m-icon.jpg" alt="logo">
+              <li class="nav-item ">
+                  <a href="/">
+                      <img src="{{ $admin_assets }}/assets/img/m-icon.jpg">
                   </a>
               </li>
               <li class="nav-item theme-text">
+               <a href="/">
+                      <img src="{{ $admin_assets }}/assets/img/m-icon.jpg">
+                  </a>
                   <a href="index.html" class="nav-link"> Media Downloader</a>
               </li>
           </ul>
