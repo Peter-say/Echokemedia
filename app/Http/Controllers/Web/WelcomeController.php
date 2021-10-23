@@ -11,6 +11,7 @@ use App\Models\User;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use File ;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class WelcomeController extends Controller
@@ -44,6 +45,7 @@ class WelcomeController extends Controller
         $comment->username = $request->get('username');
         $comment->user()->associate($request->user());
         $post = Post::find($request->get('post_id'));
+        // dd($post);
         $post->comments()->save($comment);
 
       
@@ -67,15 +69,15 @@ class WelcomeController extends Controller
         ]);
     }
 
-    public function comment()
+    public function contact()
     {
         return view('web.contact');
     }
 
-    public function show($id)
+    public function show($post)
     {
-         $comments = Comment::get();
-        $post = Post::where("id" , $id)->first();
+     $comments = Comment::get();
+        $post = Post::where("id" , $post)->first();
         return view('web.post_details', [
             'post' => $post,
              'comments' =>  $comments,
@@ -93,15 +95,8 @@ class WelcomeController extends Controller
         ]));
     }
 
-     public function download(Post $post){ 
-        return $post ;
-
-        // $filePath = Storage::files(public_path());
-        // $fileName = time(). ' .Mp4' ;
-        //  return response()->download($filePath, $fileName);
-        // $filePath = public_path('postVideos');
-        // $files = File::files($filePath);
-        //  return back()->with('success_message'  , 'downding');
-
-     }
+    function getFile($post){
+        // return response()->download('postVideos\1632686711-hi I like bean.mp4');
+        return Storage::download('postVideos.mp4', $post);
+    }
 }

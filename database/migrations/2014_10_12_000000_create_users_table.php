@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->enum('role', ['User', 'Admin'])->default('User');
             $table->enum('status', ['approved', 'suspended' , 'pending'])->default('pending');
-            $table->timestamp('email_verified_at')->null();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('last_login')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -52,7 +52,7 @@ class Admin_postController extends Controller
     public function store(Request $request)
     {
        
-        dd($request->all());
+        
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $request->validate([
@@ -72,12 +72,12 @@ class Admin_postController extends Controller
         $meidiaImage = time() . '_' . $request->name . '.' .
             $request->cover_image->extension();
 
-        $request->cover_image->move(public_path('postImages'), $meidiaImage);
+        $request->cover_image->store(public_path('postImages'), $meidiaImage);
 
 
         $meidiaVideo = time() . '-' . $request->name . '.' .
             $request->cover_video->extension();
-        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
+        $request->cover_video->store(public_path('postVideos'), $meidiaVideo);
 
         $request = Post::create([
             'name' =>  $request->input('name'),

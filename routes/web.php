@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\AdminPostController;
+use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 
 /*
@@ -17,27 +18,32 @@ use App\Mail\NewUserWelcomeMail;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
+
+
+
 | contains the "web" middleware group. Now create something great!
 |
 */
 
 Route::get('/', [App\Http\Controllers\Web\WelcomeController::class, 'index'])->name('/');
 Route::get('/music_list', [App\Http\Controllers\Web\MediaController::class, 'music_list'])->name('music_list');
+Route::get('user/{user:name}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
+  Route::get('/contact', [App\Http\Controllers\Web\WelcomeController::class, 'contact'])->name('contact');
   Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');
   Route::post('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'storeComment'])->name('comment');
   Route::get('/posts', [App\Http\Controllers\Web\WelcomeController::class, 'post'])->name('posts');
   Route::get('/blogs', [App\Http\Controllers\Web\WelcomeController::class, 'blog'])->name('blogs');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\Web\WelcomeController::class, 'search'])->name('web.search');
-Route::get('/post/{id}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
-Route::get('/download/{$filePath}', [App\Http\Controllers\Web\WelcomeController::class, 'download'])->name('post.download');
+Route::get('/post/{post:name}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
+Route::get('/download/{post:name}', [App\Http\Controllers\Web\WelcomeController::class, 'getFile'])->name('post.download');
 
 
 
@@ -65,7 +71,6 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'index'])->name('profile');
   Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');
   Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');
-
   Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
   Route::get('/posts_list', [App\Http\Controllers\Users\DashboardController::class, 'postslist'])->name('posts_list');
 

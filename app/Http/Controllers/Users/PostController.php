@@ -65,7 +65,7 @@ class PostController extends Controller
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
+            "cover_video" => "required",
             // "is_sponsored" => "required|string|in:$allowedOptions",
             // "is_top_story" => "required|string|in:$allowedOptions",
             // "is_featured" => "required|string|in:$allowedOptions",

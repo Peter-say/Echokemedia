@@ -46,6 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'created_at' => 'datetime',
+        'email_verified_at' => 'datetime',
     ];
 
 
@@ -64,7 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function user()
     {
-        return $this->hasOne(Creator::class , "user_id" , "id");
+        return $this->hasOne(Profile::class , "user_id" , "id");
     }
 
 
