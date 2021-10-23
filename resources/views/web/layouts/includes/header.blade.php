@@ -68,9 +68,37 @@
                             <a class="nav-link" href="{{ route('user.dashboard.index') }}">Dashboard</a>
                         </li>
 
-                    @endguest
-                </ul>
-            </div>
+                    @endif
+
+                @else
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('media.about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('media.blogs') }}">Blog</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('media.contact') }}">Contact Us</a>
+                    </li>
+                   <!-- <li class="nav-item">
+                    <form action="{{ route('logout')}}" method="post">@csrf
+                        <button class="nav-link" type="submit">LogOut</button>
+                    </form>
+                    
+                    </li>  -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('user.dashboard.index')}}">Dashboard</a>
+                    </li>
+
+                @endguest
+            </ul>
         </div>
     </nav>
 </header>

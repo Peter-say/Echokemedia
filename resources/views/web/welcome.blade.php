@@ -159,15 +159,11 @@
                                          </a>
                                          <ul class="post-info">
                                              <span><img class="rounded-profile width-50" src="avatar\default-avatar-profile-icon.jpg"></span>
-                                             <li><a href="#">{{$post->user->name}}</a></li>
+                                             <li><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></li>
                                              <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
                                              <li><a href="#">12 Comments</a></li>
                                          </ul>
-                                         <p>Stand Blog is a free HTML CSS template for your CMS theme. You can easily
-                                             adapt or customize it for any kind of CMS or website builder. You are
-                                             allowed to use it for your business. You are NOT allowed to re-distribute
-                                             the template ZIP file on any template collection site for the download
-                                             purpose. for more info. Thank you.</p>
+                                         
                                          <div class="mb-5">
                                              <img class="img-fluid rounded-" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                                          </div>

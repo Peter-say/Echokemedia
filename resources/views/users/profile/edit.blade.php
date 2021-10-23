@@ -15,7 +15,7 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
 
-                <form action="{{ route('user.update', $profile->id) }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data" method="post">
                     @csrf @method("put")
 
                     <div class="row">
