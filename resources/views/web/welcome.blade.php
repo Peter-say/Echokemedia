@@ -6,13 +6,13 @@
  <body>
 
      <!-- ***** Preloader Start ***** -->
-     <!-- <div id="preloader">
+     <div id="preloader">
              <div class="jumper">
                  <div></div>
                  <div></div>
                  <div></div>
              </div>
-         </div> -->
+         </div>
      <!-- ***** Preloader End ***** -->
 
 
@@ -129,7 +129,7 @@
                              </div>
                              <div class="col-lg-4">
                                  <div class="main-button">
-                                     <a rel="nofollow" href="https://templatemo.com/tm-551-stand-blog" target="_parent">Download Now!</a>
+                                     <a rel="nofollow" disabled href="#" target="_parent">Download Now!</a>
                                  </div>
                              </div>
                          </div>
