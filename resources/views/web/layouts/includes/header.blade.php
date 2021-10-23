@@ -6,7 +6,7 @@
         <img src="{{$admin_assets}}/assets/img/m-logo.png"  alt="">
         <h2>Media Creator<em>.</em></h2>
     </a> --}}
-           
+
             <a class="navbar-brand" href="/">
                 <h2>Media Creator<em>.</em></h2>
             </a>
@@ -59,6 +59,35 @@
                             <a class="nav-link" href="">Contact Us</a>
                         </li>
                         <!-- <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="post">@csrf
+                                <button class="nav-link" type="submit">LogOut</button>
+                            </form>
+                            
+                            </li>  -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.dashboard.index') }}">Dashboard</a>
+                        </li>
+
+                        @endif
+
+                    @else
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('media.about') }}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('media.blogs') }}">Blog</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('media.contact') }}">Contact Us</a>
+                        </li>
+                        <!-- <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">@csrf
                             <button class="nav-link" type="submit">LogOut</button>
                         </form>
@@ -68,37 +97,8 @@
                             <a class="nav-link" href="{{ route('user.dashboard.index') }}">Dashboard</a>
                         </li>
 
-                    @endif
-
-                @else
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('media.about') }}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('media.blogs') }}">Blog</a>
-                    </li>
-                   
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('media.contact') }}">Contact Us</a>
-                    </li>
-                   <!-- <li class="nav-item">
-                    <form action="{{ route('logout')}}" method="post">@csrf
-                        <button class="nav-link" type="submit">LogOut</button>
-                    </form>
-                    
-                    </li>  -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('user.dashboard.index')}}">Dashboard</a>
-                    </li>
-
-                @endguest
-            </ul>
-        </div>
+                    @endguest
+                </ul>
+            </div>
     </nav>
 </header>
