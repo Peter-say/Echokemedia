@@ -65,9 +65,9 @@
                       </div>
                       <div class="col-6">
                         <ul class="post-share">
-                          <li><i class="fa fa-share-alt"></i></li>
-                          <li><a href="#">Facebook</a>,</li>
-                          <li><a href="#"> Twitter</a></li>
+                          <li><i disabled class="fa fa-share-alt"></i></li>
+                          <li disabled><a disabled href="#">Facebook</a>,</li>
+                          <li disabled><a disabled href="#"> Twitter</a></li>
                         </ul>
                       </div>
                     </div>
@@ -120,26 +120,26 @@
                       @else
                       <div class="col-md-6 col-sm-12">
                         <fieldset>
-                          <input name="username" type="text" id="name" placeholder="Your name" required="">
+                          <input name="username" type="text" id="name" disabled placeholder="Your name" required="">
                         </fieldset>
                       </div>
                       <div class="col-md-6 col-sm-12">
                         <fieldset>
-                          <input name="email" type="text" id="email" placeholder="Your email will not be publish" required="">
+                          <input name="email" type="text" id="email" disabled placeholder="Your email will not be publish" required="">
                         </fieldset>
                       </div>
 
                       @endauth
                       <div class="col-md-12 col-sm-12">
                         <fieldset>
-                          <input name="body" type="text" id="subject" placeholder="Your Comment">
+                          <input name="body" disabled type="text" id="subject" placeholder="Your Comment">
                           <input type="hidden" name="post_id" value="{{ $post->id }}" />
                         </fieldset>
                       </div>
                      
                       <div class="col-lg-12">
                         <fieldset>
-                          <button type="submit" id="form-submit" class="main-button">Submit</button>
+                          <button type="submit" id="form-submit" disabled class="main-button">Submit</button>
                         </fieldset>
                       </div>
                      
