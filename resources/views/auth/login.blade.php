@@ -3,9 +3,9 @@
 @section('content')
     {{-- <div class="container"></div>
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div  style="background-image: url('{{ $admin_assets}}/assets/img/bg-01.jpg');">
-            </div>
+        <div class="col-md-12">
+            <!-- <div  style="background-image: url('{{ $admin_assets}}/assets/img/bg-01.jpg');">
+            </div> -->
         </div>
         <div class="col-md-6">
             <div class="card">
@@ -62,7 +62,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('forgot-password') }}">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
