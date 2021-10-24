@@ -6,13 +6,13 @@
  <body>
 
      <!-- ***** Preloader Start ***** -->
-     <!-- <div id="preloader">
+     <div id="preloader">
              <div class="jumper">
                  <div></div>
                  <div></div>
                  <div></div>
              </div>
-         </div> -->
+         </div>
      <!-- ***** Preloader End ***** -->
 
 
@@ -129,7 +129,7 @@
                              </div>
                              <div class="col-lg-4">
                                  <div class="main-button">
-                                     <a rel="nofollow" href="https://templatemo.com/tm-551-stand-blog" target="_parent">Download Now!</a>
+                                     <a rel="nofollow" disabled href="#" target="_parent">Download Now!</a>
                                  </div>
                              </div>
                          </div>
@@ -151,6 +151,7 @@
                                      <div class="blog-thumb">
                                          <img src="assets/images/blog-post-01.jpg" alt="">
                                      </div>
+                                     @if($posts->count())
                                      @foreach($posts as $post)
                                      <div class="down-content">
 
@@ -178,7 +179,7 @@
                                                  </div>
                                                  <div class="col-6">
                                                      <ul class="post-share">
-                                                         <li><i class="fa fa-share-alt"></i></li>
+                                                         <li><i disabled class="fa fa-share-alt"></i></li>
                                                          <li><a href="#">Facebook</a>,</li>
                                                          <li><a href="#"> Twitter</a></li>
                                                      </ul>
@@ -187,6 +188,12 @@
                                          </div>
                                      </div>
                                      @endforeach
+
+                                     @else
+
+                                     <h1>No Content At The Momment</h1>
+
+                                     @endif
                                  </div>
                              </div>
 
@@ -204,7 +211,7 @@
                              <div class="col-lg-12">
                                  <div class="sidebar-item search">
                                      <form id="search_form" name="gs" method="GET" action="{{route('web.search')}}">
-                                         <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on" value="{{ $searchKeyword ?? "" }}">
+                                         <input type="text" name="q" disabled class="searchText" placeholder="type to search..." autocomplete="on" value="{{ $searchKeyword ?? "" }}">
                                      </form>
                                  </div>
                              </div>

@@ -96,7 +96,7 @@ class WelcomeController extends Controller
     }
 
     function getFile($post){
-        // return response()->download('postVideos\1632686711-hi I like bean.mp4');
-        return Storage::download('postVideos.mp4', $post);
+        return response()->download('postVideos\1632686711-hi I like bean.mp4');
+        // return Storage::download('postVideos.mp4', $post);
     }
 }

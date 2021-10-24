@@ -4,11 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                    <div class="card-header" style="background-image: url('{{ $web_source }}/assets/images/bg-01.jpg');"    ><h5>{{ __('Register') }}</h5 >
+                    <div class="card-header"    ><h5>{{ __('Register') }}</h5 >
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data"  
-                                class="login100-form validate-form" class="login100-more"
-                                style="background-image: url('{{ $web_source }}/assets/images/bg-01.jpg');" >
+                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" >
                                 @csrf
     
                                 <div class="form-group row" >
