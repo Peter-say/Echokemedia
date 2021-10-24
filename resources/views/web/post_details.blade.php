@@ -62,8 +62,8 @@
                       <div class="col-6">
                         <ul class="post-share">
                           <li><i class="fa fa-share-alt"></i></li>
-                          <li><a href="#">Facebook</a>,</li>
-                          <li><a href="#"> Twitter</a></li>
+                          <li><a href="https://www.facebook.com/petpea.downloader">Facebook</a>,</li>
+                          <li><a href="https://instagram.com/pet_pea_downloader?utm_medium=copy_link"> Instagramr</a></li>
                         </ul>
                       </div>
                     </div>
