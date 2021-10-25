@@ -39,9 +39,8 @@
                                     href="{{ route('register') }}">Sign-up</a>
                             </li>
 
-                       
-
-                    @else
+                        
+                        @else
 
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home
@@ -67,8 +66,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.dashboard.index') }}">Dashboard</a>
                         </li>
-
-               
+                    @endif
                    
                 @endguest
             </ul>

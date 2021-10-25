@@ -103,7 +103,7 @@
         </main>
     </div> --}}
 
-    <body class="container" style="background-image: url('{{ $admin_assets}}/assets/img/bg-01.jpg');">
+    <body class="container">
         
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
