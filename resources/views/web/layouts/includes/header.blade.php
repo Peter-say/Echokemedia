@@ -6,7 +6,7 @@
         <img src="{{$admin_assets}}/assets/img/m-logo.png"  alt="">
         <h2>Media Creator<em>.</em></h2>
     </a> --}}
-           
+
             <a class="navbar-brand" href="/">
                 <h2>Media Creator<em>.</em></h2>
             </a>
@@ -31,7 +31,7 @@
                             </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link" href="">Contact Us</a>
+                                <a class="nav-link" href="{{ route('media.contact') }}">Contact Us</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign-in</a>
                             </li>
@@ -39,9 +39,8 @@
                                     href="{{ route('register') }}">Sign-up</a>
                             </li>
 
-                        @endif
-
-                    @else
+                        
+                        @else
 
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home
@@ -67,8 +66,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.dashboard.index') }}">Dashboard</a>
                         </li>
-
-               
+                    @endif
                    
                 @endguest
             </ul>

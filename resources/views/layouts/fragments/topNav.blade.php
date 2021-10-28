@@ -8,7 +8,7 @@
                   </a>
               </li>
               <li class="nav-item theme-text">
-                  <a href="index.html" class="nav-link"> Media Downloader</a>
+                  <a href="index.html" class="nav-link"> Media Creator</a>
               </li>
           </ul>
 

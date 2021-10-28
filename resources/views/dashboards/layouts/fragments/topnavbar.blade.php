@@ -3,13 +3,13 @@
       <header class="header navbar navbar-expand-sm">
 
           <ul class="navbar-item theme-brand flex-row  text-center">
-              <li class="nav-item ">
+              {{-- <li class="nav-item ">
                   <a href="/">
-                      <img class="ui fluid image" src="{{ $admin_assets }}/assets/img/m-icon.jpg">
+                      <img class="ui fluid image" src="{{ $admin_assets }}/assets/img/m-icon.jpeg">
                   </a>
-              </li>
+              </li> --}}
               <li class="nav-item theme-text">
-                  <a href="index.html" class="nav-link"> Media Downloader</a>
+                  <a href="index.html" class="nav-link"> Media Creator</a>
               </li>
           </ul>
 
