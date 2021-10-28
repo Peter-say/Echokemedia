@@ -38,7 +38,7 @@
                         </span>
                       </div>
                       <div class="content">
-                        <form id="contact" action="{{route('media.contact')}}" method="POST">
+                        <form id="contact" action="{{route('media.contact_us')}}" method="POST">
                           @csrf
                           <div class="row">
                             <div class="col-md-6 col-sm-12">

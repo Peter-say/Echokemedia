@@ -27,11 +27,13 @@ use App\Mail\NewUserWelcomeMail;
 
 Route::get('/', [App\Http\Controllers\Web\WelcomeController::class, 'index'])->name('/');
 Route::get('/music_list', [App\Http\Controllers\Web\MediaController::class, 'music_list'])->name('music_list');
-Route::get('user/{user:name}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
+Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
-  Route::get('/contact', [App\Http\Controllers\Web\WelcomeController::class, 'contact'])->name('contact');
+  Route::get('/contact', [App\Http\Controllers\Web\ContactUs::class, 'index'])->name('contact_us');
+  Route::post('/contact', [App\Http\Controllers\Web\ContactUs::class, 'storeContact']);
+
   Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');
   Route::post('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'storeComment'])->name('comment');
   Route::get('/posts', [App\Http\Controllers\Web\WelcomeController::class, 'post'])->name('posts');
@@ -54,7 +56,6 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
   Route::resource('post', AdminPostController::class);
 
-  Route::get('/post_list', [App\Http\Controllers\Dashboard\AdminController::class, 'postlist'])->name('post_list');
 
   Route::resource('category', CategoryController::class);
   Route::resource('profile', ProfileController::class);

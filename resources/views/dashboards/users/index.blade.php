@@ -31,7 +31,6 @@
                                     <thead>
                                         <tr>
                                             <th class="">S/N</th>
-                                            <th class="">User-name</th>
                                             <th class="">User Email</th>
                                             <th class="">Role</th>
                                             <th class="">Username</th>
@@ -39,6 +38,7 @@
                                             <th class="">Status</th>
                                             <th class="">Created At</th>
                                             <th class="">no. of post</th>
+                                            <th class="">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,7 +59,6 @@
                                         <tr>
 
                                             <td>{{$user->id}}</td>
-                                            <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->role}}</td>
                                             <td>{{$user->username}}</td>

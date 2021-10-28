@@ -183,7 +183,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-        return back()->with("error_message", "Deleted successfully!");
+        dd($post);
+        // return back()->with("error_message" , "Deleted successfully!");
     }
 }

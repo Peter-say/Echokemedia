@@ -6,6 +6,22 @@
     <div class="layout-px-spacing">
 
         <div class="row layout-top-spacing">
+        <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                <div class="widget widget-chart-three">
+                    <div class="widget-heading">
+                        <div class="">
+                            <h5 class=""></h5>
+                        </div>Coming Soon !!!
+
+
+                    </div>
+
+                    <div class="widget-content">
+                        <div id="uniqueVisits"></div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <div class="widget widget-one">
@@ -84,7 +100,7 @@
                                             <line x1="1" y1="10" x2="23" y2="10"></line>
                                         </svg></a>
                                 </div>
-                                <a href="javascript:void(0);">Upgrade</a>
+                                <a href="javascript:void(0);">withdral</a>
                             </div>
                         </div>
                     </div>
@@ -143,6 +159,7 @@
                     </div>
                 </div>
             </div>
+           
 
         </div>
 
@@ -150,9 +167,9 @@
 
     <div class="footer-wrapper">
         <div class="footer-section f-section-1">
-            <p class="">Copyright © 2021 <a target="_blank" href="https://designreset.com/">Media-Downloader</a>, All rights reserved.</p>
+            <p class="">Copyright © 2021 <a target="_blank" href="#">Media-Downloader</a>, All rights reserved.</p>
         </div>
-        
+
     </div>
 </div>
 @endsection

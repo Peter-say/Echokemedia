@@ -69,10 +69,6 @@ class WelcomeController extends Controller
         ]);
     }
 
-    public function contact()
-    {
-        return view('web.contact');
-    }
 
     public function show($post)
     {

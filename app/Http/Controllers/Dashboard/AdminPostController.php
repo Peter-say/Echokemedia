@@ -17,6 +17,20 @@ class AdminPostController extends Controller
      */
     public function index()
     {
+        $posts = Post::whereHas("user")->get();
+        return view('dashboards.posts.index' ,[
+            'posts' => $posts
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+      
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
@@ -29,23 +43,14 @@ class AdminPostController extends Controller
             return view('dashboards.503_error');
         } else {
             $categories = PostCategory::latest()->get();
-            return view('dashboards.posts.index', 
-            [
-                'categories' => $categories,
-                'types' => $types,
-                'boolOptions' =>  $boolOptions,
-        ]);
+            return view(
+                'dashboards.posts.create',
+                [
+                    'categories' => $categories,
+                    'types' => $types,
+                    'boolOptions' =>  $boolOptions,
+                ]);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view("dashboards.posts.index");
     }
 
     /**
@@ -56,9 +61,7 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
+         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $request->validate([
             'category_id' => 'required|numeric|exists:post_categories,id',
@@ -95,7 +98,7 @@ class AdminPostController extends Controller
             'is_featured' => $request->input('is_featured'),
             'can_comment' => $request->input('can_comment'),
             'user_id' => auth()->user()->id,
-           
+
         ]);
 
         return back()->with('success_message', 'Post added successfully');
@@ -118,15 +121,18 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $post )
     {
-        $posts = Post::find(1);
-        $categories =  PostCategory::get();
-        return view(
-            'dashboards.posts.edit_post',
+        $post = Post::where("id" , $post)->first();
+        $boolOptions = Constants::BOOL_OPTIONS;
+        $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
+        $types = [Constants::VIDEO, Constants::MUSIC];
+        return view('dashboards.posts.edit_post',
             [
+                "post" => $post,
                 'categories' => $categories,
-                'posts' =>  $posts,
+                'types' => $types,
+                'boolOptions' =>  $boolOptions,
             ]
         );
     }
@@ -138,9 +144,37 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  $post)
     {
-        //
+        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
+        $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
+        $request->validate([
+           
+            'name' => 'required|string',
+            'content_desccription' => 'required:string',
+            "type" => "required|string|in:$allowedTypes",
+            'cover_image' => 'required|image',
+            "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
+            "is_sponsored" => "required|string|in:$allowedOptions",
+            "is_top_story" => "required|string|in:$allowedOptions",
+            "is_featured" => "required|string|in:$allowedOptions",
+            "is_published" => "required|string|in:$allowedOptions",
+            "can_comment" => "required|string|in:$allowedOptions",
+        ]);
+
+        $meidiaImage = time() . '_' . $request->name . '.' .
+            $request->cover_image->extension();
+
+        $request->cover_image->move(public_path('postImages'), $meidiaImage);
+
+
+        $meidiaVideo = time() . '-' . $request->name . '.' .
+            $request->cover_video->extension();
+        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
+
+       
+
+        return back()->with('success_message', 'Post updated successfully');
     }
 
     /**
@@ -149,8 +183,11 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $post)
     {
-        //
+        Post::where("id" , $post)->first()->delete();
+        return back()->with("error_message", "Deleted successfully!");
     }
+
+    
 }

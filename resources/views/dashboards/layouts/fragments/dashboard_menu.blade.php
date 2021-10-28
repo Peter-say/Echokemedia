@@ -143,7 +143,7 @@
                 <section class="page-section bg-dark text-white">
                     <div class="container px-4 px-lg-5 text-center">
                         <h2 class="mb-4">Download music and videos</h2>
-                        <a class="btn btn-light btn-xl" href="{{route('media.posts')}}">Download Now!</a>
+                        <a class="btn btn-light btn-xl" href="/">Download Now!</a>
                     </div>
                 </section>
 

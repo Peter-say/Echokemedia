@@ -12,7 +12,7 @@ class EarningsController extends Controller
     public function earnings(Post $post,  Earnings $money)
     {
 
-        $money = 0.5;
+        $money = 0.0;
         $posts_count  = Post::where('user_id', auth()->id())->count();
         $total = $posts_count * $money;
 

@@ -166,7 +166,7 @@
                                          </ul>
                                          
                                          <div class="mb-5">
-                                             <img class="img-fluid rounded-" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                             <img class="img-fluid " src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                                          </div>
                                          <div class="post-options">
                                              <div class="row">

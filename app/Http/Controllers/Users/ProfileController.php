@@ -18,10 +18,10 @@ class ProfileController extends Controller
         return view('users.profile.index' , compact('profile'));
     }
 
-    public function edit(Profile $profiles)
+    public function edit(User $user)
     {
-        $profiles = auth()->user();
-        return view('users.profile.edit', ["profile" => $profiles]);
+        $user = auth()->user();
+        return view('users.profile.edit', ["user" => $user]);
     }
 
     public function update(Request $request , User $user)
@@ -41,17 +41,17 @@ class ProfileController extends Controller
 
         ]);
 
-          return  Profile::saved($request->all());
+       
 
-        // $request = Profile::create([
-        //     'name' =>  $request->input('name'),
-        //     'email' =>  $request->input('email'),
-        //     'linkedin_username' =>  $request->input('linkedin_username'),
-        //     'facebook-username' =>  $request->input('facebook-username'),
-        //     'twitter-username' =>  $request->input('twitter-username'),
-        //     'github-username' =>  $request->input('github-username'),
-        //     'user_id' => auth()->user()->id,
-        // ]);
+        $request = Profile::create([
+            'name' =>  $request->input('name'),
+            'email' =>  $request->input('email'),
+            'linkedin_username' =>  $request->input('linkedin_username'),
+            'facebook-username' =>  $request->input('facebook-username'),
+            'twitter-username' =>  $request->input('twitter-username'),
+            'github-username' =>  $request->input('github-username'),
+            'user_id' => auth()->user()->id,
+        ]);
 
         }
     

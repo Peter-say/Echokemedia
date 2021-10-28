@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+    <link href="{{ $admin_assets}}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
+
+    </head>
 
 <style>
     .rounded-profile{

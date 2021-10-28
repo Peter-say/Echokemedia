@@ -34,11 +34,5 @@ class AdminController extends Controller
       
     }
 
-    public function postlist()
-    {
-        $posts = Post::whereHas("user")->get();
-        return view('dashboards.post-list' ,[
-            'posts' => $posts
-        ]);
-    }
+   
 }

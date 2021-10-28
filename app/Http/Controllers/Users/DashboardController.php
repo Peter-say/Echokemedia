@@ -30,7 +30,7 @@ class DashboardController extends Controller
       public function earnings()
       {
        
-        $money = 0.005 ;
+        $money = 0.000 ;
         $posts_count  = Post::where('user_id', auth()->id())->count();
         $total = $posts_count * $money;
            return view('users.earning' , [

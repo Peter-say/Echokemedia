@@ -16,6 +16,23 @@
 
             <div class="row layout-top-spacing">
 
+            
+            <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="widget widget-chart-three">
+                        <div class="widget-heading">
+                            <div class="">
+                                <h5 class="">Coming Soon !!!</h5>
+                            </div>
+
+
+                        </div>
+
+                        <div class="widget-content">
+                            <div id="uniqueVisits"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-one">
                         <div class="widget-heading">
@@ -151,22 +168,6 @@
                                 </div>
 
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                    <div class="widget widget-chart-three">
-                        <div class="widget-heading">
-                            <div class="">
-                                <h5 class="">Unique Visitors</h5>
-                            </div>
-
-
-                        </div>
-
-                        <div class="widget-content">
-                            <div id="uniqueVisits"></div>
                         </div>
                     </div>
                 </div>
