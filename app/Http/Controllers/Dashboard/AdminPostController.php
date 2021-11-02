@@ -97,6 +97,7 @@ class AdminPostController extends Controller
             'is_top_story' => $request->input('"is_top_story'),
             'is_featured' => $request->input('is_featured'),
             'can_comment' => $request->input('can_comment'),
+            'is_published' => $request->input('is_published'),
             'user_id' => auth()->user()->id,
 
         ]);

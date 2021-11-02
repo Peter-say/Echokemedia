@@ -35,7 +35,7 @@ class Post extends Model
 
     public function scopeActive($query)
     {
-        return $query->where("is_published", Constants::ACTIVE);
+        return $query->where("is_top-story", Constants::ACTIVE);
     }
 
     public function scopeBlog($query)

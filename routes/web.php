@@ -31,7 +31,7 @@ Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
-  Route::get('/contact', [App\Http\Controllers\Web\ContactUs::class, 'index'])->name('contact_us');
+  Route::get('/contact', [App\Http\Controllers\Web\ContactUs::class, 'index'])->name('contact');
   Route::post('/contact', [App\Http\Controllers\Web\ContactUs::class, 'storeContact']);
 
   Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');

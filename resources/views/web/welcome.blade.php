@@ -6,13 +6,13 @@
  <body>
 
      <!-- ***** Preloader Start ***** -->
-     <div id="preloader">
-             <div class="jumper">
-                 <div></div>
-                 <div></div>
-                 <div></div>
-             </div>
+     <!-- <div id="preloader">
+         <div class="jumper">
+             <div></div>
+             <div></div>
+             <div></div>
          </div>
+     </div> -->
      <!-- ***** Preloader End ***** -->
 
 
@@ -115,29 +115,8 @@
              </div>
          </div>
      </div>
-     <!-- Banner Ends Here -->
-
-     <section class="call-to-action">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-12">
-                     <div class="main-content">
-                         <div class="row">
-                             <div class="col-lg-8">
-                                 <span></span>
-                                 <h4>!</h4>
-                             </div>
-                             <div class="col-lg-4">
-                                 <div class="main-button">
-                                     <a rel="nofollow" disabled href="#" target="_parent">Download Now!</a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </section>
+    
+      @include('web.layouts.includes.popular-post')
 
 
      <section class="blog-posts">
@@ -160,11 +139,11 @@
                                          </a>
                                          <ul class="post-info">
                                              <span><img class="rounded-profile width-50" src="avatar\default-avatar-profile-icon.jpg"></span>
-                                             <li><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></li>
+                                             <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b></span>
                                              <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
                                              <li><a href="#">12 Comments</a></li>
                                          </ul>
-                                         
+
                                          <div class="mb-5">
                                              <img class="img-fluid " src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                                          </div>

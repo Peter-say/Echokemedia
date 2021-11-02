@@ -45,8 +45,8 @@
                     <h4>{{$post->name}}</h4>
                   </a>
                   <ul class="post-info">
-                    <span><img class="rounded-profile width-50" src="avatar\default-avatar-profile-icon.jpg"></span>
-                    <li><a href="#">{{$post->user->name}}</a></li>
+                    <span>Post By<b> <a href="#">{{$post->user->name}}</a></b></span>
+                   
                     <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
                     <li><a href="#">10 Comments</a></li>
                   </ul>

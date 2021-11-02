@@ -245,7 +245,7 @@ https://templatemo.com/tm-551-stand-blog
 
         }
 
-        2 .up {
+         .up {
             margin-top: 40px;
         }
 

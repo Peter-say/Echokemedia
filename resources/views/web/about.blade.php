@@ -46,7 +46,7 @@
             </div>
           </div>
           
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-lg-4 col-md-6">
             <h4>1-03 Donec porttitor augue</h4>
                 <p>.</p>
@@ -78,7 +78,7 @@
             <div class="col-lg-3 col-md-6">
             <h4>04 Four Columns</h4>
                 <p>.</p>
-            </div>
+            </div> -->
           </div>
           
           <div class="row">
