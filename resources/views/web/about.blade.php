@@ -34,17 +34,30 @@
                 </p>
             </div>
           </div>
-          
-          <div class="row">
-            <div class="col-lg-6">
-            <h4>Two-One Donec porttitor augue</h4>
-                <p>.</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+              <h4>Two-One Donec porttitor augue</h4>
+                  <p>.</p>
+              </div>
+              <div class="col-lg-6">
+              <h4>Two-Two Donec porttitor augue</h4>
+                  <p>.</p>
+              </div>
             </div>
-            <div class="col-lg-6">
-            <h4>Two-Two Donec porttitor augue</h4>
-                <p>.</p>
+  
+            <div class="row">
+              <div class="col-lg-6">
+              <h4>Two-One Donec porttitor augue</h4>
+                  <p>.</p>
+              </div>
+              <div class="col-lg-6">
+              <h4>Two-Two Donec porttitor augue</h4>
+                  <p>.</p>
+              </div>
             </div>
           </div>
+         
           
           <!-- <div class="row">
             <div class="col-lg-4 col-md-6">
