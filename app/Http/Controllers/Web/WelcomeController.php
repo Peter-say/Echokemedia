@@ -103,47 +103,13 @@ class WelcomeController extends Controller
         ]));
     }
 
-    function getFile($post)
+    function getFile($id)
     {
-        return response()->download('postVideos\1632686711-hi I like bean.mp4');
+        $post = Post::where("id",$id)->firstOrFail();
+        return response()->download('postVideos/'.$post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
 
-    // public function index()
-    // {
-    //     $trendingTopics = PostCategory::where("is_active", Constants::ACTIVE)
-    //         ->where("is_trending", Constants::ACTIVE)
-    //         ->whereHas("coverImage")
-    //         ->with("coverImage")
-    //         ->limit(10)
-    //         ->inRandomOrder()
-    //         ->get();
-
-    //     $topPosts = Post::blog()
-    //         ->active()
-    //         ->inRandomOrder()
-    //         ->limit(5)
-    //         ->get();
-
-    //     $featuredVideos = Post::vlog()
-    //         ->active()
-    //         ->inRandomOrder()
-    //         ->limit(5)
-    //         ->get();
-
-    //     $otherPosts = Post::active()
-    //         ->inRandomOrder()
-    //         ->limit(10)
-    //         ->get();
-
-
-    //     return view("web.pages.index", [
-    //         "topPosts" => $topPosts,
-    //         "trendingTopics" => $trendingTopics,
-    //         "featuredVideos" => $featuredVideos,
-    //         "otherPosts" => $otherPosts,
-
-    //     ]);
-    // }
+    
 
 }
