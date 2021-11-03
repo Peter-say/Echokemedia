@@ -85,8 +85,7 @@
     } */
 
     .top-title{
-         color: white;
-         background: blue;
+         
          padding: 10px;
          margin: 20px 0px 5px 0px;
          font-size: 20px;
@@ -97,8 +96,7 @@
     .top-title{
          display: block;
          width: 100%;
-         color:white;
-         background:blue;
+        
          padding: 10px;
          margin: 20px 0px 5px 0px;
          font-size: 20px;

@@ -60,6 +60,17 @@
                         <ul class="post-tags">
 
 
+                        <p>
+                        Hello from Glasgow, Scotland. I’m here to attend the 
+                        COP26 climate conference, and it’s been a whirlwind couple
+                         of days so far. As I wrote in the Financial Times, one of my
+                          top priorities here at COP is making sure that the world prioritizes
+                           scaling clean technology innovation. If we’re going to avoid the 
+                           worst effects of a climate disaster, it’s not enough to invent 
+                           zero-carbon alternatives—we need to make sure they’re affordable 
+                           and accessible enough
+                        for people all over the world to use them.
+                        </p>
                           <li class="mt-5"><a class="btn btn-success text-white  btn-xl " href="{{route('post.download' , $post->id)}}">Download</a></li>
                         </ul>
                       </div>
