@@ -23,10 +23,8 @@ class WelcomeController extends Controller
         // dd($request->all());
         $posts = Post::latest()->get();
         $categories = PostCategory::latest()->get();
-        $trendingTopics = Post::where("is_top_story", Constants::ACTIVE)
-            ->limit(10)
-            ->inRandomOrder()
-            ->get();
+        $trendingTopics = Post::latest()->get();
+           
 
         $recents = Post::oldest()
             ->limit(10)
