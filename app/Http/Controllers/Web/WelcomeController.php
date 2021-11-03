@@ -28,11 +28,15 @@ class WelcomeController extends Controller
             ->inRandomOrder()
             ->get();
 
+        $recents = Post::oldest()
+            ->limit(10)
+            ->get();
 
         return view('web.welcome', [
             'posts' => $posts,
             'categories' => $categories,
             "trendingTopics" => $trendingTopics,
+            "recents" => $recents,
         ]);
     }
 

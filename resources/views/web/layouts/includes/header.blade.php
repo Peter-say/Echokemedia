@@ -61,10 +61,15 @@
                         </form>
                         
                         </li>  -->
+                    @if(Auth::user()->role == 'Admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                    </li>
+                    @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user.dashboard.index') }}">Dashboard</a>
                     </li>
-
+                    @endif
 
                     @endguest
                 </ul>

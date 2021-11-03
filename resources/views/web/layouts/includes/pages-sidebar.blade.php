@@ -5,17 +5,17 @@
         </div>
         <div class="content">
             <ul>
-                @if ($posts->count())
-                @foreach($posts as $post)
+                @if ($recents->count())
+                @foreach($recents as $recent)
                 <span>
                     <div class="mb-5">
                         <img class="img-fluid rounded-" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                     </div>
                 </span>
                 <li><a href="post-details.html">
-                        <h5><a href="{{route('post.show' , $post->id)}}">{{$post->name}}</a>
+                        <h5><a href="{{route('post.show' , $post->id)}}">{{$recent->name}}</a>
                         </h5>
-                        <span>{{$post->created_at->diffForHumans()}}</span>
+                        <span>{{$recent->created_at->diffForHumans()}}</span>
                     </a></li>
                 @endforeach
                 @else

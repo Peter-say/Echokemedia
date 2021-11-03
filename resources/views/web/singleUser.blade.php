@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="text-content">
-            <h4> welcome To <b style="color:blue;">{{$user->username}} </b> Posts</h4>
+            <h4> welcome To <b style="color:blue;">{{$user->name}} </b> Posts</h4>
 
           </div>
         </div>
