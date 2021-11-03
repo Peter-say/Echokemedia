@@ -38,7 +38,7 @@
                         </span>
                       </div>
                       <div class="content">
-                        <form id="contact" action="{{route('media.contact_us')}}" method="POST">
+                        <form id="contact" action="{{route('media.contact')}}" method="POST">
                           @csrf
                           <div class="row">
                             <div class="col-md-6 col-sm-12">
@@ -80,16 +80,16 @@
                       <div class="content">
                         <ul>
                           <li>
-                            <h5>090-484-8080</h5>
+                            <h5>09157522382</h5>
                             <span>PHONE NUMBER</span>
                           </li>
                           <li>
-                            <h5>info@company.com</h5>
+                            <h5>kanupeace85@gmail.com</h5>
                             <span>EMAIL ADDRESS</span>
                           </li>
                           <li>
-                            <h5>123 Aenean id posuere dui, 
-                                <br>Praesent laoreet 10660</h5>
+                            <h5>06, Asiri-Abo street, 
+                                <br>Ibeju-Lekki,Lagos</h5>
                             <span>STREET ADDRESS</span>
                           </li>
                         </ul>
