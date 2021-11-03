@@ -81,7 +81,30 @@
             color: white;
             border-radius: 100px 100px 10px 100px;
         }
+        
     } */
+
+    .top-title{
+         color: white;
+         background: blue;
+         padding: 10px;
+         margin: 20px 0px 5px 0px;
+         font-size: 20px;
+         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+   @media screen  and (max-width:600px){
+    .top-title{
+         display: block;
+         width: 100%;
+         color:white;
+         background:blue;
+         padding: 10px;
+         margin: 20px 0px 5px 0px;
+         font-size: 20px;
+         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+   }
 </style>
 @include('web.layouts.includes.head')
 @include('web.layouts.includes.header')
