@@ -116,7 +116,10 @@
          </div>
      </div>
     
-      @include('web.layouts.includes.popular-post')
+     <div class="container-fluid">
+     <h1 class="popular-post d-flex justify-content-center">Trending Today</h1>
+     @include('web.layouts.includes.popular-post')
+     </div>
 
 
      <section class="blog-posts">
