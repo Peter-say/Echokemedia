@@ -14,7 +14,7 @@
         border-radius: 40px;
     }
 
-    /* slideout css */
+    /* slideout css
     .cover-image {
         width: 100%;
         margin-top: 5%;
@@ -81,7 +81,7 @@
             color: white;
             border-radius: 100px 100px 10px 100px;
         }
-    }
+    } */
 </style>
 @include('web.layouts.includes.head')
 @include('web.layouts.includes.header')

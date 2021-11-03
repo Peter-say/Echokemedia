@@ -1,12 +1,13 @@
-<div class="container-fluid">
-  <h1 class="popular-post">Trending Today</h1>
+<div class="row">
   @foreach($trendingTopics as $topic)
+  <div class="col-xl-6 col-md-12 col-sm-12">
     <div class="cover-image">
-    <span class="tt">{{$topic->content_desccription}}</span>
-    <a href= "{{route('post.show' , $topic->id)}}">
-    <img class="img-fluid" src="{{asset('postImages/' . $topic->cover_image)}}" alt="..." />
+      <span style="border-radius: 50px 50px 10px 50px;" class="p-3 bg-warning mb-3">{{$topic->content_desccription}}</span>
+      <a href="{{route('post.show' , $topic->id)}}">
+        <img style="border-radius: 10px ;" class="img-fluid mt-3" src="{{asset('postImages/' . $topic->cover_image)}}" alt="..." />
+      </a>
+    </div>
 
-    </a>
- </div>
- @endforeach
+  </div>
+  @endforeach
 </div>
