@@ -27,7 +27,7 @@ use App\Mail\NewUserWelcomeMail;
 
 Route::get('/', [App\Http\Controllers\Web\WelcomeController::class, 'index'])->name('/');
 Route::get('/music_list', [App\Http\Controllers\Web\MediaController::class, 'music_list'])->name('music_list');
-// Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
+Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
@@ -51,6 +51,7 @@ Route::get('/file/download/{id}', [App\Http\Controllers\Web\WelcomeController::c
 
 Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
+  Route::get('/users_messages', [App\Http\Controllers\Dashboard\AdminController::class, 'usersMessages'])->name('users_messages');
   Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
@@ -73,7 +74,7 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');
   Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');
   Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
-  Route::get('/posts_list', [App\Http\Controllers\Users\DashboardController::class, 'postslist'])->name('posts_list');
+  Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
 
   Route::resource('category', CategoryController::class);
   Route::resource('post', PostController::class);

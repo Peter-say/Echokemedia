@@ -35,7 +35,7 @@
                                             <th class="">Cover Video</th>
                                             <th class="">Description</th>
                                             <th class="">Created At</th>
-                                           
+                                            <th class="">action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,6 +59,14 @@
                                             <td>{{$post->created_at}}
 
 
+                                            <td>
+                                                <form action="{{route('admin.post.destroy' , [ $post->id] )}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
+                                                </form>
+                                                <a href="{{route('admin.post.edit' , $post->id )}}" class="btn btn-primary">Edit</a>
+                                            </td>
                                         </tr>
                                         @endforeach
 

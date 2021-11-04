@@ -142,7 +142,7 @@
                                          </a>
                                          <ul class="post-info">
                                              <span><img class="rounded-profile width-50" src="avatar\default-avatar-profile-icon.jpg"></span>
-                                             <span>Post By</span> <b>{{$post->user->name}}</b>
+                                             <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b></span>
                                              <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
                                              <li><a href="#">12 Comments</a></li>
                                          </ul>

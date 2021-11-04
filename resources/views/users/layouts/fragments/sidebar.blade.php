@@ -52,7 +52,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="{{route('user.posts_list')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-archive" style="font-size:30px;color:black"></i>
                             <span>Posts</span>

@@ -28,7 +28,37 @@
           </ul>
 
           <ul class="navbar-item flex-row ml-md-auto">
+        
+          <li class="nav-item dropdown message-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">
+                        <div class="">
+                            <a href="{{route('admin.users_messages')}}" class="dropdown-item">
+                                <div class="">
 
+                                    <div class="media">
+                                        <div class="user-img">
+                                            <div class="avatar avatar-xl">
+                                                <span class="avatar-title rounded-circle"></span>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="">
+                                                <h5 class="usr-name">checkout now</h5>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </a>
+                            
+                           
+                        </div>
+                    </div>
+                </li>
 
 
               <li class="nav-item dropdown user-profile-dropdown">

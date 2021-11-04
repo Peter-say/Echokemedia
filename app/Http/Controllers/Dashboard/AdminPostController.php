@@ -184,11 +184,20 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy( $post)
-    // {
-    //     Post::where("id" , $post)->first()->delete();
-    //     return back()->with("error_message", "Deleted successfully!");
-    // }
-
     
+    public function destroy($post)
+    {
+       
+        $post = Post::find(1);
+        if ($post != null){
+            dd($post);
+            $post->delete();
+            
+            return back()->with("error_message" , "Deleted successfully!");
+        }
+           return back()->with("error_message" , "post can't be deleted!");
+        
+       
+    }
+
 }

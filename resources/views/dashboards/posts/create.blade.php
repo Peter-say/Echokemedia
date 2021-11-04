@@ -12,8 +12,7 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
                 <div id="tableCheckbox" class="">
-                    <a href="{{route('admin.category.index')}}" class="btn btn-primary btn-lg"> pls
-                        click me to to create a category</a>
+                    
                     <div class="statbox widget box box-shadow mt-5">
                         <div class="widget-header">
                             <div class="row">

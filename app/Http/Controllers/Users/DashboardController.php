@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Nette\Utils\Floats;
 
@@ -16,11 +17,16 @@ class DashboardController extends Controller
      */
     
    
-     public function postslist()
+     public function postslist(User $user)
      {
-        $posts = Post::whereHas("user")->get();
-         return view('users.posts.posts_list' , ['posts' => $posts]);
+       $posts = $user->posts()->with(['user'])->paginate(5)->get();
+          return view('users.layouts.fragments.sidebar' , [
+           'user' => $user,
+           'posts' => $posts,
+    ]);
      }
+
+    
 
     public function error()
     {
