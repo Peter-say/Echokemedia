@@ -187,10 +187,10 @@ class AdminPostController extends Controller
     
     public function destroy($post)
     {
-       
+     
         $post = Post::find(1);
         if ($post != null){
-            dd($post);
+           
             $post->delete();
             
             return back()->with("error_message" , "Deleted successfully!");

@@ -20,7 +20,7 @@ class DashboardController extends Controller
      public function postslist(User $user)
      {
        $posts = $user->posts()->with(['user'])->paginate(5)->get();
-          return view('users.layouts.fragments.sidebar' , [
+          return view('users.posts.posts_list' , [
            'user' => $user,
            'posts' => $posts,
     ]);
@@ -45,9 +45,9 @@ class DashboardController extends Controller
       }
 
 
-    public function index()
+    public function index( User $user)
     {
-      return view('users.dashboard');
+      return view('users.dashboard' , ['user' => $user]);
     }
 
      

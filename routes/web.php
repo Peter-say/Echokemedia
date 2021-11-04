@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\DashboardController;
+use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\CategoryController;
@@ -31,8 +32,8 @@ Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
-  Route::get('/contact', [App\Http\Controllers\Web\ContactUs::class, 'index'])->name('contact');
-  Route::post('/contact', [App\Http\Controllers\Web\ContactUs::class, 'storeContact']);
+  Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
+  Route::post('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'storeContact']);
 
   Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');
   Route::post('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'storeComment'])->name('comment');
@@ -74,7 +75,7 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');
   Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');
   Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
-  Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
+  Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('post');
 
   Route::resource('category', CategoryController::class);
   Route::resource('post', PostController::class);

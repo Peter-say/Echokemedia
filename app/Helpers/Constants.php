@@ -4,7 +4,7 @@ namespace App\Helpers;
 
  class  Constants{
 
-     const  APPROVED = "aproved";
+     const  APPROVED = "approved";
      const  PENDING = "pending";
      const  REJECTED = "rejected";
 
