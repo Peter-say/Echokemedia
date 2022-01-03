@@ -104,6 +104,7 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
+       
         $user->delete();
         return back()->with("error_message" , "Deleted successfully!");
     }

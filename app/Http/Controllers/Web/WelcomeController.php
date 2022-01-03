@@ -11,7 +11,7 @@ use App\Models\PostCategory;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
-use File;
+use App\Helpers\Sharer;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +19,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-
+       $categorytop = 40;
         // dd($request->all());
         $posts = Post::latest()->get();
         $categories = PostCategory::latest()->get();
@@ -35,6 +35,19 @@ class WelcomeController extends Controller
             'categories' => $categories,
             "trendingTopics" => $trendingTopics,
             "recents" => $recents,
+            "categorytop" =>  $categorytop,
+        ]);
+    }
+
+    public function recent()
+    {
+       
+        $posts = Post::latest()
+            ->limit(10)
+            ->paginate(12);
+
+        return view('web.layouts.includes.pages-sidebar', [
+            'posts' => $posts,
         ]);
     }
 
@@ -92,14 +105,14 @@ class WelcomeController extends Controller
 
     public function search(Request $request)
     {
-        $searchKeyword = $request->search;
-        $posts = Post::search($searchKeyword)->orderby("created_at", "desc")->paginate(10);
-        $posts->appends($request->query());
-        return view("web.welcome", array_merge([
-            "searchKeyword" => $searchKeyword,
+      $search = $_GET['query'];
+      $posts = Post::where('name', 'like' , '%'.$search.'%')->get();
+      return view('web.welcome', [
             "posts" => $posts,
-        ]));
-    }
+        ]);
+    }  
+
+
 
     function getFile($id)
     {
@@ -107,7 +120,16 @@ class WelcomeController extends Controller
         return response()->download('postVideos/'.$post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
+    public function share(Request $request , Post $post)
+    {
+        $post = Post::first();
+        $platform = $request->platform;
 
-    
+        $sharer = new Sharer;
+        $link = $sharer->getLink($platform, $post->detailsUrl($sharer));
+        return redirect()->away($link);
+    }
+
+ 
 
 }

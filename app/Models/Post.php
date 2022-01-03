@@ -63,5 +63,14 @@ class Post extends Model
         return $query;
     }
 
+    public function detailsUrl($sharer = null)
+    {
+        return view("web.welcome", [
+            "uuid" => $this->id,
+            "slug" => slugify($this->title),
+            "sharer" => $sharer
+        ]);
+    }
+
    
 }

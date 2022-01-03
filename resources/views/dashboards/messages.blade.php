@@ -35,6 +35,7 @@
                                                 <h4 class="hd-slide-header">Toggle any arrow to see all messages.</h4>
                                                
                                             </div>
+                                            
                                         </div>
                                         @foreach($contact as $contact)
                                         <div class="carousel-item news-updates ">

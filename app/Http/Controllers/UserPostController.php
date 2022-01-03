@@ -8,11 +8,10 @@ use Illuminate\Http\Request;
 
 class UserPostController extends Controller
 {
-    public function index( User $user)
+    public function index(User $user)
     {
-        
         $posts = $user->posts()->with(['user'])->paginate(5);
-       return view('web.singleUser', [
+        return view('web.singleUser', [
            'user' => $user,
            'posts' => $posts,
        ]);

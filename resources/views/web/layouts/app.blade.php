@@ -7,6 +7,19 @@
 </head>
 
 <style>
+
+    .welcome-img{
+      width: 400px;
+      height: 400px;
+    }
+
+    @media only screen  and (max-width:600px){
+        .welcome-img{
+      width: 400px;
+      height: 400px;
+      margin-right: 0px;
+    }
+    }
     .rounded-profile {
         width: 80px;
         height: 80px;

@@ -1,6 +1,43 @@
+ <style>
+ .searchText_nav{
+     width: 80%;
+     padding: 8px;
+     border-radius: 8px;
+     border: solid blue;
+ }
+
+ .searchText_nav input{
+     font-size: 20px;
+     text-transform: uppercase;
+ }
+
+ .navbar-item{
+     margin-top: 10%;
+ }
+
+ @media only screen and (min-width:600px) {
+    .navbar-item{
+        margin-top: 10px; 
+    }
+ }
+
+ @media only screen and (max-width:600px) {
+    .navbar-item{
+        margin-bottom: 10%; 
+    }
+ }
+ .nav-submit{
+    padding: 8px; 
+    background: blue;
+    color: white;
+    border-radius: 8px;
+    border: none;
+ }
+ </style>
+
 <header class="">
 
-    <nav class=" navbar navbar-expand-lg">
+    <nav class=" navbar navbar-expand-lg ">
         <div class="container">
             {{-- <a class="navbar-brand" href="{{ route("media.about") }}">
             <img src="{{$admin_assets}}/assets/img/m-logo.png" alt="">
@@ -73,6 +110,19 @@
 
                     @endguest
                 </ul>
+
             </div>
     </nav>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="navbar-item search">
+                <form id="search_form" method="GET" action="{{route('web.search')}}">
+
+                    <input type="text" name="query" class="searchText_nav" placeholder="type to search..." autocomplete="on" />
+                    <input type="submit" class="nav-submit" value="Search" />
+
+                </form>
+            </div>
+        </div>
+        
 </header>

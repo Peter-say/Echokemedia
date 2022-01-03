@@ -62,7 +62,7 @@ class PostController extends Controller
         $request->validate([
             'category_id' => 'required|numeric|exists:post_categories,id',
             'name' => 'required|string',
-            'content_desccription' => 'required:string',
+            'content_desccription' => 'required|string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
             "cover_video" => "required",

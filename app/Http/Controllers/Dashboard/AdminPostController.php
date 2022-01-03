@@ -32,9 +32,8 @@ class AdminPostController extends Controller
     {
       
         $boolOptions = Constants::BOOL_OPTIONS;
-        $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
-        $maxPost = 2;
+        $maxPost = 5;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
 
@@ -42,7 +41,7 @@ class AdminPostController extends Controller
         if ($todays_post > $maxPost) {
             return view('dashboards.503_error');
         } else {
-            $categories = PostCategory::latest()->get();
+            $categories =  PostCategory::get();
             return view(
                 'dashboards.posts.create',
                 [
@@ -60,16 +59,17 @@ class AdminPostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
+    { 
+        // dd($request->all());
+        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $request->validate([
-            'category_id' => 'required|numeric|exists:post_categories,id',
+            'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
+            "cover_video" => 'required',
             "is_sponsored" => "required|string|in:$allowedOptions",
             "is_top_story" => "required|string|in:$allowedOptions",
             "is_featured" => "required|string|in:$allowedOptions",
@@ -88,6 +88,7 @@ class AdminPostController extends Controller
         $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
 
         $request = Post::create([
+            'category_id' =>  $request->input('category_id'),
             'name' =>  $request->input('name'),
             'content_desccription' =>  $request->input('content_desccription'),
             'type' =>  $request->input('type'),
@@ -126,7 +127,7 @@ class AdminPostController extends Controller
     {
         $post = Post::where("id" , $post)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
-        $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
+        $categories = PostCategory::get();
         $types = [Constants::VIDEO, Constants::MUSIC];
         return view('dashboards.posts.edit_post',
             [
@@ -149,8 +150,10 @@ class AdminPostController extends Controller
     {
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
+        // $categories = Constants::CATEGORY;
         $request->validate([
            
+            'category_id' => "required|exist:categories,id",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
