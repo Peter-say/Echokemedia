@@ -90,10 +90,9 @@ class WelcomeController extends Controller
     }
 
 
-    public function show($post)
+    public function show(Post $post)
     {
         $comments = Comment::get();
-        $post = Post::find(1);
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
