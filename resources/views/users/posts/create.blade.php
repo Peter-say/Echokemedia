@@ -13,12 +13,14 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
                 <div id="tableCheckbox" class="">
-                   
+
                     <div class="statbox widget box box-shadow mt-5">
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h4>Create New Post</h4>
+                                    <span class="d-flex justify-content-center"><a class="btn btn-primary" href="">View Posts</a></span>
+
                                 </div>
                             </div>
                         </div>

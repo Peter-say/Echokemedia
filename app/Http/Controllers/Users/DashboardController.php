@@ -19,7 +19,7 @@ class DashboardController extends Controller
    
      public function postslist(User $user)
      {
-       $posts = $user->posts()->with(['user'])->paginate(5)->get();
+       $posts = $user->posts()->with(['user'])->paginate(5);
           return view('users.posts.posts_list' , [
            'user' => $user,
            'posts' => $posts,

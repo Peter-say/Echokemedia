@@ -41,34 +41,34 @@
                                      @foreach($posts as $post)
 
                                      <div class="container">
-                                         <div class="row  d-flex justify-content-center">
-                                             <div class="col-6">
+                                         <div class="row mb-2 d-flex justify-content-center">
+                                             <div class="col-6 ">
                                                  <div class="">
-                                                     <img class="img-fluid  welcome-img" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                                     <img class="img-fluid   image-width" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                                                  </div>
                                              </div>
 
                                              <div class="col-6">
-                                                 <a class="text-success" href="{{route('post.show' , $post->id)}}">
+                                                 <a class="text-success" href="{{route('post.show' , $post->name)}}">
                                                      <h4 class="text-success">{{$post->name}}</h4>
                                                  </a>
                                                  <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#">{{$post->created_at->diffForHumans()}}</a></span>
 
-                                                 <a class="btn btn-success text-white w-100" href="{{route('post.show' , $post->id)}}">Download here</a></li>
+                                                 <a class="btn btn-success text-white w-100" href="{{route('post.show' , $post->name)}}">Download here</a></li>
 
-                                                  <div class="">
-                                                 <i style="padding-right: 10px;" class="fa fa-share-alt"></i>   
-                                                 <span style="padding-right: 10px; font-size :30px">
-                                                     <i style="color:blue;"  class="fa fa-facebook"></i>
-                                                     <i style="color:green;" class="fa fa-whatsapp"></i>
-                                                     <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
-                                                 </span>
+                                                 <div class="">
+                                                     <i style="padding-right: 10px;" class="fa fa-share-alt"></i>
+                                                     <span style="padding-right: 10px; font-size :30px">
+                                                         <i style="color:blue;" class="fa fa-facebook"></i>
+                                                         <i style="color:green;" class="fa fa-whatsapp"></i>
+                                                         <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
+                                                     </span>
+                                                 </div>
                                              </div>
-                                             </div>
-                                            
+
                                          </div>
                                      </div>
-                                    
+
                                      @endforeach
 
                                      @else
@@ -79,11 +79,6 @@
                                  </div>
                              </div>
 
-                             <div class="col-lg-12">
-                                 <div class="main-button">
-                                     <a href="{{route('/')}}">View All Posts</a>
-                                 </div>
-                             </div>
                          </div>
                      </div>
                  </div>

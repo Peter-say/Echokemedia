@@ -6,15 +6,17 @@
     </div>
 
     <div class="row">
-        @for
+        @foreach($posts as $post)
         <div class="col-4">
-            <div class="category-profile">
+            <div>
                 <a href="">
-                    <img src="{{$admin_assets}}/assets/img/profile-1.jpg" alt="">
+                    <img class="img-fluid image-width" src="{{asset('postImages/' . $post->cover_image)}}" alt="">
                 </a>
-                <p><b>Drake</b></p>
+                <p><b>{{$post->name}}</b></p>
             </div>
         </div>
+        @endforeach
+       
     </div>
 </div>
 

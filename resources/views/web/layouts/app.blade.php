@@ -7,25 +7,28 @@
 </head>
 
 <style>
-
-    .welcome-img{
-      width: 400px;
-      height: 400px;
+   
+    .image-width {
+        width:400px;
+        height: 400px;
     }
 
-    @media only screen  and (max-width:600px){
-        .welcome-img{
-      width: 400px;
-      height: 400px;
-      margin-right: 0px;
+    @media only screen and (max-width:600px) {
+       
+        .welcome-img {
+            width: 400px;
+            height: 400px;
+            margin-right: 0px;
+        }
+
     }
-    }
-    .rounded-profile {
+
+    /* .rounded-profile {
         width: 80px;
         height: 80px;
         background: gray;
         border-radius: 40px;
-    }
+    } */
 
     /* slideout css
     .cover-image {
@@ -97,25 +100,25 @@
         
     } */
 
-    .top-title{
-         
-         padding: 10px;
-         margin: 20px 0px 5px 0px;
-         font-size: 20px;
-         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    .top-title {
+
+        padding: 10px;
+        margin: 20px 0px 5px 0px;
+        font-size: 20px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 
-   @media screen  and (max-width:600px){
-    .top-title{
-         display: block;
-         width: 100%;
-        
-         padding: 10px;
-         margin: 20px 0px 5px 0px;
-         font-size: 20px;
-         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    @media screen and (max-width:600px) {
+        .top-title {
+            display: block;
+            width: 100%;
+
+            padding: 10px;
+            margin: 20px 0px 5px 0px;
+            font-size: 20px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
     }
-   }
 </style>
 @include('web.layouts.includes.head')
 @include('web.layouts.includes.header')

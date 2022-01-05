@@ -1,6 +1,4 @@
 @extends('web.layouts.app')
-
-
 @section('contents')
 
 <!-- Page Content -->
@@ -11,30 +9,26 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="text-content">
-           
+
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-        <div class="jumbotron bg-alert">
-          <h4> feature ads</h4>
-        </div>
-      </div>
+              <div class="jumbotron bg-alert">
+                <h4> feature ads</h4>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </div>
-
 <!-- Banner Ends Here -->
 
-
-
-
- <div class="col-12">
-   <a href="{{route('/')}}">
-   <i class="fa fa-arrow-left d-flex w-50 mt-5  " aria-hidden="true"></i></a>
- </div>
-<section class="blog-posts grid-system">
-  <div class="container">
+<div class="col-12">
+  <a href="{{route('/')}}">
+    <i class="fa fa-arrow-left d-flex w-50 " aria-hidden="true"></i></a>
+</div>
+<section class="blog-posts grid-system mt-1">
+  <div class="container ">
     <div class="row">
       <div class="col-lg-8">
         <div class="all-blog-posts">
@@ -45,38 +39,34 @@
                   <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
                 </div>
                 <div class="down-content">
-                  <a class="text-success">
-                    <h4>{{$post->name}}</h4>
+                
+                    <h4 class="text-success">{{$post->name}}</h4>
                   </a>
-                  <ul class="post-info">
-                    <span>Post By<b> <a href="#">{{$post->user->name}}</a></b></span>
-                   
-                    <li><a href="#">{{$post->created_at->diffForHumans()}}</a></li>
-                    <li><a href="#">10 Comments</a></li>
-                  </ul>
+                  <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#"></a>{{$post->created_at->diffForHumans()}}</span>
+
                   <div>
-                    <img class="img-fluid" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                    <img class="img-fluid " src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                   </div>
 
                   <div class="post-options">
                     <div class="row">
-                      <div class="col-6">
+                      <div class="col-12">
                         <ul class="post-tags">
-
-
-                        
-                          <li class="mt-5"><a class="btn btn-success text-white  btn-xl " href="{{route('post.download' , $post->id)}}">Download</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-6">
-                        <ul class="post-share">
-                          <li><i class="fa fa-share-alt"></i></li>
-                          <li><a href="https://www.facebook.com/petpea.downloader">Facebook</a>,</li>
-                          <li><a href="https://instagram.com/pet_pea_downloader?utm_medium=copy_link"> Instagramr</a></li>
+                          <li class="mt-5"><a class="btn btn-success text-white w-100 " href="{{route('post.download' , $post->id)}}">Download</a></li>
                         </ul>
                       </div>
                       <div class="col-12">
-                      <p>{{$post->content_desccription}}</p>
+                        <div class="">
+                          <i style="padding-right: 10px;" class="fa fa-share-alt"></i>
+                          <span style="padding-right: 10px; font-size :30px">
+                            <i style="color:blue;" class="fa fa-facebook"></i>
+                            <i style="color:green;" class="fa fa-whatsapp"></i>
+                            <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <p>{{$post->content_desccription}}</p>
                       </div>
                     </div>
                   </div>
@@ -87,7 +77,7 @@
             <div class="col-lg-12">
               <div class="sidebar-item comments">
                 <div class="sidebar-heading">
-                  <h2>4 comments</h2>
+                  <!-- comments lists -->
                 </div>
                 <div class="content">
                   <ul>
@@ -106,8 +96,6 @@
                       <div class="author-thumb">
                         <img src="{{ $admin_assets}}/assets/images/comment-author-02.jpg" alt="">
                       </div>
-
-
                   </ul>
                 </div>
               </div>
@@ -144,29 +132,23 @@
                           <input type="hidden" name="post_id" value="{{ $post->id }}" />
                         </fieldset>
                       </div>
-                     
+
                       <div class="col-lg-12">
                         <fieldset>
                           <button type="submit" id="form-submit" disabled class="main-button">Submit</button>
                         </fieldset>
                       </div>
-                     
+
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
-
-      <div class="col-xl-4 col-lg-4 col-md-12 col-xs-12 mb-5">
-        <div class="jumbotron bg-alert">
-          <h4> feature ads</h4>
-        </div>
-      </div>
-
+    
     </div>
   </div>
 </section>

@@ -64,10 +64,10 @@
                                             <td>{{$user->username}}</td>
                                             <td>
                                                 <a href="{{ asset(auth()->user()->avatar) }}" target="_blank" rel="noopener noreferrer">
-                                                    <img class="img-fluid" src="{{$admin_assets}}/assets/img/m-icon.jpeg" alt="avatar">
+                                                    <img class="img-fluid" src="{{ asset(auth()->user()->avatar) }}" alt="avatar">
                                                 </a>
                                             </td>
-                                            <td class="{{$statusColor}}">{{ $user->status }}</td>
+                                            <td class="{{$statusColor}}">{{$user->status }}</td>
                                             <td>{{$user->created_at}}
                                             <td>
                                                 <h3>

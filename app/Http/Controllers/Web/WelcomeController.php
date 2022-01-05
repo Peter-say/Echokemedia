@@ -19,12 +19,12 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-       $categorytop = 40;
+        $categorytop = 40;
         // dd($request->all());
         $posts = Post::latest()->get();
         $categories = PostCategory::latest()->get();
         $trendingTopics = Post::latest()->get();
-           
+
 
         $recents = Post::oldest()
             ->limit(10)
@@ -41,11 +41,8 @@ class WelcomeController extends Controller
 
     public function recent()
     {
-       
         $posts = Post::latest()
-            ->limit(10)
             ->paginate(12);
-
         return view('web.layouts.includes.pages-sidebar', [
             'posts' => $posts,
         ]);
@@ -96,7 +93,7 @@ class WelcomeController extends Controller
     public function show($post)
     {
         $comments = Comment::get();
-        $post = Post::where("id", $post)->first();
+        $post = Post::find(1);
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
@@ -105,22 +102,22 @@ class WelcomeController extends Controller
 
     public function search(Request $request)
     {
-      $search = $_GET['query'];
-      $posts = Post::where('name', 'like' , '%'.$search.'%')->get();
-      return view('web.welcome', [
+        $search = $_GET['query'];
+        $posts = Post::where('name', 'like', '%' . $search . '%')->get();
+        return view('web.welcome', [
             "posts" => $posts,
         ]);
-    }  
+    }
 
 
 
     function getFile($id)
     {
-        $post = Post::where("id",$id)->firstOrFail();
-        return response()->download('postVideos/'.$post->cover_video);
+        $post = Post::where("id", $id)->firstOrFail();
+        return response()->download('postVideos/' . $post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
-    public function share(Request $request , Post $post)
+    public function share(Request $request, Post $post)
     {
         $post = Post::first();
         $platform = $request->platform;
@@ -129,7 +126,4 @@ class WelcomeController extends Controller
         $link = $sharer->getLink($platform, $post->detailsUrl($sharer));
         return redirect()->away($link);
     }
-
- 
-
 }

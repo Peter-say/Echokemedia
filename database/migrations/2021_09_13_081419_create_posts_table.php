@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('name');
             $table->enum('type' , ["Blog" , "Vlog"]);
             $table->text('content_desccription');
+            // $table->string('slug');
             $table->tinyInteger('is_top_story')->default(0);
             $table->tinyInteger('is_featured')->default(0);
             $table->tinyInteger('is_published')->default(0);

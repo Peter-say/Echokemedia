@@ -64,7 +64,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::resource('profile', ProfileController::class);
 
   Route::resource('users', UsersController::class);
-  Route::get('users/status/{id}/{status}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
+  Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
   Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
 });
 
@@ -72,6 +72,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
 
 Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::resource('dashboard', DashboardController::class);
+  Route::get('user/{user}/post', [App\Http\Controllers\Users\DashboardController::class, 'postslist'])->name('user.post');
   Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'index'])->name('profile');
   Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');
   Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');

@@ -16,11 +16,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Post $categories)
+    public function index(User $user, Post $posts , PostCategory $categories)
     {
+         $posts = $user->posts()->with(['user'])->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
+       
         
         $maxPost = 2;
         $todays_post = Post::where('user_id', auth()->id())
@@ -34,6 +36,7 @@ class PostController extends Controller
             return view('users.posts.create', [
                 'categories' => $categories,
                   'types' => $types,
+                   'posts' =>$posts
             ]);
         }
     }

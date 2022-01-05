@@ -88,15 +88,12 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function status(Request $request , User $user)
+    public function status(Request $request)
     {
         $status = $request->status;
         User::find($request->id)->update([
             "status" => $status,
         ]);
-
-      
-
         return back()->with("success_message", "Status updated successfully!");
     }
 
@@ -104,10 +101,8 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
-       
         $user->delete();
         return back()->with("error_message" , "Deleted successfully!");
     }
-
-    
+   
 }
