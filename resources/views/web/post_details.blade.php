@@ -52,7 +52,7 @@
                     <div class="row">
                       <div class="col-12">
                         <ul class="post-tags">
-                          <li class="mt-5"><a class="btn btn-success text-white w-100 " href="{{route('post.download' , $post->name)}}">Download</a></li>
+                          <li class="mt-5"><a class="btn btn-success text-white w-100 " href="{{route('post.download' , $post->id)}}">Download</a></li>
                         </ul>
                       </div>
                       <div class="col-12">
