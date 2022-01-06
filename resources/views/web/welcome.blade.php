@@ -73,7 +73,7 @@
 
                                      @else
 
-                                     <h1>No Content At The Mo ment</h1>
+                                     <h1>No Content At The Moment</h1>
 
                                      @endif
                                  </div>
@@ -90,7 +90,7 @@
                                      <form id="search_form" method="GET" action="{{route('web.search')}}">
 
                                          <input type="text" name="query" class="searchText" placeholder="type to search..." autocomplete="on" />
-                                         <input type="submit" class="btn btn-primary btn-sm mt-3 text-white" value="Search" />
+                                         <input type="submit" class="btn btn-primary btn-sm mt-3 text-white" style="color: orange" value="Search" />
 
                                      </form>
                                  </div>

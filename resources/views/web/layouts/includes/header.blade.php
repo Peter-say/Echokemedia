@@ -45,7 +45,7 @@
             </a> --}}
 
             <a class="navbar-brand" href="/">
-                <h2>Media Creator<em>.</em></h2>
+                <h2>Echokemedia<em>.</em></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -113,6 +113,7 @@
 
             </div>
     </nav>
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="navbar-item search">

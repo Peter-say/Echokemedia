@@ -38,21 +38,21 @@
         height: 40vh;
         background: white;
         border-radius: 10px;
-    }
+    } */
 
-    .cover-image img {
+    /* .cover-image img {
         width: 100%;
         height: 80vh;
         border-radius: 20px;
-    }
+    } */
 
-    .tt {
+    /* .tt {
         top: 310px;
         font-size: 20px;
         text-transform: uppercase;
         color: blue;
 
-    }
+    } */
 
     .popular-post,
     h1 {
@@ -69,7 +69,7 @@
         border-radius: 100px 100px 10px 100px;
     }
 
-    @media screen and (max-width:600px) {
+    /* @media screen and (max-width:600px) {
         .cover-image {
             width: 100%;
             margin-top: 10%;
@@ -77,14 +77,14 @@
             height: 40vh;
             background: red;
             
-        }
+        } */
 
-        .cover-image img {
+        /* .cover-image img {
             width: 100%;
             height: 60vh;
             border-radius: 10px;
             margin-bottom: 20%;
-        }
+        } */
 
         .popular-post,
         h1 {
@@ -98,17 +98,17 @@
             border-radius: 100px 100px 10px 100px;
         }
         
-    } */
+    } 
 
-    .top-title {
+    /* .top-title {
 
         padding: 10px;
         margin: 20px 0px 5px 0px;
         font-size: 20px;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
+    } */
 
-    @media screen and (max-width:600px) {
+    /* @media screen and (max-width:600px) {
         .top-title {
             display: block;
             width: 100%;
@@ -117,6 +117,10 @@
             margin: 20px 0px 5px 0px;
             font-size: 20px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        } */
+
+        .medy nav-submit{
+            color: rgb(248, 168, 19);
         }
     }
 </style>
