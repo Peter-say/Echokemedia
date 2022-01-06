@@ -118,11 +118,10 @@ class WelcomeController extends Controller
     }
     public function share(Request $request, Post $post)
     {
-        $post = Post::first();
         $platform = $request->platform;
-
         $sharer = new Sharer;
         $link = $sharer->getLink($platform, $post->detailsUrl($sharer));
         return redirect()->away($link);
+        
     }
 }

@@ -58,10 +58,10 @@
                       <div class="col-12">
                         <div class="">
                           <i style="padding-right: 10px;" class="fa fa-share-alt"></i>
-                          <span style="padding-right: 10px; font-size :30px">
-                            <i style="color:blue;" class="fa fa-facebook"></i>
-                            <i style="color:green;" class="fa fa-whatsapp"></i>
-                            <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
+                          <span style="padding-right: 10px; font-size :20px">
+                           <a href="{{ route('share' , [ 'id' => $post->id , 'platform' => 'facebook' ])}}"><i style="color:blue;" class="fa fa-facebook"></i></a>
+                            <!-- <i style="color:green;" class="fa fa-whatsapp"></i>
+                            <i style="color: cornflowerblue;" class="fa fa-twitter"></i> -->
                           </span>
                         </div>
                       </div>
