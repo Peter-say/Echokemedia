@@ -120,7 +120,7 @@
                 <form id="search_form" method="GET" action="{{route('web.search')}}">
 
                     <input type="text" name="query" class="searchText_nav" placeholder="type to search..." autocomplete="on" />
-                    <input type="submit" class="nav-submit" style="color: orange" value="Search" />
+                    <input  type="submit" class="nav-submit" style="color: orange" value="Search" />
 
                 </form>
             </div>
