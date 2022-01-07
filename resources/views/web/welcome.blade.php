@@ -72,8 +72,10 @@
                                      @endforeach
 
                                      @else
-
-                                     <h1>No Content At The Moment</h1>
+                                     <div class="container">
+                                        <h1>No content at the moment :)</h1>
+                                     </div>
+                                     
 
                                      @endif
                                  </div>
@@ -90,7 +92,7 @@
                                      <form id="search_form" method="GET" action="{{route('web.search')}}">
 
                                          <input type="text" name="query" class="searchText" placeholder="type to search..." autocomplete="on" />
-                                         <input type="submit" class="btn btn-primary btn-sm mt-3 text-white" style="color: orange" value="Search" />
+                                         <input type="submit" class="searchbtn btn-sm mt-3 text-orange" value="Search" />
 
                                      </form>
                                  </div>

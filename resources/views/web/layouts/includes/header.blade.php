@@ -1,9 +1,9 @@
  <style>
  .searchText_nav{
-     width: 80%;
+     width: 60%;
      padding: 8px;
      border-radius: 8px;
-     border: solid blue;
+     border: solid rgb(255, 145, 0);
  }
 
  .searchText_nav input{
@@ -28,11 +28,16 @@
  }
  .nav-submit{
     padding: 8px; 
-    background: blue;
+    background: rgb(255, 136, 0);
     color: white;
     border-radius: 8px;
     border: none;
  }
+
+ .btn-primary btn-sm mt-3 text-white {
+        color: #292521;
+
+    }
  </style>
 
 <header class="">
@@ -120,7 +125,7 @@
                 <form id="search_form" method="GET" action="{{route('web.search')}}">
 
                     <input type="text" name="query" class="searchText_nav" placeholder="type to search..." autocomplete="on" />
-                    <input  type="submit" class="nav-submit" style="color: orange" value="Search" />
+                    <input  type="submit" class="nav-submit" value="Search" />
 
                 </form>
             </div>

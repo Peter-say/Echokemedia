@@ -2,19 +2,18 @@
 <html lang="en">
 
 <head>
-    <link href="{{ $admin_assets}}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
+    <link href="{{ $admin_assets }}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <style>
-   
     .image-width {
-        width:400px;
+        width: 400px;
         height: 400px;
     }
 
     @media only screen and (max-width:600px) {
-       
+
         .welcome-img {
             width: 400px;
             height: 400px;
@@ -54,20 +53,20 @@
 
     } */
 
-    .popular-post,
+    /* .popular-post,
     h1 {
         width: 20%;
         text-align: center;
         align-content: center;
         font-size: 30px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        background: orange;
+        background: rgb(255, 136, 0);
         padding: 10px;
         margin-top: 10%;
         margin-left: 35%;
         color: white;
         border-radius: 100px 100px 10px 100px;
-    }
+    } */
 
     /* @media screen and (max-width:600px) {
         .cover-image {
@@ -79,26 +78,26 @@
             
         } */
 
-        /* .cover-image img {
+    /* .cover-image img {
             width: 100%;
             height: 60vh;
             border-radius: 10px;
             margin-bottom: 20%;
         } */
 
-        .popular-post,
+    /* .popular-post,
         h1 {
             width: 50%;
             text-align: center;
             align-content: center;
             font-size: 30px;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            background: orange;
+            background: rgb(255, 153, 0);
             color: white;
             border-radius: 100px 100px 10px 100px;
-        }
-        
-    } 
+        } */
+
+    }
 
     /* .top-title {
 
@@ -119,10 +118,13 @@
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         } */
 
-        .medy nav-submit{
-            color: rgb(248, 168, 19);
-        }
+    .searchbtn {
+        background: rgb(255, 136, 0);
+        color: white;
     }
+
+    }
+
 </style>
 @include('web.layouts.includes.head')
 @include('web.layouts.includes.header')
