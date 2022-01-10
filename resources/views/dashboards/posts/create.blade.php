@@ -58,7 +58,7 @@
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="">Cover Video <span class="">*</span></label>
+                                    <label for="">Cover Music Or Video <span class="">*</span></label>
                                     <input class="form-control" type="file" name="cover_video" value="">
                                 </div>
 
