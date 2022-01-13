@@ -57,7 +57,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
-  Route::resource('post', AdminPostController::class);
+  Route::resource('post', AdminPostController::class)->middleware(['approved']);
 
 
   Route::resource('category', CategoryController::class);
@@ -80,7 +80,7 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('post');
 
   Route::resource('category', CategoryController::class);
-  Route::resource('post', PostController::class);
+  Route::resource('post', PostController::class)->middleware(['approved']);
 });
 
 

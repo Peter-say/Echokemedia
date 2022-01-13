@@ -16,22 +16,22 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request ,User $user, Post $posts , PostCategory $categories)
+    public function index(User $user, Post $posts , PostCategory $categories)
     {
+        
          $posts = $user->posts()->with(['user'])->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
        
-         $can_post =  User::find([
-            "status" =>  Constants::APPROVED,
-        ]);
-        $status = User::where('user_id', auth()->id());
+         $can_post =  User::where(["status" =>  Constants::APPROVED, ]);
+         $status = Post::where('user_id', auth()->id());
 
-        if(  $can_post !=  $status){
-            return back()
-            ->with('error_message' , 'You can be able to post when your details are reviewed by our team');
+        if($can_post !==  $status){
+            return  back()->with('error_message', 'not approved' );
         }
+
+
         $maxPost = 2;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();

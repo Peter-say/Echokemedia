@@ -6,7 +6,9 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
@@ -18,7 +20,7 @@ class AdminPostController extends Controller
     public function index()
     {
         $posts = Post::whereHas("user")->get();
-        return view('dashboards.posts.index' ,[
+        return view('dashboards.posts.index', [
             'posts' => $posts
         ]);
     }
@@ -28,15 +30,42 @@ class AdminPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-      
+
+        //     $can_post =  User::where('user_id', auth()->id());
+        //     $status = User::where(["status" =>  Constants::APPROVED]);
+
+        //    if( $can_post !==  $status){
+        //        return  back()->with('error_message', 'not approved' );   
+        //    }
+
         $boolOptions = Constants::BOOL_OPTIONS;
         $types = [Constants::VIDEO, Constants::MUSIC];
         $maxPost = 5;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
 
+            // current authenticated user status
+            // $userStatus = auth()->user()->status;
+            // if the current authenticated user status is not approved return false
+            // if($userStatus != Constants::APPROVED){
+            //     return back()->with('error_message', 'not approved');
+            // }
+
+        // if (User::where('user_id', auth()->user()) && ('status' == Constants::APPROVED)) {
+        //     $categories =  PostCategory::get();
+        //     return view(
+        //         'dashboards.posts.create',
+        //         [
+        //             'categories' => $categories,
+        //             'types' => $types,
+        //             'boolOptions' =>  $boolOptions,
+        //         ]
+        //     );
+        // } else {
+        //     return  back()->with('error_message', 'not approved');
+        // }
 
         if ($todays_post > $maxPost) {
             return view('dashboards.503_error');
@@ -48,7 +77,8 @@ class AdminPostController extends Controller
                     'categories' => $categories,
                     'types' => $types,
                     'boolOptions' =>  $boolOptions,
-                ]);
+                ]
+            );
         }
     }
 
@@ -59,7 +89,7 @@ class AdminPostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
@@ -123,13 +153,14 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $post )
+    public function edit($post)
     {
-        $post = Post::where("id" , $post)->first();
+        $post = Post::where("id", $post)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
         $types = [Constants::VIDEO, Constants::MUSIC];
-        return view('dashboards.posts.edit_post',
+        return view(
+            'dashboards.posts.edit_post',
             [
                 "post" => $post,
                 'categories' => $categories,
@@ -152,7 +183,7 @@ class AdminPostController extends Controller
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         // $categories = Constants::CATEGORY;
         $request->validate([
-           
+
             'category_id' => "required|exist:categories,id",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
@@ -176,7 +207,7 @@ class AdminPostController extends Controller
             $request->cover_video->extension();
         $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
 
-       
+
 
         return back()->with('success_message', 'Post updated successfully');
     }
@@ -187,20 +218,17 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function destroy($post)
     {
-     
-        $post = Post::find(1);
-        if ($post != null){
-           
-            $post->delete();
-            
-            return back()->with("error_message" , "Deleted successfully!");
-        }
-           return back()->with("error_message" , "post can't be deleted!");
-        
-       
-    }
 
+        $post = Post::find(1);
+        if ($post != null) {
+
+            $post->delete();
+
+            return back()->with("error_message", "Deleted successfully!");
+        }
+        return back()->with("error_message", "post can't be deleted!");
+    }
 }
