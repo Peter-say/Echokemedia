@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpeg" >
 
 
-    <title>{{ config('', 'Media-Creator') }}</title>
+    <title>{{ config('', 'Echokemedia') }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ $admin_assets}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

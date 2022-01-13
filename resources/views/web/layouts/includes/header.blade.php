@@ -1,9 +1,9 @@
  <style>
  .searchText_nav{
-     width: 80%;
+     width: 60%;
      padding: 8px;
      border-radius: 8px;
-     border: solid blue;
+     border: solid rgb(255, 145, 0);
  }
 
  .searchText_nav input{
@@ -28,11 +28,16 @@
  }
  .nav-submit{
     padding: 8px; 
-    background: blue;
+    background: rgb(255, 136, 0);
     color: white;
     border-radius: 8px;
     border: none;
  }
+
+ .btn-primary btn-sm mt-3 text-white {
+        color: #292521;
+
+    }
  </style>
 
 <header class="">
@@ -45,7 +50,7 @@
             </a> --}}
 
             <a class="navbar-brand" href="/">
-                <h2>Media Creator<em>.</em></h2>
+                <h2>Echokemedia<em>.</em></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -113,13 +118,14 @@
 
             </div>
     </nav>
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="navbar-item search">
                 <form id="search_form" method="GET" action="{{route('web.search')}}">
 
                     <input type="text" name="query" class="searchText_nav" placeholder="type to search..." autocomplete="on" />
-                    <input type="submit" class="nav-submit" value="Search" />
+                    <input  type="submit" class="nav-submit" value="Search" />
 
                 </form>
             </div>
