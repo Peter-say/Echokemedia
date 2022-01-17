@@ -39,8 +39,8 @@
                   <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
                 </div>
                 <div class="down-content">
-                
-                    <h4 class="text-success">{{$post->name}}</h4>
+
+                  <h4 class="text-success">{{$post->name}}</h4>
                   </a>
                   <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#"></a>{{$post->created_at->diffForHumans()}}</span>
 
@@ -50,16 +50,20 @@
 
                   <div class="post-options">
                     <div class="row">
-                      <div class="col-12">
-                        <ul class="post-tags">
-                          <li class="mt-5"><a class="btn btn-success text-white w-100 " href="{{route('post.download' , $post->id)}}">Download</a></li>
-                        </ul>
+                      <div class="col-6">
+                        <span><a class="btn btn-success text-white btn-lg mt-3 " href="{{route('post.download' , $post->id)}}">Download</a></span>
+                      </div>
+                      <div class="col-6">
+                        <audio controls class="mt-3">
+                          <source src="{{asset('postVideos/' . $post->cover_video)}}" type="audio/ogg">
+                          <source src="{{asset('postVideos/' . $post->cover_video)}}" type="audio/mpeg">
+                        </audio>
                       </div>
                       <div class="col-12">
                         <div class="">
                           <i style="padding-right: 10px;" class="fa fa-share-alt"></i>
                           <span style="padding-right: 10px; font-size :20px">
-                           <a href="{{ route('share' , [ 'id' => $post->id , 'platform' => 'facebook' ])}}"><i style="color:blue;" class="fa fa-facebook"></i></a>
+                            <a href="{{ route('share' , [ 'id' => $post->id , 'platform' => 'facebook' ])}}"><i style="color:blue;" class="fa fa-facebook"></i></a>
                             <!-- <i style="color:green;" class="fa fa-whatsapp"></i>
                             <i style="color: cornflowerblue;" class="fa fa-twitter"></i> -->
                           </span>
@@ -148,7 +152,7 @@
           </div>
         </div>
       </div>
-    
+
     </div>
   </div>
 </section>
