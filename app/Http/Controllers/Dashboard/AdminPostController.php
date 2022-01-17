@@ -46,12 +46,12 @@ class AdminPostController extends Controller
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
 
-            // current authenticated user status
-            // $userStatus = auth()->user()->status;
-            // if the current authenticated user status is not approved return false
-            // if($userStatus != Constants::APPROVED){
-            //     return back()->with('error_message', 'not approved');
-            // }
+        // current authenticated user status
+        // $userStatus = auth()->user()->status;
+        // if the current authenticated user status is not approved return false
+        // if($userStatus != Constants::APPROVED){
+        //     return back()->with('error_message', 'not approved');
+        // }
 
         // if (User::where('user_id', auth()->user()) && ('status' == Constants::APPROVED)) {
         //     $categories =  PostCategory::get();
@@ -219,16 +219,10 @@ class AdminPostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($post)
+    public function destroy( $post)
     {
-
-        $post = Post::find(1);
-        if ($post != null) {
-
-            $post->delete();
-
-            return back()->with("error_message", "Deleted successfully!");
-        }
-        return back()->with("error_message", "post can't be deleted!");
+        
+        Post::where('id' , $post)->delete();
+        return back()->with("error_message", "Deleted successfully!");
     }
 }

@@ -44,7 +44,7 @@
                                          <div class="row mb-2 d-flex justify-content-center">
                                              <div class="col-6 ">
                                                  <div class="">
-                                                     <img class="img-fluid   image-width" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                                     <img style="max-width: 500px; max-height: 500px; margin:auto;" class="img-fluid image-width" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                                                  </div>
                                              </div>
 

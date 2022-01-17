@@ -57,7 +57,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
-  Route::resource('post', AdminPostController::class)->middleware(['approved']);
+  Route::resource('post', AdminPostController::class);
 
 
   Route::resource('category', CategoryController::class);
