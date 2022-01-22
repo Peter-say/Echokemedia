@@ -72,5 +72,16 @@ class Post extends Model
         ]);
     }
 
+    public function coverImageUrl()
+    {
+        $coverImage = $this->coverImage;
+
+        $filepath = optional($coverImage)->path;
+
+        if (!empty($filepath)) {
+            return readFileUrl("encrypt", $filepath);
+        }
+    }
+
    
 }

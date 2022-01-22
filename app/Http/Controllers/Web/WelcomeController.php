@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use App\Helpers\Sharer;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Jorenvh\Share\ShareFacade;
+use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
@@ -24,8 +26,8 @@ class WelcomeController extends Controller
         $posts = Post::latest()->get();
         $categories = PostCategory::latest()->get();
         $trendingTopics = Post::latest()->get();
-
-
+       
+        // dd($share_posts);
         $recents = Post::oldest()
             ->limit(10)
             ->get();
@@ -116,12 +118,18 @@ class WelcomeController extends Controller
         return response()->download('postVideos/' . $post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
-    public function share(Request $request, Post $post)
+
+    public function share(Request $request)
     {
+        $post = Post::findByid($request->id)->firstorFail();
         $platform = $request->platform;
-        $sharer = new Sharer;
-        $link = $sharer->getLink($platform, $post->detailsUrl($sharer));
+
+        $sharer = null;
+       
+
+        $shareHandler = new Sharer;
+        $link = $shareHandler->getLink($platform, $post->detailsUrl($sharer));
         return redirect()->away($link);
-        
     }
+    
 }

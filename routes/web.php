@@ -29,11 +29,11 @@ use App\Mail\NewUserWelcomeMail;
 Route::get('/', [App\Http\Controllers\Web\WelcomeController::class, 'index'])->name('/');
 Route::get('/music_list', [App\Http\Controllers\Web\MediaController::class, 'music_list'])->name('music_list');
 Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');
-Route::get('/share/{id}/{platform}', [App\Http\Controllers\Web\WelcomeController::class, 'share'])->name('share');
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
   Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
+  Route::get('/', [App\Http\Controllers\Web\SharePostController::class, 'SharePost'])->name('share');
   Route::post('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'storeContact']);
 
   Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');

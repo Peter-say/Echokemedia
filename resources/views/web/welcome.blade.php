@@ -44,38 +44,45 @@
                                          <div class="row mb-2 d-flex justify-content-center">
                                              <div class="col-6 ">
                                                  <div class="">
-                                                     <img style="max-width: 500px; max-height: 500px; margin:auto;" class="img-fluid image-width" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                                     <img class="img-fluid image-width " src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
                                                  </div>
                                              </div>
 
                                              <div class="col-6">
                                                  <a class="text-success" href="{{route('post.show' , $post->name)}}">
-                                                     <h4 class="text-success">{{$post->name}}</h4>
+                                                     <h6 class="text-success">{{$post->name}}</h6>
                                                  </a>
-                                                 <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#">{{$post->created_at->diffForHumans()}}</a></span>
+                                                 <span><small>Posted By </small>
+                                                     <h6 style="font-size: 14px;"><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></h6> <a href="#">{{$post->created_at->diffForHumans()}}</a>
+                                                 </span>
 
-                                                 <a class="btn btn-success text-white w-100" href="{{route('post.show' , $post->name)}}">Download here</a></li>
-
-                                                 <div class="">
-                                                     <i style="padding-right: 10px;" class="fa fa-share-alt"></i>
-                                                     <span style="padding-right: 10px; font-size :30px">
-                                                         <i style="color:blue;" class="fa fa-facebook"></i>
-                                                         <i style="color:green;" class="fa fa-whatsapp"></i>
-                                                         <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
-                                                     </span>
-                                                 </div>
                                              </div>
 
+                                             <div class="col-6 mt-2">
+                                                 <a class="btn btn-success text-white col-4-md" href="{{route('post.show' , $post->name)}}">Download here</a></li>
+
+                                             </div>
+                                             <div class="col-6">
+                                                 <div class="social-media-share-icon">
+                                                      <a href="{{ route('media.share' , ['id' => $post->id , 'platform' => 'facebook'])}}" target="_blank"><i style="color: blue;" class="fa fa-facebook"></i></a>
+                                                     <i style="color: green;" class="fa fa-whatsapp"></i>
+                                                     <i style="color: red;" class="fa fa-instagram"></i>
+                                                 </div>
+                                             </div>
+                                             <hr style="font-size:8px; color:green">
+
                                          </div>
+
+
                                      </div>
 
                                      @endforeach
 
                                      @else
                                      <div class="container">
-                                        <h1>No content at the moment :)</h1>
+                                         <h1>No content at the moment :)</h1>
                                      </div>
-                                     
+
 
                                      @endif
                                  </div>
@@ -97,6 +104,15 @@
                                      </form>
                                  </div>
                              </div>
+
+                             <div class="mt-4" id="social-links">
+                                 <!-- <form action="{{ route('media.share')}}" method="post">
+                                     @csrf
+                                     <button type="submit" class="btn btn-primary btn-sm">Share</button>
+                                 </form> -->
+
+                             </div>
+
                              @include('web.layouts.includes.pages-sidebar')
                          </div>
                      </div>
@@ -106,9 +122,6 @@
 
          </div>
      </section>
-
-
-
 
  </body>
 

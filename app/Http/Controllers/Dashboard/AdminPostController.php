@@ -9,9 +9,11 @@ use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\support\Str;
 
 class AdminPostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -46,27 +48,6 @@ class AdminPostController extends Controller
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
 
-        // current authenticated user status
-        // $userStatus = auth()->user()->status;
-        // if the current authenticated user status is not approved return false
-        // if($userStatus != Constants::APPROVED){
-        //     return back()->with('error_message', 'not approved');
-        // }
-
-        // if (User::where('user_id', auth()->user()) && ('status' == Constants::APPROVED)) {
-        //     $categories =  PostCategory::get();
-        //     return view(
-        //         'dashboards.posts.create',
-        //         [
-        //             'categories' => $categories,
-        //             'types' => $types,
-        //             'boolOptions' =>  $boolOptions,
-        //         ]
-        //     );
-        // } else {
-        //     return  back()->with('error_message', 'not approved');
-        // }
-
         if ($todays_post > $maxPost) {
             return view('dashboards.503_error');
         } else {
@@ -88,7 +69,7 @@ class AdminPostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Post $post)
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
@@ -107,13 +88,14 @@ class AdminPostController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
 
-        $meidiaImage = time() . '_' . $request->name . '.' .
+        
+        $meidiaImage =  $request->name . '_' . Constants::APP_NAME . '.' .
             $request->cover_image->extension();
 
         $request->cover_image->move(public_path('postImages'), $meidiaImage);
 
 
-        $meidiaVideo = time() . '-' . $request->name . '.' .
+        $meidiaVideo =  $request->name . '_' . Constants::APP_NAME. '.' .
             $request->cover_video->extension();
         $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
 
@@ -130,6 +112,7 @@ class AdminPostController extends Controller
             'can_comment' => $request->input('can_comment'),
             'is_published' => $request->input('is_published'),
             'user_id' => auth()->user()->id,
+            'slug' => Str::slug($request->title , '-'),
 
         ]);
 
@@ -184,6 +167,7 @@ class AdminPostController extends Controller
         // $categories = Constants::CATEGORY;
         $request->validate([
 
+            
             'category_id' => "required|exist:categories,id",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
@@ -197,13 +181,13 @@ class AdminPostController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
 
-        $meidiaImage = time() . '_' . $request->name . '.' .
+        $meidiaImage = $request->name . '_' .  Constants::CATEGORY. '.' .
             $request->cover_image->extension();
 
         $request->cover_image->move(public_path('postImages'), $meidiaImage);
 
 
-        $meidiaVideo = time() . '-' . $request->name . '.' .
+        $meidiaVideo =  $request->name . '_' . Constants::APP_NAME. '.' .
             $request->cover_video->extension();
         $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
 

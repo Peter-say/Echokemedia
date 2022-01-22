@@ -4,6 +4,10 @@ namespace App\Helpers;
 
  class  Constants{
 
+   const APP_NAME = '@ echokemedia.com';
+
+
+
      const  APPROVED = "approved";
      const  PENDING = "pending";
      const  REJECTED = "rejected";
@@ -45,4 +49,5 @@ namespace App\Helpers;
         self::TIMAYA =>  "Timaya",
         self::OLAMIDE => "Olamide",
      ];
+
  }

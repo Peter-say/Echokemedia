@@ -34,7 +34,7 @@
     border: none;
  }
 
- .btn-primary btn-sm mt-3 text-white {
+ .btn-primary {
         color: #292521;
 
     }
@@ -46,7 +46,6 @@
         <div class="container">
             {{-- <a class="navbar-brand" href="{{ route("media.about") }}">
             <img src="{{$admin_assets}}/assets/img/m-logo.png" alt="">
-            <h2>Media Creator<em>.</em></h2>
             </a> --}}
 
             <a class="navbar-brand" href="/">
