@@ -118,7 +118,7 @@ class WelcomeController extends Controller
     function getFile($id)
     {
         $post = Post::where("id", $id)->firstOrFail();
-        return response()->download('postVideos/' . $post->cover_video);
+        return response()->download($post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
 

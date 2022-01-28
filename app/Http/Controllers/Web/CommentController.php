@@ -21,7 +21,7 @@ class CommentController extends Controller
         $comment->username = $request->username;
         $comment->email = $request->email;
         $comment->body = $request->body;
-        $post = Post::find($request->input('blog_id'));
+        $post = Post::find($request->input('post_id'));
         $post->comments()->save($comment);
         
         return back()->with('success_message', 'Your comment has been successfully submited');

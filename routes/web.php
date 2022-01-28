@@ -81,7 +81,7 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
   Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('post');
 
-  Route::resource('category', CategoryController::class);
+  // Route::resource('category', CategoryController::class);
   Route::resource('post', PostController::class)->middleware(['approved']);
 });
 
