@@ -23,10 +23,11 @@ class WelcomeController extends Controller
     {
         $categorytop = 40;
         // dd($request->all());
-        $posts = Post::latest()->get();
+        $posts = Post::with(['category'])->get();
         $categories = PostCategory::latest()->get();
         $trendingTopics = Post::latest()->get();
-       
+        
+        // dd($posts);
         // dd($share_posts);
         $recents = Post::oldest()
             ->limit(10)
@@ -43,37 +44,39 @@ class WelcomeController extends Controller
 
     public function recent()
     {
+        $categories = PostCategory::get();
         $posts = Post::latest()
             ->paginate(12);
         return view('web.layouts.includes.pages-sidebar', [
             'posts' => $posts,
+            'categories' => $categories
         ]);
     }
 
 
-    public function storeComment(Request $request, User $user)
-    {
-        // dd($request->all());
-        $request->validate([
-            'username' => 'required|string',
-            'email' => 'required|string',
-            'body' => 'required|string',
-        ]);
+    // public function storeComment(Request $request, User $user)
+    // {
+    //     // dd($request->all());
+    //     $request->validate([
+    //         'username' => 'required|string',
+    //         'email' => 'required|string',
+    //         'body' => 'required|string',
+    //     ]);
 
 
-        $comment = new Comment;
-        $comment->body = $request->get('body');
-        $comment->email = $request->get('email');
-        $comment->username = $request->get('username');
-        $comment->user()->associate($request->user());
-        $post = Post::find($request->get('post_id'));
-        // dd($post);
-        $post->comments()->save($comment);
+    //     $comment = new Comment;
+    //     $comment->body = $request->get('body');
+    //     $comment->email = $request->get('email');
+    //     $comment->username = $request->get('username');
+    //     $comment->user()->associate($request->user());
+    //     $post = Post::find($request->get('post_id'));
+    //     // dd($post);
+    //     $post->comments()->save($comment);
 
 
 
-        return back()->with('success_message', 'Your comment has been successfully submited');
-    }
+    //     return back()->with('success_message', 'Your comment has been successfully submited');
+    // }
 
     public function about()
     {
@@ -119,17 +122,5 @@ class WelcomeController extends Controller
         // return Storage::download('postVideos.mp4', $post);
     }
 
-    public function share(Request $request)
-    {
-        $post = Post::findByid($request->id)->firstorFail();
-        $platform = $request->platform;
-
-        $sharer = null;
-       
-
-        $shareHandler = new Sharer;
-        $link = $shareHandler->getLink($platform, $post->detailsUrl($sharer));
-        return redirect()->away($link);
-    }
     
 }

@@ -1,18 +1,18 @@
 <div class="col-lg-12">
     <div class="sidebar-item recent-posts">
         <div class="sidebar-heading">
-            <h2>Recent Posts</h2>
+            <h2>Caterories</h2>
         </div>
     </div>
 
     <div class="row">
-        @foreach($posts as $post)
+        @foreach($categories as $category)
         <div class="col-4">
             <div>
-                <a href="">
-                    <img class="img-fluid image-width" src="{{asset('postImages/' . $post->cover_image)}}" alt="">
+                <a href="{{route('category.post' , $category->id)}}">
+                    <img  style="width:250px; height:20vh" class="img-fluid image-width" src="{{asset('CategoryImages/' . $category->cat_image)}}" alt="">
                 </a>
-                <p><b>{{$post->name}}</b></p>
+                <p><b>{{$category->name}}</b></p>
             </div>
         </div>
         @endforeach

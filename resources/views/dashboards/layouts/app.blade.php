@@ -49,6 +49,13 @@
     <link href="{{ $admin_assets}}/assets/css/pages/error/style-503.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/pages/helpdesk.css" rel="stylesheet" type="text/css" />
      
+
+    <style>
+        .cat-img-size{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body>

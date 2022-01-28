@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Helpers\Sharer;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Jorenvh\Share\ShareFacade;
 
 class SharePostController extends Controller
 {
-    public function SharePost()
+    public function share(Request $request)
     {
-        $share_posts = ShareFacade::currentPage()->facebook();
-       
-        // dd($share_post);
-        // return view('web.welcome', ['share_posts' => $share_posts]);
+        $post = Post::findOrFail($request->id);
+        $platform = $request->platform;
+        $sharer = null;
+        $shareHandler = new Sharer;
+        $link = $shareHandler->getLink($platform, $post->detailsUrl());
+        return redirect()->away($link);
     }
+    
 }

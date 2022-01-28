@@ -10,15 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'category_id',
-        'name',
-        'content_type',
-        'cover_video',
-        'cover_image',
-        'content_desccription',
-        'user_id'
-    ];
+    protected $guarded = [];
 
     protected $primaryKey = 'user_id';
 
@@ -29,7 +21,7 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->morphMany(Comment::class,'commentable')->whereNull('parent_id' , 'user_id' );
+        return $this->hasMany(Comment::class , 'post_id');
     }
 
 
@@ -52,7 +44,7 @@ class Post extends Model
     public function category()
     {
 
-        return $this->belongsTo(PostCategory::class,  'category_id');
+        return $this->belongsTo(PostCategory::class);
     }
 
     public function scopeSearch($query, $keyword)
@@ -65,9 +57,8 @@ class Post extends Model
 
     public function detailsUrl($sharer = null)
     {
-        return view("web.welcome", [
-            "uuid" => $this->id,
-            "slug" => slugify($this->title),
+        return route("post.show", [
+            "post" => $this->name,
             "sharer" => $sharer
         ]);
     }

@@ -23,6 +23,7 @@
 </div>
 <!-- Banner Ends Here -->
 
+
 <div class="col-12">
   <a href="{{route('/')}}">
     <i class="fa fa-arrow-left d-flex w-50 " aria-hidden="true"></i></a>
@@ -45,7 +46,7 @@
                   <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#"></a>{{$post->created_at->diffForHumans()}}</span>
 
                   <div>
-                    <img class="img-fluid "src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                    <img class="img-fluid " src="{{asset( $post->cover_image)}}" alt="..." />
                   </div>
 
                   <div class="post-options">
@@ -53,10 +54,10 @@
                       <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12">
                         <a class="btn btn-success text-white btn-lg mt-3 " href="{{route('post.download' , $post->id)}}">Download</a>
                       </div>
-                      <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12">
-                        <audio  controls class="mt-3">
-                          <source src="{{asset('postVideos/' . $post->cover_video)}}" type="audio/ogg">
-                          <source src="{{asset('postVideos/' . $post->cover_video)}}" type="audio/mpeg">
+                      <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 justify-content-center">
+                        <audio style="width: 90%;" controls class="mt-3">
+                          <source src="{{asset($post->cover_video)}}" type="audio/ogg">
+                          <source src="{{asset($post->cover_video)}}" type="audio/mpeg">
                         </audio>
                       </div>
                       <div class="col-12">
@@ -67,11 +68,14 @@
                             <i style="color:green;" class="fa fa-whatsapp"></i>
                             <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
                           </span>
+
                         </div>
                       </div>
-                      <div class="col-12">
-                        <p>{{$post->content_desccription}}</p>
+                      <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 justify-content-center">
+                        <p style=" text-align:center">{{$post->content_desccription}}</p>
+
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -115,31 +119,28 @@
                     <div class="row">
                       @csrf
 
-                      @auth
-                      {{-- No need to fill name and email --}}
-                      @else
+                     
                       <div class="col-md-6 col-sm-12">
                         <fieldset>
-                          <input name="username" type="text" id="name" disabled placeholder="Your name" required="">
+                          <input name="username" type="text" id="name" placeholder="Your name" required="">
                         </fieldset>
                       </div>
                       <div class="col-md-6 col-sm-12">
                         <fieldset>
-                          <input name="email" type="text" id="email" disabled placeholder="Your email will not be publish" required="">
+                          <input name="email" type="text" id="email" placeholder="Your email will not be publish">
                         </fieldset>
                       </div>
 
-                      @endauth
                       <div class="col-md-12 col-sm-12">
                         <fieldset>
-                          <input name="body" disabled type="text" id="subject" placeholder="Your Comment">
-                          <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                          <input name="body" type="text" id="subject" placeholder="Your Comment">
+                          <input type="hidden" name="post_id" value="" />
                         </fieldset>
                       </div>
 
                       <div class="col-lg-12">
                         <fieldset>
-                          <button type="submit" id="form-submit" disabled class="main-button">Submit</button>
+                          <button type="submit" id="form-submit" class="main-button">Submit</button>
                         </fieldset>
                       </div>
 

@@ -15,14 +15,18 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->default(1)->contrained()->onDelete('cascade');
-            $table->unsignedBigInteger('category_id')->default(1)->contrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->constrained('users');
+            $table->unsignedBigInteger('category_id')->constrained('post_categories');
             $table->string('cover_image');
             $table->string('cover_video');
             $table->string('name');
-            $table->enum('type' , ["Blog" , "Vlog"]);
+            $table->enum('type' , ["Blog" , "Video"]);
             $table->text('content_desccription');
-            // $table->string('slug');
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('access_level')->default("All");
+            $table->string('slug');
             $table->tinyInteger('is_top_story')->default(0);
             $table->tinyInteger('is_featured')->default(0);
             $table->tinyInteger('is_published')->default(0);

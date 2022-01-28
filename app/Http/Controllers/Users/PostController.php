@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Users;
 
 use app\Helpers\Constants;
+use App\Helpers\MediaFileHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -77,39 +79,21 @@ class PostController extends Controller
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
             "cover_video" => "required",
-            // "is_sponsored" => "required|string|in:$allowedOptions",
-            // "is_top_story" => "required|string|in:$allowedOptions",
-            // "is_featured" => "required|string|in:$allowedOptions",
-            // "is_published" => "required|string|in:$allowedOptions",
-            // "can_comment" => "required|string|in:$allowedOptions",
-        ]);
-        $meidiaImage = time() . '_' . $request->name . '.' .
-            $request->cover_image->extension();
-
-        $request->cover_image->move(public_path('postImages'), $meidiaImage);
-
-
-        $meidiaVideo = time() . '-' . $request->name . '.' .
-            $request->cover_video->extension();
-        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
-
-        $request = Post::create([
-            'name' =>  $request->input('name'),
-            'content_desccription' =>  $request->input('content_desccription'),
-            'type' =>  $request->input('type'),
-            'cover_image' => $meidiaImage,
-            'cover_video' => $meidiaVideo,
-            'is_sponsored' => $request->input('is_sponsored'),
-            'is_top_story' => $request->input('"is_top_story'),
-            'is_featured' => $request->input('is_featured'),
-            'can_comment' => $request->input('can_comment'),
-            'user_id' => auth()->user()->id,
-
+            "meta_title" => "required|string",
+            "meta_keywords" => "required|string",
+            "meta_description" => "required|string",
         ]);
 
+        $cover_path = MediaFileHelper::saveFromRequest($request->cover_image , "postImages");
+        $video_path = MediaFileHelper::saveFromRequest($request->cover_video , "postVideos");
+
+        $data['cover_image'] = $cover_path;
+        $data['cover_video'] = $video_path;
+        $data["slug"] = Str::slug($request->title, '-');
+        $data['user_id'] = auth()->id();
+        $post = Post::create($data);
         return back()->with('success_message', 'Post added successfully');
     }
-
     /**
      * Display the specified resource.
      *

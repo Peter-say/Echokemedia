@@ -8,21 +8,21 @@ use App\Models\Post;
 class PageMetaData
 {
 
-    const DEFAULT_SUFFIX = "- Flairworlds";
-    const DEFAULT_KEYWORDS = "blog, crypto, entertaint";
+    const DEFAULT_SUFFIX = "- Echokemedia";
+    const DEFAULT_KEYWORDS = "blog, entertament";
 
-    static public function getTitle(string $title)
+    static public function getTitle(string $name)
     {
-        return $title . " " . self::DEFAULT_SUFFIX;
+        return $name . " " . self::DEFAULT_SUFFIX;
     }
 
     static public function indexPage()
     {
         $meta = new MetaData();
-        return $meta->setAttribute("title", self::getTitle("Home"))
-            ->setAttribute("description", "Welcome to flairworld.com")
+        return $meta->setAttribute("name", self::getTitle("Home"))
+            ->setAttribute("description", "Welcome to Echokemedia")
             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", "Peter" ?? "Peace")
+            ->setAttribute("username", "Peter" ?? "Peace")
             ->setAttribute("audience", "Public")
             ->generate();
     }
@@ -34,7 +34,7 @@ class PageMetaData
         return $meta->setAttribute("title", self::getTitle("Contact Us"))
             ->setAttribute("description", "Rapid contacts")
             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", "Peter" ?? "Peace")
+            ->setAttribute("username", "Peter" ?? "Peace")
             ->setAttribute("audience", "Public")
             ->generate();
             
@@ -43,10 +43,10 @@ class PageMetaData
     {
         $meta = new MetaData();
 
-        return $meta->setAttribute("title", self::getTitle("About Us"))
+        return $meta->setAttribute("name", self::getTitle("About Us"))
             ->setAttribute("description", "About us")
             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", "Peter" ?? "Peace")
+            ->setAttribute("username", "Peter" ?? "Peace")
             ->setAttribute("audience", "Public")
             ->generate();
             
@@ -55,7 +55,7 @@ class PageMetaData
     static public function blogPage($type)
     {
         $meta = new MetaData();
-        return $meta->setAttribute("title", self::getTitle(ucfirst($type)))
+        return $meta->setAttribute("name", self::getTitle(ucfirst($type)))
             ->setAttribute("description", "Blog descrpition")
             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
             ->generate();
@@ -64,7 +64,7 @@ class PageMetaData
     static public function searchPage()
     {
         $meta = new MetaData();
-        return $meta->setAttribute("title", self::getTitle("Search"))
+        return $meta->setAttribute("name", self::getTitle("Search"))
             ->setAttribute("description", "Blog descrpition")
             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
             ->generate();
@@ -73,18 +73,18 @@ class PageMetaData
     static public function blogDetailsPage(Post $post)
     {
         $meta = new MetaData();
-        $title = $post->meta_title ?? $post->title;
-        return $meta->setAttribute("title", self::getTitle($title))
+        $name = $post->meta_title ?? $post->name;
+        return $meta->setAttribute("name", self::getTitle($name))
             ->setAttribute("description", $post->meta_description)
             ->setAttribute("keywords",$post->meta_keywords ?? self::DEFAULT_KEYWORDS)
             ->setAttribute("author", optional($post->author)->names() ?? "Admin")
-            ->setAttribute("page_topic", $post->title)
+            ->setAttribute("page_topic", $post->name)
             ->setAttribute("og_site_name", url("/"))
             ->setAttribute("og_title", $post->title)
             ->setAttribute("og_description", $post->meta_description)
-            ->setAttribute("og_image", $post->coverImageUrl())
+            ->setAttribute("og_image", $post->saveFromRequest())
             ->setAttribute("og_url", $post->detailsUrl())
-            ->setAttribute("twitter_card", $post->coverImageUrl())
+            ->setAttribute("twitter_card", $post->saveFromRequest())
             ->setAttribute("twitter_image_alt", $post->title)
             ->generate();
     }

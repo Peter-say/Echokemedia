@@ -1,12 +1,14 @@
 <?php
+
 namespace App\Helpers;
 
-class MetaData{
+class MetaData
+{
 
-    public String $title;
+    public String $name;
     public String $description;
     public String $keywords;
-    public String $author;
+    public String $username;
     public String $publisher;
     public String $copyright;
     public String $page_topic;
@@ -22,12 +24,14 @@ class MetaData{
     public String $twitter_card;
     public String $twitter_image_alt;
 
-    public function setAttribute($name , $value){
+    public function setAttribute($name, $value)
+    {
         $this->$name = $value;
         return $this;
     }
 
-    public function generate(){
+    public function generate()
+    {
         $object_array = (array) $this;
 
         $class_variables =  get_class_vars(get_class($this));
@@ -40,4 +44,3 @@ class MetaData{
         return $merged_data;
     }
 }
-

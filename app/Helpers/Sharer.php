@@ -30,8 +30,6 @@ class Sharer
 
     public function getLink($platform, $url)
     {
-       
-        $url = Post::where('id' , $url);
         if ($platform == "facebook") {
             $link = $this->shareOnFacebook($url);
         }
