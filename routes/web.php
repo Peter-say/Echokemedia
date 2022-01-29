@@ -74,7 +74,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
 
 Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::resource('dashboard', DashboardController::class);
-  Route::get('user/{user}/post', [App\Http\Controllers\Users\DashboardController::class, 'postslist'])->name('user.post');
+  Route::get('user/{user}/post', [App\Http\Controllers\Users\DashboardController::class, 'viewposts'])->name('user.post');
   Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'index'])->name('profile');
   Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');
   Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');
@@ -82,7 +82,7 @@ Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('post');
 
   // Route::resource('category', CategoryController::class);
-  Route::resource('post', PostController::class)->middleware(['approved']);
+  Route::resource('post', PostController::class);
 });
 
 

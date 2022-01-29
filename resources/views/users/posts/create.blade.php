@@ -19,8 +19,9 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h4>Create New Post</h4>
-                                    <span class="d-flex justify-content-center"><a class="btn btn-primary" href="">View Posts</a></span>
-
+                                    <span class="fr">
+                                        <a href="{{route('user.post.index')}}" class="btn btn-primary btn-sm ">View Posts</a>
+                                    </span>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use app\Helpers\Constants;
-use App\Helpers\MediaFileHelper;
+use App\Helpers\MediaFilesHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
@@ -18,10 +18,25 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Post $posts , PostCategory $categories)
+    public function index(User $user)
     {
-        
-         $posts = $user->posts()->with(['user'])->first();
+        $posts = $user->posts()->with(['user'])->paginate(5);
+          return view('users.posts.index' , [
+           'user' => $user,
+           'posts' => $posts,
+          ]);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(User $user, Post $posts , PostCategory $categories)
+    {
+         
+        $posts = $user->posts()->with(['user'])->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
@@ -52,16 +67,6 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,8 +89,8 @@ class PostController extends Controller
             "meta_description" => "required|string",
         ]);
 
-        $cover_path = MediaFileHelper::saveFromRequest($request->cover_image , "postImages");
-        $video_path = MediaFileHelper::saveFromRequest($request->cover_video , "postVideos");
+        $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+        $video_path =MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
 
         $data['cover_image'] = $cover_path;
         $data['cover_video'] = $video_path;
@@ -111,9 +116,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($post)
     {
-        //
+        $post = Post::where("id", $post)->first();
+        $boolOptions = Constants::BOOL_OPTIONS;
+        $categories = PostCategory::get();
+        $types = [Constants::VIDEO, Constants::MUSIC];
+        return view(
+            'users.posts.edit',
+            [
+                "post" => $post,
+                'categories' => $categories,
+                'types' => $types,
+                'boolOptions' =>  $boolOptions,
+            ]
+        );
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Helpers\Constants;
-use App\Helpers\MediaFileHelper;
+use App\Helpers\MediaFilesHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
@@ -92,8 +92,8 @@ class AdminPostController extends Controller
             
         ]);
 
-        $cover_path = MediaFileHelper::saveFromRequest($request->cover_image , "postImages");
-        $video_path = MediaFileHelper::saveFromRequest($request->cover_video , "postVideos");
+        $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
 
         $data['cover_image'] = $cover_path;
         $data['cover_video'] = $video_path;
@@ -168,8 +168,8 @@ class AdminPostController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         // dd($data);
-       if(!empty($cover_path = MediaFileHelper::saveFromRequest($request->cover_image , "postImages")));
-        if(!empty( $video_path = MediaFileHelper::saveFromRequest($request->cover_video , "postVideos")));
+       $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+         $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
 
         $data['cover_image'] = $cover_path;
         $data['cover_video'] = $video_path;
