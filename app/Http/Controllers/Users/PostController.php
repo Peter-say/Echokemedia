@@ -41,12 +41,12 @@ class PostController extends Controller
         $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
        
-         $can_post =  User::where(["status" =>  Constants::APPROVED, ]);
-         $status = Post::where('user_id', auth()->id());
+        //  $can_post =  User::where(["status" =>  Constants::APPROVED, ]);
+        //  $status = Post::where('user_id', auth()->id());
 
-        if($can_post !==  $status){
-            return  back()->with('error_message', 'not approved' );
-        }
+        // if($can_post !==  $status){
+        //     return  back()->with('error_message', 'not approved' );
+        // }
 
 
         $maxPost = 2;

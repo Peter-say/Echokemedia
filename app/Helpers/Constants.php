@@ -8,9 +8,9 @@ namespace App\Helpers;
 
 
 
-     const  APPROVED = "approved";
-     const  PENDING = "pending";
-     const  REJECTED = "rejected";
+     const  APPROVED = "Approved";
+     const  PENDING = "Pending";
+     const  REJECTED = "Rejected";
 
 
      const DEBIT_TRANSACTION = "Debit";
