@@ -10,7 +10,7 @@
         <div class="col-4">
             <div>
                 <a href="{{route('category.post' , $category->id)}}">
-                    <img  style="width:250px; height:20vh" class="img-fluid image-width" src="{{asset('CategoryImages/' . $category->cat_image)}}" alt="">
+                    <img  style="width:250px; height:20vh" class="img-fluid image-width" src="{{asset('categoryImages/' . $category->cat_image)}}" alt="">
                 </a>
                 <p><b>{{$category->name}}</b></p>
             </div>

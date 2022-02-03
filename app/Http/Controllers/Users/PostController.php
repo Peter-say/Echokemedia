@@ -78,7 +78,7 @@ class PostController extends Controller
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $request->validate([
-            'category_id' => 'required|numeric|exists:post_categories,id',
+            'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required|string',
             "type" => "required|string|in:$allowedTypes",
@@ -96,7 +96,8 @@ class PostController extends Controller
         $data['cover_video'] = $video_path;
         $data["slug"] = Str::slug($request->title, '-');
         $data['user_id'] = auth()->id();
-        $post = Post::create($data);
+        // dd($data);
+        Post::create($data);
         return back()->with('success_message', 'Post added successfully');
     }
     /**

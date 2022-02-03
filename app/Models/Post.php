@@ -30,14 +30,18 @@ class Post extends Model
         return $query->where("is_top-story", Constants::ACTIVE);
     }
 
-    public function scopeBlog($query)
+    public function scopeVideo($query)
     {
         return $query->active()->where("type", Constants::VIDEO);
     }
 
-    public function scopeVlog($query)
+    public function scopeMusic($query)
     {
         return $query->active()->where("type", Constants::MUSIC);
+    }
+
+    public function isMusic(){
+        return $this->type == Constants::MUSIC;
     }
 
 

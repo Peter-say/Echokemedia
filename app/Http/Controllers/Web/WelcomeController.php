@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Helpers\Constants;
+use App\Helpers\PageMetaData;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\ContactUs;
@@ -19,16 +20,23 @@ use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function index()
+    public function index(Request $request , Post $posts)
     {
-        $categorytop = 40;
-        // dd($request->all());
+    // static $builder1;
+    // static $builder1;
+    //     $type = $request->type;
+      
+    //     if (ucfirst($type) == Constants::MUSIC) {
+    //         Post::music();
+    //     } else {
+    //        Post::video();
+    //     }
+
         $posts = Post::with(['category'])->get();
         $categories = PostCategory::latest()->get();
         $trendingTopics = Post::latest()->get();
         
-        // dd($posts);
-        // dd($share_posts);
+       
         $recents = Post::oldest()
             ->limit(10)
             ->get();
@@ -38,7 +46,7 @@ class WelcomeController extends Controller
             'categories' => $categories,
             "trendingTopics" => $trendingTopics,
             "recents" => $recents,
-            "categorytop" =>  $categorytop,
+            // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
     }
 
@@ -54,29 +62,6 @@ class WelcomeController extends Controller
     }
 
 
-    // public function storeComment(Request $request, User $user)
-    // {
-    //     // dd($request->all());
-    //     $request->validate([
-    //         'username' => 'required|string',
-    //         'email' => 'required|string',
-    //         'body' => 'required|string',
-    //     ]);
-
-
-    //     $comment = new Comment;
-    //     $comment->body = $request->get('body');
-    //     $comment->email = $request->get('email');
-    //     $comment->username = $request->get('username');
-    //     $comment->user()->associate($request->user());
-    //     $post = Post::find($request->get('post_id'));
-    //     // dd($post);
-    //     $post->comments()->save($comment);
-
-
-
-    //     return back()->with('success_message', 'Your comment has been successfully submited');
-    // }
 
     public function about()
     {
@@ -101,15 +86,19 @@ class WelcomeController extends Controller
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
+            // "metaData" => PageMetaData::blogDetailsPage($post)
         ]);
     }
 
     public function search(Request $request)
     {
         $search = $_GET['query'];
+        $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();
         $posts = Post::where('name', 'like', '%' . $search . '%')->get();
         return view('web.welcome', [
             "posts" => $posts,
+            "categories" => $categories,
+            // "metaData" => PageMetaData::searchPage()
         ]);
     }
 

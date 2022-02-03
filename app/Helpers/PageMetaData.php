@@ -16,50 +16,7 @@ class PageMetaData
         return $name . " " . self::DEFAULT_SUFFIX;
     }
 
-    static public function indexPage()
-    {
-        $meta = new MetaData();
-        return $meta->setAttribute("name", self::getTitle("Home"))
-            ->setAttribute("description", "Welcome to Echokemedia")
-            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("username", "Peter" ?? "Peace")
-            ->setAttribute("audience", "Public")
-            ->generate();
-    }
-
-    static public function contactPage()
-    {
-        $meta = new MetaData();
-
-        return $meta->setAttribute("title", self::getTitle("Contact Us"))
-            ->setAttribute("description", "Rapid contacts")
-            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("username", "Peter" ?? "Peace")
-            ->setAttribute("audience", "Public")
-            ->generate();
-            
-    }
-    static public function about()
-    {
-        $meta = new MetaData();
-
-        return $meta->setAttribute("name", self::getTitle("About Us"))
-            ->setAttribute("description", "About us")
-            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("username", "Peter" ?? "Peace")
-            ->setAttribute("audience", "Public")
-            ->generate();
-            
-    }
-
-    static public function blogPage($type)
-    {
-        $meta = new MetaData();
-        return $meta->setAttribute("name", self::getTitle(ucfirst($type)))
-            ->setAttribute("description", "Blog descrpition")
-            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->generate();
-    }
+  
 
     static public function searchPage()
     {
@@ -72,7 +29,7 @@ class PageMetaData
 
     static public function blogDetailsPage(Post $post)
     {
-        $meta = new MetaData();
+        $meta = new Post();
         $name = $post->meta_title ?? $post->name;
         return $meta->setAttribute("name", self::getTitle($name))
             ->setAttribute("description", $post->meta_description)

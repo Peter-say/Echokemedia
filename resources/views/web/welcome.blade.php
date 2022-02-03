@@ -6,13 +6,13 @@
  <body>
 
      <!-- ***** Preloader Start ***** -->
-     <!-- <div id="preloader">
+     <div id="preloader">
          <div class="jumper">
              <div></div>
              <div></div>
              <div></div>
          </div>
-     </div> -->
+     </div>
      <!-- ***** Preloader End ***** -->
 
 
@@ -62,13 +62,12 @@
                                                  <a class="btn btn-success text-white col-4-md" href="{{route('post.show' , $post->name)}}">Download here</a></li>
 
                                              </div>
-                                             <div class="col-6">
+                                             <!-- <div class="col-6">
                                                  <div class="social-media-share-icon">
-                                                      <a href="{{ route('media.share' , ['id' => $post->id , 'platform' => 'facebook'])}}" target="_blank"><i style="color: blue;" class="fa fa-facebook"></i></a>
-                                                     <i style="color: green;" class="fa fa-whatsapp"></i>
-                                                     <i style="color: red;" class="fa fa-instagram"></i>
+                                                     <a href="{{ route('media.share' , ['id' => $post->id , 'platform' => 'facebook'])}}" target="_blank"><i style="color: blue;" class="fa fa-facebook"></i></a>
+                                                     <a href="{{ route('media.share' , [ 'id' => $post->id , 'platform' => 'whatsapp' ])}}" target="blank"><i style="color:green;" class="fa fa-whatsapp"></i></a>
                                                  </div>
-                                             </div>
+                                             </div> -->
                                              <hr style="font-size:8px; color:green">
 
                                          </div>
