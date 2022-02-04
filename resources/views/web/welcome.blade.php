@@ -91,7 +91,7 @@
                                  <div class="sidebar-item search">
                                      <form id="search_form" method="GET" action="{{route('web.search')}}">
 
-                                         <input type="text" name="query" class="searchText" placeholder="type to search..." autocomplete="on" />
+                                         <input type="text" name="query" class="searchText" placeholder="Type to search..." autocomplete="on" />
                                          <input type="submit" class="searchbtn btn-sm mt-3 text-orange" value="Search" />
 
                                      </form>

@@ -57,7 +57,7 @@
 </head>
 
 <body>
-    @include('users.layouts.fragments.topnav')
+    @include('dashboards.layouts.fragments.topnavbar')
     @include('users.layouts.fragments.sidebar')
      
     @yield('content')

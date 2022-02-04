@@ -178,7 +178,7 @@
 
         <div class="footer-wrapper">
             <div class="footer-section f-section-1">
-                <p class="">Copyright © 2021 , All rights reserved.</p>
+                {{-- <p class="">Copyright © 2021 , All rights reserved.</p> --}}
             </div>
 
         </div>
