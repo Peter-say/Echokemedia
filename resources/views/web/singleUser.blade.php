@@ -42,7 +42,6 @@
                 </div>
                 <div class="down-content">
 
-
                   <div>
                   </div>
 
@@ -67,7 +66,6 @@
                             </a></li>
                           <li><a href="#">
                           <li><a class="btn btn-success text-white" href="{{route('post.download' , $post->id)}}">Download</a></li>
-
                           </a></li>
                         </ul>
                       </div>
@@ -76,8 +74,6 @@
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>

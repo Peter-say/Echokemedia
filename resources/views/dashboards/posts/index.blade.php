@@ -47,12 +47,12 @@
                                             <td>{{$post->id}}</td>
                                             <td>{{$post->content_type}}
                                             <td>{{$post->user->name}}</td>
-                                            <td> <img class="img-fluid" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                            <td> <img class="img-fluid" src="{{asset($post->cover_image)}}" alt="..." />
                                             </td>
                                             <td>
                                                 <a href="" target="_blank" rel="noopener noreferrer">
                                                     <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset('postVideos/' . $post->cover_video)}}" type="video/mp4">
+                                                        <source class="img-fluid" src="{{asset($post->cover_video)}}" type="video/mp4">
                                                     </video></a>
                                             </td>
                                             <td>{{$post->content_desccription}}</td>
@@ -60,13 +60,22 @@
 
 
                                             <td>
-                                                <form action="{{route('admin.post.destroy' , [ $post->id] )}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                <form action="{{route('admin.post.destroy' , $post->id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
+
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <a href="{{route('admin.post.edit' , $post->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
+                                                        </div>
+                                                        <div class="col-6">
+                                                        <a href=""onClick="$(this).parent().trigger('submit')"> <i type="submit" class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>
+
+                                                        </div>
+                                                    </div>
                                                 </form>
-                                                <a href="{{route('admin.post.edit' , $post->id )}}" class="btn btn-primary">Edit</a>
                                             </td>
+
                                         </tr>
                                         @endforeach
 
@@ -83,4 +92,4 @@
 
             </div>
         </div>
-@endsection
+        @endsection

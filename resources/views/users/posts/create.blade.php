@@ -19,8 +19,9 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h4>Create New Post</h4>
-                                    <span class="d-flex justify-content-center"><a class="btn btn-primary" href="">View Posts</a></span>
-
+                                    <span class="fr">
+                                        <a href="{{route('user.post.index')}}" class="btn btn-primary btn-sm ">View Posts</a>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -69,6 +70,22 @@
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
                                     <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control"></textarea>
+                                </div>
+
+                                <hr class="col-12">
+                                <h5 class="col-12 mb-3">Seo Data</h5>
+                                <div class="form-group col-md-5">
+                                    <label for="">Meta Title <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_title" required placeholder="Describe the post. if empty it uses the blog title...">
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <label for="">Meta Keywords <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_keywords" required placeholder="Enter search keywords...">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="">Meta Description <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_description" required placeholder="Summarize the blog post">
                                 </div>
 
                                 <div class="form-group col-12">

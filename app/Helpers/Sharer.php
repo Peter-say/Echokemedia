@@ -6,17 +6,37 @@ use App\Models\Post;
 
 class Sharer
 {
+    public String $og_url;
 
-    public function getLink($platform , $url)
+    public function setAttribute($name, $value)
     {
-        $url = urlencode($url);
-        if($platform == "facebook"){
+        $this->$name = $value;
+        return $this;
+    }
+    static public function blogDetailsPage(Post $post)
+    {
+        $name =  $post->name;
+        return  $name->setAttribute("og_url", $post->detailsUrl())
+            ->generate();
+    }
+    public function detailsUrl(Post $post)
+    {
+        return route("web.welcome", [
+            "id" => $this->id,
+            "name" => "name",
+            "post" => $post,
+        ]);
+    }
+
+    public function getLink($platform, $url)
+    {
+        if ($platform == "facebook") {
             $link = $this->shareOnFacebook($url);
         }
-        if($platform == "instagram"){
+        if ($platform == "instagram") {
             $link = $this->shareOnInstagram($url);
         }
-        if($platform == "whatsapp"){
+        if ($platform == "whatsapp") {
             $link = $this->shareOnWhatsapp($url);
         }
         return $link;

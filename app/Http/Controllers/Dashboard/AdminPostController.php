@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Helpers\Constants;
+use App\Helpers\MediaFilesHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\support\Str;
 
 class AdminPostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,7 @@ class AdminPostController extends Controller
     public function index()
     {
         $posts = Post::whereHas("user")->get();
-        return view('dashboards.posts.index' ,[
+        return view('dashboards.posts.index', [
             'posts' => $posts
         ]);
     }
@@ -28,15 +33,21 @@ class AdminPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-      
+
+        //     $can_post =  User::where('user_id', auth()->id());
+        //     $status = User::where(["status" =>  Constants::APPROVED]);
+
+        //    if( $can_post !==  $status){
+        //        return  back()->with('error_message', 'not approved' );   
+        //    }
+
         $boolOptions = Constants::BOOL_OPTIONS;
         $types = [Constants::VIDEO, Constants::MUSIC];
         $maxPost = 5;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
-
 
         if ($todays_post > $maxPost) {
             return view('dashboards.503_error');
@@ -48,7 +59,8 @@ class AdminPostController extends Controller
                     'categories' => $categories,
                     'types' => $types,
                     'boolOptions' =>  $boolOptions,
-                ]);
+                ]
+            );
         }
     }
 
@@ -59,50 +71,35 @@ class AdminPostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-        // dd($request->all());
+    {
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
-        $request->validate([
+        $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
             "cover_video" => 'required',
+            "meta_title" => "required|string",
+            "meta_keywords" => "required|string",
+            "meta_description" => "required|string",
             "is_sponsored" => "required|string|in:$allowedOptions",
-            "is_top_story" => "required|string|in:$allowedOptions",
+            "is_top_story" => "required|string|in:$allowedOptions", 
             "is_featured" => "required|string|in:$allowedOptions",
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
+            
         ]);
 
-        $meidiaImage = time() . '_' . $request->name . '.' .
-            $request->cover_image->extension();
+        $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
 
-        $request->cover_image->move(public_path('postImages'), $meidiaImage);
-
-
-        $meidiaVideo = time() . '-' . $request->name . '.' .
-            $request->cover_video->extension();
-        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
-
-        $request = Post::create([
-            'category_id' =>  $request->input('category_id'),
-            'name' =>  $request->input('name'),
-            'content_desccription' =>  $request->input('content_desccription'),
-            'type' =>  $request->input('type'),
-            'cover_image' => $meidiaImage,
-            'cover_video' => $meidiaVideo,
-            'is_sponsored' => $request->input('is_sponsored'),
-            'is_top_story' => $request->input('"is_top_story'),
-            'is_featured' => $request->input('is_featured'),
-            'can_comment' => $request->input('can_comment'),
-            'is_published' => $request->input('is_published'),
-            'user_id' => auth()->user()->id,
-
-        ]);
-
+        $data['cover_image'] = $cover_path;
+        $data['cover_video'] = $video_path;
+        $data["slug"] = Str::slug($request->title, '-');
+        $data['user_id'] = auth()->id();
+        $post = Post::create($data);
         return back()->with('success_message', 'Post added successfully');
     }
 
@@ -123,13 +120,14 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $post )
+    public function edit($post)
     {
-        $post = Post::where("id" , $post)->first();
+        $post = Post::where("id", $post)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
         $types = [Constants::VIDEO, Constants::MUSIC];
-        return view('dashboards.posts.edit_post',
+        return view(
+            'dashboards.posts.edit_post',
             [
                 "post" => $post,
                 'categories' => $categories,
@@ -146,38 +144,40 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $post)
+    public function update(Request $request , $id)
     {
+        // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
-        // $categories = Constants::CATEGORY;
-        $request->validate([
-           
-            'category_id' => "required|exist:categories,id",
+        $post = Post::where('id',$id);
+        // dd($id);
+        $data = $request->validate([
+            'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
-            "type" => "required|string|in:$allowedTypes",
-            'cover_image' => 'required|image',
-            "cover_video" => "mimes:mp4, mp3, ogx,oga,ogv,ogg,webm",
+            "type" => "nullable|string|in:$allowedTypes",
+            'cover_image' => 'nullable|image',
+            "cover_video" => 'nullable',
+            "meta_title" => "required|string",
+            "meta_keywords" => "required|string",
+            "meta_description" => "required|string",
             "is_sponsored" => "required|string|in:$allowedOptions",
-            "is_top_story" => "required|string|in:$allowedOptions",
+            "is_top_story" => "required|string|in:$allowedOptions", 
             "is_featured" => "required|string|in:$allowedOptions",
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
+        // dd($data);
+       $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+         $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
 
-        $meidiaImage = time() . '_' . $request->name . '.' .
-            $request->cover_image->extension();
-
-        $request->cover_image->move(public_path('postImages'), $meidiaImage);
-
-
-        $meidiaVideo = time() . '-' . $request->name . '.' .
-            $request->cover_video->extension();
-        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
-
-       
-
+        $data['cover_image'] = $cover_path;
+        $data['cover_video'] = $video_path;
+        $data["slug"] = Str::slug($request->title, '-');
+        $data['user_id'] = auth()->id();
+        // dd($post);
+        // dd($data);
+        $post->update($data);
         return back()->with('success_message', 'Post updated successfully');
     }
 
@@ -187,20 +187,11 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function destroy($post)
     {
-     
-        $post = Post::find(1);
-        if ($post != null){
-           
-            $post->delete();
-            
-            return back()->with("error_message" , "Deleted successfully!");
-        }
-           return back()->with("error_message" , "post can't be deleted!");
-        
-       
-    }
 
+        Post::where('id', $post)->delete();
+        return back()->with("error_message", "Deleted successfully!");
+    }
 }

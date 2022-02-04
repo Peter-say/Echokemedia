@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Helpers\Constants;
+use App\Helpers\PageMetaData;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\ContactUs;
@@ -14,18 +15,28 @@ use Illuminate\Http\Request;
 use App\Helpers\Sharer;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Jorenvh\Share\ShareFacade;
+use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function index()
+    public function index(Request $request , Post $posts)
     {
-        $categorytop = 40;
-        // dd($request->all());
-        $posts = Post::latest()->get();
+    // static $builder1;
+    // static $builder1;
+    //     $type = $request->type;
+      
+    //     if (ucfirst($type) == Constants::MUSIC) {
+    //         Post::music();
+    //     } else {
+    //        Post::video();
+    //     }
+
+        $posts = Post::with(['category'])->get();
         $categories = PostCategory::latest()->get();
         $trendingTopics = Post::latest()->get();
-
-
+        
+       
         $recents = Post::oldest()
             ->limit(10)
             ->get();
@@ -35,43 +46,22 @@ class WelcomeController extends Controller
             'categories' => $categories,
             "trendingTopics" => $trendingTopics,
             "recents" => $recents,
-            "categorytop" =>  $categorytop,
+            // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
     }
 
     public function recent()
     {
+        $categories = PostCategory::get();
         $posts = Post::latest()
             ->paginate(12);
         return view('web.layouts.includes.pages-sidebar', [
             'posts' => $posts,
+            'categories' => $categories
         ]);
     }
 
 
-    public function storeComment(Request $request, User $user)
-    {
-        // dd($request->all());
-        $request->validate([
-            'username' => 'required|string',
-            'email' => 'required|string',
-            'body' => 'required|string',
-        ]);
-
-
-        $comment = new Comment;
-        $comment->body = $request->get('body');
-        $comment->email = $request->get('email');
-        $comment->username = $request->get('username');
-        $comment->user()->associate($request->user());
-        $post = Post::find($request->get('post_id'));
-        // dd($post);
-        $post->comments()->save($comment);
-
-
-
-        return back()->with('success_message', 'Your comment has been successfully submited');
-    }
 
     public function about()
     {
@@ -96,15 +86,19 @@ class WelcomeController extends Controller
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
+            // "metaData" => PageMetaData::blogDetailsPage($post)
         ]);
     }
 
     public function search(Request $request)
     {
         $search = $_GET['query'];
+        $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();
         $posts = Post::where('name', 'like', '%' . $search . '%')->get();
         return view('web.welcome', [
             "posts" => $posts,
+            "categories" => $categories,
+            // "metaData" => PageMetaData::searchPage()
         ]);
     }
 
@@ -113,16 +107,9 @@ class WelcomeController extends Controller
     function getFile($id)
     {
         $post = Post::where("id", $id)->firstOrFail();
-        return response()->download('postVideos/' . $post->cover_video);
+        return response()->download($post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
-    public function share(Request $request, Post $post)
-    {
-        $post = Post::first();
-        $platform = $request->platform;
 
-        $sharer = new Sharer;
-        $link = $sharer->getLink($platform, $post->detailsUrl($sharer));
-        return redirect()->away($link);
-    }
+    
 }

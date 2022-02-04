@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Users;
 
 use app\Helpers\Constants;
+use App\Helpers\MediaFilesHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -16,14 +18,37 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Post $posts , PostCategory $categories)
+    public function index(User $user)
     {
-         $posts = $user->posts()->with(['user'])->first();
+        $posts = $user->posts()->with(['user'])->paginate(5);
+          return view('users.posts.index' , [
+           'user' => $user,
+           'posts' => $posts,
+          ]);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(User $user, Post $posts , PostCategory $categories)
+    {
+         
+        $posts = $user->posts()->with(['user'])->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::where("is_active", Constants::ACTIVE)->get();
         $types = [Constants::VIDEO, Constants::MUSIC];
        
-        
+        //  $can_post =  User::where(["status" =>  Constants::APPROVED, ]);
+        //  $status = Post::where('user_id', auth()->id());
+
+        // if($can_post !==  $status){
+        //     return  back()->with('error_message', 'not approved' );
+        // }
+
+
         $maxPost = 2;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
@@ -42,16 +67,6 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -63,45 +78,28 @@ class PostController extends Controller
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $request->validate([
-            'category_id' => 'required|numeric|exists:post_categories,id',
+            'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required|string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
             "cover_video" => "required",
-            // "is_sponsored" => "required|string|in:$allowedOptions",
-            // "is_top_story" => "required|string|in:$allowedOptions",
-            // "is_featured" => "required|string|in:$allowedOptions",
-            // "is_published" => "required|string|in:$allowedOptions",
-            // "can_comment" => "required|string|in:$allowedOptions",
-        ]);
-        $meidiaImage = time() . '_' . $request->name . '.' .
-            $request->cover_image->extension();
-
-        $request->cover_image->move(public_path('postImages'), $meidiaImage);
-
-
-        $meidiaVideo = time() . '-' . $request->name . '.' .
-            $request->cover_video->extension();
-        $request->cover_video->move(public_path('postVideos'), $meidiaVideo);
-
-        $request = Post::create([
-            'name' =>  $request->input('name'),
-            'content_desccription' =>  $request->input('content_desccription'),
-            'type' =>  $request->input('type'),
-            'cover_image' => $meidiaImage,
-            'cover_video' => $meidiaVideo,
-            'is_sponsored' => $request->input('is_sponsored'),
-            'is_top_story' => $request->input('"is_top_story'),
-            'is_featured' => $request->input('is_featured'),
-            'can_comment' => $request->input('can_comment'),
-            'user_id' => auth()->user()->id,
-
+            "meta_title" => "required|string",
+            "meta_keywords" => "required|string",
+            "meta_description" => "required|string",
         ]);
 
+        $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+        $video_path =MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
+
+        $data['cover_image'] = $cover_path;
+        $data['cover_video'] = $video_path;
+        $data["slug"] = Str::slug($request->title, '-');
+        $data['user_id'] = auth()->id();
+        // dd($data);
+        Post::create($data);
         return back()->with('success_message', 'Post added successfully');
     }
-
     /**
      * Display the specified resource.
      *
@@ -119,9 +117,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($post)
     {
-        //
+        $post = Post::where("id", $post)->first();
+        $boolOptions = Constants::BOOL_OPTIONS;
+        $categories = PostCategory::get();
+        $types = [Constants::VIDEO, Constants::MUSIC];
+        return view(
+            'users.posts.edit',
+            [
+                "post" => $post,
+                'categories' => $categories,
+                'types' => $types,
+                'boolOptions' =>  $boolOptions,
+            ]
+        );
     }
 
     /**

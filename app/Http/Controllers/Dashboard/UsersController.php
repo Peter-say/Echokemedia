@@ -88,11 +88,10 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function status(Request $request)
+    public function status(Request $request , $id)
     {
-        $status = $request->status;
-        User::find($request->id)->update([
-            "status" => $status,
+        User::findOrFail($id)->update([
+            "status" => $request->status,
         ]);
         return back()->with("success_message", "Status updated successfully!");
     }
