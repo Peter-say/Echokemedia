@@ -44,7 +44,7 @@
                                          <div class="row mb-2 d-flex justify-content-center">
                                              <div class="col-6 ">
                                                  <div class="">
-                                                     <img class="img-fluid image-width " src="{{asset( $post->cover_image)}}" alt="..." />
+                                                     <img class="img-fluid image-width " src="{{asset($post->cover_image)}}" alt="..." />
                                                  </div>
                                              </div>
 

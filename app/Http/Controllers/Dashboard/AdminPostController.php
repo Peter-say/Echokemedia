@@ -88,8 +88,7 @@ class AdminPostController extends Controller
             "is_top_story" => "required|string|in:$allowedOptions", 
             "is_featured" => "required|string|in:$allowedOptions",
             "is_published" => "required|string|in:$allowedOptions",
-            "can_comment" => "required|string|in:$allowedOptions",
-            
+            "can_comment" => "required|string|in:$allowedOptions",   
         ]);
 
         $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
