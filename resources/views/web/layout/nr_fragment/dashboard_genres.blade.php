@@ -9,28 +9,13 @@
     </li>
     <li>
         <img src="{{ $admin_assets }}/skrn/images/genres/action.png" alt="Action">
-        <h6>Action</h6>
+        <h6>Blues</h6>
     </li>
     <li>
         <img src="{{ $admin_assets }}/skrn/images/genres/romance.png" alt="Romance">
-        <h6>Romance</h6>
+        <h6>Raggae</h6>
     </li>
-    <li>
-        <img src="{{ $admin_assets }}/skrn/images/genres/horror.png" alt="Horror">
-        <h6>Horror</h6>
-    </li>
-    <li>
-        <img src="{{ $admin_assets }}/skrn/images/genres/fantasy.png" alt="Fantasy">
-        <h6>Fantasy</h6>
-    </li>
-    <li>
-        <img src="{{ $admin_assets }}/skrn/images/genres/sci-fi.png" alt="Sci-Fi">
-        <h6>Sci-Fi</h6>
-    </li>
-    <li>
-        <img src="{{ $admin_assets }}/skrn/images/genres/thriller.png" alt="Thriller">
-        <h6>Thriller</h6>
-    </li>
+  
     <li>
         <img src="{{ $admin_assets }}/skrn/images/genres/western.png" alt="Western">
         <h6>Western</h6>
