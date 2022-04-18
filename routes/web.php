@@ -33,6 +33,7 @@ Route::get('category/{id}/post', [App\Http\Controllers\UserPostController::class
 
 Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
+  Route::get('/newreleases', [App\Http\Controllers\Web\WelcomeController::class, 'newreleases'])->name('newreleases');
   Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
   Route::get('/', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
   Route::post('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'storeContact']);
