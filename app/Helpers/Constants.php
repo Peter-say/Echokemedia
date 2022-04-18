@@ -25,8 +25,10 @@ namespace App\Helpers;
         self::INACTIVE => "No",
      ];
 
-     const MUSIC = "music";
+     
      const VIDEO = "video";
+     const MUSIC = "music";
+
 
 
         const WIZKID =  "Wizkid";

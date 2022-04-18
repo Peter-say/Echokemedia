@@ -102,6 +102,10 @@ class WelcomeController extends Controller
         ]);
     }
 
+    public function newreleases(){
+        return view('web.newreleases');
+    }
+
 
 
     function getFile($id)
