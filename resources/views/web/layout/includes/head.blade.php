@@ -12,5 +12,5 @@
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css">
     <!-- iconsmind.com Icons -->
 
-    <title>SKRN - Media Streaming App</title>
+    <title>Echokemedia</title>
 </head>

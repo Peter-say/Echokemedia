@@ -99,7 +99,7 @@
 
                                 <div class="progression-studios-slider-caption-width">
                                     <div class="progression-studios-slider-caption-align">
-                                        <h2>Welcome to SKRN<span style="color:#3db13d;">.</span></h2>
+                                        <h2>Welcome to Echokemedia<span style="color:#3db13d;">.</span></h2>
                                         <h6>Watch the largest collection of Movies and TV series anytime anywhere!</h6>
                                         <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro"
                                             href="signup-step1.html" role="button">Start Your Free Trial</a>
