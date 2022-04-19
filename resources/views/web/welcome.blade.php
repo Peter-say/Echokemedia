@@ -1,127 +1,175 @@
- @extends('web.layouts.app')
+@extends('web.layout.app')
 
 
- @section('contents')
-
- <body>
-
-     <!-- ***** Preloader Start ***** -->
-     <div id="preloader">
-         <div class="jumper">
-             <div></div>
-             <div></div>
-             <div></div>
-         </div>
-     </div>
-     <!-- ***** Preloader End ***** -->
+@section('contents')
+    @include('web.layout.includes.header')
 
 
-     <!-- Page Content -->
-     <!-- Banner Starts Here -->
 
 
-     <div class="container-fluid mt-5">
-         <h1 class="popular-post d-flex justify-content-center">Trending Today</h1>
-         @include('web.layouts.includes.popular-post')
-     </div>
+    @include('web.layout.includes.slider')
+    <!-- close .progression-studios-slider - See /js/script.js file for options -->
+
+    <div id="content-pro">
+
+        <div class="container">
 
 
-     <section class="blog-posts">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-8">
-                     <div class="all-blog-posts">
-                         <div class="row">
-                             <div class="">
-                                 <div class="blog-post">
-                                     <div class="blog-thumb">
-                                         <img src="assets/images/blog-post-01.jpg" alt="">
-                                     </div>
-                                     @if($posts->count())
-                                     @foreach($posts as $post)
-
-                                     <div class="container">
-                                         <div class="row mb-2 d-flex justify-content-center">
-                                             <div class="col-6 ">
-                                                 <div class="">
-                                                     <img class="img-fluid image-width " src="{{asset( $post->cover_image)}}" alt="..." />
-                                                 </div>
-                                             </div>
-
-                                             <div class="col-6">
-                                                 <a class="text-success" href="{{route('post.show' , $post->name)}}">
-                                                     <h6 class="text-success">{{$post->name}}</h6>
-                                                 </a>
-                                                 <span><small>Posted By </small>
-                                                     <h6 style="font-size: 14px;"><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></h6> <a href="#">{{$post->created_at->diffForHumans()}}</a>
-                                                 </span>
-
-                                             </div>
-
-                                             <div class="col-6 mt-2">
-                                                 <a class="btn btn-success text-white col-4-md" href="{{route('post.show' , $post->name)}}">Download here</a></li>
-
-                                             </div>
-                                             <!-- <div class="col-6">
-                                                 <div class="social-media-share-icon">
-                                                     <a href="{{ route('media.share' , ['id' => $post->id , 'platform' => 'facebook'])}}" target="_blank"><i style="color: blue;" class="fa fa-facebook"></i></a>
-                                                     <a href="{{ route('media.share' , [ 'id' => $post->id , 'platform' => 'whatsapp' ])}}" target="blank"><i style="color:green;" class="fa fa-whatsapp"></i></a>
-                                                 </div>
-                                             </div> -->
-                                             <hr style="font-size:8px; color:green">
-
-                                         </div>
+            <div class="row">
+                <div class="col-md my-auto">
+                    <!-- .my-auto vertically centers contents -->
+                    <img src="{{ $admin_assets }}/skrn/images/demo/home-1.jpg" class="img-fluid"
+                        alt="Watch in Any Devices">
+                </div>
+                <div class="col-md my-auto">
+                    <!-- .my-auto vertically centers contents -->
+                    <h2 class="short-border-bottom">Watch On Any Device</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing nula pellentesquemagna a convallis nula
+                        facilisi. Praesent consequat eget elementumconsectetur. Nullam interdum, quam ac sagittis
+                        facilisis sapien dolor ipsum consequat ellit tristique senectus</p>
+                    <div style="height:15px;"></div>
+                    <p><a class="btn btn-green-pro" href="signup-step1.html" role="button">Learn More</a></p>
+                </div>
+            </div><!-- close .row -->
 
 
-                                     </div>
-
-                                     @endforeach
-
-                                     @else
-                                     <div class="container">
-                                         <h1>No content at the moment :)</h1>
-                                     </div>
-
-
-                                     @endif
-                                 </div>
-                             </div>
-
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-lg-4 mt-4 mb-4">
-                     <div class="sidebar">
-                         <div class="row">
-                             <div class="col-lg-12">
-                                 <div class="sidebar-item search">
-                                     <form id="search_form" method="GET" action="{{route('web.search')}}">
-
-                                         <input type="text" name="query" class="searchText" placeholder="type to search..." autocomplete="on" />
-                                         <input type="submit" class="searchbtn btn-sm mt-3 text-orange" value="Search" />
-
-                                     </form>
-                                 </div>
-                             </div>
-
-                             <div class="mt-4" id="social-links">
-                                 <!-- <form action="{{ route('media.share')}}" method="post">
-                                     @csrf
-                                     <button type="submit" class="btn btn-primary btn-sm">Share</button>
-                                 </form> -->
-
-                             </div>
-
-                             @include('web.layouts.includes.pages-sidebar')
-                         </div>
-                     </div>
-                 </div>
-             </div>
+            <div class="row">
+                <div class="col-md my-auto">
+                    <!-- .my-auto vertically centers contents -->
+                    <h2 class="short-border-bottom">Make Your Own Playlist</h2>
+                    <p>Curabitur at lobortis leo varius tellus. Phasellus id purus placeratfinibus diam a, feugiat
+                        massa. Donec porta orci lectus, ut lacinia risus fringilla nulla facilisi suspendisse eget id
+                        justo ac magna finibus dignissim. Integer purus feugiat gravida convalis,</p>
+                    <div style="height:15px;"></div>
+                    <p><a class="btn btn-green-pro" href="signup-step1.html" role="button">Start Watching</a></p>
+                </div>
+                <div class="col-md my-auto">
+                    <!-- .my-auto vertically centers contents -->
+                    <img src="{{ $admin_assets }}/skrn/images/demo/home-2.jpg" class="img-fluid"
+                        alt="Make Your Own Playlist">
+                </div>
+            </div><!-- close .row -->
 
 
-         </div>
-     </section>
+            <div class="row">
+                <div class="col-md my-auto">
+                    <!-- .my-auto vertically centers contents -->
+                    <img src="{{ $admin_assets }}/skrn/images/demo/home-3.jpg" class="img-fluid"
+                        alt="Watch in Ultra HD">
+                </div>
+                <div class="col-md my-auto">
+                    <!-- .my-auto vertically centers contents -->
+                    <h2 class="short-border-bottom">Watch in Ultra HD</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing nula pellentesquemagna a convallis nula
+                        facilisi. Praesent consequat eget elementumconsectetur. Nullam interdum, quam ac sagittis
+                        facilisis sapien dolor ipsum consequat ellit tristique senectus</p>
+                    <div style="height:15px;"></div>
+                    <p><a class="btn btn-green-pro" href="signup-step1.html" role="button">Start Your Free Trial</a></p>
+                </div>
+            </div><!-- close .row -->
 
- </body>
+            <div style="height:35px;"></div>
 
- @endsection
+            <div class="clearfix"></div>
+        </div><!-- close .container -->
+
+
+        <hr>
+
+        <div class="progression-pricing-section-background">
+            <div class="container">
+
+                <div class="row">
+                    <div class="mx-auto">
+                        <div style="height:70px;"></div>
+                        <h2 class="short-border-bottom">Our Plans &amp; Pricing</h2>
+                    </div>
+                </div><!-- close .row -->
+
+                <div style="height:25px;"></div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <ul class="checkmark-list-pro">
+                            <li>1 month unlimited access!</li>
+                            <li>Thousands of TV shows, movies &amp; more.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md">
+                        <ul class="checkmark-list-pro">
+                            <li>Stream on your phone, laptop, tablet or TV.</li>
+                            <li>You can even Download & watch offline.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md">
+                        <ul class="checkmark-list-pro">
+                            <li>1 month unlimited access!</li>
+                            <li>Thousands of TV shows, movies &amp; more.</li>
+                        </ul>
+                    </div>
+                </div><!-- close .row -->
+
+
+                <div class="pricing-table-pro">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="pricing-table-col">
+                                <h6>FREE TRIAL</h6>
+                                <h2>Free</h2>
+                                <ul>
+                                    <li>720p Available</li>
+                                    <li>Watch on any Device</li>
+                                    <li>20 Movies and Shows</li>
+                                    <li>Download Available</li>
+                                </ul>
+                                <p><a class="btn" href="signup-step2.html" role="button">Choose Plan</a></p>
+                            </div><!-- close .pricing-table-col -->
+                        </div><!-- close .col-md-12 -->
+                        <div class="col-md">
+                            <div class="pricing-table-col pricing-table-col-shadow-pro">
+                                <h6>STARTER</h6>
+                                <h2><sup>$</sup>10<span> / month</span></h2>
+                                <ul>
+                                    <li>HD Available</li>
+                                    <li>Watch on any Device</li>
+                                    <li>70 Movies and Shows</li>
+                                    <li>Download Available</li>
+                                </ul>
+                                <p><a class="btn btn-green-pro" href="signup-step2.html" role="button">Choose Plan</a>
+                                </p>
+                            </div><!-- close .pricing-table-col -->
+                        </div><!-- close .col-md-12 -->
+                        <div class="col-md">
+                            <div class="pricing-table-col">
+                                <h6>PREMIUM</h6>
+                                <h2><sup>$</sup>14<span> / month</span></h2>
+                                <ul>
+                                    <li>Ultra HD Available</li>
+                                    <li>Watch on any Device</li>
+                                    <li>Unlimited Movies and Shows</li>
+                                    <li>Download Available</li>
+                                </ul>
+                                <p><a class="btn" href="signup-step2.html" role="button">Choose Plan</a></p>
+                            </div><!-- close .pricing-table-col -->
+                        </div><!-- close .col-md-12 -->
+                    </div><!-- close .row -->
+                </div><!-- close .pricing-table-pro -->
+
+
+                <div class="clearfix"></div>
+            </div><!-- close .container -->
+
+        </div><!-- close .progression-pricing-section-background -->
+
+    </div><!-- close #content-pro -->
+
+    @include('web.layout.includes.footer')
+
+
+    <a href="#0" id="pro-scroll-top"><i class="fas fa-chevron-up"></i></a>
+
+
+    <!-- Modal -->
+    @include('web.layout.includes.modal')
+    <!-- close .modal -->
+@endsection
