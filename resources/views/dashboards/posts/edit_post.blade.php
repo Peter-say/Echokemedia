@@ -56,13 +56,9 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label for="">Type <span>*</span></label>
-                                    <select name="type" class="form-control" id="">
-                                        <option value="" disabled selected>Select Type</option>
-                                        @foreach ($types as $type)
-                                        <option value="{{ $type }}" {{ $type == $post->type ? 'selected' : '' }}>
-                                    {{ $type }}</option>
-                                        @endforeach
+                                    <label for="">Type <span class="required">*</span></label>
+                                    <select name="type" class="form-control" id="" required>
+                                        <option value="{{$types}}" disabled selected></option>
                                     </select>
                                 </div>
 

@@ -52,7 +52,7 @@
                                             <td>
                                                 <a href="" target="_blank" rel="noopener noreferrer">
                                                     <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset($post->cover_video)}}" type="video/mp4">
+                                                        <source class="img-fluid" src="{{asset($post->cover_music)}}" type="music/mp3">
                                                     </video></a>
                                             </td>
                                             <td>{{$post->content_desccription}}</td>

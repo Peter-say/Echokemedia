@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\support\Str;
 
-class AdminPostController extends Controller
+class AdminMusicController extends Controller
 {
 
     /**
@@ -44,7 +44,7 @@ class AdminPostController extends Controller
         //    }
 
         $boolOptions = Constants::BOOL_OPTIONS;
-        $types = [Constants::VIDEO, Constants::MUSIC];
+        $types = Constants::MUSIC;
         $maxPost = 5;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
@@ -63,7 +63,6 @@ class AdminPostController extends Controller
             );
         }
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -74,14 +73,14 @@ class AdminPostController extends Controller
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
-        $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
-        $data = $request->validate([
+        $allowedTypes = Constants::MUSIC;
+       $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_video" => 'required:mines:mp3,mp4',
+            "cover_music" => 'required:mines:mp3',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -91,14 +90,14 @@ class AdminPostController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",   
         ]);
+        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music , "postMusic");
 
-        $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
-
-        $data['cover_image'] = $cover_path;
-        $data['cover_video'] = $video_path;
+        $data['cover_image'] = $image_path;
+        $data['cover_music'] = $music_path;
         $data["slug"] = Str::slug($request->title, '-');
         $data['user_id'] = auth()->id();
+        // dd($request->all());
         Post::create($data);
         return back()->with('success_message', 'Post added successfully');
     }
@@ -125,7 +124,7 @@ class AdminPostController extends Controller
         $post = Post::where("id", $post)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
-        $types = [Constants::VIDEO, Constants::MUSIC];
+        $types = Constants::MUSIC;
         return view(
             'dashboards.posts.edit_post',
             [
@@ -148,7 +147,7 @@ class AdminPostController extends Controller
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
-        $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
+        $allowedTypes = Constants::MUSIC;
         $post = Post::where('id',$id);
         // dd($id);
         $data = $request->validate([
@@ -157,7 +156,7 @@ class AdminPostController extends Controller
             'content_desccription' => 'required:string',
             "type" => "nullable|string|in:$allowedTypes",
             'cover_image' => 'nullable|image',
-            "cover_video" => 'nullable',
+            "cover_music" => 'nullable|mines:mp3',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -172,7 +171,7 @@ class AdminPostController extends Controller
          $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
 
         $data['cover_image'] = $cover_path;
-        $data['cover_video'] = $video_path;
+        $data['cover_music'] = $video_path;
         $data["slug"] = Str::slug($request->title, '-');
         $data['user_id'] = auth()->id();
         // dd($post);
@@ -190,7 +189,6 @@ class AdminPostController extends Controller
 
     public function destroy($post)
     {
-
         Post::where('id', $post)->delete();
         return back()->with("error_message", "Deleted successfully!");
     }
