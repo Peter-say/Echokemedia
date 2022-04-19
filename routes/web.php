@@ -8,7 +8,8 @@ use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
 use App\Http\Controllers\Users\PostController;
-use App\Http\Controllers\Dashboard\AdminPostController;
+use App\Http\Controllers\Dashboard\AdminVideoController;
+use App\Http\Controllers\Dashboard\AdminMusicController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 
@@ -46,7 +47,6 @@ Route::prefix("media")->as("media.")->group(function () {
 });
 
 Auth::routes(['verify' => true]);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\Web\WelcomeController::class, 'search'])->name('web.search');
 Route::get('/post/{post:name}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
@@ -57,10 +57,11 @@ Route::get('/file/download/{id}', [App\Http\Controllers\Web\WelcomeController::c
 Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
   Route::get('/users_messages', [App\Http\Controllers\Dashboard\AdminController::class, 'usersMessages'])->name('users_messages');
-  Route::get('/over_view', [App\Http\Controllers\Dashboard\VideosController::class, 'over_view'])->name('over_view');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
-  Route::resource('post', AdminPostController::class)->middleware('Approved');
+  Route::resource('post', AdminMusicController::class);
+  Route::resource('/video', AdminVideosController::class);
+
 
 
   Route::resource('category', PostCategoryController::class);

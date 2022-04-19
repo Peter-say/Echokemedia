@@ -19,7 +19,7 @@ class ApprovedMiddleWare
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->status !== Constants::APPROVED) {
-            return back()->with('error_message', 'You can only post, after we review your information'); // do something if the user is not approved
+            return back()->with('error_message', 'You are not yet aproved to post. Please contact the admin for further infomation.'); // do something if the user is not approved
         }else{
             return $next($request);
         }

@@ -18,9 +18,10 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id')->constrained('users');
             $table->unsignedBigInteger('category_id')->constrained('post_categories');
             $table->string('cover_image');
-            $table->string('cover_video');
+            $table->string('cover_music')->default('0');
+            $table->string('cover_video')->default('0');
             $table->string('name');
-            $table->enum('type' , ["Blog" , "Video"]);
+            $table->string('type');
             $table->text('content_desccription');
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();

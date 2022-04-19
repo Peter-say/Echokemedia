@@ -33,12 +33,12 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Image <span class="required">*</span></label>
-                                    <input class="form-control" type="file" name="cover_image">
+                                    <input class="form-control" type="file" name="cover_image" value="{{old('cover_image') ?? ''}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="">Cover Music Or Video <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_video" value="">
+                                    <label for="">Cover Music <span class="">*</span></label>
+                                    <input class="form-control" type="file" name="cover_music" value="{{old('cover_music') ?? ''}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -55,30 +55,24 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="">Title <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="name" placeholder="......">
+                                    <input class="form-control" type="text" name="name" placeholder="{{old('name') ?? '......'}}">
                                 </div>
 
                                 <div class="form-group col-md-3">
                                     <label for="">Type <span class="required">*</span></label>
-                                    <select name="type" class="form-control" id="" required>
-                                        <option value="" disabled selected>Select Type</option>
-                                        @foreach ($types as $type)
-                                        <option value="{{ $type }}">{{ $type }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>
-
-
+                                
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
-                                    <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control"></textarea>
+                                    <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control">{{old('content_desccription')}}</textarea>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="">Is Sponsored <span class="required">*</span></label>
                                     <select name="is_sponsored" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -88,7 +82,7 @@
                                     <select name="is_top_story" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -98,7 +92,7 @@
                                     <select name="is_featured" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -108,7 +102,7 @@
                                     <select name="is_published" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -118,7 +112,7 @@
                                     <select name="can_comment" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -127,16 +121,16 @@
                                 <h5 class="col-12 mb-3">Seo Data</h5>
                                 <div class="form-group col-md-5">
                                     <label for="">Meta Title <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="meta_title" required placeholder="Describe the post. if empty it uses the blog title...">
+                                    <input class="form-control" type="text" name="meta_title" required placeholder="{{old('meta_keywords') ?? 'Describe the post. if empty it uses the blog title...'}}">
                                 </div>
                                 <div class="form-group col-md-7">
                                     <label for="">Meta Keywords <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="meta_keywords" required placeholder="Enter search keywords...">
+                                    <input class="form-control" type="text" name="meta_keywords" required placeholder="{{old('meta_keywords') ?? 'Enter search keywords...'}}">
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="">Meta Description <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="meta_description" required placeholder="Summarize the blog post">
+                                    <input class="form-control" type="text" name="meta_description" required placeholder="{{old('meta_keywords') ?? 'Summarize the blog post'}}">
                                 </div>
 
                                 <div class="form-group col-12">
