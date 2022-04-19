@@ -1,0 +1,138 @@
+*{
+    box-sizing: border-box;
+    padding: none;
+    margin: none;
+}
+
+.search-bar-area{
+    background:cornsilk;
+    width:100%;
+    align-content: center;
+    height: 10vh;
+    margin-top: 3%;
+}
+
+.search-bar-area  .search-bar-tools input  ,i {
+   align-items: center;
+}
+
+.search-bar-tools input  {
+  width: 90%;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  align-content: center;
+  margin-top: 10px;
+  outline: 2px solid blue;
+}
+
+.search-bar-tools i{
+ font-size: 25px;
+ cursor: pointer;
+ margin-top: 10px;
+}
+
+.main-container{
+    margin-top: 5%;
+    background: rgba(169, 169, 169, 0.986);
+    padding:2%;
+}
+
+.major-col-sm{
+  height: 80vh;
+}
+
+.major-col-sm{
+   background: white;
+   margin-top: 10px;
+   margin-left: 40px;
+
+}
+
+#top-podcast, h4{
+    text-align: center;
+    color: red;
+}
+
+#podcast-horizontal{
+    width: 100%;
+    height: 2vh;
+    color: blue;
+}
+
+.content-music-right{
+    background: white;
+    margin-top: 10px;
+    margin-left: 2px;
+    padding-right: 20px;
+    width: 100%;
+   display: flex;
+   flex-direction: row;
+   align-content: center;
+}
+
+.major-col-lg img{
+    width: 100px;
+    height: 100px;
+    margin-top: 30px;
+    margin-left: 10px;
+
+}
+
+
+.minor-col-sm img{
+    width: 80px;
+    padding: 10px;
+    border-radius: 10%;
+}
+
+.song-title{
+    padding-top: 0;
+}
+
+.song-owner h6{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.content-music-left{
+    padding-bottom: 16px;
+    align-content: center;
+}
+
+.audio-player{
+    padding-top: 20px;
+    width: 100%;
+    height: 8vh;
+    color: black;
+    border-radius: 2px;
+}
+
+ /* download section on col-9 */
+.details-2-info{
+    margin-left: 35px;
+}
+
+.details-2-info h4{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: blue;
+}
+
+
+/* end download section on col-9 */
+
+@media only screen and (max-width:600px) {
+    .details-2-info{
+        margin-left: 95px;
+    }
+    
+    .details-2-info h4{
+       font-family: Verdana, Geneva, Tahoma, sans-serif;
+       color: blue;
+    } 
+    
+}
+
+
+
+
