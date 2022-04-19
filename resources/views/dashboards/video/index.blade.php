@@ -19,7 +19,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Post Information</h4>
+                                    <h4>video Information</h4>
                                 </div>
                             </div>
                         </div>
@@ -29,8 +29,8 @@
                                     <thead>
                                         <tr>
                                             <th class="">S/N</th>
-                                            <th class="">Post Type</th>
-                                            <th class="">Post By</th>
+                                            <th class="">video Type</th>
+                                            <th class="">video By</th>
                                             <th class="">Cover Image</th>
                                             <th class="">Cover Video</th>
                                             <th class="">Description</th>
@@ -43,30 +43,30 @@
 
 
                                         <tr>
-                                            @foreach($posts as $post)
-                                            <td>{{$post->id}}</td>
-                                            <td>{{$post->type}}
-                                            <td>{{$post->user->name}}</td>
-                                            <td> <img class="img-fluid" src="{{asset($post->cover_image)}}" alt="..." />
+                                            @foreach($videos as $video)
+                                            <td>{{$video->id}}</td>
+                                            <td>{{$video->type}}
+                                            <td>{{$video->user->name}}</td>
+                                            <td> <img class="img-fluid" src="{{asset($video->cover_image)}}" alt="..." />
                                             </td>
                                             <td>
                                                 <a href="" target="_blank" rel="noopener noreferrer">
                                                     <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset($post->cover_music)}}" type="music/mp3">
+                                                        <source class="img-fluid" src="{{asset($video->cover_music)}}" type="music/mp3">
                                                     </video></a>
                                             </td>
-                                            <td>{{$post->content_desccription}}</td>
-                                            <td>{{$post->created_at}}
+                                            <td>{{$video->content_desccription}}</td>
+                                            <td>{{$video->created_at}}
 
 
                                             <td>
-                                                <form action="{{route('admin.post.destroy' , $post->id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                <form action="{{route('admin.video.destroy' , $video->id)}}" method="video" onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <a href="{{route('admin.post.edit' , $post->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
+                                                            <a href="{{route('admin.video.edit' , $video->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
                                                         </div>
                                                         <div class="col-6">
                                                         <a href=""onClick="$(this).parent().trigger('submit')"> <i type="submit" class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>

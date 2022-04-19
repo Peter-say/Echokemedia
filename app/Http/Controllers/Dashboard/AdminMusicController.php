@@ -45,7 +45,7 @@ class AdminMusicController extends Controller
 
         $boolOptions = Constants::BOOL_OPTIONS;
         $types = Constants::MUSIC;
-        $maxPost = 5;
+        $maxPost = 15;
         $todays_post = Post::where('user_id', auth()->id())
             ->whereDate("created_at", today())->count();
 
@@ -99,7 +99,7 @@ class AdminMusicController extends Controller
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
-        return back()->with('success_message', 'Post added successfully');
+        return redirect()->route('admin.post.index')->with('success_message', 'Post added successfully');
     }
 
     /**
@@ -167,8 +167,8 @@ class AdminMusicController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         // dd($data);
-       $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-         $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
+         $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postMusic");
 
         $data['cover_image'] = $cover_path;
         $data['cover_music'] = $video_path;

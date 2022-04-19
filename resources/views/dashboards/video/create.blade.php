@@ -12,28 +12,33 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
                 <div id="tableCheckbox" class="">
-                   
-                    
+
 
                     <div class="statbox widget box box-shadow mt-5">
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Edit Post</h4>
+
+                                    <h4>Create New video
+                                        <span class="fr">
+                                            <a href="{{route('admin.category.create')}}" class="btn btn-primary btn-sm ">New Category</a>
+                                        </span>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.post.update' , $post->id )}}" method="POST">
-                            @csrf @method("PUT")
+                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.video.store')}}" method="video"> @csrf
+
+
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Image <span class="required">*</span></label>
-                                    <input class="form-control" type="file" name="cover_image" value="{{asset($post->cover_Image)}}">
+                                    <input class="form-control" type="file" name="cover_image" value="{{old('cover_image') ?? ''}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="">Cover Video <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_video" value="{{asset($post->cover_video)}}">
+                                    <label for="">Cover Music <span class="">*</span></label>
+                                    <input class="form-control" type="file" name="cover_music" value="{{old('cover_music') ?? ''}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -41,8 +46,7 @@
                                     <select name="category_id" class="form-control" id="">
                                         <option value="" disabled selected>Select Category</option>
                                         @foreach ($categories as $category)
-                                        <option value="{{$category->id}}" {{ $category->id == $post->category_id ? 'selected' : '' }}>
-                                            {{ $category->name }}</option>
+                                        <option value="{{$category->id}}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -51,27 +55,24 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="">Title <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="name"
-                                    value="{{ $post->name }}" placeholder="......">
+                                    <input class="form-control" type="text" name="name" placeholder="{{old('name') ?? '......'}}">
                                 </div>
 
                                 <div class="form-group col-md-3">
                                     <label for="">Type <span class="required">*</span></label>
                                     <input class="form-control" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>
-
-
+                                
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
-                                    <textarea id="'content_desccription'" type="text" 
-                                    name="content_desccription" class="form-control">{!! old('body') ?? $post->content_desccription !!}</textarea>
+                                    <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control">{{old('content_desccription')}}</textarea>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="">Is Sponsored <span class="required">*</span></label>
                                     <select name="is_sponsored" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}" {{ $key == $post->is_sponsored ? 'selected' : '' }}>{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,7 +82,7 @@
                                     <select name="is_top_story" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}" {{ $key == $post->is_top_story ? 'selected' : '' }}>{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -91,7 +92,7 @@
                                     <select name="is_featured" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}" {{ $key == $post->is_featured ? 'selected' : '' }}>{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -101,7 +102,7 @@
                                     <select name="is_published" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}" {{ $key == $post->is_pubblished ? 'selected' : '' }}>{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -111,7 +112,7 @@
                                     <select name="can_comment" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}" {{$key==$post->can_comment ? 'selected ' : ''}}>{{ $value }}</option>
+                                        <option value="{{old('$key') ?? $key}}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -120,16 +121,16 @@
                                 <h5 class="col-12 mb-3">Seo Data</h5>
                                 <div class="form-group col-md-5">
                                     <label for="">Meta Title <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="meta_title" required value="{{$post->meta_title}}" placeholder="Describe the post. if empty it uses the blog title...">
+                                    <input class="form-control" type="text" name="meta_title" required placeholder="{{old('meta_keywords') ?? 'Describe the video. if empty it uses the blog title...'}}">
                                 </div>
                                 <div class="form-group col-md-7">
                                     <label for="">Meta Keywords <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="meta_keywords" required  value="{{ $post->meta_keywords }}" placeholder="Enter search keywords...">
+                                    <input class="form-control" type="text" name="meta_keywords" required placeholder="{{old('meta_keywords') ?? 'Enter search keywords...'}}">
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="">Meta Description <span class="required">*</span></label>
-                                    <input class="form-control" type="text" name="meta_description" value="{{$post->meta_description}}" required placeholder="Summarize the blog post">
+                                    <input class="form-control" type="text" name="meta_description" required placeholder="{{old('meta_keywords') ?? 'Summarize the blog video'}}">
                                 </div>
 
                                 <div class="form-group col-12">
