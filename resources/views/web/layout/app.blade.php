@@ -5,9 +5,16 @@
 
     @include('web.layout.includes.head')
 
+    <style>
+        .music-image{
+            width: 100%;
+            height: 40vh;
+
+        }
+    </style>
 
 <body>
-
+ 
     @yield('contents')
 
     @include('web.layout.includes.script')

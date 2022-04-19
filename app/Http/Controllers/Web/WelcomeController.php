@@ -20,28 +20,29 @@ use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function index(Request $request , Post $posts)
+    public function newreleases(Post $posts)
     {
-    // static $builder1;
-    // static $builder1;
-    //     $type = $request->type;
-      
-    //     if (ucfirst($type) == Constants::MUSIC) {
-    //         Post::music();
-    //     } else {
-    //        Post::video();
-    //     }
-
-        $posts = Post::with(['category'])->get();
-        $categories = PostCategory::latest()->get();
-        $trendingTopics = Post::latest()->get();
-        
        
+        // static $builder1;
+        // static $builder1;
+        //     $type = $request->type;
+
+        //     if (ucfirst($type) == Constants::MUSIC) {
+        //         Post::music();
+        //     } else {
+        //        Post::video();
+        //     }
+
+        $posts = Post::with(['category'])->paginate(12);
+        $categories = PostCategory::latest()->get();
+        $trendingTopics = Post::where('is_top-story')->limit(2);
+     
+
         $recents = Post::oldest()
             ->limit(10)
             ->get();
 
-        return view('web.welcome', [
+        return view('web.newreleases', [
             'posts' => $posts,
             'categories' => $categories,
             "trendingTopics" => $trendingTopics,
@@ -102,8 +103,9 @@ class WelcomeController extends Controller
         ]);
     }
 
-    public function newreleases(){
-        return view('web.newreleases');
+    public function index()
+    {
+        return view('web.welcome');
     }
 
 
@@ -114,6 +116,4 @@ class WelcomeController extends Controller
         return response()->download($post->cover_video);
         // return Storage::download('postVideos.mp4', $post);
     }
-
-    
 }

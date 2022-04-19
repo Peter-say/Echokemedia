@@ -72,6 +72,7 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO . "," . Constants::MUSIC;
         $data = $request->validate([
@@ -80,7 +81,7 @@ class AdminPostController extends Controller
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_video" => 'required',
+            "cover_video" => 'required:mines:mp3,mp4',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -98,7 +99,7 @@ class AdminPostController extends Controller
         $data['cover_video'] = $video_path;
         $data["slug"] = Str::slug($request->title, '-');
         $data['user_id'] = auth()->id();
-        $post = Post::create($data);
+        Post::create($data);
         return back()->with('success_message', 'Post added successfully');
     }
 

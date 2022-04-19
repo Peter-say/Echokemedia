@@ -5,21 +5,16 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VideosController extends Controller
+class AdminVideoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function over_view()
+    public function index()
     {
-       return view('dashboards.create_video');
-    }
-
-    public function create_video()
-    {
-       return view('dashboards.create_video');
+        //
     }
 
     /**
