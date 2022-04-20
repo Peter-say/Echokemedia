@@ -11,20 +11,33 @@
             <div class="modal-body-pro social-login-modal-body-pro">
 
                 <div class="registration-social-login-container">
-                    <form>
+                    <form method="POST" action="{{ route('login') }}">@csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" id="username" placeholder="Username">
+                            <input id="email" type="text" placeholder="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input  id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" required autocomplete="current-password" placeholder="Password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-green-pro btn-display-block">Sign In</button>
+                            <button type="submit" class="btn btn-green-pro btn-display-block">Sign In</button>
                         </div>
                         <div class="container-fluid">
                             <div class="row no-gutters">
                                 <div class="col checkbox-remember-pro"><input type="checkbox"
-                                        id="checkbox-remember"><label for="checkbox-remember"
+                                        id="checkbox-remember" name="remember-me"><label for="checkbox-remember"
                                         class="col-form-label">Remember me</label></div>
                                 <div class="col forgot-your-password"><a href="#!">Forgot your password?</a></div>
                             </div>
@@ -48,7 +61,7 @@
 
             </div><!-- close .modal-body -->
 
-            <a class="not-a-member-pro" href="signup-step2.html">Not a member? <span>Join Today!</span></a>
+            <a class="not-a-member-pro" href="{{ route('signup')}}">Not a member? <span>Join Today!</span></a>
         </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
 </div>

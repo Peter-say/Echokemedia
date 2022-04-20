@@ -51,6 +51,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/search', [App\Http\Controllers\Web\WelcomeController::class, 'search'])->name('web.search');
 Route::get('/post/{post:name}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
 Route::get('/file/download/{id}', [App\Http\Controllers\Web\WelcomeController::class, 'getFile'])->name('post.download');
+Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('signup');
+
 
 
 
