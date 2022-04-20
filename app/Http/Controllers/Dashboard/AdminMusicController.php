@@ -156,7 +156,7 @@ class AdminMusicController extends Controller
             'content_desccription' => 'required:string',
             "type" => "nullable|string|in:$allowedTypes",
             'cover_image' => 'nullable|image',
-            "cover_music" => 'nullable|mines:mp3',
+            "cover_music" => 'nullable|mimes:mp3',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -167,11 +167,17 @@ class AdminMusicController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         // dd($data);
-         $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postMusic");
-
-        $data['cover_image'] = $cover_path;
-        $data['cover_music'] = $video_path;
+       
+            $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
+            $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postMusic");
+            
+        if(!empty(
+            [
+                $data['cover_image'] = $cover_path,
+                $data['cover_music'] = $video_path,
+                ]
+        ));
+       
         $data["slug"] = Str::slug($request->title, '-');
         $data['user_id'] = auth()->id();
         // dd($post);

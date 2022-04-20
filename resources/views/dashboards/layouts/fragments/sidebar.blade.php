@@ -21,14 +21,25 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{route('admin.post.create')}}" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <i class="fa fa-book" style="font-size:30px;color:black"></i>
-                            <span>Create</span>
-                        </div>
-                    </a>
-                </li>
-
+                        <a href="#dashboard" data-active="true" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
+                                <span>Create</span>
+                            </div>
+                            <div>
+                            
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
+                            <li>
+                                <a href="{{route('admin.post.create')}}"> Music </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.video.create')}}"> Video </a>
+                            </li>
+                        </ul>
+                    </li>
+                
                 <li class="menu">
                     <a href="{{ route('admin.earnings.index')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">

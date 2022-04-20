@@ -9,7 +9,7 @@ class MediaFilesHelper
 {
     public static function saveFromRequest($file , $path , $storage = "public")
     { 
-        if(!empty($file_name = uniqid().".".$file->extension()));
+       $file_name = uniqid().".".$file->extension();
         $file->move(public_path($path) , $file_name);
         return $path."/".$file_name;
     }

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\support\Str;
 
-class AdminMusicController extends Controller
+class AdminVideosController extends Controller
 {
 
     /**
@@ -23,7 +23,7 @@ class AdminMusicController extends Controller
     public function index()
     {
         $posts = Post::whereHas("user")->get();
-        return view('dashboards.posts.index', [
+        return view('dashboards.video.index', [
             'posts' => $posts
         ]);
     }
@@ -54,7 +54,7 @@ class AdminMusicController extends Controller
         } else {
             $categories =  PostCategory::get();
             return view(
-                'dashboards.posts.create',
+                'dashboards.video.create',
                 [
                     'categories' => $categories,
                     'types' => $types,
@@ -99,7 +99,7 @@ class AdminMusicController extends Controller
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
-        return back()->with('success_message', 'Post added successfully');
+        return redirect()->route('admin.post.index')->with('success_message', 'Post added successfully');
     }
 
     /**
@@ -126,7 +126,7 @@ class AdminMusicController extends Controller
         $categories = PostCategory::get();
         $types = Constants::VIDEO;
         return view(
-            'dashboards.posts.edit_post',
+            'dashboards.video.edit',
             [
                 "post" => $post,
                 'categories' => $categories,
@@ -177,7 +177,7 @@ class AdminMusicController extends Controller
         // dd($post);
         // dd($data);
         $post->update($data);
-        return back()->with('success_message', 'Post updated successfully');
+        return redirect()->route('admin.post.index')->with('success_message', 'Post updated successfully');
     }
 
     /**

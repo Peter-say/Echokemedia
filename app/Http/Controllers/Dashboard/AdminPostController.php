@@ -22,8 +22,8 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::whereHas("user")->get();
-        return view('dashboards.posts.index', [
+        $posts = Post::where('cover_video')->whereHas("user")->get();
+        return view('dashboards.video.index', [
             'posts' => $posts
         ]);
     }

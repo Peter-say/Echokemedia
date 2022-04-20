@@ -60,7 +60,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
   Route::resource('post', AdminMusicController::class);
-  Route::resource('/video', AdminVideosController::class);
+  Route::resource('/video', AdminVideoController::class);
 
 
 
