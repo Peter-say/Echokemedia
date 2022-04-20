@@ -9,7 +9,6 @@
         .music-image{
             width: 100%;
             height: 40vh;
-
         }
     </style>
 
