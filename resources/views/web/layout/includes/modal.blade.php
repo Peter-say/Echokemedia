@@ -61,7 +61,7 @@
 
             </div><!-- close .modal-body -->
 
-            <a class="not-a-member-pro" href="signup-step2.html">Not a member? <span>Join Today!</span></a>
+            <a class="not-a-member-pro" href="{{ route('signup')}}">Not a member? <span>Join Today!</span></a>
         </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
 </div>
