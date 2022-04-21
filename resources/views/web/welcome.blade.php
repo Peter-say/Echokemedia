@@ -2,9 +2,8 @@
 
 
 @section('contents')
+
     @include('web.layout.includes.header')
-
-
 
 
     @include('web.layout.includes.slider')
