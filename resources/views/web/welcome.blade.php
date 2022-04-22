@@ -75,7 +75,7 @@
 
         <hr>
 
-        <div class="progression-pricing-section-background">
+        {{-- <div class="progression-pricing-section-background">
             <div class="container">
 
                 <div class="row">
@@ -158,7 +158,7 @@
                 <div class="clearfix"></div>
             </div><!-- close .container -->
 
-        </div><!-- close .progression-pricing-section-background -->
+        </div><!-- close .progression-pricing-section-background --> --}}
 
     </div><!-- close #content-pro -->
 
