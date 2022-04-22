@@ -1,4 +1,4 @@
-@extends('web.layout.app')
+@extends('web.layout.app' , ["meta_title" => "Signup"])
 
 
 @section('contents')

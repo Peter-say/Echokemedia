@@ -1,4 +1,4 @@
-@extends('dashboards.layouts.app')
+@extends('dashboards.layouts.app' , ["meta_title" => "Profile"])
 
 @section('contents')
 <!--  BEGIN CONTENT AREA  -->
