@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\support\Str;
 
-class AdminVideosController extends Controller
+class AdminVideoController extends Controller
 {
 
     /**
@@ -22,9 +22,9 @@ class AdminVideosController extends Controller
      */
     public function index()
     {
-        $posts = Post::whereHas("user")->get();
+        $videos = Post::where('cover_video')->whereHas("user")->get();
         return view('dashboards.video.index', [
-            'posts' => $posts
+            'videos' => $videos
         ]);
     }
 
@@ -33,7 +33,7 @@ class AdminVideosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create()
     {
 
         //     $can_post =  User::where('user_id', auth()->id());
@@ -53,8 +53,7 @@ class AdminVideosController extends Controller
             return view('dashboards.503_error');
         } else {
             $categories =  PostCategory::get();
-            return view(
-                'dashboards.video.create',
+            return view('dashboards.video.create',
                 [
                     'categories' => $categories,
                     'types' => $types,
@@ -71,7 +70,7 @@ class AdminVideosController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO;
         $data = $request->validate([
@@ -80,7 +79,7 @@ class AdminVideosController extends Controller
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_video" => 'required:mines:mp4',
+            "cover_video" => 'required:mimes:mp4',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -99,7 +98,7 @@ class AdminVideosController extends Controller
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
-        return redirect()->route('admin.post.index')->with('success_message', 'Post added successfully');
+        return redirect()->route('admin.video.index')->with('success_message', 'Post added successfully');
     }
 
     /**
@@ -156,7 +155,7 @@ class AdminVideosController extends Controller
             'content_desccription' => 'required:string',
             "type" => "nullable|string|in:$allowedTypes",
             'cover_image' => 'nullable|image',
-            "cover_video" => 'required|mines:mp4',
+            "cover_video" => 'required|mimes:mp4',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",

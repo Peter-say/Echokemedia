@@ -33,6 +33,7 @@
                                             <th class="">video By</th>
                                             <th class="">Cover Image</th>
                                             <th class="">Cover Video</th>
+                                            <th class="">video Type</th>
                                             <th class="">Description</th>
                                             <th class="">Created At</th>
                                             <th class="">action</th>
@@ -52,9 +53,10 @@
                                             <td>
                                                 <a href="" target="_blank" rel="noopener noreferrer">
                                                     <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset($video->cover_music)}}" type="music/mp3">
+                                                        <source class="img-fluid" src="{{asset($video->cover_video) ?? 'Not avaliable'}}" type="music/mp3">
                                                     </video></a>
                                             </td>
+                                           
                                             <td>{{$video->content_desccription}}</td>
                                             <td>{{$video->created_at}}
 

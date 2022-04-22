@@ -10,7 +10,6 @@
         <div class="layout-px-spacing">
 
             <div class="row layout-top-spacing">
-                @include('notifications.flash_messages')
                 <div id="tableCheckbox" class="">
 
 
@@ -28,8 +27,10 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.video.store')}}" method="video"> @csrf
+                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.video.store')}}" method="video">
+                                 @csrf
 
+                        
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Image <span class="required">*</span></label>
@@ -37,8 +38,8 @@
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="">Cover Music <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_music" value="{{old('cover_music') ?? ''}}">
+                                    <label for="">Cover Video <span class="">*</span></label>
+                                    <input class="form-control" type="file" name="cover_music" value="{{old('cover_video') ?? ''}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
