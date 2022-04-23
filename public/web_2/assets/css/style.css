@@ -522,7 +522,7 @@ header.header2 {
   header.header2 .btn-1 {
     transition: .3s ease !important;
     border-color: #FF662A;
-    color: #ff662a; }
+    color: green; }
     header.header2 .btn-1 i {
       padding-left: 8px; }
     header.header2 .btn-1:hover {
@@ -532,7 +532,7 @@ header.header2 {
 header.header3 {
   position: absolute; }
   header.header3 .sm-mint a.btn-1 {
-    color: #FF662A !important; }
+    color: green !important; }
     header.header3 .sm-mint a.btn-1:hover {
       color: #FFFFFF !important; }
 

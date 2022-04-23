@@ -8,9 +8,18 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
 
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/icons/fontawesome/css/fontawesome-all.min.css">
+    <link href="{{ $admin_assets }}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
+
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css">
     <!-- iconsmind.com Icons -->
+    <link href="{{ $admin_assets}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/fontawesome.css">
+    <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/templatemo-stand-blog.css">
+    <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/owl.css">
 
     <title>Echokemedia</title>
 </head>

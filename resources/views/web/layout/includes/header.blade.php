@@ -1,13 +1,13 @@
 <header id="masthead-pro">
     <div class="container">
 
-        <h1><a href="index.html"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
+        <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
 
         @guest
             <nav id="site-navigation-pro">
                 <ul class="sf-menu">
                     <li class="normal-item-pro current-menu-item">
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -25,6 +25,9 @@
                                     </ul>
                                     < End Sub-Menu example -->
                     </li>
+                    <li class="normal-item-pro">
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
+                    </li>
 
                 </ul>
             </nav>
@@ -41,7 +44,7 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -59,6 +62,10 @@
                                 </ul>
                                 < End Mobile Sub-Menu Example -->
                     </li>
+                    <li class="normal-item-pro">
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
+                    </li>
+
 
                 </ul>
                 <div class="clearfix"></div>
@@ -74,7 +81,7 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li class="normal-item-pro">
-                        <a href="{{ route('media.newreleases') }}">New Releases</a>
+                        <a href="{{ route('media.news.index') }}">New Releases</a>
                         <!-- Sub-Menu Example >
                                         <ul class="sub-menu">
                                             <li class="normal-item-pro">
@@ -89,6 +96,10 @@
                                         </ul>
                                         < End Sub-Menu example -->
                     </li>
+                    <li class="normal-item-pro">
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
+                    </li>
+
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
@@ -116,8 +127,8 @@
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                    <li>
-                        <a href="{{ route('media.newreleases') }}">New Releases</a>
+                    <li class="normal-item-pro">
+                        <a href="{{ route('media.newreleases') }}">Newreleases</a>
                         <!-- Mobile Sub-Menu Example >
                                     <ul>
                                         <li class="normal-item-pro">
@@ -132,6 +143,10 @@
                                     </ul>
                                     < End Mobile Sub-Menu Example -->
                     </li>
+                    <li class="normal-item-pro">
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
+                    </li>
+
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
