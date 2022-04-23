@@ -1,243 +1,127 @@
-@extends('web.layout.app')
+@extends('web.layout.app' , ["meta_title" => "News"])
 
 
 @section('contents')
 
-@include('web.layout.includes.header')
+<body>
 
-<!-- Page Content -->
-<!-- Banner Starts Here -->
-<div class="heading-page header-text">
-  <section class="page-heading">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="text-content">
-            <h4 >Recent Posts</h4>
-            <h2>Lastest Celebrities news</h2>
-          </div>
+    <!-- ***** Preloader Start ***** -->
+    {{-- <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- Banner Ends Here -->
+    </div> --}}
+    <!-- ***** Preloader End ***** -->
 
 
-<section class="blog-posts grid-system">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="all-blog-posts">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-01.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="post-details.html">
-                    <h4>Donec tincidunt leo</h4>
-                  </a>
-                  <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">May 31, 2020</a></li>
-                    <li><a href="#">12 Comments</a></li>
-                  </ul>
-                  <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <ul class="post-tags">
-                          <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Best Templates</a>,</li>
-                          <li><a href="#">TemplateMo</a></li>
-                        </ul>
-                      </div>
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+
+
+    {{-- <div class="container-fluid mt-5">
+        <h1 class="popular-post d-flex justify-content-center">Trending Today</h1>
+        @include('web.layouts.includes.popular-post')
+    </div> --}}
+
+
+    <section class="blog-posts">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="all-blog-posts">
+                        <div class="row">
+                            <div class="">
+                                <div class="blog-post">
+                                    <div class="blog-thumb">
+                                        <img src="assets/images/blog-post-01.jpg" alt="">
+                                    </div>
+                                    @if($posts->count())
+                                    @foreach($posts as $post)
+
+                                    <div class="container">
+                                        <div class="row mb-2 d-flex justify-content-center">
+                                            <div class="col-6 ">
+                                                <div class="">
+                                                    <img class="img-fluid image-width " src="{{asset( $post->cover_image)}}" alt="..." />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <a class="text-success" href="{{route('post.show' , $post->name)}}">
+                                                    <h6 class="text-success">{{$post->name}}</h6>
+                                                </a>
+                                                <span><small>Posted By </small>
+                                                    <h6 style="font-size: 14px;"><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></h6> <a href="#">{{$post->created_at->diffForHumans()}}</a>
+                                                </span>
+
+                                            </div>
+
+                                            <div class="col-6 mt-2">
+                                                <a class="btn btn-success text-white col-4-md" href="{{route('post.show' , $post->name)}}">Download here</a></li>
+
+                                            </div>
+                                            <!-- <div class="col-6">
+                                                <div class="social-media-share-icon">
+                                                    <a href="{{ route('media.share' , ['id' => $post->id , 'platform' => 'facebook'])}}" target="_blank"><i style="color: blue;" class="fa fa-facebook"></i></a>
+                                                    <a href="{{ route('media.share' , [ 'id' => $post->id , 'platform' => 'whatsapp' ])}}" target="blank"><i style="color:green;" class="fa fa-whatsapp"></i></a>
+                                                </div>
+                                            </div> -->
+                                            <hr style="font-size:8px; color:green">
+
+                                        </div>
+
+
+                                    </div>
+
+                                    @endforeach
+
+                                    @else
+                                    <div class="container">
+                                        <h1>No content at the moment :)</h1>
+                                    </div>
+
+
+                                    @endif
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-02.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="post-details.html">
-                    <h4>Suspendisse et metus</h4>
-                  </a>
-                  <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">May 22, 2020</a></li>
-                    <li><a href="#">26 Comments</a></li>
-                  </ul>
-                  <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <ul class="post-tags">
-                          <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Best Templates</a>,</li>
-                          <li><a href="#">TemplateMo</a></li>
-                        </ul>
-                      </div>
+                <div class="col-lg-4 mt-4 mb-4">
+                    <div class="sidebar">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sidebar-item search">
+                                    <form id="search_form" method="GET" action="{{route('web.search')}}">
+
+                                        <input type="text" name="query" class="searchText" placeholder="Type to search..." autocomplete="on" />
+                                        <input type="submit" class="searchbtn btn-sm mt-3 text-orange" value="Search" />
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="mt-4" id="social-links">
+                                <!-- <form action="{{ route('media.share')}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-sm">Share</button>
+                                </form> -->
+
+                            </div>
+
+                            {{-- @include('web.layouts.includes.pages-sidebar') --}}
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="col-lg-6">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-03.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="post-details.html">
-                    <h4>Donec tincidunt leo</h4>
-                  </a>
-                  <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">May 18, 2020</a></li>
-                    <li><a href="#">42 Comments</a></li>
-                  </ul>
-                  <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <ul class="post-tags">
-                          <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Best Templates</a>,</li>
-                          <li><a href="#">TemplateMo</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-04.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="post-details.html">
-                    <h4>Mauris ac dolor ornare</h4>
-                  </a>
-                  <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">May 16, 2020</a></li>
-                    <li><a href="#">28 Comments</a></li>
-                  </ul>
-                  <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <ul class="post-tags">
-                          <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Best Templates</a>,</li>
-                          <li><a href="#">TemplateMo</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-05.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="{{route('media.posts')}}">
-                    <h4>Donec tincidunt leo</h4>
-                  </a>
-                  <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">May 12, 2020</a></li>
-                    <li><a href="#">16 Comments</a></li>
-                  </ul>
-                  <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <ul class="post-tags">
-                          <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Best Templates</a>,</li>
-                          <li><a href="#">TemplateMo</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-06.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="post-details.html">
-                    <h4>Mauris ac dolor ornare</h4>
-                  </a>
-                  <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">May 10, 2020</a></li>
-                    <li><a href="#">3 Comments</a></li>
-                  </ul>
-                  <p>Nullam nibh mi, tincidunt sed sapien ut, rutrum hendrerit velit. Integer auctor a mauris sit amet eleifend.</p>
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <ul class="post-tags">
-                          <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Best Templates</a>,</li>
-                          <li><a href="#">TemplateMo</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <ul class="page-numbers">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-              </ul>
-            </div>
-          </div>
+
+
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="sidebar">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="sidebar-item search">
-                <form id="search_form" name="gs" method="GET" action="#">
-                  <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                </form>
-              </div>
-            </div>
-            {{-- @include('web 1.layouts.includes.pages-sidebar') --}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+</body>
 
 @endsection

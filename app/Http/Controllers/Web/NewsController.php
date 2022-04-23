@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\News;
+use App\Models\PostCategory;
 
 class NewsController extends Controller
 {
@@ -14,7 +16,23 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+       
+        $posts = News::with(['category'])->paginate(12);
+        $categories = PostCategory::latest()->get();
+        $trendingTopics = News::where('is_top-story')->limit(2);
+     
+
+        $recents = News::oldest()
+            ->limit(10)
+            ->get();
+
+        return view('web.news', [
+            'posts' => $posts,
+            'categories' => $categories,
+            // "trendingTopics" => $trendingTopics,
+            "recents" => $recents,
+            // "metaData" => PageMetaData::blogDetailsPage($type)
+        ]);
     }
 
     /**
