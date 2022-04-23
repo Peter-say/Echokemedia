@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\DashboardController;
+use App\Http\Controllers\Users\NewsController;
 use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Dashboard\PostCategoryController;
 use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\AdminVideoController;
 use App\Http\Controllers\Dashboard\AdminMusicController;
+use App\Http\Controllers\Dashboard\NewController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 
@@ -63,6 +65,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
   Route::resource('post', AdminMusicController::class);
+  Route::resource('news', NewController::class);
   Route::resource('/video', AdminVideosController::class);
 
 
@@ -79,6 +82,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
 
 Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
   Route::resource('dashboard', DashboardController::class);
+  Route::resource('news', NewsController::class);
   Route::get('user/{user}/post', [App\Http\Controllers\Users\DashboardController::class, 'viewposts'])->name('user.post');
   Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'index'])->name('profile');
   Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');

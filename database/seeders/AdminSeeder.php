@@ -25,6 +25,14 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
+
+            'name' => 'User User',
+            'email' => 'user@gmail.com',
+            'username' => 'Media Creator',
+            'role' => 'User',
+            'password' => bcrypt('#123456'),
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
         ]);
     }
 }
