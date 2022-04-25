@@ -24,13 +24,11 @@ class WelcomeController extends Controller
     {
          $type  = $request->type;
 
-        if (ucfirst($type) == Constants::MUSIC) {
-            $builder1 = Post::music();
-            $builder2 = Post::video();
-        } else {
-            $builder1 = Post::video();
-            $builder2 = Post::music();
-        }
+        
+            $builder1 = Post::where('type' , constants::MUSIC);
+    
+            $builder2 = Post::where('type' , constants::VIDEO);
+
 
         $music = $builder1->orderby("created_at", "desc")->paginate(12);;
         $popularPosts = $builder1->orderby("views_count", "desc")->limit(5)->get();

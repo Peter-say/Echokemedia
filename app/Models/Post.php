@@ -24,26 +24,24 @@ class Post extends Model
         return $this->hasMany(Comment::class , 'post_id');
     }
 
-
-    public function scopeActive($query)
-    {
-        return $query->where("is_top-story", Constants::ACTIVE);
-    }
-
-    public function scopeVideo($query)
-    {
-        return $query->active()->where("type", Constants::VIDEO);
-    }
-
-    public function scopeMusic($query)
+    public function scopeBlog($query)
     {
         return $query->active()->where("type", Constants::MUSIC);
     }
 
-
-    public function isMusic()
+    public function scopeVlog($query)
+    {
+        return $query->active()->where("type", Constants::VIDEO);
+    }
+   
+    public  function isMusic()
     {
         return strtolower($this->type) == strtolower(Constants::MUSIC);
+    }
+
+    public  function isVideo()
+    {
+        return strtolower($this->type) == strtolower(Constants::VIDEO);
     }
 
 
@@ -53,32 +51,7 @@ class Post extends Model
         return $this->belongsTo(PostCategory::class);
     }
 
-    public function scopeSearch($query, $keyword)
-    {
-        if (!empty($keyword)) {
-            $query = $query->where("title", "like", "%$keyword%");
-        }
-        return $query;
-    }
-
-    public function detailsUrl($sharer = null)
-    {
-        return route("post.show", [
-            "post" => $this->name,
-            "sharer" => $sharer
-        ]);
-    }
-
-    public function coverImageUrl()
-    {
-        $coverImage = $this->coverImage;
-
-        $filepath = optional($coverImage)->path;
-
-        if (!empty($filepath)) {
-            return readFileUrl("encrypt", $filepath);
-        }
-    }
+   
 
    
 }
