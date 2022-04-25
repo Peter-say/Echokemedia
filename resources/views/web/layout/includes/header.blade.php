@@ -97,7 +97,7 @@
                                         < End Sub-Menu example -->
                     </li>
                     <li class="normal-item-pro">
-                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
+                        <a href="{{ route('media.news.index') }}">Celebrity Audio News</a>
                     </li>
 
                     @if (Auth::user()->role == 'Admin')

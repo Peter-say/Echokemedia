@@ -35,6 +35,7 @@
                                                     <th class="">S/N</th>
                                                     <th class="">Post By</th>
                                                     <th class="">Cover Image</th>
+                                                    <th class="">Cover Video</th>
                                                     <th class="">Description</th>
                                                     <th class="">Created At</th>
                                                     <th class="">action</th>
@@ -53,6 +54,11 @@
                                                             src="{{ asset('postImages/' . $post->cover_image) }}"
                                                             alt="..." />
                                                     </td>
+                                                    <a href="" target="_blank" rel="noopener noreferrer">
+                                                        <video controls class="img-fluid">
+                                                            <source class="img-fluid"
+                                                                src="{{ asset($post->cover_music) }}" type="music/mp3">
+                                                        </video></a>
 
                                                     <td>{{ $post->content_desccription }}</td>
                                                     <td>{{ $post->created_at }}

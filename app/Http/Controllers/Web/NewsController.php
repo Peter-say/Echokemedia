@@ -73,6 +73,14 @@ class NewsController extends Controller
         ]);
     }
 
+    function getFile($id)
+    {
+        $post = News::where("id", $id)->firstOrFail();
+        return response()->download($post->cover_video);
+        // return Storage::download('postVideos.mp4', $post);
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

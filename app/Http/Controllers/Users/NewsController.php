@@ -84,6 +84,7 @@ class NewsController extends Controller
             'name' => 'required|string',
             'content_desccription' => 'required|string',
             'cover_image' => 'required|image',
+            "cover_video" => "required",
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",

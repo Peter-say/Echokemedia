@@ -33,6 +33,11 @@
                                     <label for="">Cover Image <span class="required">*</span></label>
                                     <input class="form-control" type="file" name="cover_image">
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label for="">Cover Video <span class="">*</span></label>
+                                    <input class="form-control" type="file" name="cover_video" value="{{asset($post->cover_video)}}">
+                                </div>
+
 
                                 <div class="form-group col-md-4">
                                     <label for=""> Category<span class="required">*</span></label>
