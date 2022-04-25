@@ -17,6 +17,7 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->constrained('users');
             $table->unsignedBigInteger('category_id')->constrained('post_categories');
+            $table->string('name');
             $table->string('cover_image');
             $table->text('content_desccription');
             $table->string('meta_title')->nullable();

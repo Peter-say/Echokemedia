@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Comment;
 use App\Models\PostCategory;
 
 class NewsController extends Controller
@@ -62,9 +63,14 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $post)
     {
-        //
+        $comments = Comment::get();
+        return view('web.news.post_details', [
+            'post' => $post,
+            'comments' =>  $comments,
+            // "metaData" => PageMetaData::blogDetailsPage($post)
+        ]);
     }
 
     /**

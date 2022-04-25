@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="col-6 mt-2">
-                                                <a class="btn btn-success text-white col-4-md" href="{{route('post.show' , $post->name)}}">Download here</a></li>
+                                                <a class="btn btn-success text-white col-4-md" href="{{route('media.news.show' , $post->name)}}">News Info</a></li>
 
                                             </div>
                                             <!-- <div class="col-6">
