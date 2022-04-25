@@ -80,7 +80,7 @@ class AdminMusicController extends Controller
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_music" => 'required:mines:mp3',
+            "cover_music" => 'required:mimes:mp3',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -95,7 +95,7 @@ class AdminMusicController extends Controller
 
         $data['cover_image'] = $image_path;
         $data['cover_music'] = $music_path;
-        $data["slug"] = Str::slug($request->title, '-');
+        $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
@@ -178,7 +178,7 @@ class AdminMusicController extends Controller
                 ]
         ));
        
-        $data["slug"] = Str::slug($request->title, '-');
+        $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
         // dd($post);
         // dd($data);

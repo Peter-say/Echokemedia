@@ -1,10 +1,9 @@
-@extends('web.layout.app')
+@extends('web.layout.app' , ["meta_title" => "Echokemedia"])
 
 
 @section('contents')
+
     @include('web.layout.includes.header')
-
-
 
 
     @include('web.layout.includes.slider')
@@ -76,7 +75,7 @@
 
         <hr>
 
-        <div class="progression-pricing-section-background">
+        {{-- <div class="progression-pricing-section-background">
             <div class="container">
 
                 <div class="row">
@@ -159,7 +158,7 @@
                 <div class="clearfix"></div>
             </div><!-- close .container -->
 
-        </div><!-- close .progression-pricing-section-background -->
+        </div><!-- close .progression-pricing-section-background --> --}}
 
     </div><!-- close #content-pro -->
 

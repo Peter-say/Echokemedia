@@ -35,6 +35,7 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('is_sponsored')->default(0);
             $table->timestamps();
             $table->softDeletes();
+            $table->integer('views_count')->default(0);
         });
     }
 

@@ -33,7 +33,6 @@
                                             <th class="">video By</th>
                                             <th class="">Cover Image</th>
                                             <th class="">Cover Video</th>
-                                            <th class="">video Type</th>
                                             <th class="">Description</th>
                                             <th class="">Created At</th>
                                             <th class="">action</th>
@@ -56,9 +55,9 @@
                                                         <source class="img-fluid" src="{{asset($video->cover_video) ?? 'Not avaliable'}}" type="music/mp3">
                                                     </video></a>
                                             </td>
-                                           
+
                                             <td>{{$video->content_desccription}}</td>
-                                            <td>{{$video->created_at}}
+                                            <td>{{$video->created_at}}</td>
 
 
                                             <td>
@@ -71,7 +70,7 @@
                                                             <a href="{{route('admin.video.edit' , $video->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
                                                         </div>
                                                         <div class="col-6">
-                                                        <a href=""onClick="$(this).parent().trigger('submit')"> <i type="submit" class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>
+                                                            <a href="" onClick="$(this).parent().trigger('submit')"> <i type="submit" class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>
 
                                                         </div>
                                                     </div>

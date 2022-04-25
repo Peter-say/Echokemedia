@@ -11,9 +11,9 @@
                             <div class="progression-studios-slider-caption-width">
                                 <div class="progression-studios-slider-caption-align">
                                     <h2>Welcome to Echokemedia<span style="color:#3db13d;">.</span></h2>
-                                    <h6>Watch the largest collection of Movies and TV series anytime anywhere!</h6>
+                                    <h6>Watch and listen tothe largest collection of Music videos and music anywhere!</h6>
                                     <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro"
-                                        href="signup-step1.html" role="button">Start Your Free Trial</a>
+                                        href="{{route('media.newreleases')}}" role="button">View music and video library</a>
                                 </div><!-- close .progression-studios-slider-caption-align -->
                             </div><!-- close .progression-studios-slider-caption-width -->
 
@@ -36,10 +36,10 @@
                             <div class="progression-studios-slider-caption-width">
                                 <div class="progression-studios-slider-caption-align">
                                     <h2 class="light-fonts-pro">Central Intelligence</h2>
-                                    <h6 class="light-fonts-pro">Let users watch videos on any page via the built-in
+                                    <h6 class="light-fonts-pro">Let users listen to music and watch videos on any page via the built-in
                                         video player.</h6>
-                                    <a class="btn btn-green-pro btn-slider-pro" href="dashboard-home.html"
-                                        role="button">View The Video Library</a>
+                                    <a class="btn btn-green-pro btn-slider-pro" href="{{route('media.newreleases')}}"
+                                        role="button">View music and video library</a>
                                 </div><!-- close .progression-studios-slider-caption-align -->
                             </div><!-- close .progression-studios-slider-caption-width -->
 
@@ -61,9 +61,9 @@
                             <div class="progression-studios-slider-caption-width">
                                 <div class="progression-studios-slider-caption-align">
                                     <h2>Ultimate Video Theme</h2>
-                                    <h6>Watch the largest collection of Movies and TV series anytime anywhere!</h6>
+                                    <h6>Watch and listen tothe largest collection of Music videos and music anywhere!</h6>
                                     <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro"
-                                        href="signup-step1.html" role="button">Start Your Free Trial</a>
+                                        href="{{route('media.newreleases')}}" role="button">View music and video library</a>
                                 </div><!-- close .progression-studios-slider-caption-align -->
                             </div><!-- close .progression-studios-slider-caption-width -->
 

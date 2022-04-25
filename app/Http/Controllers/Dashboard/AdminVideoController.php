@@ -22,7 +22,7 @@ class AdminVideoController extends Controller
      */
     public function index()
     {
-        $videos = Post::where('cover_video')->whereHas("user")->get();
+        $videos = Post::where('type', 'cover_video')->whereHas("user")->get();
         return view('dashboards.video.index', [
             'videos' => $videos
         ]);
@@ -53,7 +53,8 @@ class AdminVideoController extends Controller
             return view('dashboards.503_error');
         } else {
             $categories =  PostCategory::get();
-            return view('dashboards.video.create',
+            return view(
+                'dashboards.video.create',
                 [
                     'categories' => $categories,
                     'types' => $types,
@@ -70,7 +71,7 @@ class AdminVideoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO;
         $data = $request->validate([
@@ -79,7 +80,7 @@ class AdminVideoController extends Controller
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_video" => 'required:mimes:mp4',
+            "cover_video" => 'required:mimes:mp4,mov,ogg,qt',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -90,11 +91,11 @@ class AdminVideoController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages");
-        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postVideo");
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo");
 
         $data['cover_image'] = $image_path;
-        $data['cover_music'] = $music_path;
-        $data["slug"] = Str::slug($request->title, '-');
+        $data['cover_video'] = $video_path;
+        $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
@@ -166,12 +167,12 @@ class AdminVideoController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         // dd($data);
-        if(!empty($cover_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages")));
-        if(!empty($video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideos")));
+        if (!empty($cover_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages")));
+        if (!empty($video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideos")));
 
         $data['cover_image'] = $cover_path;
         $data['cover_video'] = $video_path;
-        $data["slug"] = Str::slug($request->title, '-');
+        $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
         // dd($post);
         // dd($data);

@@ -40,8 +40,10 @@ class Post extends Model
         return $query->active()->where("type", Constants::MUSIC);
     }
 
-    public function isMusic(){
-        return $this->type == Constants::MUSIC;
+
+    public function isMusic()
+    {
+        return strtolower($this->type) == strtolower(Constants::MUSIC);
     }
 
 

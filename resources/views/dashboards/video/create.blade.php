@@ -8,7 +8,7 @@
     <!--  BEGIN CONTENT PART  -->
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
-
+        @include('notifications.flash_messages')
             <div class="row layout-top-spacing">
                 <div id="tableCheckbox" class="">
 
@@ -27,10 +27,10 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.video.store')}}" method="video">
-                                 @csrf
+                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.video.store')}}" method="post">
+                                @csrf
 
-                        
+
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Image <span class="required">*</span></label>
@@ -39,7 +39,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Video <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_music" value="{{old('cover_video') ?? ''}}">
+                                    <input class="form-control" type="file" name="cover_video" value="{{old('cover_video') ?? ''}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -63,7 +63,7 @@
                                     <label for="">Type <span class="required">*</span></label>
                                     <input class="form-control" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>
-                                
+
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
                                     <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control">{{old('content_desccription')}}</textarea>

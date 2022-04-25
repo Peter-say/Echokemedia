@@ -20,33 +20,29 @@ use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function newreleases(Post $posts)
+    public function newreleases(Request $request)
     {
-       
-        // static $builder1;
-        // static $builder1;
-        //     $type = $request->type;
+         $type  = $request->type;
 
-        //     if (ucfirst($type) == Constants::MUSIC) {
-        //         Post::music();
-        //     } else {
-        //        Post::video();
-        //     }
+        if (ucfirst($type) == Constants::MUSIC) {
+            $builder1 = Post::music();
+            $builder2 = Post::video();
+        } else {
+            $builder1 = Post::video();
+            $builder2 = Post::music();
+        }
 
-        $posts = Post::with(['category'])->paginate(12);
-        $categories = PostCategory::latest()->get();
-        $trendingTopics = Post::where('is_top-story')->limit(2);
-     
+        $music = $builder1->orderby("created_at", "desc")->paginate(12);;
+        $popularPosts = $builder1->orderby("views_count", "desc")->limit(5)->get();
+        $video = $builder2->inRandomOrder()->first();
 
-        $recents = Post::oldest()
-            ->limit(10)
-            ->get();
+        $breadcrumbData = $this->getBreadcrumbData($request);
+        $music->appends($request->query());
+
 
         return view('web.newreleases', [
-            'posts' => $posts,
-            'categories' => $categories,
-            "trendingTopics" => $trendingTopics,
-            "recents" => $recents,
+            'music' => $music,
+            "popularPosts" => $popularPosts,
             // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
     }
@@ -89,6 +85,24 @@ class WelcomeController extends Controller
             'comments' =>  $comments,
             // "metaData" => PageMetaData::blogDetailsPage($post)
         ]);
+    }
+
+    
+    public function getBreadcrumbData($request)
+    {
+        $title = ucfirst($request->type);
+        $value = "";
+        $searchKeyword = $request->search;
+
+        if (!empty($searchKeyword)) {
+            $title = "Search result for: ";
+            $value = "\"$searchKeyword\"";
+        }
+
+        return [
+            "breadcrumbTitle" => $title,
+            "breadcrumbValue" => $value
+        ];
     }
 
     public function search(Request $request)
