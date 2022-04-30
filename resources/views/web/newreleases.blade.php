@@ -9,7 +9,7 @@
 
     <main id="col-main">
         @include('web.layout.nr_fragment.flexslider')
-        @include('web.layout.nr_fragment.dashboard-container')
+        @include('web.layout.nr_fragment.music-container')
 
         <div class="clearfix"></div>
 

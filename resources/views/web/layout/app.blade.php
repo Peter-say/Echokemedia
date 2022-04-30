@@ -11,6 +11,15 @@
             width: 100%;
             height: 40vh;
         }
+        .popular-title{
+            color: green;
+        }
+
+        .post-title{
+            text-transform: uppercase;
+            color: green;
+        }
+       
     </style>
 
 <body>

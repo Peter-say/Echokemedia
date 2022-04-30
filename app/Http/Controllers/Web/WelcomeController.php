@@ -20,27 +20,27 @@ use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function newreleases(Request $request)
+    public function newreleases(Request $request , PostCategory $category_id)
     {
-         $type  = $request->type;
-
-        
-            $builder1 = Post::where('type' , constants::MUSIC);
-    
-            $builder2 = Post::where('type' , constants::VIDEO);
+        $type  = $request->type;
 
 
-        $music = $builder1->orderby("created_at", "desc")->paginate(12);;
-        $popularPosts = $builder1->orderby("views_count", "desc")->limit(5)->get();
+        $builder1 = Post::where('type', constants::MUSIC);
+        $builder2 = Post::where('type', constants::VIDEO);
+
+        $posts = $builder1->orderby("created_at", "desc")->paginate(12);;
+        $popularPosts = $builder1->with('category')->orderby("views_count", "asc")->limit(1)->get();
+        $relatedPosts = Post::where("category_id", $category_id)->inRandomOrder()->limit(5)->get();
         $video = $builder2->inRandomOrder()->first();
 
         $breadcrumbData = $this->getBreadcrumbData($request);
-        $music->appends($request->query());
+        $posts->appends($request->query());
 
 
         return view('web.newreleases', [
-            'music' => $music,
+            'posts' => $posts,
             "popularPosts" => $popularPosts,
+            "relatedPosts" => $relatedPosts,
             // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
     }
@@ -75,17 +75,19 @@ class WelcomeController extends Controller
     }
 
 
-    public function show(Post $post)
+    public function show(Post $post, PostCategory $category_id )
     {
         $comments = Comment::get();
+        $relatedPosts = Post::where("category_id", $category_id)->inRandomOrder()->limit(5)->get();
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
+            "relatedPosts" => $relatedPosts,
             // "metaData" => PageMetaData::blogDetailsPage($post)
         ]);
     }
 
-    
+
     public function getBreadcrumbData($request)
     {
         $title = ucfirst($request->type);
@@ -125,7 +127,7 @@ class WelcomeController extends Controller
     function getFile($id)
     {
         $post = Post::where("id", $id)->firstOrFail();
-        return response()->download($post->cover_video);
+        return response()->download($post->cover_music);
         // return Storage::download('postVideos.mp4', $post);
     }
 }

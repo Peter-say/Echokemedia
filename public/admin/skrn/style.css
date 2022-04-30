@@ -1560,8 +1560,9 @@ ul.progression-studios-slider-meta li:last-child:after {
 }
 
 p.progression-studios-slider-description {
-	font-size:14px;
+	font-size:18px;
 	margin-bottom:25px;
+	color: white;
 }
 
 

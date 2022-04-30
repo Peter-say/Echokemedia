@@ -51,6 +51,10 @@ class Post extends Model
         return $this->belongsTo(PostCategory::class);
     }
 
+    // public static function  RelatedCategory($query, $category_id)
+    // {
+    //     return $query->where("category_id", $category_id);
+    // }
    
 
    

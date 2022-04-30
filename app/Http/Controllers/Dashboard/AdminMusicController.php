@@ -53,8 +53,7 @@ class AdminMusicController extends Controller
             return view('dashboards.503_error');
         } else {
             $categories =  PostCategory::get();
-            return view(
-                'dashboards.posts.create',
+            return view('dashboards.posts.create',
                 [
                     'categories' => $categories,
                     'types' => $types,
