@@ -19,7 +19,7 @@
 
                 <div class="container">
 
-                  <a class="progression-studios-slider-play-btn afterglow" href="{{route('post.download' , $post->id)}}"><i class="fas fa-play"></i></a>
+                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_music)}}"><i class="fas fa-play"></i></a>
 
                   <audio id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="960" height="540">
                     <source src="{{asset($post->cover_music)}}" type="audio/mp3">

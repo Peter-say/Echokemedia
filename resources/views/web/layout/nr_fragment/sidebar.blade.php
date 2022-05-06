@@ -2,13 +2,13 @@
     <!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
     <ul id="vertical-sidebar-nav" class="sf-menu">
         <li class="normal-item-pro current-menu-item">
-            <a href="dashboard-home.html">
+            <a href="{{route('media.newreleases')}}">
                 <span class="icon-Old-TV"></span>
                 Music
             </a>
         </li>
         <li class="normal-item-pro">
-            <a href="dashboard-movies.html">
+            <a href="{{route('media.videos')}}">
                 <span class="icon-Reel"></span>
                 Music Video
             </a>

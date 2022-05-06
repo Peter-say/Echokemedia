@@ -5,7 +5,7 @@
         @foreach($relatedPosts as $relatedPost)
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
             <div class="item-listing-container-skrn">
-                <a href="dashboard-movie-profile.html"><img class="music-image" src="{{asset( $relatedPost->cover_image)}}" alt="Listing"></a>
+                <a href="{{route('post.show' , $relatedPost->name)}}"><img class="music-image" src="{{asset( $relatedPost->cover_image)}}" alt="Listing"></a>
                 <div class="item-listing-text-skrn">
                     <div class="item-listing-text-skrn-vertical-align">
                         <h6><a href="dashboard-movie-profile.html">{{$relatedPost->name}}</a></h6>
