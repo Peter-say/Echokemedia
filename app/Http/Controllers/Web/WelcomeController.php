@@ -20,26 +20,30 @@ use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function newreleases(Request $request)
+    public function newreleases(Request $request, PostCategory $category_id)
     {
-         $type  = $request->type;
+        $type  = $request->type;
 
-        
-            $builder1 = Post::where('type' , constants::MUSIC);
-    
-            $builder2 = Post::where('type' , constants::VIDEO);
-
-
-        $music = $builder1->orderby("created_at", "desc")->paginate(12);;
-        $popularPosts = $builder1->orderby("views_count", "desc")->limit(5)->get();
-        $video = $builder2->inRandomOrder()->first();
-
+        $builder1 = Post::where('type', constants::MUSIC);
         $breadcrumbData = $this->getBreadcrumbData($request);
-        $music->appends($request->query());
 
-
+        $posts = $builder1->orderby("created_at", "desc")->paginate(12);
+        $popularPosts = Post::with('category')->orderby("views_count", "asc")->limit(1)->get();
         return view('web.newreleases', [
-            'music' => $music,
+            'posts' => $posts,
+            "popularPosts" => $popularPosts,
+            // "metaData" => PageMetaData::blogDetailsPage($type)
+        ]);
+    }
+
+
+    public function videosPage(Request $request, PostCategory $category_id)
+    {
+        $builder2 = Post::where('type', constants::VIDEO);
+        $videos = $builder2->orderby("created_at", "desc")->paginate(12);
+        $popularPosts = Post::with('category')->orderby("views_count", "asc")->limit(1)->get();
+        return view('web.videos', [
+            'videos' => $videos,
             "popularPosts" => $popularPosts,
             // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
@@ -75,17 +79,20 @@ class WelcomeController extends Controller
     }
 
 
-    public function show(Post $post)
+    public function show(Post $post, PostCategory $category_id)
     {
         $comments = Comment::get();
+        // $post->update(["views_count" => $post->views_count + 1]);
+        $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(9)->get();
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
+            "relatedPosts" => $relatedPosts,
             // "metaData" => PageMetaData::blogDetailsPage($post)
         ]);
     }
 
-    
+
     public function getBreadcrumbData($request)
     {
         $title = ucfirst($request->type);
@@ -103,14 +110,16 @@ class WelcomeController extends Controller
         ];
     }
 
-    public function search(Request $request)
+    public function search(Post $posts, Request $request)
     {
         $search = $_GET['query'];
+        $relatedPosts = Post::relatedCategory($posts->category_id)->inRandomOrder()->limit(9)->get();
         $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();
         $posts = Post::where('name', 'like', '%' . $search . '%')->get();
-        return view('web.welcome', [
+        return view('web.newreleases', [
             "posts" => $posts,
             "categories" => $categories,
+            "relatedPosts" => $relatedPosts,
             // "metaData" => PageMetaData::searchPage()
         ]);
     }
@@ -125,7 +134,7 @@ class WelcomeController extends Controller
     function getFile($id)
     {
         $post = Post::where("id", $id)->firstOrFail();
-        return response()->download($post->cover_video);
+        return response()->download($post->cover_music);
         // return Storage::download('postVideos.mp4', $post);
     }
 }
