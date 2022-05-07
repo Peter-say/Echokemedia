@@ -116,16 +116,18 @@ class WelcomeController extends Controller
         $relatedPosts = Post::relatedCategory($posts->category_id)->inRandomOrder()->limit(9)->get();
         $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();
         $posts = Post::where('name', 'like', '%' . $search . '%')->get();
-        return view('web.newreleases', [
-            "posts" => $posts,
-            "categories" => $categories,
-            "relatedPosts" => $relatedPosts,
-            // "metaData" => PageMetaData::searchPage()
-        ]);
+        return view('web.search' , compact('posts' ,'categories' )); 
+    }
+
+    public function headerFilter()
+    {
+        $categories = PostCategory::all();
+        return view('web.layout.nr_fragment.search-form', compact('categories'));
     }
 
     public function index()
     {
+       
         return view('web.welcome');
     }
 
