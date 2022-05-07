@@ -24,14 +24,14 @@ class Post extends Model
         return $this->hasMany(Comment::class , 'post_id');
     }
 
-    public function scopeBlog($query)
+    public function scopeMusic($query)
     {
-        return $query->active()->where("type", Constants::MUSIC);
+        return $query->where("type", Constants::MUSIC);
     }
 
-    public function scopeVlog($query)
+    public function scopeVideo($query)
     {
-        return $query->active()->where("type", Constants::VIDEO);
+        return $query->where("type", Constants::VIDEO);
     }
    
     public  function isMusic()

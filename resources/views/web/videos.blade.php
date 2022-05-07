@@ -8,7 +8,7 @@
     @include('web.layout.nr_fragment.sidebar')
 
     <main id="col-main">
-        @include('web.layout.nr_fragment.flexslider')
+        @include('web.layout.nr_fragment.video-fragments.video-flexslider')
         @include('web.layout.nr_fragment.video-container')
 
         <div class="clearfix"></div>

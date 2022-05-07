@@ -10,13 +10,14 @@
 
 								<a class="progression-studios-slider-play-btn afterglow" href="{{asset($popularPost->cover_music)}}"><i class="fas fa-play"></i></a>
 
-								<video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="960" height="140">
+								<video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="100%" height="140">
 									<source src="{{asset($popularPost->cover_music)}}" type="video/mp4">
 								</video>
 
 								<div class="circle-rating-pro" data-value="0.86" data-animation-start-value="0.86" data-size="70" data-thickness="6" data-fill="{
 								          &quot;color&quot;: &quot;#42b740&quot;
-								        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">8.6</span></div>
+								        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">8.6</span>
+								</div>
 
 								<div class="progression-studios-slider-dashboard-caption-width">
 									<div class="progression-studios-slider-caption-align">
@@ -26,12 +27,12 @@
 											<li>{{date('d-m-y', strtotime($popularPost->created_at))}} (NG)</li>
 
 										</ul>
-										<p class="progression-studios-slider-description">{{Str::of($popularPost->content_desccription)->limit(160)}}.</p>
-										@if($popularPost->cover_video)
+										
+										 <p class="progression-studios-slider-description">{{Str::of($popularPost->content_desccription)->limit(160)}}.</p>
+
+										
 										<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{asset($popularPost->cover_music)}}"><i class="fas fa-play"></i>Play Music</a>
-										@else
-										<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{asset($popularPost->cover_video)}}"><i class="fas fa-play"></i>Play Music</a>
-										@endif
+
 										<div class="progression-studios-slider-more-options">
 											<i class="fas fa-ellipsis-h"></i>
 											<ul>
