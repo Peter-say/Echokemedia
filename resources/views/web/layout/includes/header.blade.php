@@ -25,6 +25,9 @@
                                     </ul>
                                     < End Sub-Menu example -->
                     </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                    </li>
 
                 </ul>
             </nav>
@@ -59,6 +62,9 @@
                                 </ul>
                                 < End Mobile Sub-Menu Example -->
                     </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                    </li>
 
                 </ul>
                 <div class="clearfix"></div>
@@ -88,6 +94,9 @@
                                             </li>
                                         </ul>
                                         < End Sub-Menu example -->
+                    </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
                     </li>
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">
@@ -131,6 +140,9 @@
                                         </li>
                                     </ul>
                                     < End Mobile Sub-Menu Example -->
+                    </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
                     </li>
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">
