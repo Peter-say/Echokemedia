@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory , Notifiable;
 
     protected $guarded = [];
 
@@ -54,6 +55,15 @@ class Post extends Model
     public static function scopeRelatedCategory($query, $category_id)
     {
         return $query->where("category_id", $category_id);
+    }
+
+    public function detailsUrl($sharer = null)
+    {
+        return route("post.show", [
+            "id" => $this->id,
+            "slug" => slugify($this->name),
+            "sharer" => $sharer
+        ]);
     }
    
 

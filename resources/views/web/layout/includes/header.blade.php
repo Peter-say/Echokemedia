@@ -1,13 +1,13 @@
 <header id="masthead-pro">
     <div class="container">
 
-        <h1><a href="index.html"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
+        <h1><a href="{{route('/')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
 
         @guest
             <nav id="site-navigation-pro">
                 <ul class="sf-menu">
                     <li class="normal-item-pro current-menu-item">
-                        <a href="index.html">Home</a>
+                        <a href="{{route('/')}}">Home</a>
                     </li>
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -41,7 +41,7 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{route('/')}}">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -114,7 +114,7 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{route('/')}}">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>

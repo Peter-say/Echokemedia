@@ -1,4 +1,4 @@
-@extends('web.layout.app' , ["meta_title" => "newreleases"])
+@extends('web.layout.app' , ["meta_title" => ""])
 
 
 @section('contents')
@@ -37,11 +37,12 @@
 
                   <div class="progression-studios-slider-dashboard-caption-width">
                     <div class="progression-studios-slider-caption-align">
+                      @if($post->cover_video)
+                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('video.download' , $post->name)}}"><i class="fas fa-play"></i> Download</a>
+                      @else
                       <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('post.download' , $post->name)}}"><i class="fas fa-play"></i> Download</a>
-
-
+                      @endif
                       <div class="clearfix"></div>
-
 
                     </div><!-- close .progression-studios-slider-caption-align -->
                   </div><!-- close .progression-studios-slider-caption-width -->
@@ -62,7 +63,8 @@
     @include('web.layout.nr_fragment.post-details-container')
 
     <div class="clearfix"></div>
-
+  
+    @include('web.layout.nr_fragment.share-modal')
 
   </main>
 </div><!-- close #sidebar-bg-->

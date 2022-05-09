@@ -9,7 +9,7 @@ class PageMetaData
 {
 
     const DEFAULT_SUFFIX = "- Echokemedia";
-    const DEFAULT_KEYWORDS = "blog, entertament";
+    const DEFAULT_KEYWORDS = "Echokemedia is home of music, music video, and many more";
 
     static public function getTitle(string $name)
     {
@@ -27,6 +27,18 @@ class PageMetaData
             ->generate();
     }
 
+    static public function indexPage()
+    {
+        $meta = new MetaData();
+        return $meta->setAttribute("title", self::getTitle("Home"))
+            ->setAttribute("description", "Welcome to echokemedia.com")
+            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
+            ->setAttribute("author", "pet_pea")
+            ->setAttribute("audience", "Public")
+            ->generate();
+    }
+
+
     static public function blogDetailsPage(Post $post)
     {
         $meta = new Post();
@@ -34,7 +46,7 @@ class PageMetaData
         return $meta->setAttribute("name", self::getTitle($name))
             ->setAttribute("description", $post->meta_description)
             ->setAttribute("keywords",$post->meta_keywords ?? self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", optional($post->author)->names() ?? "Admin")
+            ->setAttribute("author", optional($post->user)->names() ?? "Admin")
             ->setAttribute("page_topic", $post->name)
             ->setAttribute("og_site_name", url("/"))
             ->setAttribute("og_title", $post->title)

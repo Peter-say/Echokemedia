@@ -10,9 +10,9 @@ use Jorenvh\Share\ShareFacade;
 
 class SharePostController extends Controller
 {
-    public function share(Request $request)
+    public function share(Post $post , Request $request)
     {
-        $post = Post::findOrFail($request->id);
+        // $post = Post::findOrFail($request->id);
         $platform = $request->platform;
         $sharer = null;
         $shareHandler = new Sharer;

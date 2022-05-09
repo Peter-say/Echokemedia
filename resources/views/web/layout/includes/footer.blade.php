@@ -2,11 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md">
-<<<<<<< HEAD
-                <div class="copyright-text-pro">&copy; </div>
-=======
                 <h3>Echokemedia</h3>
->>>>>>> 5d6d10ce3f3272ac2d1bb1f2481511e68fd6736f
             </div><!-- close .col -->
             <div class="col-md">
                 <ul class="social-icons-pro">

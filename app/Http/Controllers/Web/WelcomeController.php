@@ -26,12 +26,13 @@ class WelcomeController extends Controller
 
         $builder1 = Post::where('type', constants::MUSIC);
         $breadcrumbData = $this->getBreadcrumbData($request);
-
+        $categories = PostCategory::all();
         $posts = $builder1->orderby("created_at", "desc")->paginate(12);
         $popularPosts = $builder1->with('category')->orderby("views_count", "asc")->limit(1)->get();
         return view('web.newreleases', [
             'posts' => $posts,
             "popularPosts" => $popularPosts,
+            "categories" => $categories
             // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
     }
@@ -39,12 +40,14 @@ class WelcomeController extends Controller
 
     public function videosPage(Request $request, PostCategory $category_id)
     {
+        $categories = PostCategory::all();
         $builder2 = Post::where('type', constants::VIDEO);
         $videos = $builder2->orderby("created_at", "desc")->paginate(12);
         $popularPosts = $builder2->with('category')->orderby("views_count", "asc")->limit(1)->get();
         return view('web.videos', [
             'videos' => $videos,
             "popularPosts" => $popularPosts,
+            "categories" => $categories
             // "metaData" => PageMetaData::blogDetailsPage($type)
         ]);
     }
@@ -82,13 +85,15 @@ class WelcomeController extends Controller
     public function show(Post $post, PostCategory $category_id)
     {
         $comments = Comment::get();
+        $categories = PostCategory::all();
         // $post->update(["views_count" => $post->views_count + 1]);
         $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(9)->get();
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
             "relatedPosts" => $relatedPosts,
-            // "metaData" => PageMetaData::blogDetailsPage($post)
+            "categories" => $categories,
+            "metaData" => PageMetaData::blogDetailsPage($post),
         ]);
     }
 
@@ -127,16 +132,23 @@ class WelcomeController extends Controller
 
     public function index()
     {
-       
-        return view('web.welcome');
+        return view('web.welcome' ,[
+            PageMetaData::indexPage(),
+        ]);
     }
 
 
 
     function getFile($id)
     {
-        $post = Post::where("id", $id)->firstOrFail();
-        return response()->download($post->cover_music);
-        // return Storage::download('postVideos.mp4', $post);
+        $post = Post::where("name", $id)->firstOrFail();
+        return response()->download($post->cover_music ?? $post->cover_video );
+        // return Storage::download();
+    }
+    function getFileVideo($id)
+    {
+        $post = Post::where("name", $id)->firstOrFail();
+        return response()->download($post->cover_video );
+        // return Storage::download();
     }
 }

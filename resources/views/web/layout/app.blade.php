@@ -19,6 +19,17 @@
             text-transform: uppercase;
             color: green;
         }
+
+        .share-button i{
+            font-size: 24px;
+            padding-right: 20px;
+        }
+        .share-button .fa-instagram{
+             color: red;
+        }
+        .share-button .fa-whatsapp{
+             color: green;
+        }
        
     </style>
 
