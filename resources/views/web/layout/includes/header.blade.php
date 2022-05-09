@@ -7,7 +7,7 @@
             <nav id="site-navigation-pro">
                 <ul class="sf-menu">
                     <li class="normal-item-pro current-menu-item">
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
