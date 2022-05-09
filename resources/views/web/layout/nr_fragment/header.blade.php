@@ -1,5 +1,6 @@
 <header id="videohead-pro" class="sticky-header">
-	<div id="video-logo-background"><a href="dashboard-home.html"><img src="{{ $admin_assets }}/skrn/images/logo-video-layout.png" alt="Logo"></a></div>
+	<div id="video-logo-background" style="color: green;"><a href="/"><b>
+		Echokemedia</b></a></div>
 
 	<div id="video-search-header">
 		<form action="{{route('web.search')}}" id="video-search-header-filtering-padding">
@@ -98,8 +99,8 @@
 
 	<div id="header-user-profile">
 		<div id="header-user-profile-click" class="noselect">
-			<img src="{{ $admin_assets }}/skrn/images/demo/user-profile.jpg" alt="Suzie">
-			<div id="header-username">Suzie Smith</div><i class="fas fa-angle-down"></i>
+			<img src="{{ $admin_assets }}/skrn/images/demo/user-profile.png" alt="Suzie">
+			<div id="header-username">Echokemedia</div><i class="fas fa-angle-down"></i>
 		</div><!-- close #header-user-profile-click -->
 		<div id="header-user-profile-menu">
 			<ul>

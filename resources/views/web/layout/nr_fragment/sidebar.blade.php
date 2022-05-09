@@ -14,19 +14,19 @@
             </a>
         </li>
         <li class="normal-item-pro">
-            <a href="dashboard-playlists.html">
+            <a href="#">
                 <span class="icon-Movie"></span>
                 Playlists
             </a>
         </li>
         <li class="normal-item-pro">
-            <a href="dashboard-new-arrivals.html">
+            <a href="#">
                 <span class="icon-Movie-Ticket"></span>
                 New Arrivals
             </a>
         </li>
         <li class="normal-item-pro">
-            <a href="dashboard-coming-soon.html">
+            <a href="#">
                 <span class="icon-Clock"></span>
                 Coming Soon
             </a>
