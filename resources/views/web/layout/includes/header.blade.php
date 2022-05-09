@@ -1,7 +1,6 @@
 <header id="masthead-pro">
+    {{-- <h1><a href="index.html"><img src="{{ $admin_assets }}/skrn/images/logo.png" width="50px" height="20px" alt="Logo"></a></h1> --}}
     <div class="container">
-
-        <h1><a href="index.html"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
 
         @guest
             <nav id="site-navigation-pro">
