@@ -104,7 +104,7 @@
 		<div id="header-user-profile-menu">
 			<ul>
 				<li><a href="dashboard-favorites.html"><span class="icon-Favorite-Window"></span>My Favorites</a></li>
-				<li><a href="#!"><span class="icon-Life-Safer"></span>Help/Support</a></li>
+				<li><a href="{{ route('media.contact') }}"><span class="icon-Life-Safer"></span>Help/Support</a></li>
 				<li><a href="/"><span class="fa fa-home"></span>Home</a></li>
 			</ul>
 		</div><!-- close #header-user-profile-menu -->
