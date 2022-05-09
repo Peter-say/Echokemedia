@@ -1,6 +1,6 @@
 <header id="videohead-pro" class="sticky-header">
-    {{-- <h1><a href="index.html"><img src="{{ $admin_assets }}/skrn/images/logo.png" width="50px" height="20px" alt="Logo"></a></h1>  --}}
-</div>
+	<div id="video-logo-background" style="color: green;"><a href="/"><b>
+		Echokemedia</b></a></div>
 
 	<div id="video-search-header">
 		<form action="{{route('web.search')}}" id="video-search-header-filtering-padding">
