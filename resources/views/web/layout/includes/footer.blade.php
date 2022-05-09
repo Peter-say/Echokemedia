@@ -5,6 +5,7 @@
                 <ul class="social-icons">
                      <li><a href="/">Echokemedia</a></li>
                      <li><a href="{{ route('media.about') }}">About us</a></li>
+                     <li><a href="{{ route('media.contact') }}">Contact us</a></li>
                      
                 </ul>
             </div>
