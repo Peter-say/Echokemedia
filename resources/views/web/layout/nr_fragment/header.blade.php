@@ -1,6 +1,12 @@
+<style>
+	#video-logo-background{
+		color: black;
+	}
+</style>
 <header id="videohead-pro" class="sticky-header">
-	<div id="video-logo-background" style="color: green;"><a href="/"><b>
-		Echokemedia</b></a></div>
+	<div id="video-logo-background"> 
+		<h4><a href="/"><b>Echokemedia</b></a></h4>
+	</div>
 
 	<div id="video-search-header">
 		<form action="{{route('web.search')}}" id="video-search-header-filtering-padding">
@@ -120,9 +126,9 @@
 			<h3>Notifications</h3>
 			<div id="header-notification-menu-padding">
 				<ul id="header-user-notification-list">
-					<li><a href="#!"><img src="images/demo/user-profile-2.jpg" alt="Profile">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. <div class="header-user-notify-time">21 hours ago</div></a></li>
-					<li><a href="#!"><img src="images/demo/user-profile-3.jpg" alt="Profile">Donec vitae lacus id arcu molestie mollis. <div class="header-user-notify-time">3 days ago</div></a></li>
-					<li><a href="#!"><img src="images/demo/user-profile-4.jpg" alt="Profile">Aenean vitae lectus non purus facilisis imperdiet. <div class="header-user-notify-time">5 days ago</div></a></li>
+					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">check the just dropped music jam from ypur Favorite artist <div class="header-user-notify-time">21 hours ago</div></a></li>
+					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia just drop the lastest hot music video <div class="header-user-notify-time">3 days ago</div></a></li>
+					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia with the most funny comedy videos <div class="header-user-notify-time">5 days ago</div></a></li>
 				</ul>
 				<div class="clearfix"></div>
 			</div><!-- close #header-user-profile-menu -->
