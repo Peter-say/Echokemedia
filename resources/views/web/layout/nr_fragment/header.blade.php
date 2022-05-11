@@ -5,7 +5,7 @@
 </style>
 <header id="videohead-pro" class="sticky-header">
 	<div id="video-logo-background"> 
-		   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1> 
+		   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1> 
 
 	</div>
 

@@ -1,5 +1,5 @@
 <header id="masthead-pro">
-   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
+   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
     <div class="container">
 
         @guest
