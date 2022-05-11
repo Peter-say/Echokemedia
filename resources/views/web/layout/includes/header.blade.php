@@ -11,18 +11,18 @@
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
                         <!-- Sub-Menu Example >
-                                    <ul class="sub-menu">
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 1</a>
-                                        </li>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 2</a>
-                                        </li>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 3</a>
-                                        </li>
-                                    </ul>
-                                    < End Sub-Menu example -->
+                            <ul class="sub-menu">
+                                <li class="normal-item-pro">
+                                    <a href="#!">Sub-menu item 1</a>
+                                </li>
+                                <li class="normal-item-pro">
+                                    <a href="#!">Sub-menu item 2</a>
+                                </li>
+                                <li class="normal-item-pro">
+                                    <a href="#!">Sub-menu item 3</a>
+                                </li>
+                            </ul>
+                        < End Sub-Menu example -->
                     </li>
                     <li class="normal-item-pro current-menu-item">
                         <a href="{{route('media.news.index')}}">Celebrity News</a>
@@ -43,7 +43,7 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -76,7 +76,7 @@
             <nav id="site-navigation-pro">
                 <ul class="sf-menu">
                     <li class="normal-item-pro current-menu-item">
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -122,7 +122,7 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
