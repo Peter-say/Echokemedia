@@ -79,7 +79,7 @@
               <li class="nav-item dropdown user-profile-dropdown">
                   <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      <img class="img-fluid" src="{{ $admin_assets }}/assets/img/m-icon.jpeg" alt="avatar">
+                      <img class="img-fluid" src="{{ $admin_assets }}/skrn/images/demo/user-profile.png" alt="avatar">
                   </a>
                   <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                       <div class="">
