@@ -60,8 +60,8 @@
 
                             <div class="progression-studios-slider-caption-width">
                                 <div class="progression-studios-slider-caption-align">
-                                    <h2>Ultimate Video Theme</h2>
-                                    <h6>Watch and listen tothe largest collection of Music videos and music anywhere!</h6>
+                                    <h2>Topnotch music, video and news</h2>
+                                    <h6>Watch, read and listen to the largest collection of videos, News and music anywhere!</h6>
                                     <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro"
                                         href="{{route('media.newreleases')}}" role="button">View music and video library</a>
                                 </div><!-- close .progression-studios-slider-caption-align -->
