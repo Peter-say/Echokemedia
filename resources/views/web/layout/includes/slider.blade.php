@@ -11,7 +11,7 @@
                             <div class="progression-studios-slider-caption-width">
                                 <div class="progression-studios-slider-caption-align">
                                     <h2>Welcome to Echokemedia<span style="color:#3db13d;">.</span></h2>
-                                    <h6>Watch and listen tothe largest collection of Music videos and music anywhere!</h6>
+                                    <h6>Watch and listen to the largest collection of Music videos and music anywhere!</h6>
                                     <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro"
                                         href="{{route('media.newreleases')}}" role="button">View music and video library</a>
                                 </div><!-- close .progression-studios-slider-caption-align -->

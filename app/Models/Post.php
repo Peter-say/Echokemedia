@@ -59,10 +59,12 @@ class Post extends Model
 
     public function detailsUrl($sharer = null)
     {
+        
         return route("post.show", [
             "id" => $this->id,
             "slug" => slugify($this->name),
-            "sharer" => $sharer
+            "sharer" => $sharer,
+            "name" => $this->post
         ]);
     }
    

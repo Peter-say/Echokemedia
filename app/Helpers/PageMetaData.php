@@ -9,7 +9,7 @@ class PageMetaData
 {
 
     const DEFAULT_SUFFIX = "- Echokemedia";
-    const DEFAULT_KEYWORDS = "Echokemedia is home of music, music video, and many more";
+    const DEFAULT_KEYWORDS = "Watch and listen tothe largest collection of Music videos and music anywhere!";
 
     static public function getTitle(string $name)
     {
@@ -33,7 +33,7 @@ class PageMetaData
         return $meta->setAttribute("title", self::getTitle("Home"))
             ->setAttribute("description", "Welcome to echokemedia.com")
             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", "pet_pea")
+            ->setAttribute("author", "Author")
             ->setAttribute("audience", "Public")
             ->generate();
     }
@@ -46,15 +46,15 @@ class PageMetaData
         return $meta->setAttribute("name", self::getTitle($name))
             ->setAttribute("description", $post->meta_description)
             ->setAttribute("keywords",$post->meta_keywords ?? self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", optional($post->user)->names() ?? "Admin")
+            ->setAttribute("author", optional($post->user->name) ?? "Admin")
             ->setAttribute("page_topic", $post->name)
             ->setAttribute("og_site_name", url("/"))
-            ->setAttribute("og_title", $post->title)
+            ->setAttribute("og_title", $post->name)
             ->setAttribute("og_description", $post->meta_description)
-            ->setAttribute("og_image", $post->saveFromRequest())
+            ->setAttribute("og_image", $post->cover_image)
             ->setAttribute("og_url", $post->detailsUrl())
-            ->setAttribute("twitter_card", $post->saveFromRequest())
-            ->setAttribute("twitter_image_alt", $post->title)
-            ->generate();
+            ->setAttribute("twitter_card", $post->cover_image)
+            ->setAttribute("twitter_image_alt", $post->name);
+            
     }
 }

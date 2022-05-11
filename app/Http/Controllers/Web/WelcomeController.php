@@ -86,6 +86,7 @@ class WelcomeController extends Controller
     {
         $comments = Comment::get();
         $categories = PostCategory::all();
+        // $post = Post::where('id' , $post)->findOrFail(); 
         // $post->update(["views_count" => $post->views_count + 1]);
         $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(9)->get();
         return view('web.post_details', [

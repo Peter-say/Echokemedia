@@ -28,10 +28,7 @@
 	        <img src="{{ $admin_assets }}/skrn/images/genres/sci-fi.png" alt="Sci-Fi">
 	        <h6>Sci-Fi</h6>
 	    </li>
-	    <li>
-	        <img src="{{ $admin_assets }}/skrnimages/genres/thriller.png" alt="Thriller">
-	        <h6>Thriller</h6>
-	    </li>
+	   
 	    <li>
 	        <img src="{{ $admin_assets }}/skrn/images/genres/western.png" alt="Western">
 	        <h6>Western</h6>

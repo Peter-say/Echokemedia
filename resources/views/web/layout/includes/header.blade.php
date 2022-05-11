@@ -7,7 +7,7 @@
             <nav id="site-navigation-pro">
                 <ul class="sf-menu">
                     <li class="normal-item-pro current-menu-item">
-                        <a href="{{route('/')}}">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
@@ -24,6 +24,9 @@
                                         </li>
                                     </ul>
                                     < End Sub-Menu example -->
+                    </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
                     </li>
 
                 </ul>
@@ -59,6 +62,9 @@
                                 </ul>
                                 < End Mobile Sub-Menu Example -->
                     </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                    </li>
 
                 </ul>
                 <div class="clearfix"></div>
@@ -88,6 +94,9 @@
                                             </li>
                                         </ul>
                                         < End Sub-Menu example -->
+                    </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
                     </li>
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">
@@ -131,6 +140,9 @@
                                         </li>
                                     </ul>
                                     < End Mobile Sub-Menu Example -->
+                    </li>
+                    <li class="normal-item-pro current-menu-item">
+                        <a href="{{route('media.news.index')}}">Celebrity News</a>
                     </li>
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">

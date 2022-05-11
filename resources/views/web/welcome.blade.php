@@ -23,11 +23,9 @@
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
                     <h2 class="short-border-bottom">Watch On Any Device</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing nula pellentesquemagna a convallis nula
-                        facilisi. Praesent consequat eget elementumconsectetur. Nullam interdum, quam ac sagittis
-                        facilisis sapien dolor ipsum consequat ellit tristique senectus</p>
+                    <p>The media you view and listen to from or on <em>Echokemedia</em> doesn't select a particular device cause it's an anchor of equality😉 </p>
                     <div style="height:15px;"></div>
-                    <p><a class="btn btn-green-pro" href="signup-step1.html" role="button">Learn More</a></p>
+                    <p><a class="btn btn-green-pro" href="{{route('media.newreleases')}}" role="button">Learn More</a></p>
                 </div>
             </div><!-- close .row -->
 
@@ -36,11 +34,9 @@
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
                     <h2 class="short-border-bottom">Make Your Own Playlist</h2>
-                    <p>Curabitur at lobortis leo varius tellus. Phasellus id purus placeratfinibus diam a, feugiat
-                        massa. Donec porta orci lectus, ut lacinia risus fringilla nulla facilisi suspendisse eget id
-                        justo ac magna finibus dignissim. Integer purus feugiat gravida convalis,</p>
+                    <p><em>Echokemedia</em> allows you to be able to create your own playlist and be the master with your masterpiece ♨️</p>
                     <div style="height:15px;"></div>
-                    <p><a class="btn btn-green-pro" href="signup-step1.html" role="button">Start Watching</a></p>
+                    <p><a class="btn btn-green-pro" href="{{route('media.newreleases')}}" role="button">Start Watching</a></p>
                 </div>
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
@@ -59,11 +55,9 @@
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
                     <h2 class="short-border-bottom">Watch in Ultra HD</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing nula pellentesquemagna a convallis nula
-                        facilisi. Praesent consequat eget elementumconsectetur. Nullam interdum, quam ac sagittis
-                        facilisis sapien dolor ipsum consequat ellit tristique senectus</p>
+                    <p> Be our guest and be the one to choose your screen, we'll be here to ensure it goes as planned 👐🏻🦾</p>
                     <div style="height:15px;"></div>
-                    <p><a class="btn btn-green-pro" href="signup-step1.html" role="button">Start Your Free Trial</a></p>
+                    <p><a class="btn btn-green-pro" href="{{route('media.newreleases')}}" role="button">Latest Jam</a></p>
                 </div>
             </div><!-- close .row -->
 

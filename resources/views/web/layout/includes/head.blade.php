@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" CONTENT="Watch and listen tothe largest collection of Music videos and music anywhere!">
 
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/style.css">

@@ -30,7 +30,7 @@ class MetaData
         return $this;
     }
 
-    public function generate()
+    public  function generate()
     {
         $object_array = (array) $this;
 
