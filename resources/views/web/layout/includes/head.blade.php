@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css">
     <!-- iconsmind.com Icons -->
     <link href="{{ $admin_assets}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ $admin_assets }}/skrn/images/logo.png"> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $admin_assets }}/skrn/images/logo.png">
 
 
     <!-- Additional CSS Files -->

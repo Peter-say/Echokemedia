@@ -5,7 +5,8 @@
 </style>
 <header id="videohead-pro" class="sticky-header">
 	<div id="video-logo-background"> 
-		<h4><a href="/"><b>Echokemedia</b></a></h4>
+		   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1> 
+
 	</div>
 
 	<div id="video-search-header">
