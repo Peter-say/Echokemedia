@@ -9,7 +9,7 @@
                   </a>
               </li> --}}
               <li class="nav-item theme-text">
-                  <a href="index.html" class="nav-link"> Echokemedia</a>
+                  <a href="/" class="nav-link"> Echokemedia</a>
               </li>
           </ul>
 
