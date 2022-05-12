@@ -17,10 +17,11 @@
             </div><!-- close .item-listing-container-skrn -->
         </div><!-- close .col -->
        @endforeach
+       {!! $posts->links('pagination::bootstrap-4') !!}
     </div><!-- close .row -->
 
 
-    {!! $posts->links('pagination::bootstrap-4') !!}
+   
 
 
 </div><!-- close .dashboard-container -->
