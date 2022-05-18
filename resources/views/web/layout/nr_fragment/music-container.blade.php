@@ -15,6 +15,7 @@
                     </div><!-- close .item-listing-text-skrn-vertical-align -->
                 </div><!-- close .item-listing-text-skrn -->
             </div><!-- close .item-listing-container-skrn -->
+            <div class="sharethis-inline-share-buttons"></div>
         </div><!-- close .col -->
        @endforeach
        {!! $posts->links('pagination::bootstrap-4') !!}
