@@ -17,7 +17,7 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function comments()
@@ -59,12 +59,12 @@ class Post extends Model
 
     public function detailsUrl($sharer = null)
     {
-        
+
         return route("post.show", [
             "id" => $this->id,
             "slug" => slugify($this->name),
             "sharer" => $sharer,
-            "name" => $this->post
+            "name" => $this->name
         ]);
     }
    

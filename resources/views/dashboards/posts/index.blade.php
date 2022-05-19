@@ -32,6 +32,7 @@
                                             <th class="">Post Type</th>
                                             <th class="">Post By</th>
                                             <th class="">Cover Image</th>
+                                            <th class="">Cover Music</th>
                                             <th class="">Cover Video</th>
                                             <th class="">Description</th>
                                             <th class="">Created At</th>
@@ -51,11 +52,17 @@
                                             </td>
                                             <td>
                                                 <a href="" target="_blank" rel="noopener noreferrer">
+                                                    <audio controls class="img-fluid">
+                                                        <source class="img-fluid" src="{{asset($post->cover_music) ?? 'Not available'}}" type="music/mp3">
+                                                    </audio></a>
+                                            </td>
+                                            <td>
+                                                <a href="" target="_blank" rel="noopener noreferrer">
                                                     <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset($post->cover_music)}}" type="music/mp3">
+                                                        <source class="img-fluid" src="{{asset($post->cover_video) ?? 'Not available'}}" type="music/mp4">
                                                     </video></a>
                                             </td>
-                                            <td>{{$post->content_desccription}}</td>
+                                            <td>{{Str::of($post->content_desccription)->limit(50)}}</td>
                                             <td>{{$post->created_at}}
 
 
@@ -65,11 +72,11 @@
                                                     @method('DELETE')
 
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <a href="{{route('admin.post.edit' , $post->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
+                                                        <div class="mb-3">
+                                                            <a href="{{route('admin.post.edit' , $post->id )}}" class="btn btn-primary btn-sm">Edit</a>
                                                         </div>
-                                                        <div class="col-6">
-                                                        <a href=""onClick="$(this).parent().trigger('submit')"> <i type="submit" class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>
+                                                        <div class="">
+                                                            <a href="{{route('admin.post.destroy' , $post->id)}}" onClick="$(this).parent().trigger('submit')" class="btn btn-danger btn-sm">Delete</a>
 
                                                         </div>
                                                     </div>

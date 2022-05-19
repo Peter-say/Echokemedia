@@ -90,8 +90,8 @@ class AdminVideoController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
-        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages");
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo");
+        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo" , $request);
 
         $data['cover_image'] = $image_path;
         $data['cover_video'] = $video_path;
@@ -167,10 +167,10 @@ class AdminVideoController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         // dd($data);
-        if (!empty($cover_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages")));
-        if (!empty($video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideos")));
+        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo" , $request);
 
-        $data['cover_image'] = $cover_path;
+        $data['cover_image'] = $image_path;
         $data['cover_video'] = $video_path;
         $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();

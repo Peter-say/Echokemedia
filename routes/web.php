@@ -40,7 +40,7 @@ Route::prefix("media")->as("media.")->group(function () {
   Route::get('/videos', [App\Http\Controllers\Web\WelcomeController::class, 'videosPage'])->name('videos');
   Route::resource('news', App\Http\Controllers\Web\NewsController::class);
   Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
-  Route::get('/share/{name}/{platform}', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
+  Route::get('/', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
   Route::post('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'storeContact']);
 
   // Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');
@@ -53,9 +53,9 @@ Route::prefix("media")->as("media.")->group(function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\Web\WelcomeController::class, 'search'])->name('web.search');
-Route::get('/post/{id}/{slug?}/{sharer?}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
-Route::get('/file/download/{name}', [App\Http\Controllers\Web\WelcomeController::class, 'getFile'])->name('post.download');
-Route::get('/video/download/{name}', [App\Http\Controllers\Web\WelcomeController::class, 'getFileVideo'])->name('video.download');
+Route::get('/post/{post:slug}', [App\Http\Controllers\Web\WelcomeController::class, 'show'])->name('post.show');
+Route::get('/file/download/{slug}', [App\Http\Controllers\Web\WelcomeController::class, 'getFile'])->name('post.download');
+Route::get('/video/download/{slug}', [App\Http\Controllers\Web\WelcomeController::class, 'getFileVideo'])->name('video.download');
 Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('signup');
 
 

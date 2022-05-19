@@ -1,7 +1,6 @@
 <header id="masthead-pro">
+   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
     <div class="container">
-
-        <h1><a href="{{route('/')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Logo"></a></h1>
 
         @guest
             <nav id="site-navigation-pro">
@@ -12,21 +11,21 @@
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
                         <!-- Sub-Menu Example >
-                                    <ul class="sub-menu">
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 1</a>
-                                        </li>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 2</a>
-                                        </li>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 3</a>
-                                        </li>
-                                    </ul>
-                                    < End Sub-Menu example -->
+                                <ul class="sub-menu">
+                                    <li class="normal-item-pro">
+                                        <a href="#!">Sub-menu item 1</a>
+                                    </li>
+                                    <li class="normal-item-pro">
+                                        <a href="#!">Sub-menu item 2</a>
+                                    </li>
+                                    <li class="normal-item-pro">
+                                        <a href="#!">Sub-menu item 3</a>
+                                    </li>
+                                </ul>
+                            < End Sub-Menu example -->
                     </li>
                     <li class="normal-item-pro current-menu-item">
-                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
                     </li>
 
                 </ul>
@@ -44,26 +43,26 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="{{route('/')}}">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
                         <!-- Mobile Sub-Menu Example >
-                                <ul>
-                                    <li class="normal-item-pro">
-                                        <a href="#!">Sub-menu item 1</a>
-                                    </li>
-                                    <li class="normal-item-pro">
-                                        <a href="#!">Sub-menu item 2</a>
-                                    </li>
-                                    <li class="normal-item-pro">
-                                        <a href="#!">Sub-menu item 3</a>
-                                    </li>
-                                </ul>
-                                < End Mobile Sub-Menu Example -->
+                                    <ul>
+                                        <li class="normal-item-pro">
+                                            <a href="#!">Sub-menu item 1</a>
+                                        </li>
+                                        <li class="normal-item-pro">
+                                            <a href="#!">Sub-menu item 2</a>
+                                        </li>
+                                        <li class="normal-item-pro">
+                                            <a href="#!">Sub-menu item 3</a>
+                                        </li>
+                                    </ul>
+                                    < End Mobile Sub-Menu Example -->
                     </li>
                     <li class="normal-item-pro current-menu-item">
-                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
                     </li>
 
                 </ul>
@@ -77,26 +76,26 @@
             <nav id="site-navigation-pro">
                 <ul class="sf-menu">
                     <li class="normal-item-pro current-menu-item">
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
                         <!-- Sub-Menu Example >
-                                        <ul class="sub-menu">
-                                            <li class="normal-item-pro">
-                                                <a href="#!">Sub-menu item 1</a>
-                                            </li>
-                                            <li class="normal-item-pro">
-                                                <a href="#!">Sub-menu item 2</a>
-                                            </li>
-                                            <li class="normal-item-pro">
-                                                <a href="#!">Sub-menu item 3</a>
-                                            </li>
-                                        </ul>
-                                        < End Sub-Menu example -->
+                                            <ul class="sub-menu">
+                                                <li class="normal-item-pro">
+                                                    <a href="#!">Sub-menu item 1</a>
+                                                </li>
+                                                <li class="normal-item-pro">
+                                                    <a href="#!">Sub-menu item 2</a>
+                                                </li>
+                                                <li class="normal-item-pro">
+                                                    <a href="#!">Sub-menu item 3</a>
+                                                </li>
+                                            </ul>
+                            < End Sub-Menu example -->
                     </li>
                     <li class="normal-item-pro current-menu-item">
-                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
                     </li>
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">
@@ -123,26 +122,26 @@
 
                 <ul id="mobile-menu-pro">
                     <li>
-                        <a href="{{route('/')}}">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('media.newreleases') }}">New Releases</a>
                         <!-- Mobile Sub-Menu Example >
-                                    <ul>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 1</a>
-                                        </li>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 2</a>
-                                        </li>
-                                        <li class="normal-item-pro">
-                                            <a href="#!">Sub-menu item 3</a>
-                                        </li>
-                                    </ul>
-                                    < End Mobile Sub-Menu Example -->
+                                        <ul>
+                                            <li class="normal-item-pro">
+                                                <a href="#!">Sub-menu item 1</a>
+                                            </li>
+                                            <li class="normal-item-pro">
+                                                <a href="#!">Sub-menu item 2</a>
+                                            </li>
+                                            <li class="normal-item-pro">
+                                                <a href="#!">Sub-menu item 3</a>
+                                            </li>
+                                        </ul>
+                                        < End Mobile Sub-Menu Example -->
                     </li>
                     <li class="normal-item-pro current-menu-item">
-                        <a href="{{route('media.news.index')}}">Celebrity News</a>
+                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
                     </li>
                     @if (Auth::user()->role == 'Admin')
                         <li class="nav-item">

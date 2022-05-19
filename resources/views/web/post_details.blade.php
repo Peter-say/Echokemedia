@@ -13,7 +13,7 @@
       <ul class="slides">
 
         <li class="progression_studios_animate_left">
-          <div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{asset($post->cover_image)}});">
+          <div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{asset( $post->cover_image)}} )">
             <div class="progression-studios-slider-display-table">
               <div class="progression-studios-slider-vertical-align">
 
@@ -38,9 +38,9 @@
                   <div class="progression-studios-slider-dashboard-caption-width">
                     <div class="progression-studios-slider-caption-align">
                       @if($post->cover_video)
-                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('video.download' , $post->name)}}"><i class="fas fa-play"></i> Download</a>
+                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('video.download' , $post->slug)}}"><i class="fas fa-play"></i> Download</a>
                       @else
-                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('post.download' , $post->name)}}"><i class="fas fa-play"></i> Download</a>
+                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('post.download' , $post->slug)}}"><i class="fas fa-play"></i> Download</a>
                       @endif
                       <div class="clearfix"></div>
 

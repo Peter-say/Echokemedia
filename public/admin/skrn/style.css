@@ -4564,7 +4564,7 @@ li.flex-active-slide.progression_studios_animate_right .progression-studios-slid
 	
 	.flexslider.progression-studios-dashboard-slider .circle-rating-pro,
 	a.progression-studios-slider-play-btn {
-		display:none;
+		/* display:none; */
 	}
 	
 	.progression-studios-slider-dashboard-caption-width {

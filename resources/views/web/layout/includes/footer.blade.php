@@ -5,6 +5,7 @@
                 <ul class="social-icons">
                      <li><a href="/">Echokemedia</a></li>
                      <li><a href="{{ route('media.about') }}">About us</a></li>
+                     <li><a href="{{ route('media.contact') }}">Contact us</a></li>
                      
                 </ul>
             </div>
@@ -19,7 +20,7 @@
             </div>
             {{-- <div class="col-lg-12">
                 <div class="copyright-text">
-                    <p>Copyright 2021 Media Downloader.
+                    <p>Copyright 2022 Media Downloader.
 
                 </div> --}}
             </div>

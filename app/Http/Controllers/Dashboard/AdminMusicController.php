@@ -53,7 +53,8 @@ class AdminMusicController extends Controller
             return view('dashboards.503_error');
         } else {
             $categories =  PostCategory::get();
-            return view('dashboards.posts.create',
+            return view(
+                'dashboards.posts.create',
                 [
                     'categories' => $categories,
                     'types' => $types,
@@ -68,12 +69,12 @@ class AdminMusicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Post $post)
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
-       $data = $request->validate([
+        $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
@@ -84,13 +85,13 @@ class AdminMusicController extends Controller
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
             "is_sponsored" => "required|string|in:$allowedOptions",
-            "is_top_story" => "required|string|in:$allowedOptions", 
+            "is_top_story" => "required|string|in:$allowedOptions",
             "is_featured" => "required|string|in:$allowedOptions",
             "is_published" => "required|string|in:$allowedOptions",
-            "can_comment" => "required|string|in:$allowedOptions",   
+            "can_comment" => "required|string|in:$allowedOptions",
         ]);
-        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music , "postMusic");
+        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic" , $request);
 
         $data['cover_image'] = $image_path;
         $data['cover_music'] = $music_path;
@@ -142,12 +143,12 @@ class AdminMusicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request , $id)
+    public function update(Request $request, $id)
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
-        $post = Post::where('id',$id);
+        $post = Post::where('id', $id);
         // dd($id);
         $data = $request->validate([
             'category_id' => "required|string",
@@ -160,23 +161,21 @@ class AdminMusicController extends Controller
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
             "is_sponsored" => "required|string|in:$allowedOptions",
-            "is_top_story" => "required|string|in:$allowedOptions", 
+            "is_top_story" => "required|string|in:$allowedOptions",
             "is_featured" => "required|string|in:$allowedOptions",
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         // dd($data);
-       
-            $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-            $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postMusic");
+        if (!empty([
+        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request),
+        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic" , $request),
+    ]));
+        
+                $data['cover_image'] =  $image_path;
+                $data['cover_music'] = $music_path;
             
-        if(!empty(
-            [
-                $data['cover_image'] = $cover_path,
-                $data['cover_music'] = $video_path,
-                ]
-        ));
-       
+
         $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
         // dd($post);

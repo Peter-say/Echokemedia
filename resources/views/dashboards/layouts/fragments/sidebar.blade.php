@@ -79,6 +79,15 @@
                 </li>
 
                 <li class="menu">
+                    <a href="{{ route('admin.post.index') }}" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa fa-archive" style="font-size:30px;color:black"></i>
+                            <span>Posts</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="menu">
                     <a href="{{ route('admin.users.index') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-users" style="font-size:30px;color:black"></i>

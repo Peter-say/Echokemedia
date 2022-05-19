@@ -32,8 +32,8 @@ class WelcomeController extends Controller
         return view('web.newreleases', [
             'posts' => $posts,
             "popularPosts" => $popularPosts,
-            "categories" => $categories
-            // "metaData" => PageMetaData::blogDetailsPage($type)
+            "categories" => $categories,
+            // "metaData" => PageMetaData::blogDetailsPage($posts)
         ]);
     }
 
@@ -47,8 +47,8 @@ class WelcomeController extends Controller
         return view('web.videos', [
             'videos' => $videos,
             "popularPosts" => $popularPosts,
-            "categories" => $categories
-            // "metaData" => PageMetaData::blogDetailsPage($type)
+            "categories" => $categories,
+            // "metaData" => PageMetaData::blogDetailsPage($videos)
         ]);
     }
 
@@ -94,7 +94,7 @@ class WelcomeController extends Controller
             'comments' =>  $comments,
             "relatedPosts" => $relatedPosts,
             "categories" => $categories,
-            "metaData" => PageMetaData::blogDetailsPage($post),
+            // "metaData" => PageMetaData::blogDetailsPage($post),
         ]);
     }
 
@@ -142,13 +142,13 @@ class WelcomeController extends Controller
 
     function getFile($id)
     {
-        $post = Post::where("name", $id)->firstOrFail();
+        $post = Post::where("slug", $id)->firstOrFail();
         return response()->download($post->cover_music ?? $post->cover_video );
         // return Storage::download();
     }
     function getFileVideo($id)
     {
-        $post = Post::where("name", $id)->firstOrFail();
+        $post = Post::where("slug", $id)->firstOrFail();
         return response()->download($post->cover_video );
         // return Storage::download();
     }

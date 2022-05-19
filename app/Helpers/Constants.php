@@ -4,7 +4,7 @@ namespace App\Helpers;
 
  class  Constants{
 
-   const APP_NAME = '@ echokemedia.com';
+   const APP_NAME = '@echokemedia.com';
 
 
 
