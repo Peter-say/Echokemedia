@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('web.layout.app')
 
-@section('content')
+@section('contents')
     {{-- <div class="container"></div>
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -77,5 +77,7 @@
     
 </div> --}}
 
+<button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
+    In</button>
     @include('web.layout.includes.modal')
 @endsection
