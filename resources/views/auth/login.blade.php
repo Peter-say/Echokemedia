@@ -76,8 +76,18 @@
     </div>
     
 </div> --}}
+<div class="container">
+    <nav id="site-navigation-pro">
+        <ul class="sf-menu">
+            <li class="normal-item-pro current-menu-item">
+                <a href="#">Link on the button to sign in/login in</a>
+            </li>
+        </ul>
+    </nav>
 
-<button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
-    In</button>
+    <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
+        In</button>
+</div>
+
     @include('web.layout.includes.modal')
 @endsection
