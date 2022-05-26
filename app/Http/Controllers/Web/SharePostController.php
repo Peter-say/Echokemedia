@@ -6,17 +6,16 @@ use App\Helpers\Sharer;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Jorenvh\Share\ShareFacade;
 
 class SharePostController extends Controller
 {
-    public function share(Post $post , Request $request)
+    public function share(Request $request)
     {
-        // $post = Post::findOrFail($request->id);
-        $platform = $request->platform;
+        $post = Post::first();
         $sharer = null;
+        $platform = $request->platform;
         $shareHandler = new Sharer;
-        $link = $shareHandler->getLink($platform, $post->detailsUrl());
+        $link = $shareHandler->getLink($platform, $post->detailsUrl($post));
         return redirect()->away($link);
     }
     

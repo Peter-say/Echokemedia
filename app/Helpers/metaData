@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Helpers;
+
+use App\Models\Post;
+use App\Helpers\SEO;
+
+class metaData
+{
+
+
+    public function getPageSEOData()
+    {
+        // $meta = new SEO();
+        $getFeaturedImagePath =  public_path();
+        return [
+           
+        ];
+    }
+}

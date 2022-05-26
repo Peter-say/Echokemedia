@@ -10,6 +10,7 @@ use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\support\Str;
 
 class AdminMusicController extends Controller
@@ -69,7 +70,7 @@ class AdminMusicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , Post $post)
+    public function store(Request $request, Post $post)
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
@@ -91,7 +92,7 @@ class AdminMusicController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic" , $request);
+        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
 
         $data['cover_image'] = $image_path;
         $data['cover_music'] = $music_path;
@@ -145,18 +146,16 @@ class AdminMusicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
-        $post = Post::where('id', $id);
-        // dd($id);
+
         $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
-            "type" => "nullable|string|in:$allowedTypes",
+            "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'nullable|image',
-            "cover_music" => 'nullable|mimes:mp3',
+            "cover_music" => 'nullable:mimes:mp3',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -166,22 +165,22 @@ class AdminMusicController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
-        // dd($data);
-        if (!empty([
-        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request),
-        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic" , $request),
-    ]));
-        
-                $data['cover_image'] =  $image_path;
-                $data['cover_music'] = $music_path;
-            
+
+        $post = Post::where('id', $id);
+
+        if ($request->hasFile(['cover_image', 'cover_music'])) {
+            $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+            $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
+        }
+
+        $data['cover_image'] =  $image_path;
+        $data['cover_music'] = $music_path;
+
 
         $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
-        // dd($post);
-        // dd($data);
         $post->update($data);
-        return back()->with('success_message', 'Post updated successfully');
+        return redirect()->route('admin.post.index')->with('success_message', 'Post added successfully');
     }
 
     /**

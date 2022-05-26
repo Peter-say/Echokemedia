@@ -40,7 +40,7 @@ Route::prefix("media")->as("media.")->group(function () {
   Route::get('/videos', [App\Http\Controllers\Web\WelcomeController::class, 'videosPage'])->name('videos');
   Route::resource('news', App\Http\Controllers\Web\NewsController::class);
   Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
-  Route::get('/', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
+  Route::get('/share/', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
   Route::post('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'storeContact']);
 
   // Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');

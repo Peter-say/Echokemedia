@@ -57,13 +57,12 @@ class Post extends Model
         return $query->where("category_id", $category_id);
     }
 
-    public function detailsUrl($sharer = null)
+    public  function detailsUrl(Post $post)
     {
-
-        return route("post.show", [
+        // $post = Post::where('id', $post)->first();  
+        return route("post.show", $post , [
             "id" => $this->id,
             "slug" => slugify($this->name),
-            "sharer" => $sharer,
             "name" => $this->name
         ]);
     }

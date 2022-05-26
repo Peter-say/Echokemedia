@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <div class="share-button">
-            <a href="" target="blank" class=""><i class="fa fa-facebook"></i></a>
+            <a href="{{route('media.share' , [ 'name' =>$post->name , 'platform' => 'facebook' ])}}" target="blank" class=""><i class="fa fa-facebook"></i></a>
             <a href="" class=""><i class="fa fa-instagram"></i></a>
             <a href="" class=""><i class="fa fa-whatsapp"></i></a>
         </div>

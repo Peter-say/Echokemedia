@@ -3,7 +3,7 @@
 
 <!-- Mirrored from progression-studios.com/skrn/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Apr 2022 11:16:56 GMT -->
 
-@include('web.layout.includes.head')
+@include('web.layout.includes.head' , ["metaData" => $metaData ?? []])
 
 
 <style>

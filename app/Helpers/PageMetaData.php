@@ -9,8 +9,8 @@ use Illuminate\Support\Str;
 class PageMetaData
 {
 
-//     const DEFAULT_SUFFIX = "- Echokemedia";
-//     const DEFAULT_KEYWORDS = "Watch and listen tothe largest collection of Music videos and music anywhere!";
+    const DEFAULT_SUFFIX = "- Echokemedia";
+    const DEFAULT_KEYWORDS = "Watch and listen to the largest collection of Music videos and music anywhere!";
 
 //     static public function getTitle(string $name)
 //     {
@@ -40,23 +40,23 @@ class PageMetaData
 //     }
 
 
-//     static public function blogDetailsPage(Post $post)
-//     {
-//         $meta = new Post();
-//         $name = $post->meta_title ?? $post->name;
-//         return $meta->setAttribute("name", $name)
-//             ->setAttribute("description", $post->meta_description)
-//             ->setAttribute("keywords",$post->meta_keywords ?? self::DEFAULT_KEYWORDS)
-//             ->setAttribute("author", "Admin")
-//             ->setAttribute("page_topic", $post->name)
-//             ->setAttribute("og_site_name", url("/"))
-//             ->setAttribute("og_title", $post->name)
-//             ->setAttribute("og_description", $post->meta_description)
-//             ->setAttribute("og_image", $post->cover_image)
-//             ->setAttribute("og_url", $post , Str::slug($name , '-'))
-//             ->setAttribute("twitter_card", $post->cover_image)
-//             ->setAttribute("twitter_image_alt", $post->name);
+    static public function blogDetailsPage(Post $post)
+    {
+        $meta = new Post();
+        $name = $post->name;
+        return $meta->setAttribute("name", $name)
+            ->setAttribute("description", $post->meta_description)
+            ->setAttribute("keywords",$post->meta_keywords ?? self::DEFAULT_KEYWORDS)
+            ->setAttribute("author", "Admin")
+            ->setAttribute("page_topic", $post->name)
+            ->setAttribute("og_site_name", url("Echokemedia"))
+            ->setAttribute("og_title", $post->name)
+            ->setAttribute("og_description", $post->meta_description)
+            ->setAttribute("og_image", $post->cover_image ?? $post->cover_video )
+            ->setAttribute("og_url", $post , Str::slug($name , '-'))
+            ->setAttribute("twitter_card", $post->cover_image)
+            ->setAttribute("twitter_image_alt", $post->name);
             
-//     }
+    }
 }
 

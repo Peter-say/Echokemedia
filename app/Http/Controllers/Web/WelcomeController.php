@@ -94,7 +94,7 @@ class WelcomeController extends Controller
             'comments' =>  $comments,
             "relatedPosts" => $relatedPosts,
             "categories" => $categories,
-            // "metaData" => PageMetaData::blogDetailsPage($post),
+            "metaData" => PageMetaData::blogDetailsPage($post),
         ]);
     }
 
@@ -134,7 +134,7 @@ class WelcomeController extends Controller
     public function index()
     {
         return view('web.welcome' ,[
-            PageMetaData::indexPage(),
+            // PageMetaData::indexPage(),
         ]);
     }
 

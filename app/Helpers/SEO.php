@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Post;
+
 return [
     /**
      * Use this setting to specify the site name that will be used in OpenGraph tags.
@@ -54,7 +56,7 @@ return [
          * so you'll need to add the suffix manually if you want that. If set to null, we'll determine the title
          * just like the other pages.
          */
-        'homepage_title' => null,
+        'homepage_title' =>Post::where('id', 'name' ?? 'Echokemedia' ),
     ],
 
     'description' => [
@@ -63,16 +65,20 @@ return [
          * where we don't have a description set via an associated ->seo model or via
          * the ->getDynamicSEOData() method.
          */
-        'fallback' => null,
+
+        
+        'fallback' => Post::where('id', 'meta_description' ?? 'content_description' ),
     ],
 
     'image' => [
+
+      
         /**
          * Use this setting to specify a fallback image, which will be used on places where you
          * don't have an image set via an associated ->seo model or via the ->getDynamicSEOData() method.
          * This should be a path to an image. The url to the path is generated using the `secure_url()` function (`secure_url($yourProvidedPath)`).
          */
-        'fallback' => null,
+        'fallback' => Post::where('id', 'meta_description' ?? 'content_description' ),
     ],
 
     'author' => [

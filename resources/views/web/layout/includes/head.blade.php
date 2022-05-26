@@ -1,8 +1,25 @@
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="Description" CONTENT="Watch and listen tothe largest collection of Music videos and music anywhere!">
+    <meta name="description" content="{{ $metaData['meta_description'] ?? '' }}">
+    <meta name="keywords" content="{{ $metaData['meta_keywords'] ?? '' }}">
+
+    <!--  Essential META Tags -->
+    <meta property="og:title" content="{{ $metaData['og_title'] ?? '' }}">
+    <meta property="og:description" content="{{ $metaData['og_description'] ?? '' }}">
+    <meta property="og:image" content="{{ $metaData['og_image'] ?? '' }}">
+    <meta property="og:url" content="{{ $metaData['og_url'] ?? '' }}">
+    <meta name="twitter:card" content="{{ $metaData['twitter_card'] ?? '' }}">
+
+    <!--  Non-Essential, But Recommended -->
+    <meta property="og:site_name" content="{{ $metaData['og_site_name'] ?? '' }}">
+    <meta name="twitter:image:alt" content="{{ $metaData['twitter_image_alt'] ?? '' }}">
+
+    <meta property="og:image:width" content="{{ $metaData['og_image_width'] ?? '500' }}">
+    <meta property="og:image:width" content="{{ $metaData['og_image_height'] ?? '500' }}">
+    <meta property="og:type" content="{{ $metaData['og_type'] ?? 'music' }}">
+
+
 
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ $admin_assets }}/skrn/style.css">
