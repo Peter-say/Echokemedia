@@ -166,15 +166,20 @@ class AdminMusicController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
 
-        $post = Post::where('id', $id);
+        $post = Post::where('id', $id)->first();
+
+        $image_path = $post->cover_image;
+        $music_path = $post->cover_music;
 
         if ($request->hasFile(['cover_image', 'cover_music'])) {
             $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
             $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
+        } else {
+            $data['cover_image'] =  $image_path;
+            $data['cover_music'] = $music_path;
         }
 
-        $data['cover_image'] =  $image_path;
-        $data['cover_music'] = $music_path;
+
 
 
         $data["slug"] = Str::slug($request->name, '-');
@@ -190,9 +195,11 @@ class AdminMusicController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($post)
+    public function destroy($id)
     {
-        Post::where('id', $post)->delete();
-        return back()->with("error_message", "Deleted successfully!");
+       
+        Post::where('id', $id)->delete();
+        return redirect()->route('admin.post.index')->with("error_message", "Deleted successfully!");
+
     }
 }

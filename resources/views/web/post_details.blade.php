@@ -13,7 +13,7 @@
       <ul class="slides">
 
         <li class="progression_studios_animate_left">
-          <div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{asset( $post->cover_image)}} )">
+          <div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{asset($post->cover_image)}} )">
             <div class="progression-studios-slider-display-table">
               <div class="progression-studios-slider-vertical-align">
 

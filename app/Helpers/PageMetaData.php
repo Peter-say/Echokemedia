@@ -12,10 +12,10 @@ class PageMetaData
     const DEFAULT_SUFFIX = "- Echokemedia";
     const DEFAULT_KEYWORDS = "Watch and listen to the largest collection of Music videos and music anywhere!";
 
-//     static public function getTitle(string $name)
-//     {
-//         return $name . " " . self::DEFAULT_SUFFIX;
-//     }
+    static public function getTitle(string $name)
+    {
+        return $name . " " . self::DEFAULT_SUFFIX;
+    }
 
   
 
@@ -28,16 +28,16 @@ class PageMetaData
 //             ->generate();
 //     }
 
-//     static public function indexPage()
-//     {
-//         $meta = new MetaData();
-//         return $meta->setAttribute("title", self::getTitle("Home"))
-//             ->setAttribute("description", "Welcome to echokemedia.com")
-//             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-//             ->setAttribute("author", "Author")
-//             ->setAttribute("audience", "Public")
-//             ->generate();
-//     }
+    static public function indexPage()
+    {
+        $meta = new MetaData();
+        return $meta->setAttribute("title", self::getTitle("Home"))
+            ->setAttribute("description", "Welcome to echokemedia.com")
+            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
+            ->setAttribute("author", "Author")
+            ->setAttribute("audience", "Public")
+            ->generate();
+    }
 
 
     static public function blogDetailsPage(Post $post)

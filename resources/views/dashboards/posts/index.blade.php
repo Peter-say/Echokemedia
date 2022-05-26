@@ -67,20 +67,12 @@
 
 
                                             <td>
-                                                <form action="{{route('admin.post.destroy' , $post->id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                <form action="{{ route('admin.post.destroy', $post->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                     @csrf
                                                     @method('DELETE')
-
-                                                    <div class="row">
-                                                        <div class="mb-3">
-                                                            <a href="{{route('admin.post.edit' , $post->id )}}" class="btn btn-primary btn-sm">Edit</a>
-                                                        </div>
-                                                        <div class="">
-                                                            <a href="{{route('admin.post.destroy' , $post->id)}}" onClick="$(this).parent().trigger('submit')" class="btn btn-danger btn-sm">Delete</a>
-
-                                                        </div>
-                                                    </div>
+                                                    <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
                                                 </form>
+                                                <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-primary btn-sm mt-2">edit</a>
                                             </td>
 
                                         </tr>
