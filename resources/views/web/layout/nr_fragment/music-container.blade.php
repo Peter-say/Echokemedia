@@ -20,7 +20,5 @@
     </div><!-- close .row -->
 
 
-    {!! $posts->links('pagination::bootstrap-4') !!}
-
 
 </div><!-- close .dashboard-container -->

@@ -34,6 +34,7 @@
     <link href="{{ $admin_assets}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ $admin_assets }}/skrn/images/icon.png">
 
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=628518f65d7558001495d225&product=inline-share-buttons" async="async"></script>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/fontawesome.css">
