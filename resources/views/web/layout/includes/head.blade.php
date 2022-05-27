@@ -16,7 +16,7 @@
 
     <!--  Essential META Tags -->
     <meta property="og:title" content="{{ $metaData['og_title'] ?? '' }}">
-    <meta property="og:description" content="{{ $metaData['og_description'] ?? '' }}">
+    <meta property="og:description" content="{{ $metaData['meta_description'] ?? '' }}">
     <meta property="og:image" content="{{ $metaData['og_image'] ?? '' }}">
     <meta property="og:url" content="{{ $metaData['og_url'] ?? '' }}">
     <meta name="twitter:card" content="{{ $metaData['twitter_card'] ?? '' }}">
