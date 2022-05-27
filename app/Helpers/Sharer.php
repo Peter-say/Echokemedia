@@ -6,22 +6,20 @@ use App\Models\Post;
 
 class Sharer
 {
-
-    public function getLink($platform , $url)
+    public function getLink($platform, $url)
     {
-        $url = urlencode($url);
-        if($platform == "facebook"){
+        if ($platform == "facebook") {
             $link = $this->shareOnFacebook($url);
         }
-        if($platform == "instagram"){
+        if ($platform == "instagram") {
             $link = $this->shareOnInstagram($url);
         }
-        if($platform == "whatsapp"){
+        if ($platform == "whatsapp") {
             $link = $this->shareOnWhatsapp($url);
         }
         return $link;
     }
-
+                    
     public function shareOnFacebook($url)
     {
         return "https://web.facebook.com/sharer.php?u=$url";

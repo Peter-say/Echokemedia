@@ -35,6 +35,17 @@
       'Agent' => 'Jenssegers\\Agent\\Facades\\Agent',
     ),
   ),
+  'jorenvanhocht/laravel-share' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Jorenvh\\Share\\Providers\\ShareServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Share' => 'Jorenvh\\Share\\ShareFacade',
+    ),
+  ),
   'laravel/fortify' => 
   array (
     'providers' => 
@@ -91,11 +102,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'techies-africa/devpilot_laravel' => 
+  'spatie/laravel-permission' => 
   array (
     'providers' => 
     array (
-      0 => 'TechiesAfrica\\Devpilot\\Providers\\DevpilotServiceProvider',
+      0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
 );

@@ -13,4 +13,21 @@ class MediaController extends Controller
         return view('web.music.list');
        
     }
+
+    public function getBreadcrumbData($request)
+    {
+        $title = ucfirst($request->type);
+        $value = "";
+        $searchKeyword = $request->search;
+
+        if (!empty($searchKeyword)) {
+            $title = "Search result for: ";
+            $value = "\"$searchKeyword\"";
+        }
+
+        return [
+            "breadcrumbTitle" => $title,
+            "breadcrumbValue" => $value
+        ];
+    }
 }

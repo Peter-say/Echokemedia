@@ -1,4 +1,4 @@
-@extends('dashboards.layouts.app')
+@extends('dashboards.layouts.app' , ["meta_title" => "Posts"])
 
 @section('contents')
 
@@ -32,6 +32,7 @@
                                             <th class="">Post Type</th>
                                             <th class="">Post By</th>
                                             <th class="">Cover Image</th>
+                                            <th class="">Cover Music</th>
                                             <th class="">Cover Video</th>
                                             <th class="">Description</th>
                                             <th class="">Created At</th>
@@ -45,28 +46,35 @@
                                         <tr>
                                             @foreach($posts as $post)
                                             <td>{{$post->id}}</td>
-                                            <td>{{$post->content_type}}
+                                            <td>{{$post->type}}
                                             <td>{{$post->user->name}}</td>
-                                            <td> <img class="img-fluid" src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
+                                            <td> <img class="img-fluid" src="{{asset($post->cover_image)}}" alt="..." />
+                                            </td>
+                                            <td>
+                                                <a href="" target="_blank" rel="noopener noreferrer">
+                                                    <audio controls class="img-fluid">
+                                                        <source class="img-fluid" src="{{asset($post->cover_music) ?? 'Not available'}}" type="music/mp3">
+                                                    </audio></a>
                                             </td>
                                             <td>
                                                 <a href="" target="_blank" rel="noopener noreferrer">
                                                     <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset('postVideos/' . $post->cover_video)}}" type="video/mp4">
+                                                        <source class="img-fluid" src="{{asset($post->cover_video) ?? 'Not available'}}" type="music/mp4">
                                                     </video></a>
                                             </td>
-                                            <td>{{$post->content_desccription}}</td>
+                                            <td>{{Str::of($post->content_desccription)->limit(50)}}</td>
                                             <td>{{$post->created_at}}
 
 
                                             <td>
-                                                <form action="{{route('admin.post.destroy' , [ $post->id] )}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                <form action="{{ route('admin.post.destroy', $post->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
                                                 </form>
-                                                <a href="{{route('admin.post.edit' , $post->id )}}" class="btn btn-primary">Edit</a>
+                                                <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-primary btn-sm mt-2">edit</a>
                                             </td>
+
                                         </tr>
                                         @endforeach
 
@@ -83,4 +91,4 @@
 
             </div>
         </div>
-@endsection
+        @endsection

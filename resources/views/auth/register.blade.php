@@ -109,6 +109,14 @@
                                         </button>
                                     </div>
                                 </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <li>
+                                           <a class="nav-link" href="{{ route('login') }}"> Already a creator? {{ __('Sign-in') }}</a>
+                                        </li>  
+                                    </div>
+                                </div>
                             </form> 
     
                             <div class="login100-more"

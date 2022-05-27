@@ -34,13 +34,25 @@
                             </a>
                 </li> -->
                 <li class="menu">
-                    <a href="{{route('user.post.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{route('user.post.create')}}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-book" style="font-size:30px;color:black"></i>
-                            <span>Create</span>
+                            <span>Create Post</span>
                         </div>
                     </a>
                 </li>
+
+                <li class="menu">
+                    <a href="{{route('user.news.create')}}" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa fa-book" style="font-size:30px;color:black"></i>
+                            <span>Create News</span>
+                        </div>
+                    </a>
+                </li>
+
+
+               
 
                 <li class="menu">
                     <a href="{{route('user.earnings')}}" aria-expanded="false" class="dropdown-toggle">

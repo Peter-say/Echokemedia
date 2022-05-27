@@ -16,11 +16,12 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+     
    
-     public function postslist(User $user)
+     public function viewposts(User $user)
      {
        $posts = $user->posts()->with(['user'])->paginate(5);
-          return view('users.posts.posts_list' , [
+          return view('users.posts.index' , [
            'user' => $user,
            'posts' => $posts,
     ]);

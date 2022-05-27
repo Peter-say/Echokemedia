@@ -1,4 +1,4 @@
-@extends('users.layouts.app')
+@extends('users.layouts.app' , ["meta_title" => "Profile"])
 
 @section('content')
 <!--  BEGIN CONTENT AREA  -->
@@ -20,7 +20,7 @@
                                 </svg></a>
                         </div>
                         <div class="text-center user-info ">
-                            <img class="image img-fluid" src="{{ asset(auth()->user()->avatar) }}" alt="">
+                            <img class="image img-fluid" src="{{asset(auth()->user()->avatar)}}" alt="">
                             <p class="">{{auth()->user()->name}}</p>
                         </div>
                         <div class="user-info-list">
@@ -47,12 +47,7 @@
                                             <line x1="3" y1="10" x2="21" y2="10"></line>
                                         </svg>{{Auth::user()->role}}
                                     </li>
-                                    <li class="contacts-block__item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                            <circle cx="12" cy="10" r="3"></circle>
-                                        </svg>New York, USA
-                                    </li>
+                                   
                                     <li class="contacts-block__item">
                                         <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail
                                                 ">

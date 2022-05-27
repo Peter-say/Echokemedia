@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Helpers\Constants;
+use App\Helpers\PageMetaData;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\ContactUs;
@@ -14,64 +15,55 @@ use Illuminate\Http\Request;
 use App\Helpers\Sharer;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Jorenvh\Share\ShareFacade;
+use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function index()
+    public function newreleases(Request $request, Post $posts , PostCategory $category_id)
     {
-        $categorytop = 40;
-        // dd($request->all());
-        $posts = Post::latest()->get();
-        $categories = PostCategory::latest()->get();
-        $trendingTopics = Post::latest()->get();
+        $type  = $request->type;
 
-
-        $recents = Post::oldest()
-            ->limit(10)
-            ->get();
-
-        return view('web.welcome', [
+        $builder1 = Post::where('type', constants::MUSIC);
+        $breadcrumbData = $this->getBreadcrumbData($request);
+        $categories = PostCategory::all();
+        $posts = $builder1->orderby("created_at", "desc")->paginate(12);
+        $popularPosts = $builder1->with('category')->orderby("views_count", "asc")->limit(1)->get();
+        return view('web.newreleases', [
             'posts' => $posts,
-            'categories' => $categories,
-            "trendingTopics" => $trendingTopics,
-            "recents" => $recents,
-            "categorytop" =>  $categorytop,
+            "popularPosts" => $popularPosts,
+            "categories" => $categories,
+           
+        ]);
+    }
+
+
+    public function videosPage(Request $request, PostCategory $category_id)
+    {
+        $categories = PostCategory::all();
+        $builder2 = Post::where('type', constants::VIDEO);
+        $videos = $builder2->orderby("created_at", "desc")->paginate(12);
+        $popularPosts = $builder2->with('category')->orderby("views_count", "asc")->limit(1)->get();
+        return view('web.videos', [
+            'videos' => $videos,
+            "popularPosts" => $popularPosts,
+            "categories" => $categories,
+            // "metaData" => PageMetaData::blogDetailsPage($videos)
         ]);
     }
 
     public function recent()
     {
+        $categories = PostCategory::get();
         $posts = Post::latest()
             ->paginate(12);
         return view('web.layouts.includes.pages-sidebar', [
             'posts' => $posts,
+            'categories' => $categories
         ]);
     }
 
 
-    public function storeComment(Request $request, User $user)
-    {
-        // dd($request->all());
-        $request->validate([
-            'username' => 'required|string',
-            'email' => 'required|string',
-            'body' => 'required|string',
-        ]);
-
-
-        $comment = new Comment;
-        $comment->body = $request->get('body');
-        $comment->email = $request->get('email');
-        $comment->username = $request->get('username');
-        $comment->user()->associate($request->user());
-        $post = Post::find($request->get('post_id'));
-        // dd($post);
-        $post->comments()->save($comment);
-
-
-
-        return back()->with('success_message', 'Your comment has been successfully submited');
-    }
 
     public function about()
     {
@@ -90,21 +82,57 @@ class WelcomeController extends Controller
     }
 
 
-    public function show(Post $post)
+    public function show(Post $post, PostCategory $category_id)
     {
         $comments = Comment::get();
+        $categories = PostCategory::all();
+        $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(9)->get();
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,
+            "relatedPosts" => $relatedPosts,
+            "categories" => $categories,
+            "metaData" => PageMetaData::blogDetailsPage($post),
         ]);
     }
 
-    public function search(Request $request)
+
+    public function getBreadcrumbData($request)
+    {
+        $title = ucfirst($request->type);
+        $value = "";
+        $searchKeyword = $request->search;
+
+        if (!empty($searchKeyword)) {
+            $title = "Search result for: ";
+            $value = "\"$searchKeyword\"";
+        }
+
+        return [
+            "breadcrumbTitle" => $title,
+            "breadcrumbValue" => $value
+        ];
+    }
+
+    public function search(Post $posts, Request $request)
     {
         $search = $_GET['query'];
+        $relatedPosts = Post::relatedCategory($posts->category_id)->inRandomOrder()->limit(9)->get();
+        $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();
         $posts = Post::where('name', 'like', '%' . $search . '%')->get();
-        return view('web.welcome', [
-            "posts" => $posts,
+        return view('web.search' , compact('posts' ,'categories' )); 
+    }
+
+    public function headerFilter()
+    {
+        $categories = PostCategory::all();
+        return view('web.layout.nr_fragment.search-form', compact('categories'));
+    }
+
+    public function index()
+    {
+        return view('web.welcome' ,[
+            // PageMetaData::indexPage(),
         ]);
     }
 
@@ -112,17 +140,14 @@ class WelcomeController extends Controller
 
     function getFile($id)
     {
-        $post = Post::where("id", $id)->firstOrFail();
-        return response()->download('postVideos/' . $post->cover_video);
-        // return Storage::download('postVideos.mp4', $post);
+        $post = Post::where("slug", $id)->firstOrFail();
+        return response()->download($post->cover_music ?? $post->cover_video );
+        // return Storage::download();
     }
-    public function share(Request $request, Post $post)
+    function getFileVideo($id)
     {
-        $post = Post::first();
-        $platform = $request->platform;
-
-        $sharer = new Sharer;
-        $link = $sharer->getLink($platform, $post->detailsUrl($sharer));
-        return redirect()->away($link);
+        $post = Post::where("slug", $id)->firstOrFail();
+        return response()->download($post->cover_video );
+        // return Storage::download();
     }
 }

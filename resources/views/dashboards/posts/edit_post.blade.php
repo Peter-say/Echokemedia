@@ -19,7 +19,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Create New Post</h4>
+                                    <h4>Edit Post</h4>
                                 </div>
                             </div>
                         </div>
@@ -28,12 +28,12 @@
                             @csrf @method("PUT")
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Image <span class="required">*</span></label>
-                                    <input class="form-control" type="file" name="cover_image">
+                                    <input class="form-control" type="file" name="cover_image" value="{{asset($post->cover_Image)}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Video <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_video" value="">
+                                    <input class="form-control" type="file" name="cover_video" value="{{asset($post->cover_video)}}">
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -57,12 +57,7 @@
 
                                 <div class="form-group col-md-3">
                                     <label for="">Type <span class="required">*</span></label>
-                                    <select name="type" class="form-control" id="" required>
-                                        <option value="" disabled selected>Select Type</option>
-                                        @foreach ($types as $type)
-                                        <option value="{{ $type }}">{{ $type }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>
 
 
@@ -76,7 +71,7 @@
                                     <select name="is_sponsored" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{ $key }}" {{ $key == $post->is_sponsored ? 'selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -86,7 +81,7 @@
                                     <select name="is_top_story" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{ $key }}" {{ $key == $post->is_top_story ? 'selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -96,7 +91,7 @@
                                     <select name="is_featured" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{ $key }}" {{ $key == $post->is_featured ? 'selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -106,7 +101,7 @@
                                     <select name="is_published" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{ $key }}" {{ $key == $post->is_pubblished ? 'selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -116,9 +111,25 @@
                                     <select name="can_comment" class="form-control" id="" required>
                                         <option value="" disabled selected>Select Option</option>
                                         @foreach ($boolOptions as $key => $value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        <option value="{{ $key }}" {{$key==$post->can_comment ? 'selected ' : ''}}>{{ $value }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <hr class="col-12">
+                                <h5 class="col-12 mb-3">Seo Data</h5>
+                                <div class="form-group col-md-5">
+                                    <label for="">Meta Title <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_title" required value="{{$post->meta_title}}" placeholder="Describe the post. if empty it uses the blog title...">
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <label for="">Meta Keywords <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_keywords" required  value="{{ $post->meta_keywords }}" placeholder="Enter search keywords...">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="">Meta Description <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_description" value="{{$post->meta_description}}" required placeholder="Summarize the blog post">
                                 </div>
 
                                 <div class="form-group col-12">

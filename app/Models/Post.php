@@ -5,72 +5,68 @@ namespace App\Models;
 use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory , Notifiable;
 
-    protected $fillable = [
-        'category_id',
-         'name',
-        'content_type',
-        'cover_video',
-        'cover_image',
-        'content_desccription',
-        'user_id'
-    ];
+    protected $guarded = [];
 
     protected $primaryKey = 'user_id';
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function comments()
     {
-        return $this->morphMany(Comment::class,'commentable')->whereNull('parent_id' , 'user_id' );
+        return $this->hasMany(Comment::class , 'post_id');
     }
 
-
-    public function scopeActive($query)
+    public function scopeMusic($query)
     {
-        return $query->where("is_top-story", Constants::ACTIVE);
+        return $query->where("type", Constants::MUSIC);
     }
 
-    public function scopeBlog($query)
+    public function scopeVideo($query)
     {
-        return $query->active()->where("type", Constants::VIDEO);
+        return $query->where("type", Constants::VIDEO);
+    }
+   
+    public  function isMusic()
+    {
+        return strtolower($this->type) == strtolower(Constants::MUSIC);
     }
 
-    public function scopeVlog($query)
+    public  function isVideo()
     {
-        return $query->active()->where("type", Constants::MUSIC);
+        return strtolower($this->type) == strtolower(Constants::VIDEO);
     }
 
 
     public function category()
     {
 
-        return $this->belongsTo(PostCategory::class,  'category_id');
+        return $this->belongsTo(PostCategory::class ,  "category_id" , "id");
     }
 
-    public function scopeSearch($query, $keyword)
+    public static function scopeRelatedCategory($query, $category_id)
     {
-        if (!empty($keyword)) {
-            $query = $query->where("title", "like", "%$keyword%");
-        }
-        return $query;
+        return $query->where("category_id", $category_id);
     }
 
-    public function detailsUrl($sharer = null)
+    public  function detailsUrl(Post $post)
     {
-        return view("web.welcome", [
-            "uuid" => $this->id,
-            "slug" => slugify($this->title),
-            "sharer" => $sharer
+        // $post = Post::where('id', $post)->first();  
+        return route("post.show", $post , [
+            "id" => $this->id,
+            "slug" => slugify($this->name),
+            "name" => $this->name
         ]);
     }
+   
 
    
 }

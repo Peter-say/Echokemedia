@@ -1,50 +1,113 @@
-@extends("dashboards.layouts.app")
-@section('content')
+@extends('dashboards.layouts.app')
 
+@section('contents')
+<div class="main-container" id="container">
 
+    <div class="overlay"></div>
+    <div class="search-overlay"></div>
+    <!--  BEGIN CONTENT PART  -->
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
 
-    <div class="container scrollable-area">
-        <div class="head">
-            <h4>Edit User</h4>
-        </div>
-        <div class="content-body">
+            <div class="row layout-top-spacing">
+                @include('notifications.flash_messages')
+                <div id="tableCheckbox" class="">
+                   
+                    
 
-            <div class="mt-5">
-                <form action="{{ route('admin.users.update', $user->id) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="{{ asset(auth()->user()->avatar) }}" target="_blank">
-                                <img src="{{ asset(auth()->user()->avatar) }}" alt="avatar" class="img-fluid">
-                            </a>
-                            <div class="form-group">
-                                <label for="avatar">Logo (Optional)</label>
-                                <input type="file" class="form-control" name="avatar" />
+                    <div class="statbox widget box box-shadow mt-5">
+                        <div class="widget-header">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <h4>Edit Post</h4>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label for="username">User-name</label>
-                                <input type="text" class="form-control" required name="username"
-                                    placeholder="Name" value="{{$user->name}}" />
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="text" class="form-control" required name="email"
-                                    placeholder="E-mail" value="{{$user->email}}" />
-                            </div>
+                        <div class="widget-content widget-content-area">
+                            <form enctype="multipart/form-data" class="form-row" action="{{route('users.post.update' , $post->id )}}" method="POST">
+                            @csrf @method("PUT")
+                                <div class="form-group col-md-4">
+                                    <label for="">Cover Image <span class="required">*</span></label>
+                                    <input class="form-control" type="file" name="cover_image" value="{{asset($post->cover_Image)}}">
+                                </div>
 
-                            <div class="form-group">
-                                <button value="Submit" type="submit" class="btn btn-lg btn-success">Submit</button>
-                            </div>
+                                <div class="form-group col-md-4">
+                                    <label for="">Cover Video <span class="">*</span></label>
+                                    <input class="form-control" type="file" name="cover_video" value="{{asset($post->cover_video)}}">
+                                </div>
 
+                                <div class="form-group col-md-4">
+                                    <label for=""> Category<span class="required">*</span></label>
+                                    <select name="category_id" class="form-control" id="">
+                                        <option value="" disabled selected>Select Category</option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}" {{ $category->id == $post->category_id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="">Title <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="name"
+                                    value="{{ $post->name }}" placeholder="......">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="">Type <span>*</span></label>
+                                    <select name="type" class="form-control" id="">
+                                        <option value="" disabled selected>Select Type</option>
+                                        @foreach ($types as $type)
+                                        <option value="{{ $type }}" {{ $type == $post->type ? 'selected' : '' }}>
+                                    {{ $type }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group col-md-12">
+                                    <label for="">Body <span class="">*</span></label>
+                                    <textarea id="'content_desccription'" type="text" 
+                                    name="content_desccription" class="form-control">{!! old('body') ?? $post->content_desccription !!}</textarea>
+                                </div>
+                            
+
+                                <hr class="col-12">
+                                <h5 class="col-12 mb-3">Seo Data</h5>
+                                <div class="form-group col-md-5">
+                                    <label for="">Meta Title <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_title" required value="{{$post->meta_title}}" placeholder="Describe the post. if empty it uses the blog title...">
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <label for="">Meta Keywords <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_keywords" required  value="{{ $post->meta_keywords }}" placeholder="Enter search keywords...">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="">Meta Description <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="meta_description" value="{{$post->meta_description}}" required placeholder="Summarize the blog post">
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <button class="btn btn-primary btn-lg">Submit</button>
+                                </div>
+
+
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
+
             </div>
         </div>
+
     </div>
+    <!--  END CONTENT PART  -->
+
+</div>
+</div>
+
 
 @endsection

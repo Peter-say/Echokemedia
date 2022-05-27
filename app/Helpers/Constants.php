@@ -4,9 +4,13 @@ namespace App\Helpers;
 
  class  Constants{
 
-     const  APPROVED = "approved";
-     const  PENDING = "pending";
-     const  REJECTED = "rejected";
+   const APP_NAME = '@echokemedia.com';
+
+
+
+     const  APPROVED = "Approved";
+     const  PENDING = "Pending";
+     const  REJECTED = "Rejected";
 
 
      const DEBIT_TRANSACTION = "Debit";
@@ -21,8 +25,10 @@ namespace App\Helpers;
         self::INACTIVE => "No",
      ];
 
-     const MUSIC = "music";
+     
      const VIDEO = "video";
+     const MUSIC = "music";
+
 
 
         const WIZKID =  "Wizkid";
@@ -45,4 +51,5 @@ namespace App\Helpers;
         self::TIMAYA =>  "Timaya",
         self::OLAMIDE => "Olamide",
      ];
+
  }

@@ -26,7 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'username',
         'password',
-        'is_email_verified'
+        'is_email_verified',
+        'status'
     ];
 
     /**
@@ -62,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(ContactUs::class);
     }
 
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class , 'user_id' , 'post_id');
 

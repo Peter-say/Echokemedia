@@ -40,6 +40,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    public function index(){
+        return view('web.signup');
+    }
+
     public function __construct()
     {
         $this->middleware('guest');

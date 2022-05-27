@@ -1,156 +1,71 @@
-@extends('web.layouts.app')
+@extends('web.layout.app' , ["meta_title" => ""])
+
+
 @section('contents')
+<div id="sidebar-bg">
 
-<!-- Page Content -->
-<!-- Banner Starts Here -->
-<div class="heading-page header-text">
-  <section class="page-heading">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="text-content">
+  @include('web.layout.nr_fragment.header')
+  @include('web.layout.nr_fragment.sidebar')
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-              <div class="jumbotron bg-alert">
-                <h4> feature ads</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<!-- Banner Ends Here -->
+  <main id="col-main">
 
-<div class="col-12">
-  <a href="{{route('/')}}">
-    <i class="fa fa-arrow-left d-flex w-50 " aria-hidden="true"></i></a>
-</div>
-<section class="blog-posts grid-system mt-1">
-  <div class="container ">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="all-blog-posts">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/assets/images/blog-post-02.jpg" alt="">
-                </div>
-                <div class="down-content">
-                
-                    <h4 class="text-success">{{$post->name}}</h4>
-                  </a>
-                  <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#"></a>{{$post->created_at->diffForHumans()}}</span>
+    <div class="flexslider progression-studios-dashboard-slider">
+      <ul class="slides">
 
-                  <div>
-                    <img class="img-fluid " src="{{asset('postImages/' . $post->cover_image)}}" alt="..." />
-                  </div>
+        <li class="progression_studios_animate_left">
+          <div class="progression-studios-slider-dashboard-image-background" style="background-image:url('{{asset($post->cover_image)}}' )">
+            <div class="progression-studios-slider-display-table">
+              <div class="progression-studios-slider-vertical-align">
 
-                  <div class="post-options">
-                    <div class="row">
-                      <div class="col-12">
-                        <ul class="post-tags">
-                          <li class="mt-5"><a class="btn btn-success text-white w-100 " href="{{route('post.download' , $post->id)}}">Download</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-12">
-                        <div class="">
-                          <i style="padding-right: 10px;" class="fa fa-share-alt"></i>
-                          <span style="padding-right: 10px; font-size :30px">
-                            <i style="color:blue;" class="fa fa-facebook"></i>
-                            <i style="color:green;" class="fa fa-whatsapp"></i>
-                            <i style="color: cornflowerblue;" class="fa fa-twitter"></i>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <p>{{$post->content_desccription}}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <div class="container">
+                  @if($post->cover_music)
+                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_music)}}"><i class="fas fa-play"></i></a>
 
-            <div class="col-lg-12">
-              <div class="sidebar-item comments">
-                <div class="sidebar-heading">
-                  <!-- comments lists -->
-                </div>
-                <div class="content">
-                  <ul>
-                    @foreach($comments as $comment)
-                    <li>
-                      <div class="author-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/comment-author-01.jpg" alt="">
-                      </div>
-                      <div class="right-content">
-                        <h4>{{$comment->username}}<span>{{$comment->created_at->diffForHumans()}}<span></h4>
-                        <p>{{$comment->body}}</p>
-                      </div>
-                      @endforeach
-                    </li>
-                    <li class="replied">
-                      <div class="author-thumb">
-                        <img src="{{ $admin_assets}}/assets/images/comment-author-02.jpg" alt="">
-                      </div>
-                  </ul>
-                </div>
-              </div>
-            </div>
+                  <audio id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="960" height="140">
+                    <source src="{{asset($post->cover_music)}}" type="audio/mp3">
+                  </audio>
+                  @else
+                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_video)}}"><i class="fas fa-play"></i></a>
 
-            <div class="col-lg-12">
-              <div class="sidebar-item submit-comment">
-                <div class="sidebar-heading">
-                  <h2>Your comment</h2>
-                </div>
-                <div class="content">
-                  <form id="comment" action="{{route('media.comment')}}" method="post">
-                    <div class="row">
-                      @csrf
+                  <video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="100%" height="140">
+                    <source src="{{asset($post->cover_video)}}" type="video/mp4">
+                  </video>
+                  @endif
+                  <div class="circle-rating-pro" data-value="0.86" data-animation-start-value="0.86" data-size="70" data-thickness="6" data-fill="{
+								          &quot;color&quot;: &quot;#42b740&quot;
+								        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">8.6</span></div>
 
-                      @auth
-                      {{-- No need to fill name and email --}}
+                  <div class="progression-studios-slider-dashboard-caption-width">
+                    <div class="progression-studios-slider-caption-align">
+                      @if($post->cover_video)
+                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('video.download' , $post->slug)}}"><i class="fas fa-play"></i> Download</a>
                       @else
-                      <div class="col-md-6 col-sm-12">
-                        <fieldset>
-                          <input name="username" type="text" id="name" disabled placeholder="Your name" required="">
-                        </fieldset>
-                      </div>
-                      <div class="col-md-6 col-sm-12">
-                        <fieldset>
-                          <input name="email" type="text" id="email" disabled placeholder="Your email will not be publish" required="">
-                        </fieldset>
-                      </div>
+                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('post.download' , $post->slug)}}"><i class="fas fa-play"></i> Download</a>
+                      @endif
+                      <div class="clearfix"></div>
 
-                      @endauth
-                      <div class="col-md-12 col-sm-12">
-                        <fieldset>
-                          <input name="body" disabled type="text" id="subject" placeholder="Your Comment">
-                          <input type="hidden" name="post_id" value="{{ $post->id }}" />
-                        </fieldset>
-                      </div>
+                    </div><!-- close .progression-studios-slider-caption-align -->
+                  </div><!-- close .progression-studios-slider-caption-width -->
 
-                      <div class="col-lg-12">
-                        <fieldset>
-                          <button type="submit" id="form-submit" disabled class="main-button">Submit</button>
-                        </fieldset>
-                      </div>
+                </div><!-- close .container -->
 
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+              </div><!-- close .progression-studios-slider-vertical-align -->
+            </div><!-- close .progression-studios-slider-display-table -->
 
-          </div>
-        </div>
-      </div>
-    
-    </div>
-  </div>
-</section>
+            <div class="progression-studios-slider-mobile-background-cover"></div>
+          </div><!-- close .progression-studios-slider-image-background -->
+        </li>
 
+      </ul>
+    </div><!-- close .progression-studios-slider - See /js/script.js file for options -->
+
+    @include('web.layout.nr_fragment.post-details-description')
+    @include('web.layout.nr_fragment.post-details-container')
+
+    <div class="clearfix"></div>
+  
+    @include('web.layout.nr_fragment.share-modal')
+
+  </main>
+</div><!-- close #sidebar-bg-->
 @endsection
