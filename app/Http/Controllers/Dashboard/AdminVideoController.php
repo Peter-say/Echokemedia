@@ -99,7 +99,7 @@ class AdminVideoController extends Controller
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
-        return redirect()->route('admin.video.index')->with('success_message', 'Post added successfully');
+        return redirect()->route('admin.post.index')->with('success_message', 'Post added successfully');
     }
 
     /**
@@ -166,12 +166,20 @@ class AdminVideoController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
-        // dd($data);
-        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo" , $request);
+      
+        $post = Post::where('id', $id)->first();
 
-        $data['cover_image'] = $image_path;
-        $data['cover_video'] = $video_path;
+        $image_path = $post->cover_image;
+        $video_path = $post->cover_music;
+
+        if ($request->hasFile(['cover_image', 'cover_music'])) {
+            $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+            $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
+        } else {
+            $data['cover_image'] = $image_path;
+            $data['cover_video'] = $video_path;
+        }
+
         $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
         // dd($post);
