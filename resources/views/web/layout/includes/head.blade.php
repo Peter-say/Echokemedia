@@ -7,7 +7,7 @@
     <meta name="author" content="{{ $metaData['author'] ?? '' }}">
     <meta name="publisher" content="{{ $metaData['publisher'] ?? '' }}">
     <meta name="copyright" content="{{ $metaData['copyright'] ?? '' }}">
-    <meta name="page-topic" content="{{ $metaData['page_topic'] ?? '' }}">
+    <meta name="page-topic" content="{{ $metaData['page_topic'] ?? '' }}"> 
     <meta name="page-type" content="{{ $metaData['page_type'] ?? '' }}">
     <meta name="audience" content="{{ $metaData['audience'] ?? '' }}">
 

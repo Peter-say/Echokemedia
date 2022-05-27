@@ -11,7 +11,7 @@ class MediaFilesHelper
     public static function saveFromRequest($file , $path , Request  $request)
     { 
        
-       $file_name = $request->name.".".$file->extension();
+       $file_name = $request->slug.".".$file->extension();
         $file->move(public_path($path) , $file_name);
         return $path."/".$file_name;
       
