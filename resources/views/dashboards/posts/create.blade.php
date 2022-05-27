@@ -33,12 +33,12 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Image <span class="required">*</span></label>
-                                    <input class="form-control" type="file" name="cover_image" value="{{old('cover_image') ?? ''}}">
+                                    <input class="form-control" type="file" name="cover_image">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="">Cover Music <span class="">*</span></label>
-                                    <input class="form-control" type="file" name="cover_music" value="{{old('cover_music') ?? ''}}">
+                                    <input class="form-control" type="file" name="cover_music">
                                 </div>
 
                                 <div class="form-group col-md-4">
