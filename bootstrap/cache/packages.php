@@ -91,4 +91,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'techies-africa/devpilot_laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'TechiesAfrica\\Devpilot\\Providers\\DevpilotServiceProvider',
+    ),
+  ),
 );
