@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id')->constrained('users');
             $table->unsignedBigInteger('category_id')->constrained('post_categories');
             $table->string('cover_image');
-            $table->string('cover_music')->default('0');
-            $table->string('cover_video')->default('0');
+            $table->string('cover_music')->nullable()->default('0');
+            $table->string('cover_video')->nullable()->default('0');
             $table->string('name');
             $table->string('type');
             $table->text('content_desccription');
