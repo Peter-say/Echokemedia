@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-header-pro">
                 <h2>Welcome Back</h2>
-                <h6>Sign in to your account to continue using SKRN</h6>
+                <h6>Sign in to your account to continue using Echokemedia</h6>
             </div>
             <div class="modal-body-pro social-login-modal-body-pro">
 
