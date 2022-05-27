@@ -33,7 +33,18 @@
     }
 
     .share-button{
-        margin-right: 8px;
+        padding-right: 18px;
+        font-size: 30px;
+    }
+
+    .share-button.fa-facebook{
+      color: blue;
+    }
+    .share-button.fa-whatsapp{
+      color: green;
+    }
+    .share-button.fa-facebook{
+      color: red;
     }
 
 </style>
