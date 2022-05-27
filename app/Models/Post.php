@@ -11,23 +11,7 @@ class Post extends Model
 {
     use HasFactory , Notifiable;
 
-    protected $fillable = [
-            'category_id',
-            'name',
-            'content_desccription',
-            "type" ,
-            'cover_image',
-            'cover_video',
-            "cover_music",
-            "meta_title",
-            "meta_keywords",
-            "meta_description",
-            "is_sponsored",
-            "is_top_story",
-            "is_featured",
-            "is_published",
-            "can_comment",
-    ];
+    protected $guarded = [];
 
     protected $primaryKey = 'user_id';
 
