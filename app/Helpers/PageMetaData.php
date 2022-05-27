@@ -18,15 +18,27 @@ class PageMetaData
     }
 
   
+    static public function contactPage()
+    {
+        $meta = new MetaData();
 
-//     static public function searchPage()
-//     {
-//         $meta = new MetaData();
-//         return $meta->setAttribute("name", self::getTitle("Search"))
-//             ->setAttribute("description", "Blog descrpition")
-//             ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
-//             ->generate();
-//     }
+        return $meta->setAttribute("title", self::getTitle("Contact Us"))
+            ->setAttribute("description", "Quick contacts")
+            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
+            ->setAttribute("author", "Peace" ." " ."Peter")
+            ->setAttribute("audience", "Public")
+            ->generate();
+
+    }
+
+    static public function searchPage()
+    {
+        $meta = new MetaData();
+        return $meta->setAttribute("name", self::getTitle("Search"))
+            ->setAttribute("description", "Blog descrpition")
+            ->setAttribute("keywords", self::DEFAULT_KEYWORDS)
+            ->generate();
+    }
 
     static public function indexPage()
     {

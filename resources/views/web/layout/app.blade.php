@@ -32,6 +32,10 @@
         color: green;
     }
 
+    .share-button{
+        margin-right: 8px;
+    }
+
 </style>
 
 <body>

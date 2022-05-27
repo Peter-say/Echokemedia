@@ -9,7 +9,7 @@
                 <div class="item-listing-text-skrn">
                    <div class="item-listing-text-skrn-vertical-align">
                         <h6><a href="{{route('post.show' , $post->name)}}">{{$post->name}}</a></h6>
-                        <div class="circle-rating-pro" data-value="{{$post->views_count}}" data-animation-start-value="0" data-size="32" data-thickness="3" data-fill="{
+                        <div class="circle-rating-pro" data-value="" data-animation-start-value="0" data-size="32" data-thickness="3" data-fill="{
 							          &quot;color&quot;: &quot;#42b740&quot;
 							        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">{{$post->views_count}}</span></div>
                     </div><!-- close .item-listing-text-skrn-vertical-align -->

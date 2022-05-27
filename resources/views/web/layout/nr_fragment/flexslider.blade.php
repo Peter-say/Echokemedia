@@ -14,7 +14,7 @@
 									<source src="{{asset($popularPost->cover_music)}}" type="video/mp4">
 								</video>
 
-								<div class="circle-rating-pro" data-value="0.86" data-animation-start-value="0.86" data-size="70" data-thickness="6" data-fill="{
+								<div class="circle-rating-pro" data-value="" data-animation-start-value="" data-size="70" data-thickness="6" data-fill="{
 								          &quot;color&quot;: &quot;#42b740&quot;
 								        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">8.6</span>
 								</div>

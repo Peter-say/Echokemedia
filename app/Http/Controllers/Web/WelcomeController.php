@@ -20,7 +20,7 @@ use Illuminate\Support\Arr;
 
 class WelcomeController extends Controller
 {
-    public function newreleases(Request $request, PostCategory $category_id)
+    public function newreleases(Request $request, Post $posts , PostCategory $category_id)
     {
         $type  = $request->type;
 
@@ -33,7 +33,7 @@ class WelcomeController extends Controller
             'posts' => $posts,
             "popularPosts" => $popularPosts,
             "categories" => $categories,
-            // "metaData" => PageMetaData::blogDetailsPage($posts)
+           
         ]);
     }
 
@@ -86,8 +86,6 @@ class WelcomeController extends Controller
     {
         $comments = Comment::get();
         $categories = PostCategory::all();
-        // $post = Post::where('id' , $post)->findOrFail(); 
-        // $post->update(["views_count" => $post->views_count + 1]);
         $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(9)->get();
         return view('web.post_details', [
             'post' => $post,

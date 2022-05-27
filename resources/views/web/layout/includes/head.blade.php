@@ -1,6 +1,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="{{ $metaData['description'] ?? '' }}">
+	<meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
+	<meta name="author" content="{{ $metaData['author'] ?? '' }}">
+	<meta name="publisher" content="{{ $metaData['publisher'] ?? '' }}">
+	<meta name="copyright" content="{{ $metaData['copyright'] ?? '' }}">
+	<meta name="page-topic" content="{{ $metaData['page_topic'] ?? '' }}">
+	<meta name="page-type" content="{{ $metaData['page_type'] ?? '' }}">
+	<meta name="audience" content="{{ $metaData['audience'] ?? '' }}">
+
     <meta name="description" content="{{ $metaData['meta_description'] ?? '' }}">
     <meta name="keywords" content="{{ $metaData['meta_keywords'] ?? '' }}">
 
