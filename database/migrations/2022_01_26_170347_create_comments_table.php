@@ -13,6 +13,7 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
+        if(!Schema::hasTable("comments")){
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id')->constrained();
@@ -23,6 +24,7 @@ class CreateCommentsTable extends Migration
             $table->string('commentable_type')->default(0);
             $table->timestamps();
         });
+    }
     }
 
     /**

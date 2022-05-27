@@ -13,6 +13,7 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
+        if(!Schema::hasTable("news")){
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->constrained('users');
@@ -34,6 +35,7 @@ class CreateNewsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+    }
     }
 
     /**

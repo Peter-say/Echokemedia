@@ -13,6 +13,7 @@ class CreatePostCategoriesTable extends Migration
      */
     public function up()
     {
+        if(!Schema::hasTable("post_categories")){
         Schema::create('post_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -22,6 +23,7 @@ class CreatePostCategoriesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+    }
     }
 
     /**
