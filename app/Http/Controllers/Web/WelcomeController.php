@@ -33,7 +33,7 @@ class WelcomeController extends Controller
             'posts' => $posts,
             "popularPosts" => $popularPosts,
             "categories" => $categories,
-            "metaData" => PageMetaData::indexPage()
+            // "metaData" => PageMetaData::indexPage()
            
         ]);
     }
@@ -49,7 +49,7 @@ class WelcomeController extends Controller
             'videos' => $videos,
             "popularPosts" => $popularPosts,
             "categories" => $categories,
-            "metaData" => PageMetaData::indexPage()
+            // "metaData" => PageMetaData::indexPage()
         ]);
     }
 
@@ -69,7 +69,7 @@ class WelcomeController extends Controller
     public function about()
     {
         return view('web.about' , [
-            "metaData" => PageMetaData::indexPage(),
+            // "metaData" => PageMetaData::indexPage(),
         ]);
     }
 
@@ -136,7 +136,7 @@ class WelcomeController extends Controller
     public function index()
     {
         return view('web.welcome' ,[
-            PageMetaData::indexPage(),
+            // PageMetaData::indexPage(),
         ]);
     }
 
