@@ -28,7 +28,7 @@ class WelcomeController extends Controller
         $breadcrumbData = $this->getBreadcrumbData($request);
         $categories = PostCategory::all();
         $posts = $builder1->orderby("created_at", "desc")->paginate(12);
-        $popularPosts = $builder1->with('category')->orderby("views_count", "asc")->limit(1)->get();
+        $popularPosts = $builder1->with('category')->limit(1)->get();
         return view('web.newreleases', [
             'posts' => $posts,
             "popularPosts" => $popularPosts,
@@ -43,7 +43,7 @@ class WelcomeController extends Controller
         $categories = PostCategory::all();
         $builder2 = Post::where('type', constants::VIDEO);
         $videos = $builder2->orderby("created_at", "desc")->paginate(12);
-        $popularPosts = $builder2->with('category')->orderby("views_count", "asc")->limit(1)->get();
+        $popularPosts = $builder2->with('category')->limit(1)->get();
         return view('web.videos', [
             'videos' => $videos,
             "popularPosts" => $popularPosts,

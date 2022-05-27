@@ -109,4 +109,11 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
+  'techies-africa/devpilot_laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'TechiesAfrica\\Devpilot\\Providers\\DevpilotServiceProvider',
+    ),
+  ),
 );
