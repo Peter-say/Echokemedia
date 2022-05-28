@@ -11,7 +11,7 @@
     <meta name="page-type" content="{{ $metaData['page_type'] ?? '' }}">
     <meta name="audience" content="{{ $metaData['audience'] ?? '' }}">
 
-    <meta name="description" content="{{ $metaData['meta_description'] ?? '' }}">
+    <meta name="description" content="{{ $metaData['meta_description'] ?? '' }}"> 
     <meta name="keywords" content="{{ $metaData['meta_keywords'] ?? '' }}">
 
     <!--  Essential META Tags -->

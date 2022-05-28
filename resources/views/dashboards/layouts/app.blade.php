@@ -16,17 +16,17 @@
     <!-- clone bootstrap -->
 
     <!-- <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/admin/img/m-icon" /> -->
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ $admin_assets}}/css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ $admin_assets}}/css/styles.css" rel="stylesheet" />
 
-        <!-- end copy bootstrap -->
+    <!-- end copy bootstrap -->
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -48,10 +48,13 @@
     <link href="{{ $admin_assets}}/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <link href="{{ $admin_assets}}/assets/css/pages/error/style-503.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/pages/helpdesk.css" rel="stylesheet" type="text/css" />
-     
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+
+
+    <x-head.tinymce-config />
 
     <style>
-        .cat-img-size{
+        .cat-img-size {
             width: 100px;
             height: 100px;
         }
@@ -61,9 +64,9 @@
 <body>
     @include('dashboards.layouts.fragments.topnavbar')
     @include('dashboards.layouts.fragments.sidebar')
-     
+
     @yield('contents')
-    
+
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{ $admin_assets}}/assets/js/libs/jquery-3.1.1.min.js"></script>
@@ -71,9 +74,13 @@
     <script src="{{ $admin_assets}}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ $admin_assets}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ $admin_assets}}/assets/js/app.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <script>
-        $(document).ready(function() {
-            App.init();
+        tinymce.init({
+            selector: 'textarea', // Replace this CSS selector to match the placeholder element for TinyMCE
+            plugins: 'code table lists',
+            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
         });
     </script>
     <script src="assets/js/custom.js"></script>
@@ -83,6 +90,7 @@
     <script src="plugins/apex/apexcharts.min.js"></script>
     <script src="assets/js/dashboard/dash_1.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+   
 </body>
 
 <!-- Mirrored from designreset.com/cork/ltr/demo4/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Apr 2021 16:28:10 GMT -->

@@ -13,3 +13,13 @@
   <script src="{{ $admin_assets }}/skrn/js/script.js" defer></script><!-- Custom Document Ready JS -->
   <script src="{{ $admin_assets }}/skrn/js/script-dashboard.js" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
 
+  <!-- TinyMCE -->
+  <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'advlist autolink lists link image charmap preview anchor pagebreak',
+      toolbar_mode: 'floating',
+    });
+  </script>

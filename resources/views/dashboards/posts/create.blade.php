@@ -62,10 +62,10 @@
                                     <label for="">Type <span class="required">*</span></label>
                                     <input class="form-control" maxlength="80" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>
-                                
+            
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
-                                    <textarea id="'content_desccription'" type="text" name="content_desccription" class="form-control">{{old('content_desccription')}}</textarea>
+                                    <x-forms.tinymce-editor />
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="">Is Sponsored <span class="required">*</span></label>
@@ -121,7 +121,7 @@
                                 <h5 class="col-12 mb-3">Seo Data</h5>
                                 <div class="form-group col-md-5">
                                     <label for="">Meta Title <span class="required">*</span></label>
-                                    <input class="form-control"  type="text" name="meta_title" required placeholder="{{old('meta_keywords') ?? 'Describe the post. if empty it uses the blog title...'}}">
+                                    <input class="form-control" type="text" name="meta_title" required placeholder="{{old('meta_keywords') ?? 'Describe the post. if empty it uses the blog title...'}}">
                                 </div>
                                 <div class="form-group col-md-7">
                                     <label for="">Meta Keywords <span class="required">*</span></label>
