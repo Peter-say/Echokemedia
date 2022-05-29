@@ -1,5 +1,7 @@
 <?php
 
+use TechiesAfrica\Devpilot\Providers\DevpilotServiceProvider;
+
 return [
 
     /*
