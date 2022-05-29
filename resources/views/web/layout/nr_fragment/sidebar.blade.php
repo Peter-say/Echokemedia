@@ -1,9 +1,9 @@
 <nav id="sidebar-nav">
     <!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
     <ul id="vertical-sidebar-nav" class="sf-menu">
-        <li class="normal-item-pro">
+        <li class="normal-item-pro current-menu-item">
             <a href="#">
-                <span class="icon-Movie current-menu-item"></span>
+                <span class="icon-Movie"></span>
                 Playlists
             </a>
         </li>
