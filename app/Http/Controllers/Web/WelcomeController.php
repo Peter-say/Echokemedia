@@ -33,6 +33,7 @@ class WelcomeController extends Controller
             'posts' => $posts,
             "popularPosts" => $popularPosts,
             "categories" => $categories,
+            // "metaData" => PageMetaData::indexPage()
            
         ]);
     }
@@ -48,7 +49,7 @@ class WelcomeController extends Controller
             'videos' => $videos,
             "popularPosts" => $popularPosts,
             "categories" => $categories,
-            // "metaData" => PageMetaData::blogDetailsPage($videos)
+            // "metaData" => PageMetaData::indexPage()
         ]);
     }
 
@@ -67,7 +68,9 @@ class WelcomeController extends Controller
 
     public function about()
     {
-        return view('web.about');
+        return view('web.about' , [
+            // "metaData" => PageMetaData::indexPage(),
+        ]);
     }
 
 
@@ -116,6 +119,7 @@ class WelcomeController extends Controller
 
     public function search(Post $posts, Request $request)
     {
+        
         $search = $_GET['query'];
         $relatedPosts = Post::relatedCategory($posts->category_id)->inRandomOrder()->limit(9)->get();
         $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();

@@ -63,8 +63,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
-                                    <textarea id="'content_desccription'" type="text" 
-                                    name="content_desccription" class="form-control">{!! old('body') ?? $post->content_desccription !!}</textarea>
+                                    <x-forms.tinymce-editor />
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="">Is Sponsored <span class="required">*</span></label>
