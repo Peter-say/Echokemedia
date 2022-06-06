@@ -3,6 +3,7 @@
 <script>
     tinymce.init({
         selector: "textarea", // Replace this CSS selector to match the placeholder element for TinyMCE
+        allow_html_in_named_anchor: true
         plugins: "code table lists",
         plugins: "image",
         toolbar: "image",
