@@ -43,6 +43,7 @@
     39 => 'App\\Providers\\AuthServiceProvider',
     40 => 'App\\Providers\\EventServiceProvider',
     41 => 'App\\Providers\\RouteServiceProvider',
+    42 => 'TechiesAfrica\\Devpilot\\Providers\\DevpilotServiceProvider',
   ),
   'eager' => 
   array (
@@ -74,6 +75,7 @@
     25 => 'App\\Providers\\AuthServiceProvider',
     26 => 'App\\Providers\\EventServiceProvider',
     27 => 'App\\Providers\\RouteServiceProvider',
+    28 => 'TechiesAfrica\\Devpilot\\Providers\\DevpilotServiceProvider',
   ),
   'deferred' => 
   array (
