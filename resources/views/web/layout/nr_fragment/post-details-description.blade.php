@@ -12,5 +12,5 @@
     </div>
 
     <hr>
-    <p>{{($post->content_desccription)}}. </p>
+    <p>{!! ($post->content_desccription) !!}. </p>
 </div>

@@ -62,7 +62,7 @@
                                                         <source class="img-fluid" src="{{asset($post->cover_video) ?? 'Not available'}}" type="music/mp4">
                                                     </video></a>
                                             </td>
-                                            <td>{{Str::of($post->content_desccription)->limit(50)}}</td>
+                                            <td>{!! Str::of($post->content_desccription)->limit(50) !!}</td>
                                             <td>{{$post->created_at}}
 
 

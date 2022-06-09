@@ -2,7 +2,7 @@
 		<ul class="slides">
 			@foreach($popularPosts as $popularPost)
 			<li class="progression_studios_animate_left">
-				<div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{asset($popularPost->cover_image)}});">
+				<div class="progression-studios-slider-dashboard-image-background" style="background-image:url('{{asset($popularPost->cover_image)}}');">
 					<div class="progression-studios-slider-display-table">
 						<div class="progression-studios-slider-vertical-align">
 
@@ -26,7 +26,7 @@
 											<li>{{date('d-m-y', strtotime($popularPost->created_at))}} (NG)</li>
 
 										</ul>
-										<p class="progression-studios-slider-description">{{Str::of($popularPost->content_desccription)->limit(160)}}.</p>
+										<p class="progression-studios-slider-description">{!! Str::of($popularPost->content_desccription)->limit(160) !!}.</p>
 										
 										<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{asset($popularPost->cover_video)}}"><i class="fas fa-play"></i>Play Music</a>
 		

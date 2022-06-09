@@ -28,7 +28,7 @@
 
 										</ul>
 										
-										 <p class="progression-studios-slider-description">{{Str::of($popularPost->content_desccription)->limit(160)}}.</p>
+										 <p class="progression-studios-slider-description">{!! Str::of($popularPost->content_desccription)->limit(160) !!}.</p>
 
 										
 										<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{asset($popularPost->cover_music)}}"><i class="fas fa-play"></i>Play Music</a>
