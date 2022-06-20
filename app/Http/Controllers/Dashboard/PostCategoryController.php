@@ -11,9 +11,10 @@ class PostCategoryController extends Controller
 {
     public function index()
     {
-        $categories =  PostCategory::get();
+       
+        $categories =  PostCategory::with('subcategory')->whereNull('parent_Id')->get();
         return view('dashboards.category.index' , [
-          'categories' => $categories,  
+          'categories' => $categories,
         //    '$options' => $options,
         ]);
     }
@@ -32,7 +33,7 @@ class PostCategoryController extends Controller
         //  dd($boolOptions);
         $categories =  PostCategory::get();
         return view('dashboards.category.create' , [
-         
+           'categories' =>$categories,
         ]);
     }
 
@@ -47,7 +48,8 @@ class PostCategoryController extends Controller
         // dd($request->all());
         
        $request->validate([
-          'name' => 'required|max:20',
+          'name' => 'string|required|max:255',
+          'parent_Id' => 'numeric|nullable',
            'cat_image' => 'required',
         //    'is_trending' => 'required'
         ]);
@@ -59,8 +61,9 @@ class PostCategoryController extends Controller
          PostCategory::create([
          'name' => $request->input('name'),
          'cat_image' => $cat_image,
+         'parent_Id' => $request->input('parent_Id'),
         ]);
-        return back()->with('success_message', 'Category added successfully');
+        return redirect()->route('admin.category.index')->with('success_message', 'Category added successfully');
     }
     /**
      * Display the specified resource.

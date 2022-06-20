@@ -36,6 +36,13 @@
                                     <input class="form-control" type="text" name="name">
                                 </div>
 
+                                <select name="parent_Id" class="form-control" id="">
+                                        <option value="" disabled selected>Select SubCategory</option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+
                                 <div class="form-group col-12">
                                     <button class="btn btn-primary btn-lg">Submit</button>
                                 </div>

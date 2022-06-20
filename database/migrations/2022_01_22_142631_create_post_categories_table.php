@@ -20,6 +20,7 @@ class CreatePostCategoriesTable extends Migration
             $table->string('cat_image')->default("");
             $table->tinyInteger('is_trending')->default(0);
             $table->tinyInteger('is_active')->default(0);
+            $table->unsignedBigInteger('parent_Id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

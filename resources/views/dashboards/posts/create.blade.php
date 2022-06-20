@@ -47,6 +47,13 @@
                                         <option value="" disabled selected>Select Category</option>
                                         @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{ $category->name }}</option>
+                                        @if($category->subcategory)
+                                        <ul>
+                                            @foreach($category->subcategory as $subcategory)
+                                            <li>{{$subcategory->name}}</li>
+                                            @endforeach
+                                        </ul>
+                                        @endif
                                         @endforeach
                                     </select>
 
@@ -62,7 +69,7 @@
                                     <label for="">Type <span class="required">*</span></label>
                                     <input class="form-control" maxlength="80" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>
-            
+
                                 <div class="form-group col-md-12">
                                     <label for="">Body <span class="">*</span></label>
                                     <x-forms.tinymce-editor />

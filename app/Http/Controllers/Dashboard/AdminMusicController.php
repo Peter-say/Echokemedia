@@ -53,7 +53,7 @@ class AdminMusicController extends Controller
         if ($todays_post > $maxPost) {
             return view('dashboards.503_error');
         } else {
-            $categories =  PostCategory::get();
+            $categories =  PostCategory::with('subcategory')->whereNull('parent_Id')->get();
             return view('dashboards.posts.create',
                 [
                     'categories' => $categories,

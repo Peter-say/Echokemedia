@@ -1,11 +1,11 @@
 <style>
-	#video-logo-background{
+	#video-logo-background {
 		color: black;
 	}
 </style>
 <header id="videohead-pro" class="sticky-header">
-	<div id="video-logo-background"> 
-		   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1> 
+	<div id="video-logo-background">
+		<h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
 
 	</div>
 
@@ -15,7 +15,7 @@
 			<input type="text" name="query" placeholder="Search for Movies or TV Series" aria-label="Search">
 			<div id="video-search-header-filtering">
 				<div class="row">
-					<div class="col-sm extra-padding">
+					<div class="">
 						<h5>Type:</h5>
 
 						<div class="row">
@@ -143,12 +143,19 @@
 	<nav id="mobile-navigation-pro">
 
 		<ul id="mobile-menu-pro">
-			<li class="current-menu-item">
-				<a href="dashboard-home.html">
-					<span class="icon-Old-TV"></span>
-					TV Series
-				</a>
+
 			<li>
+				<a href="{{ route('media.newreleases') }}">
+					<span class="icon-Old-TV"></span>
+					Music
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('media.videos') }}">
+					<span class="icon-Reel"></span>
+					Music Video
+				</a>
+			</li>
 			<li>
 				<a href="dashboard-movies.html">
 					<span class="icon-Reel"></span>
@@ -182,11 +189,15 @@
 			</li>
 		</ul>
 		<div class="clearfix"></div>
+		<form action="{{route('web.search')}}">
 
-		<div id="search-mobile-nav-pro">
-			<input type="text" placeholder="Search for Movies or TV Series" aria-label="Search">
-		</div>
-
+			<div id="search-mobile-nav-pro">
+				<input type="text" name="query" placeholder="Search for Movies or TV Series" aria-label="Search">
+			</div>
+			<div id="video-search-header-buttons">
+				<button type="submit" class="btn btn-green-pro">Filter Search</button>
+			</div>
+		</form>
 	</nav>
 
 </header>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
+use App\Http\Controllers\Dashboard\SubcategoryController;
 use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\AdminVideoController;
 use App\Http\Controllers\Dashboard\AdminMusicController;
@@ -72,6 +73,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   
 
   Route::resource('category', PostCategoryController::class);
+  Route::resource('subcategory', SubcategoryController::class);
   Route::resource('profile', ProfileController::class);
 
   Route::resource('users', UsersController::class);

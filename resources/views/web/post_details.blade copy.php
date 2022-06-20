@@ -46,7 +46,7 @@
                   <span>Post By <b><a href="{{route('user.post' , $post->user)}}">{{$post->user->name}}</a></b> <a href="#"></a>{{$post->created_at->diffForHumans()}}</span>
 
                   <div>
-                    <img class="img-fluid " src="{{asset( $post->cover_image)}}" alt="..." />
+                    <img class="img-fluid " src="{{asset( $post->cover_image)}}" alt="{{$post->name}}" />
                   </div>
 
                   <div class="post-options">
