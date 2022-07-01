@@ -46,26 +46,23 @@
                                     <select name="category_id" class="form-control" id="">
                                         <option value="" disabled selected>Select Category</option>
                                         @foreach ($categories as $category)
-                                        <option value="{{$category->id}}">{{ $category->name }}</option>
+                                        <option id="category" value="{{$category->id}}">{{ $category->name }}</option>
                                         @if($category->subcategory)
-                                        <ul>
-                                            @foreach($category->subcategory as $subcategory)
-                                            <li>{{$subcategory->name}}</li>
-                                            @endforeach
-                                        </ul>
+                                        @foreach($category->subcategory as $subcategory)
+                                        <option id="subcategory" value="{{$subcategory->Id}}">{{ $subcategory->name }}</option>
+                                        @endforeach
                                         @endif
                                         @endforeach
                                     </select>
 
                                 </div>
 
-
                                 <div class="form-group col-md-6">
                                     <label for="">Title <span class="required">*</span></label>
                                     <input class="form-control" type="text" name="name" placeholder="{{old('name') ?? '......'}}">
                                 </div>
 
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <label for="">Type <span class="required">*</span></label>
                                     <input class="form-control" maxlength="80" name="type" value="{{$types}}" placeholder="{{$types}}">
                                 </div>

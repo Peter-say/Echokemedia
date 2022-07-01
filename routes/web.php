@@ -39,6 +39,9 @@ Route::prefix("media")->as("media.")->group(function () {
   Route::get('/about', [App\Http\Controllers\Web\WelcomeController::class, 'about'])->name('about');
   Route::get('/newreleases', [App\Http\Controllers\Web\WelcomeController::class, 'newreleases'])->name('newreleases');
   Route::get('/videos', [App\Http\Controllers\Web\WelcomeController::class, 'videosPage'])->name('videos');
+  Route::get('/category/{category:name}', [App\Http\Controllers\Web\WelcomeController::class, 'subcategory'])->name('category');
+  Route::get('/music/{$subcatPost:name}', [App\Http\Controllers\Web\WelcomeController::class, 'subcategoryPost'])->name('music');
+
   Route::resource('news', App\Http\Controllers\Web\NewsController::class);
   Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
   Route::get('/share/', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');

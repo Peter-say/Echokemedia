@@ -75,7 +75,7 @@ class AdminMusicController extends Controller
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
         $data = $request->validate([
-            'category_id' => "required|string",
+            'category_id' => "string|nullable",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",

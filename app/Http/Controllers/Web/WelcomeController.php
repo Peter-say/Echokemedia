@@ -26,7 +26,7 @@ class WelcomeController extends Controller
 
         $builder1 = Post::where('type', constants::MUSIC);
         $breadcrumbData = $this->getBreadcrumbData($request);
-        $categories = PostCategory::all();
+        $categories = PostCategory::with('subcategory')->where('Parent_Id', null)->get();
         $posts = $builder1->orderby("created_at", "desc")->paginate(12);
         $popularPosts = $builder1->with('category')->limit(1)->get();
         return view('web.newreleases', [
@@ -35,6 +35,22 @@ class WelcomeController extends Controller
             "categories" => $categories,
             // "metaData" => PageMetaData::indexPage()
            
+        ]);
+    }
+
+    public function subcategory(PostCategory $category)
+    {
+        $subcategories = $category->subcategory()->get(); 
+        return view('web.subcategory' , [
+           'subcategories' => $subcategories,
+        ]);
+    }
+
+    public function subcategoryPost(PostCategory $subcatPost)
+    {
+        $subcategoryPost = $subcatPost->posts(); 
+        return view('web.subcategory_Posts' , [
+           'subcategoryPost' => $subcategoryPost,
         ]);
     }
 

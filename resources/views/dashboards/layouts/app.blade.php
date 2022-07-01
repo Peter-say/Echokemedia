@@ -58,6 +58,14 @@
             width: 100px;
             height: 100px;
         }
+/* 
+        #subcategory {
+            display: none;
+        }
+*/
+        #categor{
+            background-color: red;
+        } 
     </style>
 </head>
 
@@ -67,6 +75,18 @@
 
     @yield('contents')
 
+    <!-- <script>
+          var category = document.getElementById('category');
+        var subcategory = document.getElementById('subcategory');
+        category.onclick = function() {
+            if(category.style.display === "block") {
+                alert('yes')
+                subcategory.style.display = "block";
+            } else {
+                subcategory.style.display = "none"
+            }
+        }
+    </script> -->
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{ $admin_assets}}/assets/js/libs/jquery-3.1.1.min.js"></script>
@@ -74,7 +94,7 @@
     <script src="{{ $admin_assets}}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ $admin_assets}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ $admin_assets}}/assets/js/app.js"></script>
-    
+
     <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
@@ -83,6 +103,7 @@
             plugins: 'code table lists',
             toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
         });
+
     </script>
     <script src="assets/js/custom.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
@@ -91,7 +112,7 @@
     <script src="plugins/apex/apexcharts.min.js"></script>
     <script src="assets/js/dashboard/dash_1.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-   
+
 </body>
 
 <!-- Mirrored from designreset.com/cork/ltr/demo4/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Apr 2021 16:28:10 GMT -->

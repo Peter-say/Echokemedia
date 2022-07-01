@@ -74,9 +74,9 @@
                                                 </form>
                                                 <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-primary btn-sm mt-2">edit</a>
                                             </td>
-
+                                            @endforeach
                                         </tr>
-                                        @endforeach
+                                        
 
 
                                     </tbody>
