@@ -41,7 +41,7 @@ class AdminMusicController extends Controller
         //     $status = User::where(["status" =>  Constants::APPROVED]);
 
         //    if( $can_post !==  $status){
-        //        return  back()->with('error_message', 'not approved' );   
+        //        return  back()->with('error_message', 'not approved' );
         //    }
 
         $boolOptions = Constants::BOOL_OPTIONS;
@@ -196,7 +196,7 @@ class AdminMusicController extends Controller
 
     public function destroy($id)
     {
-       
+
         Post::where('id', $id)->delete();
         return redirect()->route('admin.post.index')->with("error_message", "Deleted successfully!");
 

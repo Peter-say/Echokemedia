@@ -20,6 +20,23 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public static function getUuid()
+    {
+
+        // Generate a random code
+        $code = strtoupper(getRandomToken(6));
+
+        // Check if the code exists in the table
+        if (self::where("uuid", $code)->count() > 0) {
+
+            // If it is in the database , call the function again
+            return self::getUuid();
+        }
+
+        // Else return the generated code
+        return $code;
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class , 'post_id');
@@ -34,7 +51,7 @@ class Post extends Model
     {
         return $query->where("type", Constants::VIDEO);
     }
-   
+
     public  function isMusic()
     {
         return strtolower($this->type) == strtolower(Constants::MUSIC);
@@ -59,14 +76,14 @@ class Post extends Model
 
     public  function detailsUrl(Post $post)
     {
-        // $post = Post::where('id', $post)->first();  
+        // $post = Post::where('id', $post)->first();
         return route("post.show", $post , [
             "id" => $this->id,
             "slug" => slugify($this->name),
             "name" => $this->name
         ]);
     }
-   
 
-   
+
+
 }

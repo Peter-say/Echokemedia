@@ -47,7 +47,7 @@
     <link href="{{ $admin_assets}}/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="{{ $admin_assets}}/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <link href="{{ $admin_assets}}/assets/css/pages/error/style-503.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/pages/helpdesk.css" rel="stylesheet" type="text/css" />
+    <link href="{{ $admin_assets}}/assets/css/pages/helpdesk.css" rel="stylesheet" type="text/css" />
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 
 
@@ -74,9 +74,13 @@
     <script src="{{ $admin_assets}}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ $admin_assets}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ $admin_assets}}/assets/js/app.js"></script>
-    
-    <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
+    <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
     <script>
         tinymce.init({
             selector: 'textarea', // Replace this CSS selector to match the placeholder element for TinyMCE
@@ -91,7 +95,7 @@
     <script src="plugins/apex/apexcharts.min.js"></script>
     <script src="assets/js/dashboard/dash_1.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-   
+
 </body>
 
 <!-- Mirrored from designreset.com/cork/ltr/demo4/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Apr 2021 16:28:10 GMT -->
