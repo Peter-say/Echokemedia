@@ -9,11 +9,15 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.4.4",
+        "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^8.54",
         "laravel/jetstream": "^2.3",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.3"
+        "laravel/ui": "^3.3",
+        "spatie/laravel-permission": "^5.5",
+        "techies-africa/devpilot_laravel": "^1.0",
+        "tinymce/tinymce": "^6.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -28,8 +32,16 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        
+    "files" : [
+        "app/Helpers/Constants.php",
+        "app/Helpers/app_function.php"
+    ]
+
     },
+
+    
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
@@ -62,4 +74,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+
+   
 }

@@ -15,11 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('');
             $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
+            $table->string('username');
+            $table->string('email' , 100)->unique();
             $table->enum('role', ['User', 'Admin'])->default('User');
+            $table->string('status')->default("Pending");
             $table->timestamp('email_verified_at')->nullable();
             $table->string('last_login')->nullable();
             $table->string('password');
@@ -27,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
     }
+
+    // Udochukwu was on this code
 
     /**
      * Reverse the migrations.

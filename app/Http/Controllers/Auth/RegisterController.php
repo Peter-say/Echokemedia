@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Mime\MimeTypes;
 
 class RegisterController extends Controller
 {
@@ -36,6 +40,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    public function index(){
+        return view('web.signup');
+    }
+
     public function __construct()
     {
         $this->middleware('guest');
@@ -50,7 +58,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'avatar' => ['nullable', 'image'],
             'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -62,12 +72,48 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+    // public function deleteImageFromStorage($value)
+    // {
+    //     $path_explode = explode('/', (parse_url($value))['path']); //breaking the full url 
+    //     $path_array = [];
+    //     array_push($path_array, $path_explode[2], $path_explode[3]); // storing the value of path_explode 2 and 3 in path_array array
+    //     $old_image = implode('/', $path_array);
+
+    //     if ($old_image) {
+    //         Storage::delete($old_image);
+    //     }
+    // }
     protected function create(array $data)
     {
+        $avatar = $data["avatar"] ?? null;
+        if (!empty($avatar)) {
+            $avatar = $avatar->store('profile_images');
+        }
+
+
+
         return User::create([
+            'avatar' => $avatar,
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // email data
+        // $email_data = array(
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        // );
+
+        // // send email with the template
+        // Mail::send('email.welcome-email', $email_data, function ($message) use ($email_data) {
+        //     $message->to($email_data['email'], $email_data['name'])
+        //         ->subject('Welcome to MyNotePaper')
+        //         ->from('info@mynotepaper.com', 'MyNotePaper');
+        // });
+
+        // return $data;
     }
 }

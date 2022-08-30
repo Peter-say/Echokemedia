@@ -1,9 +1,13 @@
-@extends('layouts.app')
+@extends('web.layout.app')
 
-@section('content')
-<div class="container">
+@section('contents')
+    {{-- <div class="container"></div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <!-- <div  style="background-image: url('{{ $admin_assets}}/assets/img/bg-01.jpg');">
+            </div> -->
+        </div>
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -68,6 +72,22 @@
                 </div>
             </div>
         </div>
+
     </div>
+    
+</div> --}}
+<div class="container">
+    <nav id="site-navigation-pro">
+        <ul class="sf-menu">
+            <li class="normal-item-pro current-menu-item">
+                <a href="#">Link on the button to sign in/login in</a>
+            </li>
+        </ul>
+    </nav>
+
+    <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
+        In</button>
 </div>
+
+    @include('web.layout.includes.modal')
 @endsection

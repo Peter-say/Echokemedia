@@ -17,6 +17,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         User::create([
+
             'name' => 'Admin Admin',
             'email' => 'admin@gmail.com',
             'username' => 'Media Creator',
@@ -24,6 +25,21 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
+
+
+        ]);
+
+        User::create([
+
+            'name' => 'User User',
+            'email' => 'user@gmail.com',
+            'username' => 'Media Creator',
+            'role' => 'User',
+            'password' => bcrypt('#123456'),
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+
+
         ]);
     }
 }
