@@ -57,7 +57,7 @@
         .cat-img-size {
             width: 100px;
             height: 100px;
-        }
+        }zz
     </style>
 </head>
 
