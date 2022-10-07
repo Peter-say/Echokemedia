@@ -8,10 +8,12 @@ use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
+use App\Http\Controllers\Dashboard\SubCategoryController;
 use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\AdminVideoController;
 use App\Http\Controllers\Dashboard\AdminMusicController;
 use App\Http\Controllers\Dashboard\NewController;
+// use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 
@@ -69,12 +71,15 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::resource('post', AdminMusicController::class);
   Route::resource('/video', AdminVideoController::class);
   Route::resource('news', NewController::class);
-  
+
+
 
   Route::resource('category', PostCategoryController::class);
+  Route::resource('subcategory', SubCategoryController::class);
   Route::resource('profile', ProfileController::class);
 
   Route::resource('users', UsersController::class);
+  Route::get('user/role',  [App\Http\Controllers\Dashboard\UsersController::class, 'role'])->name('user-role');
   Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
   Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
 });

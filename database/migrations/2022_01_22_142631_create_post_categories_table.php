@@ -17,6 +17,7 @@ class CreatePostCategoriesTable extends Migration
         Schema::create('post_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('cat_image')->default("");
             $table->tinyInteger('is_trending')->default(0);
             $table->tinyInteger('is_active')->default(0);

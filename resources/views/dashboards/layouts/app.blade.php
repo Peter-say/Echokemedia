@@ -57,7 +57,21 @@
         .cat-img-size {
             width: 100px;
             height: 100px;
-        }zz
+        }
+
+        .post-img-size-on-dashboard {
+            width: 100px;
+            height: 100px;
+        }
+        #style-option{
+            border-radius: 10px;
+            font-size: 18px 
+        }
+        select{
+            width: 100%;
+            border-radius: 100px
+            padding: 8px;
+        }
     </style>
 </head>
 

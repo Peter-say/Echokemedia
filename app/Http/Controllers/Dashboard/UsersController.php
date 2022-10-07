@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+
 use App\Http\Controllers\Controller;
 use App\Models\Creator;
 use App\Models\Post;
@@ -19,11 +20,11 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderby("created_at", "desc")
-        ->paginate(20);
+            ->paginate(20);
         $users->firstItem();
         return view('dashboards.users.index', ['users' => $users]);
     }
-   
+
 
     /**
      * Show the form for creating a new resource.
@@ -88,7 +89,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function status(Request $request , $id)
+    public function status(Request $request, $id)
     {
         User::findOrFail($id)->update([
             "status" => $request->status,
@@ -97,11 +98,22 @@ class UsersController extends Controller
     }
 
 
+    // View andUpdate user role here
+
+   
+    public function role(Request $request, $id)
+    {
+        User::findOrFail($id)->update([
+            "role" => $request->role,
+        ]);
+        return back()->with("success_message", "Role updated successfully!");
+    }
+
+
 
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with("error_message" , "Deleted successfully!");
+        return back()->with("error_message", "Deleted successfully!");
     }
-   
 }

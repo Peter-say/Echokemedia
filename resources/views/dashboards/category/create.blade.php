@@ -17,7 +17,7 @@
                     <div class="statbox widget box box-shadow mt-5">
                         <div class="widget-header">
                             <div class="row">
-                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
                                     <h4>Create New Category</h4>
                                 </div>
                             </div>
