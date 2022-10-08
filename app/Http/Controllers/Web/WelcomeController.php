@@ -89,7 +89,7 @@ class WelcomeController extends Controller
     {
         $comments = Comment::get();
         $categories = PostCategory::all();
-        $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(9)->get();
+        $relatedPosts = Post::relatedCategory($post->category_id)->inRandomOrder()->limit(12)->get();
         return view('web.post_details', [
             'post' => $post,
             'comments' =>  $comments,

@@ -119,14 +119,13 @@ class AdminVideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($post)
+    public function edit($id)
     {
-        $post = Post::where("id", $post)->first();
+        $post = Post::where("id", $id)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
         $types = Constants::VIDEO;
-        return view(
-            'dashboards.video.edit',
+        return view('dashboards.video.edit',
             [
                 "post" => $post,
                 'categories' => $categories,
@@ -145,18 +144,13 @@ class AdminVideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
+        $allowedOptions = Constants::ACTIVE . ",". Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO;
-        $post = Post::where('id', $id);
-        // dd($id);
         $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
-            "type" => "nullable|string|in:$allowedTypes",
-            'cover_image' => 'nullable|image',
-            "cover_video" => 'required|mimes:mp4',
+            "type" => "required|string|in:$allowedTypes",
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
@@ -166,26 +160,20 @@ class AdminVideoController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
-      
-        $post = Post::where('id', $id)->first();
-
-        $image_path = $post->cover_image;
-        $video_path = $post->cover_music;
-
-        if ($request->hasFile(['cover_image', 'cover_music'])) {
-            $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-            $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
-        } else {
-            $data['cover_image'] = $image_path;
-            $data['cover_video'] = $video_path;
-        }
-
-        $data["slug"] = Str::slug($request->name, '-');
-        $data['user_id'] = auth()->id();
-        // dd($post);
-        // dd($data);
-        $post->update($data);
-        return redirect()->route('admin.post.index')->with('success_message', 'Post updated successfully');
+    
+         if ($request->file('cover_image')) {
+                 $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+                 $data['cover_image'] = $image_path;
+               
+            }
+            if ($request->file('cover_video')) {
+                 $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo", $request);
+                 $data['cover_video'] = $video_path;
+               
+            }
+        $post = Post::where('id', $id)->update($data);
+        return redirect()->route('admin.post.index')->with('success_meassage',  'Post updated successfully');
+    
     }
 
     /**

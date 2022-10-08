@@ -25,8 +25,12 @@ class AdminMusicController extends Controller
     public function index()
     {
         $posts = Post::whereHas("user")->get();
+        $post_type = Post::first();
+        $type = $post_type->type;
         return view('dashboards.posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'post_type' => $post_type,
+            'type' => $type,
         ]);
     }
 
