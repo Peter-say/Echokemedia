@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-   
+
     /**
      * Seed the application's database.
      *
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         //  \App\Models\User::factory(10)->create();
         // \App\Models\Post::factory(10)->create();
-      
-
+        // $this->call(AdminSeeder::class);
+        $this->call(PermissionsSeeder::class);
     }
 }

@@ -49,7 +49,6 @@ Route::prefix("media")->as("media.")->group(function () {
   Route::post('/comment', [App\Http\Controllers\Web\CommentController::class, 'store'])->name('comment');
   Route::get('/posts', [App\Http\Controllers\Web\WelcomeController::class, 'post'])->name('posts');
   Route::get('/blogs', [App\Http\Controllers\Web\WelcomeController::class, 'blog'])->name('blogs');
-  
 });
 
 Auth::routes(['verify' => true]);
@@ -63,7 +62,7 @@ Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'ind
 
 
 
-Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(function () {
+Route::prefix("admin")->as("admin.")->middleware(["verified",  "role:Admin"])->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
   Route::get('/users_messages', [App\Http\Controllers\Dashboard\AdminController::class, 'usersMessages'])->name('users_messages');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');

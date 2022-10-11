@@ -18,10 +18,9 @@ class AdminSeeder extends Seeder
     {
         User::create([
 
-            'name' => 'Admin Admin',
-            'email' => 'admin@gmail.com',
-            'username' => 'Media Creator',
-            'role' => 'Admin',
+            'name' => 'Super Admin',
+            'email' => 'echokemediasuper_admin@gmail.com',
+            'username' => 'Sudo',
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
@@ -30,11 +29,10 @@ class AdminSeeder extends Seeder
         ]);
 
         User::create([
-
+    
             'name' => 'User User',
-            'email' => 'user@gmail.com',
+            'email' => 'echokemediaadmin@gmail.com',
             'username' => 'Media Creator',
-            'role' => 'User',
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

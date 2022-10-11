@@ -57,7 +57,6 @@
 
                                                     <td>{{ $user->id }}</td>
                                                     <td>{{ $user->email }}</td>
-                                                    <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">{{ $user->role }}</button></td>
                                                     <td>{{ $user->username }}</td>
                                                     <td>
                                                         <a href="{{ asset(auth()->user()->avatar) }}" target="_blank"
@@ -125,7 +124,6 @@
                         </div>
                     </div>
 
-                    @include('dashboards.role.update')
                     <!--  END CONTENT PART  -->
 
                 </div>

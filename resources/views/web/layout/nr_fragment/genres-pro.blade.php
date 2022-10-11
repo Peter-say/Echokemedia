@@ -1,4 +1,6 @@
-
+ @foreach ($categories as $category)
+	
+ @endforeach
 	<ul class="dashboard-genres-pro">
 	    <li>
 	        <img src="{{ $admin_assets }}/skrn/images/genres/drama.png" alt="Drama">
