@@ -8,11 +8,7 @@ use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
-<<<<<<< HEAD
-use App\Http\Controllers\Dashboard\SubcategoryController;
-=======
 use App\Http\Controllers\Dashboard\SubCategoryController;
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
 use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\AdminVideoController;
 use App\Http\Controllers\Dashboard\AdminMusicController;
@@ -81,11 +77,7 @@ Route::prefix("admin")->as("admin.")->middleware(["verified",  "role:Admin"])->g
 
 
   Route::resource('category', PostCategoryController::class);
-<<<<<<< HEAD
-  Route::resource('subcategory', SubcategoryController::class);
-=======
   Route::resource('subcategory', SubCategoryController::class);
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
   Route::resource('profile', ProfileController::class);
 
   Route::resource('users', UsersController::class);
