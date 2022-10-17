@@ -47,7 +47,7 @@
     <link href="{{ $admin_assets}}/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="{{ $admin_assets}}/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <link href="{{ $admin_assets}}/assets/css/pages/error/style-503.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/pages/helpdesk.css" rel="stylesheet" type="text/css" />
+    <link href="{{ $admin_assets}}/assets/css/pages/helpdesk.css" rel="stylesheet" type="text/css" />
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 
 
@@ -58,6 +58,7 @@
             width: 100px;
             height: 100px;
         }
+<<<<<<< HEAD
 /* 
         #subcategory {
             display: none;
@@ -66,6 +67,22 @@
         #categor{
             background-color: red;
         } 
+=======
+
+        .post-img-size-on-dashboard {
+            width: 100px;
+            height: 100px;
+        }
+        #style-option{
+            border-radius: 10px;
+            font-size: 18px 
+        }
+        select{
+            width: 100%;
+            border-radius: 100px
+            padding: 8px;
+        }
+>>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
     </style>
 </head>
 
@@ -94,9 +111,18 @@
     <script src="{{ $admin_assets}}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ $admin_assets}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ $admin_assets}}/assets/js/app.js"></script>
+<<<<<<< HEAD
 
     <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+=======
+>>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
 
+    <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
     <script>
         tinymce.init({
             selector: 'textarea', // Replace this CSS selector to match the placeholder element for TinyMCE

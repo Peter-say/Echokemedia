@@ -8,11 +8,16 @@ use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
+<<<<<<< HEAD
 use App\Http\Controllers\Dashboard\SubcategoryController;
+=======
+use App\Http\Controllers\Dashboard\SubCategoryController;
+>>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
 use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\AdminVideoController;
 use App\Http\Controllers\Dashboard\AdminMusicController;
 use App\Http\Controllers\Dashboard\NewController;
+// use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 
@@ -51,7 +56,6 @@ Route::prefix("media")->as("media.")->group(function () {
   Route::post('/comment', [App\Http\Controllers\Web\CommentController::class, 'store'])->name('comment');
   Route::get('/posts', [App\Http\Controllers\Web\WelcomeController::class, 'post'])->name('posts');
   Route::get('/blogs', [App\Http\Controllers\Web\WelcomeController::class, 'blog'])->name('blogs');
-  
 });
 
 Auth::routes(['verify' => true]);
@@ -65,7 +69,7 @@ Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'ind
 
 
 
-Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(function () {
+Route::prefix("admin")->as("admin.")->middleware(["verified",  "role:Admin"])->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
   Route::get('/users_messages', [App\Http\Controllers\Dashboard\AdminController::class, 'usersMessages'])->name('users_messages');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
@@ -73,13 +77,19 @@ Route::prefix("admin")->as("admin.")->middleware(["verified", "admin"])->group(f
   Route::resource('post', AdminMusicController::class);
   Route::resource('/video', AdminVideoController::class);
   Route::resource('news', NewController::class);
-  
+
+
 
   Route::resource('category', PostCategoryController::class);
+<<<<<<< HEAD
   Route::resource('subcategory', SubcategoryController::class);
+=======
+  Route::resource('subcategory', SubCategoryController::class);
+>>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
   Route::resource('profile', ProfileController::class);
 
   Route::resource('users', UsersController::class);
+  Route::get('user/role',  [App\Http\Controllers\Dashboard\UsersController::class, 'role'])->name('user-role');
   Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
   Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
 });
