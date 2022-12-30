@@ -58,20 +58,10 @@
             width: 100px;
             height: 100px;
         }
-<<<<<<< HEAD
-/* 
-        #subcategory {
-            display: none;
-        }
-*/
-        #categor{
-            background-color: red;
-        } 
-=======
 
         .post-img-size-on-dashboard {
             width: 100px;
-            height: 100px;
+            height: 50px;
         }
         #style-option{
             border-radius: 10px;
@@ -82,7 +72,6 @@
             border-radius: 100px
             padding: 8px;
         }
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
     </style>
 </head>
 

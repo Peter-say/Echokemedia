@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\NewController;
 // use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
+use App\Http\Middleware\AdminMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,8 +65,7 @@ Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'ind
 
 
 
-
-Route::prefix("admin")->as("admin.")->middleware(["verified",  "role:Admin"])->group(function () {
+Route::prefix("admin")->as("admin.")->middleware(["verified" , "admin"])->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
   Route::get('/users_messages', [App\Http\Controllers\Dashboard\AdminController::class, 'usersMessages'])->name('users_messages');
   // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
@@ -73,8 +73,6 @@ Route::prefix("admin")->as("admin.")->middleware(["verified",  "role:Admin"])->g
   Route::resource('post', AdminMusicController::class);
   Route::resource('/video', AdminVideoController::class);
   Route::resource('news', NewController::class);
-
-
 
   Route::resource('category', PostCategoryController::class);
   Route::resource('subcategory', SubCategoryController::class);

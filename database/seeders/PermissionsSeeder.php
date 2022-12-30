@@ -2,58 +2,48 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\Auth\AuthorizationServices;
+use App\Services\Auth\AuthorizationService;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\PermissionRegistrar;
 
 class PermissionsSeeder extends Seeder
 {
     /**
-     * Create the initial roles and permissions.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // Reset cached roles and permissions
-        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+        $data = array_merge(
+            $this->crud("user"),
+            $this->crud("post"),
+            [
+                [
+                    "name" => "can_edit_dashboards",
+                    "guard_name" => "web"
+                ],
+            ]
+        );
 
-        $data = array_merge([
-            $this->crud('users'),
-        ]);
-
-        // create roles and assign existing permissions
-       
-        $role1 = Role::create(['name' => 'Super-Admin']);
-        // gets all permissions via Gate::before rule; see AuthServiceProvider
-        $role1->givePermissionTo($this->crud('users'));
-
-        $role2 = Role::create(['name' => 'Admin']);
-    
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Super-Admin',
-            'email' => 'echokemediasuper_admin@gmail.com',
-            'username' => 'Sudo',
-    
-        ]);
-        $user->assignRole($role1);
         
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Admin ',
-            'email' => 'echokemediaadmin@gmail.com',
-            'username' => 'Media Creator',
-        ]);
-        $user->assignRole($role2);
+        foreach ($data as $perm) {
+            Permission::firstOrCreate($perm);
+        }
+        AuthorizationServices::syncSudoRoles();
     }
 
-    public function crud($model, array $actions = null)
+
+    public function crud($model, array $actions = null, $guard = "web")
     {
         $list = [];
         foreach (["create", "read", "update", "delete"] as $action) {
-           
+            $list[] = [
+                "name" => "can_" . $action . "_" . strtolower($model),
+                "guard_name" => $guard,
+            ];
         }
         return $list;
     }
-
 }

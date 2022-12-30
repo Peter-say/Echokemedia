@@ -21,34 +21,6 @@
                     </a>
                 </li>
                 <li class="menu">
-<<<<<<< HEAD
-                    <a href="{{ route('admin.category.create') }}" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <span>Create Category</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="menu">
-                        <a href="#dashboard" data-active="true" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
-                                <span>Media</span>
-                            </div>
-                            <div>
-                            
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
-                            <li>
-                                <a href="{{route('admin.post.create')}}"> Music </a>
-                            </li>
-                            <li>
-                                <a href="{{route('admin.video.create')}}"> Video </a>
-                            </li>
-                        </ul>
-                    </li>
-                
-=======
                     <a href="#dashboard" data-active="true" data-toggle="collapse" aria-expanded="true"
                         class="dropdown-toggle">
                         <div class="">
@@ -70,7 +42,6 @@
                             <a href="{{ route('admin.video.create') }}"> Video </a>
                         </li>
                     </ul>
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
                 </li>
 
                 </li>
@@ -119,7 +90,7 @@
                         </div>
                     </a>
                 </li>
-                @can('users')
+               
                     <li class="menu">
                         <a href="{{ route('admin.users.index') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
@@ -128,7 +99,7 @@
                             </div>
                         </a>
                     </li>
-                @endcan
+                
 
 
                 <li class="menu">

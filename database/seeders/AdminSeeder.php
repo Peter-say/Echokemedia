@@ -5,7 +5,10 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-
+use Laravel\Jetstream\Rules\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role as ModelsRole;
+use App\Helpers\PermissionHelper;
 
 class AdminSeeder extends Seeder
 {
@@ -16,28 +19,48 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $superAdminRole = ModelsRole::create(['name' => 'Super Admin']);
+        $adminRole = ModelsRole::create(['name' => 'Admin']);
 
-            'name' => 'Super Admin',
-            'email' => 'echokemediasuper_admin@gmail.com',
-            'username' => 'Sudo',
-            'password' => bcrypt('#123456'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
+        //super admin permission
 
+        $superAdminPermission = Permission::create(['name' => "create users"]);
+        $superAdminPermission = Permission::create(['name' => "edit users"]);
+        $superAdminPermission = Permission::create(['name' => "update users"]);
+        $superAdminPermission = Permission::create(['name' => "delete users"]);
 
-        ]);
+        // admin permission
 
-        User::create([
-    
-            'name' => 'User User',
+        $adminPermission = Permission::create(['name' => "create post"]);
+        $adminPermission = Permission::create(['name' => "edit post"]);
+        $adminPermission = Permission::create(['name' => "update post"]);
+        $adminPermission = Permission::create(['name' => "delete post"]);
+
+        
+
+        $superAdminPermission->assignRole($superAdminRole);
+        $superAdminUser = User::create([
+            'name' => 'Admin',
             'email' => 'echokemediaadmin@gmail.com',
-            'username' => 'Media Creator',
+            'username' => 'Sudo',
+            'role' => 'Admin',
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-
-
         ]);
+        $superAdminUser->assignRole('Super Admin');
+
+
+        $adminPermission->assignRole($adminRole);
+        $adminUser = User::create([
+            'name' => 'Moderator',
+            'email' => 'iriogbebepeter22@gmail.com',
+            'username' => 'Pero',
+            'role' => 'Admin',
+            'password' => bcrypt('#123456'),
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+        ]);
+        $adminUser->assignRole('Admin');
     }
 }

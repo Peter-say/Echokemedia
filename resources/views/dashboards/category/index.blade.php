@@ -21,59 +21,6 @@
                                         <a href="{{ route('admin.category.create') }}" class="btn btn-primary btn-sm">Create
                                             New</a>
 
-<<<<<<< HEAD
-                <div id="tableCheckbox" class="">
-                    <div class="statbox widget box box-shadow mt-5">
-                        <div class="widget-header">
-                            <div class="row">
-                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Category Information
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-content widget-content-area">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
-                                    <thead>
-                                        <tr>
-                                            <th class="">S/N</th>
-                                            <th class="">Category Image</th>
-                                            <th class="">Category Name</th>
-                                            <th class="">sub-category ID</th>
-                                            <th class="">Created At</th>
-
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       
-                                        <tr 
-                                        @foreach($categories as $cat)
-                                           <td>{{$cat->id}}</td>
-                                            <td> <img class="img-fluid cat-img-size" src="{{asset('CategoryImages/' . $cat->cat_image)}}" alt="..." /></td>
-                                            <td>{{$cat->name}}</td>
-
-                                            <td>
-                                                <select name="parent_Id" class="form-control" id="">
-                                                    <option value="" disabled selected>SubCategory</option>
-                                                    @if($cat->subcategory)
-                                                    @foreach ($cat->subcategory as $subcategory)
-                                                    <option disabled selected value="">{{ $subcategory->name }}</option>
-                                                    @endforeach
-                                                    @else
-                                                   N/A
-                                                    @endif
-                                                </select>
-                                            </td>
-                                            <td>{{$cat->created_at}}</td>
-
-                                        </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-=======
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +76,6 @@
 
                                                     </td>
 
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
 
                                             </tr>
                                             @endforeach
@@ -147,9 +93,4 @@
 
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
         @endsection
-=======
-        @endsection
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec

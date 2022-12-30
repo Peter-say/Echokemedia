@@ -31,7 +31,9 @@ class PostCategoryController extends Controller
 
         //  dd($boolOptions);
         $categories =  PostCategory::get();
-        return view('dashboards.category.create', []);
+        return view('dashboards.category.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**

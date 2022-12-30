@@ -19,6 +19,8 @@ class UsersController extends Controller
      */
     public function index()
     {
+
+        $this->authorize('view users');
         $users = User::orderby("created_at", "desc")
             ->paginate(20);
         $users->firstItem();
@@ -100,7 +102,7 @@ class UsersController extends Controller
 
     // View andUpdate user role here
 
-   
+
     public function role(Request $request, $id)
     {
         User::findOrFail($id)->update([
