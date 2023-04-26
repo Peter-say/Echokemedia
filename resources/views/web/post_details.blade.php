@@ -18,14 +18,15 @@
               <div class="progression-studios-slider-vertical-align">
 
                 <div class="container">
+                  
                   @if($post->cover_music)
-                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_music)}}"><i class="fas fa-play"></i></a>
+                  <a class="progression-studios-slider-play-btn afterglow" target="blank" href="{{asset($post->cover_music)}}"><i class="fas fa-play"></i></a>
 
                   <audio id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="960" height="140">
                     <source src="{{asset($post->cover_music)}}" type="audio/mp3">
                   </audio>
                   @else
-                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_video)}}"><i class="fas fa-play"></i></a>
+                  <a class="progression-studios-slider-play-btn afterglow" target="blank" href="{{asset($post->cover_video)}}"><i class="fas fa-play"></i></a>
 
                   <video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="100%" height="140">
                     <source src="{{asset($post->cover_video)}}" type="video/mp4">

@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'admin_assets' => url('/').env('RESOURCE_URL').'/admin',
                 'web_source' => url('/').env('RESOURCE_URL').'/web_2',
+                'template_source' => url('/').env('RESOURCE_URL').'/template',
 
             ]);
         });

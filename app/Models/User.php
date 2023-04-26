@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable implements MustVerifyEmail
 
 {

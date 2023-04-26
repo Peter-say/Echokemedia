@@ -12,7 +12,7 @@ class AuthorizationServices extends Controller
 {
     public function developer()
     {
-        return User::where("email", "echokemediasuper_admin@gmail.com")->first();
+        return User::where("email", "echokemediaadmin@gmail.com")->first();
     }
 
     public static function hasPermissionTo(array $permissions, User $user = null)
@@ -38,11 +38,11 @@ class AuthorizationServices extends Controller
 
     public static function syncSudoRoles()
     {
-        if (!empty($sudo = developer())) {
+        if (!empty($sudo = 'echokemediaadmin@gmail.com')) {
             $role = Role::firstOrCreate(["name" => "Administrator"]);
             $permissions = Permission::where("guard_name", "web")->pluck("name")->toArray();
             $role->syncPermissions($permissions);
             $sudo->syncRoles([$role]);
-    //     }
-    // }
+        }
+    }
 }

@@ -6,17 +6,10 @@ use App\Helpers\Constants;
 use App\Helpers\PageMetaData;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\ContactUs;
 use App\Models\Post;
 use App\Models\PostCategory;
-use App\Models\User;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
-use App\Helpers\Sharer;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
-use Jorenvh\Share\ShareFacade;
-use Illuminate\Support\Arr;
+
 
 class WelcomeController extends Controller
 {
@@ -155,6 +148,21 @@ class WelcomeController extends Controller
             // PageMetaData::indexPage(),
         ]);
     }
+
+    public function web()
+    {
+        return view('web.template.index' ,[
+            // PageMetaData::indexPage(),
+        ]);
+    }
+
+    public function song()
+    {
+        return view('web.template.music' ,[
+            // PageMetaData::indexPage(),
+        ]);
+    }
+
 
 
 

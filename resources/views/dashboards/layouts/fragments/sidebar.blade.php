@@ -91,18 +91,21 @@
                     </a>
                 </li>
                
-                    <li class="menu">
-                        <a href="{{ route('admin.users.index') }}" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i class="fa fa-users" style="font-size:20px;color:black"></i>
-                                <span>Users</span>
-                            </div>
-                        </a>
-                    </li>
+               
+                <li class="menu">
+                    <a href="{{ route('admin.users.index') }}" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa fa-users" style="font-size:20px;color:black"></i>
+                            <span>Users</span>
+                        </div>
+                    </a>
+                </li> 
+               
+                   
                 
 
 
-                <li class="menu">
+                {{-- <li class="menu">
                     <a href="{{ route('admin.user-role') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-users" style="font-size:20px;color:black"></i>
@@ -110,7 +113,7 @@
                         </div>
 
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="menu">
                     <a href="/" aria-expanded="false" class="dropdown-toggle">

@@ -43,7 +43,7 @@ class AdminSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'echokemediaadmin@gmail.com',
             'username' => 'Sudo',
-            'role' => 'Admin',
+            'role' => 'Super-Admin',
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
@@ -54,7 +54,7 @@ class AdminSeeder extends Seeder
         $adminPermission->assignRole($adminRole);
         $adminUser = User::create([
             'name' => 'Moderator',
-            'email' => 'iriogbebepeter22@gmail.com',
+            'email' => 'iriogbepeter22@gmail.com',
             'username' => 'Pero',
             'role' => 'Admin',
             'password' => bcrypt('#123456'),
