@@ -54,7 +54,8 @@
                                                             <a href="{{ route('admin.subcategory.create', $cat->id) }}"
                                                                 class="btn btn-primary btn-sm">Add Subcategory</a>
 
-                                                            <a href="{{route('admin.category.edit', $cat->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                                                            <a href="{{ route('admin.category.edit', $cat->id) }}"
+                                                                class="btn btn-primary btn-sm">Edit</a>
                                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
                                                         </div>
                                                         <select class=" mt-2 d-flex justify-content-center"
@@ -64,13 +65,11 @@
                                                             </option>
                                                             @if (count($cat->subcategory))
                                                                 @foreach ($cat['subcategory'] as $subcategory)
-                                                                    @if (count($cat->subcategory) > 0)
-                                                                        <option id="style-option" value="">
-                                                                            {{ $subcategory->name }}</option>
-                                                                    @else
-                                                                        Not Available
-                                                                    @endif
+                                                                    <option id="style-option" value="">
+                                                                        {{ $subcategory->name }}</option>
                                                                 @endforeach
+                                                            @else
+                                                                Not Available
                                                             @endif
                                                         </select>
 

@@ -17,8 +17,8 @@ class PermissionsSeeder extends Seeder
     public function run()
     {
         $data = array_merge(
-            $this->crud("user"),
-            $this->crud("post"),
+            $this->crud("users"),
+            $this->crud("posts"),
             [
                 [
                     "name" => "can_edit_dashboards",

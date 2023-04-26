@@ -32,6 +32,9 @@ use App\Http\Middleware\AdminMiddleware;
 |
 */
 
+Route::get('/template-index', [App\Http\Controllers\Web\WelcomeController::class, 'web'])->name('/');
+Route::get('/songs', [App\Http\Controllers\Web\WelcomeController::class, 'song'])->name('songs');
+
 Route::get('/', [App\Http\Controllers\Web\WelcomeController::class, 'index'])->name('/');
 Route::get('/music_list', [App\Http\Controllers\Web\MediaController::class, 'music_list'])->name('music_list');
 Route::get('user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('user.post');

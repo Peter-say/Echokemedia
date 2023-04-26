@@ -30,7 +30,6 @@
                                             <tr>
                                                 <th class="">S/N</th>
                                                 <th class="">User Email</th>
-                                                <th class="">Role</th>
                                                 <th class="">Username</th>
                                                 <th class="">Profile</th>
                                                 <th class="">Status</th>
@@ -61,7 +60,9 @@
                                                     <td>
                                                         <a href="{{ asset(auth()->user()->avatar) }}" target="_blank"
                                                             rel="noopener noreferrer">
-                                                            <img class="img-fluid" src="{{ asset('') }}" alt="avatar">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset(auth()->user()->avatar) ?? 'N/A' }}"
+                                                                alt="avatar">
                                                         </a>
                                                     </td>
                                                     <td class="{{ $statusColor }}">{{ $user->status }}</td>
