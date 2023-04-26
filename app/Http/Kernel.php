@@ -2,10 +2,6 @@
 
 namespace App\Http;
 
-<<<<<<< HEAD
-// use App\Http\Middleware\Devpilot\ActivityTracker\TrackerMiddleware;
-=======
->>>>>>> c1a49fbd449355159e2acdc9d83fbaef753e4953
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -41,11 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-<<<<<<< HEAD
-            // TrackerMiddleware::class,
-=======
-           
->>>>>>> c1a49fbd449355159e2acdc9d83fbaef753e4953
+
 
 
         ],
