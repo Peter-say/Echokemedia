@@ -27,13 +27,13 @@ class WelcomeController extends Controller
             "popularPosts" => $popularPosts,
             "categories" => $categories,
             // "metaData" => PageMetaData::indexPage()
-           
+
         ]);
     }
 
     public function subcategory(PostCategory $category)
     {
-        $subcategories = $category->subcategory()->get(); 
+        $subcategories = $category->subcategory()->get();
         return view('web.subcategory' , [
            'subcategories' => $subcategories,
         ]);
@@ -41,7 +41,7 @@ class WelcomeController extends Controller
 
     public function subcategoryPost(PostCategory $subcatPost)
     {
-        $subcategoryPost = $subcatPost->posts(); 
+        $subcategoryPost = $subcatPost->posts();
         return view('web.subcategory_Posts' , [
            'subcategoryPost' => $subcategoryPost,
         ]);
@@ -128,12 +128,12 @@ class WelcomeController extends Controller
 
     public function search(Post $posts, Request $request)
     {
-        
+
         $search = $_GET['query'];
         $relatedPosts = Post::relatedCategory($posts->category_id)->inRandomOrder()->limit(9)->get();
         $categories = PostCategory::where('name', 'like', '%' . $search . '%')->get();
         $posts = Post::where('name', 'like', '%' . $search . '%')->get();
-        return view('web.search' , compact('posts' ,'categories' )); 
+        return view('web.search' , compact('posts' ,'categories' ));
     }
 
     public function headerFilter()
@@ -151,19 +151,38 @@ class WelcomeController extends Controller
 
     public function web()
     {
-        return view('web.template.index' ,[
+        return view('web2.index' ,[
             // PageMetaData::indexPage(),
         ]);
     }
 
     public function song()
     {
-        return view('web.template.music' ,[
+        return view('web2.songs' ,[
             // PageMetaData::indexPage(),
         ]);
     }
 
+    public function about1()
+    {
+        return view('web2.about-us' ,[
+            // PageMetaData::indexPage(),
+        ]);
+    }
 
+    public function contact()
+    {
+        return view('web2.contact-us' ,[
+            // PageMetaData::indexPage(),
+        ]);
+    }
+
+    public function blogs()
+    {
+        return view('web2.blog-one' ,[
+            // PageMetaData::indexPage(),
+        ]);
+    }
 
 
     function getFile($id)
