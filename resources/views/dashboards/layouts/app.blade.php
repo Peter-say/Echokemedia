@@ -100,11 +100,8 @@
     <script src="{{ $admin_assets}}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ $admin_assets}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ $admin_assets}}/assets/js/app.js"></script>
-<<<<<<< HEAD
 
     <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-=======
->>>>>>> 51c8e3731772ff21de2e2fd374f1bf2c9dd1ffec
 
     <script src="https://cdn.tiny.cloud/1/9kceokxig3p7h7aj82ykjwy3ohrak2bq8wozjh90w23fr1mz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>

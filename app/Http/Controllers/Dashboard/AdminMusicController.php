@@ -22,17 +22,18 @@ class AdminMusicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $posts = Post::whereHas("user")->get();
-        $post_type = Post::first();
-        $type = $post_type;
-        return view('dashboards.posts.index', [
-            'posts' => $posts,
-            'post_type' => $post_type,
-            'type' => $type,
-        ]);
-    }
+   
+     public function index()
+     {
+         $posts = Post::whereHas("user")->get();
+         $post_type = Post::first();
+         $type = $post_type;
+         return view('dashboards.posts.index', [
+             'posts' => $posts,
+             'post_type' => $post_type,
+             'type' => $type,
+         ]);
+     }
 
     /**
      * Show the form for creating a new resource.

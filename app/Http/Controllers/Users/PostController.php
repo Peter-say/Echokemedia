@@ -89,8 +89,9 @@ class PostController extends Controller
             "meta_description" => "required|string",
         ]);
 
-        $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-        $video_path =MediaFilesHelper::saveFromRequest($request->cover_video , "postVideos");
+        $cover_path= MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo", $request);
+
 
         $data['cover_image'] = $cover_path;
         $data['cover_video'] = $video_path;

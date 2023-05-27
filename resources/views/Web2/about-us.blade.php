@@ -80,7 +80,7 @@
             <div class="center">
                 <!-- ABOUT IMG -->
                 <div class="about-img img">
-                    <img class="img-parallax" src="images/about-img.jpg" alt="about-img">
+                    <img class="img-parallax" src="{{ $template_source }}//images/about-img.jpg" alt="about-img">
                 </div>
                 <!-- ABOUT IMG -->
             </div>

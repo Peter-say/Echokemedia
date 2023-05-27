@@ -61,8 +61,8 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="">Type <span class="required">*</span></label>
-                                        <input class="form-control" name="type" value="{{ $types }}"
-                                            placeholder="{{ $types }}">
+                                        <input class="form-control" name="type" value="{{ $type }}"
+                                            placeholder="{{ $type }}">
                                     </div>
 
 

@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function index()
     {
 
-        $this->authorize('view users');
+        // $this->authorize('users');
         $users = User::orderby("created_at", "desc")
             ->paginate(20);
         $users->firstItem();

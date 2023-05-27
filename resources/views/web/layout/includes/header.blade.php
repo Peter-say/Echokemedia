@@ -9,7 +9,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
-                        <a href="{{ route('media.newreleases') }}">New Releases</a>
+                        <a href="{{ route('media.music') }}">New Releases</a>
                         <!-- Sub-Menu Example >
                                         <ul class="sub-menu">
                                             <li class="normal-item-pro">
@@ -46,7 +46,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="{{ route('media.newreleases') }}">New Releases</a>
+                        <a href="{{ route('media.music') }}">New Releases</a>
                         <!-- Mobile Sub-Menu Example >
                                             <ul>
                                                 <li class="normal-item-pro">
@@ -79,7 +79,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="normal-item-pro">
-                        <a href="{{ route('media.newreleases') }}">New Releases</a>
+                        <a href="{{ route('media.music') }}">New Releases</a>
                         <!-- Sub-Menu Example >
                                                     <ul class="sub-menu">
                                                         <li class="normal-item-pro">
@@ -130,7 +130,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="{{ route('media.newreleases') }}">New Releases</a>
+                        <a href="{{ route('media.music') }}">New Releases</a>
                         <!-- Mobile Sub-Menu Example >
                                                 <ul>
                                                     <li class="normal-item-pro">

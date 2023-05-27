@@ -127,9 +127,9 @@
 			<h3>Notifications</h3>
 			<div id="header-notification-menu-padding">
 				<ul id="header-user-notification-list">
-					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">check the just dropped music jam from your Favorite artist <div class="header-user-notify-time">2mins ago</div></a></li>
-					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia just drop the lastest hot music video <div class="header-user-notify-time">1hour ago</div></a></li>
-					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia with the most funny comedy videos <div class="header-user-notify-time">30mins ago</div></a></li>
+					<li><a href="{{route('media.music')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">check the just dropped music jam from your Favorite artist <div class="header-user-notify-time">2mins ago</div></a></li>
+					<li><a href="{{route('media.music')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia just drop the lastest hot music video <div class="header-user-notify-time">1hour ago</div></a></li>
+					<li><a href="{{route('media.music')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia with the most funny comedy videos <div class="header-user-notify-time">30mins ago</div></a></li>
 				</ul>
 				<div class="clearfix"></div>
 			</div><!-- close #header-user-profile-menu -->
@@ -145,7 +145,7 @@
 		<ul id="mobile-menu-pro">
 
 			<li>
-				<a href="{{ route('media.newreleases') }}">
+				<a href="{{ route('media.music') }}">
 					<span class="icon-Old-TV"></span>
 					Music
 				</a>

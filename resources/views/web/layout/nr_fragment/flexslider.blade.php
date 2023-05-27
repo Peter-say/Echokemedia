@@ -8,16 +8,13 @@
 
 							<div class="container">
 
-								<a class="progression-studios-slider-play-btn afterglow" href="{{asset($popularPost->cover_music)}}"><i class="fas fa-play"></i></a>
+								<a class="progression-studios-slider-play-btn afterglow" href="{{asset($popularPost->cover_music)}}">
 
-								<video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="100%" height="140">
+								<video id="VideoLightbox-1"  width="100%" height="10">
 									<source src="{{asset($popularPost->cover_music)}}" type="video/mp4">
 								</video>
 
-								<div class="circle-rating-pro" data-value="" data-animation-start-value="" data-size="70" data-thickness="6" data-fill="{
-								          &quot;color&quot;: &quot;#42b740&quot;
-								        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">8.6</span>
-								</div>
+								
 
 								<div class="progression-studios-slider-dashboard-caption-width">
 									<div class="progression-studios-slider-caption-align">

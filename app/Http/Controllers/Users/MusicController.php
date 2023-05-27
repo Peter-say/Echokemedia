@@ -77,8 +77,9 @@ class MusicController extends Controller
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
         ]);
-        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music , "postMusic");
+        $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+        $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
+
 
         $data['cover_image'] = $image_path;
         $data['cover_music'] = $music_path;
@@ -148,8 +149,10 @@ class MusicController extends Controller
             "meta_description" => "required|string",
         ]);
         // dd($data);
-         $cover_path = MediaFilesHelper::saveFromRequest($request->cover_image , "postImages");
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video , "postMusic");
+        $cover_path= MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postMusic", $request);
+
+
 
         $data['cover_image'] = $cover_path;
         $data['cover_music'] = $video_path;

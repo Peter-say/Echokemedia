@@ -36,7 +36,7 @@
                                 <h2 class="text-white mt-0">We've got what you need!</h2>
                                 <hr class="divider divider-light" />
                                 <p class="text-white-75 mb-4"> Enjoy the best and recent music and videos</p>
-                                <a class="btn btn-light btn-xl" href="{{route('media.newreleases')}}">Get Started!</a>
+                                <a class="btn btn-light btn-xl" href="{{route('media.music')}}">Get Started!</a>
                             </div>
                         </div>
                     </div>

@@ -124,12 +124,12 @@ class AdminVideoController extends Controller
         $post = Post::where("id", $id)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
-        $types = Constants::VIDEO;
+        $type = Constants::VIDEO;
         return view('dashboards.video.edit',
             [
                 "post" => $post,
                 'categories' => $categories,
-                'types' => $types,
+                'type' => $type,
                 'boolOptions' =>  $boolOptions,
             ]
         );
@@ -171,7 +171,7 @@ class AdminVideoController extends Controller
                  $data['cover_video'] = $video_path;
                
             }
-        $post = Post::where('id', $id)->update($data);
+        Post::where('id', $id)->update($data);
         return redirect()->route('admin.post.index')->with('success_meassage',  'Post updated successfully');
     
     }

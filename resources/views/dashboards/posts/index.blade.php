@@ -52,25 +52,39 @@
                                                 <td> <img class="img-fluid post-img-size-on-dashboard"
                                                         src="{{ asset($post->cover_image) }}" alt="..." />
                                                 </td>
-
                                                 <td>{{ $post->created_at }}
-
-
                                                 <td>
-                                                    <div class=" d-flex justify-content-between"">
-                                                        <form action="{{ route('admin.post.destroy', $post->id) }}"
-                                                            method="post"
-                                                            onsubmit="return confirm('Are you sure you want to delete this record?')">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+                                                    @if ($post->type == 'music')
+                                                        <div class=" d-flex justify-content-between">
+                                                            <form action="{{ route('admin.post.destroy', $post->id) }}"
+                                                                method="post"
+                                                                onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
 
-                                                        </form>
-                                                        <a href="{{ route('admin.post.edit', $post->id) }}"
-                                                            class="btn btn-primary btn-sm ">edit</a>
-                                                        <a href="#" class="btn btn-success">View Post</a>
-                                                    </div>
+                                                            </form>
+                                                            <a href="{{ route('admin.post.edit', $post->id) }}"
+                                                                class="btn btn-primary btn-sm ">edit</a>
+                                                            <a href="#" class="btn btn-success">View Post</a>
+                                                        </div>
+                                                    @else
+                                                        <div class=" d-flex justify-content-between">
+                                                            <form action="{{ route('admin.video.destroy', $post->id) }}"
+                                                                method="post"
+                                                                onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+
+                                                            </form>
+                                                            <a href="{{ route('admin.video.edit', $post->id) }}"
+                                                                class="btn btn-primary btn-sm ">edit</a>
+                                                            <a href="#" class="btn btn-success">View Post</a>
+                                                        </div>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

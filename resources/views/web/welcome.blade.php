@@ -25,7 +25,7 @@
                     <h2 class="short-border-bottom">Watch On Any Device</h2>
                     <p>The media you view and listen to from or on <em>Echokemedia</em> doesn't select a particular device cause it's an anchor of equality😉 </p>
                     <div style="height:15px;"></div>
-                    <p><a class="btn btn-green-pro" href="{{route('media.newreleases')}}" role="button">Learn More</a></p>
+                    <p><a class="btn btn-green-pro" href="{{route('media.music')}}" role="button">Learn More</a></p>
                 </div>
             </div><!-- close .row -->
 
@@ -36,7 +36,7 @@
                     <h2 class="short-border-bottom">Make Your Own Playlist</h2>
                     <p><em>Echokemedia</em> allows you to be able to create your own playlist and be the master with your masterpiece ♨️</p>
                     <div style="height:15px;"></div>
-                    <p><a class="btn btn-green-pro" href="{{route('media.newreleases')}}" role="button">Start Watching</a></p>
+                    <p><a class="btn btn-green-pro" href="{{route('media.music')}}" role="button">Start Watching</a></p>
                 </div>
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
@@ -57,7 +57,7 @@
                     <h2 class="short-border-bottom">Watch in Ultra HD</h2>
                     <p> Be our guest and be the one to choose your screen, we'll be here to ensure it goes as planned 👐🏻🦾</p>
                     <div style="height:15px;"></div>
-                    <p><a class="btn btn-green-pro" href="{{route('media.newreleases')}}" role="button">Latest Jam</a></p>
+                    <p><a class="btn btn-green-pro" href="{{route('media.music')}}" role="button">Latest Jam</a></p>
                 </div>
             </div><!-- close .row -->
 
