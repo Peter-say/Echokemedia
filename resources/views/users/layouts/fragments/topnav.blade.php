@@ -5,7 +5,7 @@
           <ul class="navbar-item theme-brand flex-row  text-center">
               {{-- <li class="nav-item ">
                   <a href="/">
-                      <img class="ui fluid image" src="{{ $admin_assets }}/assets/img/m-logo.png">
+                      <img class="ui fluid image" src="{{ $dashboard_assets }}/assets/img/m-logo.png">
                   </a>
               </li> --}}
               <li class="nav-item theme-text">
@@ -44,7 +44,7 @@
                   </a>
                   <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">
                       <div class="">
-                          <a href="{{ route('admin.users_messages') }}" class="dropdown-item">
+                          <a href="{{ route('dashboard.users_messages') }}" class="dropdown-item">
                               <div class="">
 
                                   <div class="media">
@@ -73,7 +73,7 @@
               <li class="nav-item dropdown user-profile-dropdown">
                   <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      <img class="img-fluid" src="{{ $admin_assets }}/skrn/images/demo/user-profile.png" alt="avatar">
+                      <img class="img-fluid" src="{{ $dashboard_assets }}/skrn/images/demo/user-profile.png" alt="avatar">
                   </a>
                   <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                       <div class="">

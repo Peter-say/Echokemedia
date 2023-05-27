@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Helpers\Constants;
 use App\Helpers\MediaFilesHelper;
@@ -10,22 +10,30 @@ use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\support\Str;
 
 class MusicController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $posts = Post::whereHas("user")->get();
-        return view('users.posts.index', [
-            'posts' => $posts
-        ]);
-    }
+   
+     public function index()
+     {
+         $posts = Post::whereHas("user")->get();
+         $post_type = Post::first();
+         $type = $post_type;
+         return view('dashboards.posts.index', [
+             'posts' => $posts,
+             'post_type' => $post_type,
+             'type' => $type,
+         ]);
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +42,14 @@ class MusicController extends Controller
      */
     public function create(User $user)
     {
-        
+
+        //     $can_post =  User::where('user_id', auth()->id());
+        //     $status = User::where(["status" =>  Constants::APPROVED]);
+
+        //    if( $can_post !==  $status){
+        //        return  back()->with('error_message', 'not approved' );
+        //    }
+
         $boolOptions = Constants::BOOL_OPTIONS;
         $types = Constants::MUSIC;
         $maxPost = 15;
@@ -55,39 +70,42 @@ class MusicController extends Controller
             );
         }
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
+        // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
-       $data = $request->validate([
-            'category_id' => "required|string",
+        $data = $request->validate([
+            'category_id' => "string|nullable",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
             "type" => "required|string|in:$allowedTypes",
             'cover_image' => 'required|image',
-            "cover_music" => 'required:mines:mp3',
+            "cover_music" => 'required:mimes:mp3',
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
+            "is_sponsored" => "required|string|in:$allowedOptions",
+            "is_top_story" => "required|string|in:$allowedOptions",
+            "is_featured" => "required|string|in:$allowedOptions",
+            "is_published" => "required|string|in:$allowedOptions",
+            "can_comment" => "required|string|in:$allowedOptions",
         ]);
         $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
         $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
 
-
         $data['cover_image'] = $image_path;
         $data['cover_music'] = $music_path;
-        $data["slug"] = Str::slug($request->title, '-');
+        $data["slug"] = Str::slug($request->name, '-');
         $data['user_id'] = auth()->id();
-        // dd($request->all());
         Post::create($data);
-        return redirect()->route('user.post.index')->with('success_message', 'Post added successfully');
+        return redirect()->route('dashboard.post.index')->with('success_message', 'Post added successfully');
     }
 
     /**
@@ -107,9 +125,9 @@ class MusicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($post)
+    public function edit($id)
     {
-        $post = Post::where("id", $post)->first();
+        $post = Post::where("id", $id)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
         $types = Constants::MUSIC;
@@ -133,36 +151,39 @@ class MusicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
+        $allowedOptions = Constants::ACTIVE . ",". Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
-        $post = Post::where('id',$id);
-        // dd($id);
         $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
             'content_desccription' => 'required:string',
-            "type" => "nullable|string|in:$allowedTypes",
-            'cover_image' => 'nullable|image',
-            "cover_music" => 'nullable|mines:mp3',
+            "type" => "required|string|in:$allowedTypes",
             "meta_title" => "required|string",
             "meta_keywords" => "required|string",
             "meta_description" => "required|string",
+            "is_sponsored" => "required|string|in:$allowedOptions",
+            "is_top_story" => "required|string|in:$allowedOptions",
+            "is_featured" => "required|string|in:$allowedOptions",
+            "is_published" => "required|string|in:$allowedOptions",
+            "can_comment" => "required|string|in:$allowedOptions",
         ]);
-        // dd($data);
-        $cover_path= MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postMusic", $request);
-
-
-
-        $data['cover_image'] = $cover_path;
-        $data['cover_music'] = $video_path;
-        $data["slug"] = Str::slug($request->title, '-');
-        $data['user_id'] = auth()->id();
-        // dd($post);
-        // dd($data);
-        $post->update($data);
-        return back()->with('success_message', 'Post updated successfully');
+    
+         if ($request->file('cover_image')) {
+                 $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+                 $data['cover_image'] = $image_path;
+               
+            }
+            if ($request->file('cover_music')) {
+                 $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
+                 $data['cover_music'] = $music_path;
+               
+            }
+        $post = Post::where('id', $id)->update($data);
+        return redirect()->route('dashboard.post.index')->with('success_meassage',  'Post updated successfully');
+    
     }
+
+       
 
     /**
      * Remove the specified resource from storage.
@@ -170,9 +191,11 @@ class MusicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($post)
+
+    public function destroy($id)
     {
-        Post::where('id', $post)->delete();
-        return back()->with("error_message", "Deleted successfully!");
+
+        Post::where('id', $id)->delete();
+        return redirect()->route('dashboard.post.index')->with("error_message", "Deleted successfully!");
     }
 }

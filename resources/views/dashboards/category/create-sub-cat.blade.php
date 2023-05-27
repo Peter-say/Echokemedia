@@ -26,7 +26,7 @@
                         <div class="widget-content widget-content-area">
 
                             <div class="row">
-                                <form enctype="multipart/form-data" class="form-row" action="{{route('admin.subcategory.store')}}" method="POST"> @csrf
+                                <form enctype="multipart/form-data" class="form-row" action="{{route('dashboard.subcategory.store')}}" method="POST"> @csrf
                                     <div class="form-group col-md-4">
                                         <label for=""> Select Parent Category<span class="required">*</span></label>
                                         <input class="form-control" type="text" name="parent_id" value="{{$categories->id}}">

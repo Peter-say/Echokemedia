@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('*',function($view){
             $view->with([
-                'admin_assets' => url('/').env('RESOURCE_URL').'/admin',
+                'dashboard_assets' => url('/').env('RESOURCE_URL').'/dashboard',
                 'web_source' => url('/').env('RESOURCE_URL').'/web_2',
                 'template_source' => url('/').env('RESOURCE_URL').'/web2',
 

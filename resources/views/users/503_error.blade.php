@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-4 mr-auto mt-5 text-md-left text-center">
                                 <a href="index.html" class="ml-md-5">
-                                    <img src="{{$admin_assets}}/assets/img/m-icon.jpg" alt="logo">
+                                    <img src="{{$dashboard_assets}}/assets/img/m-icon.jpg" alt="logo">
 
                                 </a>
                             </div>
@@ -36,7 +36,7 @@
                                 <b class="text-danger"> We are sorry, You have reach Your daily limit.
                                     Come back tomorrow for more</b>
                             </p>
-                            <a href="{{route('admin.dashboard')}}" class="btn btn-secondary mt-5">Go Back</a>
+                            <a href="{{route('dashboard.dashboard')}}" class="btn btn-secondary mt-5">Go Back</a>
                         </div>
                     </div>
                 </div>

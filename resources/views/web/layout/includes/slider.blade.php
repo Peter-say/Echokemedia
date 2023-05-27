@@ -2,7 +2,7 @@
     <ul class="slides">
         <li class="progression_studios_animate_in">
             <div class="progression-studios-slider-image-background"
-                style="background-image:url({{ $admin_assets }}/skrn/images/demo/slide-1.jpg);">
+                style="background-image:url({{ $dashboard_assets }}/skrn/images/demo/slide-1.jpg);">
                 <div class="progression-studios-slider-display-table">
                     <div class="progression-studios-slider-vertical-align">
 
@@ -27,7 +27,7 @@
         </li>
         <li class="progression_studios_animate_right">
             <div class="progression-studios-slider-image-background"
-                style="background-image:url({{ $admin_assets }}/skrn/images/demo/slide-2.jpg); background-color:#111015;">
+                style="background-image:url({{ $dashboard_assets }}/skrn/images/demo/slide-2.jpg); background-color:#111015;">
                 <div class="progression-studios-slider-display-table">
                     <div class="progression-studios-slider-vertical-align">
 
@@ -52,7 +52,7 @@
         </li>
         <li class="progression_studios_animate_left">
             <div class="progression-studios-slider-image-background"
-                style="background-image:url({{ $admin_assets }}/skrn/images/demo/slide-3.jpg);">
+                style="background-image:url({{ $dashboard_assets }}/skrn/images/demo/slide-3.jpg);">
                 <div class="progression-studios-slider-display-table">
                     <div class="progression-studios-slider-vertical-align">
 

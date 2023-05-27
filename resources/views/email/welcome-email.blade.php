@@ -3,7 +3,7 @@
 
 Hello 
 
-@component('mail::button', ['url' => route("admin.dashboard")])
+@component('mail::button', ['url' => route("dashboard.dashboard")])
 Button Text
 @endcomponent
 

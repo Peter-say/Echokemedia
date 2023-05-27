@@ -36,7 +36,7 @@
                             <div class="col-lg-12">
                                 <div class="blog-post">
                                     <div class="blog-thumb">
-                                        <img src="{{ $admin_assets }}/assets/images/blog-post-02.jpg" alt="">
+                                        <img src="{{ $dashboard_assets }}/assets/images/blog-post-02.jpg" alt="">
                                     </div>
                                     <div class="down-content">
 

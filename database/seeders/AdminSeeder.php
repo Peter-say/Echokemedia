@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role as ModelsRole;
 use App\Helpers\PermissionHelper;
 
-class AdminSeeder extends Seeder
+class dashboardSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,48 +19,48 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $superAdminRole = ModelsRole::create(['name' => 'Super Admin']);
-        $adminRole = ModelsRole::create(['name' => 'Admin']);
+        $superdashboardRole = ModelsRole::create(['name' => 'Super dashboard']);
+        $dashboardRole = ModelsRole::create(['name' => 'dashboard']);
 
-        //super admin permission
+        //super dashboard permission
 
-        $superAdminPermission = Permission::create(['name' => "create users"]);
-        $superAdminPermission = Permission::create(['name' => "edit users"]);
-        $superAdminPermission = Permission::create(['name' => "update users"]);
-        $superAdminPermission = Permission::create(['name' => "delete users"]);
+        $superdashboardPermission = Permission::create(['name' => "create users"]);
+        $superdashboardPermission = Permission::create(['name' => "edit users"]);
+        $superdashboardPermission = Permission::create(['name' => "update users"]);
+        $superdashboardPermission = Permission::create(['name' => "delete users"]);
 
-        // admin permission
+        // dashboard permission
 
-        $adminPermission = Permission::create(['name' => "create post"]);
-        $adminPermission = Permission::create(['name' => "edit post"]);
-        $adminPermission = Permission::create(['name' => "update post"]);
-        $adminPermission = Permission::create(['name' => "delete post"]);
+        $dashboardPermission = Permission::create(['name' => "create post"]);
+        $dashboardPermission = Permission::create(['name' => "edit post"]);
+        $dashboardPermission = Permission::create(['name' => "update post"]);
+        $dashboardPermission = Permission::create(['name' => "delete post"]);
 
         
 
-        $superAdminPermission->assignRole($superAdminRole);
-        $superAdminUser = User::create([
-            'name' => 'Admin',
-            'email' => 'echokemediaadmin@gmail.com',
+        $superdashboardPermission->assignRole($superdashboardRole);
+        $superdashboardUser = User::create([
+            'name' => 'dashboard',
+            'email' => 'echokemediadashboard@gmail.com',
             'username' => 'Sudo',
-            'role' => 'Super-Admin',
+            'role' => 'Super-dashboard',
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
-        $superAdminUser->assignRole('Super Admin');
+        $superdashboardUser->assignRole('Super dashboard');
 
 
-        $adminPermission->assignRole($adminRole);
-        $adminUser = User::create([
+        $dashboardPermission->assignRole($dashboardRole);
+        $dashboardUser = User::create([
             'name' => 'Moderator',
             'email' => 'iriogbepeter22@gmail.com',
             'username' => 'Pero',
-            'role' => 'Admin',
+            'role' => 'dashboard',
             'password' => bcrypt('#123456'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
-        $adminUser->assignRole('Admin');
+        $dashboardUser->assignRole('dashboard');
     }
 }

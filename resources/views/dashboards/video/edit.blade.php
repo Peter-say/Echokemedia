@@ -25,7 +25,7 @@
                             </div>
                             <div class="widget-content widget-content-area">
                                 <form enctype="multipart/form-data" class="form-row"
-                                    action="{{ route('admin.video.update', $post->id) }}" method="post">
+                                    action="{{ route('dashboard.video.update', $post->id) }}" method="post">
                                     @csrf @method('PUT')
                                     <div class="form-group col-md-4">
                                         <label for="">Cover Image <span class="required">*</span></label>

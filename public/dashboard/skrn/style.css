@@ -1437,7 +1437,7 @@ span.user-notification-count {
 */
 .progression-studios-full-height-slider .progression-studios-slider-dashboard-image-background,
 .flexslider.progression-studios-dashboard-slider.progression-studios-full-height-slider {
-	height:calc(100vh - 90px);
+	height:calc(85vh);
 }
 
 .flexslider.progression-studios-dashboard-slider {
@@ -1451,6 +1451,7 @@ span.user-notification-count {
 	background-position:center center;
 	background-size: cover;
 }
+
 
 .flexslider.progression-studios-dashboard-slider:after {
 	content:'';

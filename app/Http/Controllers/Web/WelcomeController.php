@@ -30,6 +30,20 @@ class WelcomeController extends Controller
         ]);
     }
 
+    public function videosPage(Request $request, PostCategory $category_id)
+    {
+        $categories = PostCategory::with('subcategory')->where('Parent_Id', null)->get();
+        $builder2 = Post::where('type', constants::VIDEO);
+        $videos = $builder2->orderby("created_at", "desc")->paginate(12);
+        $popularPosts = $builder2->with('category')->limit(4)->get();
+        return view('web.videos', [
+            'videos' => $videos,
+            "popularPosts" => $popularPosts,
+            "categories" => $categories,
+            // "metaData" => PageMetaData::indexPage()
+        ]);
+    }
+
     public function subcategory(PostCategory $category)
     {
         $subcategories = $category->subcategory()->get();
@@ -43,21 +57,6 @@ class WelcomeController extends Controller
         $subcategoryPost = $subcatPost->posts();
         return view('web.subcategory_Posts' , [
            'subcategoryPost' => $subcategoryPost,
-        ]);
-    }
-
-
-    public function videosPage(Request $request, PostCategory $category_id)
-    {
-        $categories = PostCategory::all();
-        $builder2 = Post::where('type', constants::VIDEO);
-        $videos = $builder2->orderby("created_at", "desc")->paginate(12);
-        $popularPosts = $builder2->with('category')->limit(3)->get();
-        return view('web.videos', [
-            'videos' => $videos,
-            "popularPosts" => $popularPosts,
-            "categories" => $categories,
-            // "metaData" => PageMetaData::indexPage()
         ]);
     }
 

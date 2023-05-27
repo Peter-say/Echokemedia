@@ -17,10 +17,6 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role == 'Super-Admin' || 'Admin'){
             return $next($request);
-          } 
-            return redirect('user/dashboard');
-          
     }
 }

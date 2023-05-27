@@ -3,7 +3,7 @@
     <div class="container px-4 px-lg-5">
 
         <a href="">
-            <img src="{{$admin_assets}}/assets/img/m-icon.jpeg" alt="logo">
+            <img src="{{$dashboard_assets}}/assets/img/m-icon.jpeg" alt="logo">
         </a>
         <a class="navbar-brand" href="#page-top">Media_Creator</a>
 

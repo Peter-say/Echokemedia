@@ -57,6 +57,6 @@
 
 </body>
 
-<!-- Mirrored from progression-studios.com/{{ $admin_assets }}/skrn/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Apr 2022 11:17:28 GMT -->
+<!-- Mirrored from progression-studios.com/{{ $dashboard_assets }}/skrn/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Apr 2022 11:17:28 GMT -->
 
 </html>

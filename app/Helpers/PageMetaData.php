@@ -59,7 +59,7 @@ class PageMetaData
         return $meta->setAttribute("name", $name)
             ->setAttribute("description", $post->meta_description)
             ->setAttribute("keywords",$post->meta_keywords ?? self::DEFAULT_KEYWORDS)
-            ->setAttribute("author", "Admin")
+            ->setAttribute("author", "dashboard")
             ->setAttribute("page_topic", $post->name)
             ->setAttribute("og_site_name", url("Echokemedia"))
             ->setAttribute("og_title", $post->name)

@@ -11,7 +11,7 @@
             <div class="shadow-bottom"></div>
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
-                    <a href="{{ route('admin.dashboard') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.home') }}" aria-expanded="false" class="dropdown-toggle">
 
                         <div class="">
                             <i class="fa fa-dashboard" style="font-size:20px;color:black"></i>
@@ -36,10 +36,10 @@
                     </a>
                     <ul class="collapse submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
                         <li>
-                            <a href="{{ route('admin.post.create') }}"> Music </a>
+                            <a href="{{ route('dashboard.post.create') }}"> Music </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.video.create') }}"> Video </a>
+                            <a href="{{ route('dashboard.video.create') }}"> Video </a>
                         </li>
                     </ul>
                 </li>
@@ -48,7 +48,7 @@
 
 
                 <li class="menu">
-                    <a href="{{ route('admin.news.create') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.news.create') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-book" style="font-size:20px;color:black"></i>
                             <span>Create News</span>
@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ route('admin.news.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.news.index') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-book" style="font-size:20px;color:black"></i>
                             <span>News</span>
@@ -65,7 +65,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="{{ route('admin.earnings.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.earnings.index') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-dollar" style="font-size:20px;color:black"></i>
                             <span>Earnings</span>
@@ -74,7 +74,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="{{ route('admin.category.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.category.index') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-archive" style="font-size:20px;color:black"></i>
                             <span>Category</span>
@@ -83,7 +83,7 @@
                 </li>
 
                 <li class="menu">
-                    <a href="{{ route('admin.post.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.post.index') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-archive" style="font-size:20px;color:black"></i>
                             <span>Posts</span>
@@ -93,7 +93,7 @@
                
                
                 <li class="menu">
-                    <a href="{{ route('admin.users.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.users.index') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-users" style="font-size:20px;color:black"></i>
                             <span>Users</span>
@@ -106,7 +106,7 @@
 
 
                 {{-- <li class="menu">
-                    <a href="{{ route('admin.user-role') }}" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('dashboard.user-role') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
                             <i class="fa fa-users" style="font-size:20px;color:black"></i>
                             <span>Role</span>

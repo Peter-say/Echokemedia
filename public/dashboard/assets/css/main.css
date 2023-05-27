@@ -1477,7 +1477,7 @@ input[readonly], select[readonly], textarea[readonly] {
     height: 35px;
 }
 .table > tbody > tr > td .usr-img-frame img { width: 35px; margin: 0; }
-.table > tbody > tr > td .admin-name {
+.table > tbody > tr > td .dashboard-name {
     font-weight: 700;
     color: #515365;
 }

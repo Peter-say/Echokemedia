@@ -61,9 +61,9 @@ class AppConstants
 
    const SUDO_EMAIL = "sudo@amfw.com";
 
-   const ADMIN_PAGINATION_SIZE = 100;
+   const dashboard_PAGINATION_SIZE = 100;
 
-   const ADMIN_USER = "Admin";
+   const dashboard_USER = "dashboard";
    const REGULAR_USER = "User";
 
 }

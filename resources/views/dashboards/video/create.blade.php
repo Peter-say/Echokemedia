@@ -20,14 +20,14 @@
 
                                     <h4>Create New video
                                         <span class="fr">
-                                            <a href="{{route('admin.category.create')}}" class="btn btn-primary btn-sm ">New Category</a>
+                                            <a href="{{route('dashboard.category.create')}}" class="btn btn-primary btn-sm ">New Category</a>
                                         </span>
                                     </h4>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form enctype="multipart/form-data" class="form-row" action="{{route('admin.video.store')}}" method="post">
+                            <form enctype="multipart/form-data" class="form-row" action="{{route('dashboard.video.store')}}" method="post">
                                 @csrf
 
 

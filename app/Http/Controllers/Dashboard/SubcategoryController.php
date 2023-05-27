@@ -59,7 +59,7 @@ class SubcategoryController extends Controller
           ]);
          
 
-          return redirect()->route('admin.category.index')->with('success_message', 'Subcategory added successfully');
+          return redirect()->route('dashboard.category.index')->with('success_message', 'Subcategory added successfully');
       
     }
 

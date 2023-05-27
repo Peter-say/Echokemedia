@@ -30,7 +30,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
         'is_email_verified',
-        'status'
+        'status',
+        'linkedin_username',
+        'facebook_username',
+        'twitter_username',
+        'instagram_username',
+        
     ];
 
     /**

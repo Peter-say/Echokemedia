@@ -4,7 +4,7 @@
 <head1`1>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpeg" />
+    <link rel="icon" type="image/x-icon" href="{{$dashboard_assets}}/assets/img/m-icon.jpeg" />
     <meta name="description" content="Echokemedia is an entertaining platform, where you get your trending, latest, favorite music, music videos and movies.">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ $web_source }}/assets/vendor/bootstrap/css/bootstrap.min.css">

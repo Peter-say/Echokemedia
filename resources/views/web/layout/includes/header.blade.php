@@ -1,5 +1,5 @@
 <header id="masthead-pro">
-    <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
+    <h1><a href="/"><img src="{{ $dashboard_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
     <div class="container">
 
         @guest
@@ -97,14 +97,14 @@
                     <li class="normal-item-pro current-menu-item">
                         <a href="{{ route('media.news.index') }}">Celebrity News</a>
                     </li>
-                    @if (Auth::user()->role == 'Super Admin')
+                    @if (Auth::user()->role == 'Super dashboard')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('dashboard.dashboard') }}">Dashboard</a>
                         </li>
                     @endif
-                        @if (Auth::user()->role == 'Admin')
+                        @if (Auth::user()->role == 'dashboard')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                <a class="nav-link" href="{{ route('dashboard.dashboard') }}">Dashboard</a>
                             </li>
                         @else
                             <li class="nav-item">
@@ -148,9 +148,9 @@
                     <li class="normal-item-pro current-menu-item">
                         <a href="{{ route('media.news.index') }}">Celebrity News</a>
                     </li>
-                    @if (Auth::user()->role == 'Admin')
+                    @if (Auth::user()->role == 'dashboard')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('dashboard.dashboard') }}">Dashboard</a>
                         </li>
                     @else
                         <li class="nav-item">

@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-between">
                                         <h4>Category Information</h4>
-                                        <a href="{{ route('admin.category.create') }}" class="btn btn-primary btn-sm">Create
+                                        <a href="{{ route('dashboard.category.create') }}" class="btn btn-primary btn-sm">Create
                                             New</a>
 
                                     </div>
@@ -52,10 +52,10 @@
                                                     <td>
                                                         <div class="d-flex justify-content-between ml-2">
 
-                                                            <a href="{{ route('admin.subcategory.create', $cat->id) }}"
+                                                            <a href="{{ route('dashboard.subcategory.create', $cat->id) }}"
                                                                 class="btn btn-primary btn-sm">Add Subcategory</a>
 
-                                                            <a href="{{ route('admin.category.edit', $cat->id) }}"
+                                                            <a href="{{ route('dashboard.category.edit', $cat->id) }}"
                                                                 class="btn btn-primary btn-sm">Edit</a>
                                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
                                                         </div>

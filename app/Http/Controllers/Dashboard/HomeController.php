@@ -3,23 +3,22 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Web\ContactUs;
 use App\Models\ContactUs as ModelsContactUs;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['Admin', 'Moderator']);
+        $this->middleware('auth', ['dashboard', 'Moderator']);
     }
-    public function admin()
+    public function home()
     {
         $profiles = Profile::get();
-        return view('dashboards.admin' , [
+        return view('dashboards.home' , [
             'profiles' => $profiles
         ]);
         
@@ -42,3 +41,5 @@ class AdminController extends Controller
 
    
 }
+
+

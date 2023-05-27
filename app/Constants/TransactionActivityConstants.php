@@ -12,14 +12,14 @@ class TransactionActivityConstants
     const FUND_WITH_PAYPAL = "FUND_WITH_PAYPAL";
     const REFERRAL_BONUS = "REFERRAL_BONUS";
     const SIGNUP_BONUS = "SIGNUP_BONUS";
-    const ADMIN_BONUS = "ADMIN_BONUS";
+    const dashboard_BONUS = "dashboard_BONUS";
     const PROMOTION_COSTS = "PROMOTION_COSTS";
     const RUNNING_COSTS = "RUNNING_COSTS";
 
     const SUBSCRIBE_TO_MEMBERSHIP_PLAN = "SUBSCRIBE_TO_MEMBERSHIP_PLAN";
     const DAILY_NOTCH_BONUS = "DAILY_NOTCH_BONUS";
 
-    const ADMIN_FILTER_OPTIONS = [
+    const dashboard_FILTER_OPTIONS = [
         self::CREDIT_PROVIDER_USER => "CREDIT PROVIDER USER",
         self::PROVIDER => "PROVIDER",
         self::CURRENCY_EXCHANGE => "CURRENCY EXCHANGE",

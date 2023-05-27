@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
                                         <h4>Post Information</h4>
-                                        <a href="{{ route('admin.post.create') }}" class="btn btn-primary btn-sm "
+                                        <a href="{{ route('dashboard.post.create') }}" class="btn btn-primary btn-sm "
                                             data-toggle="modal" data-target="#postType">Add New
                                             Post</a>
                                     </div>
@@ -56,7 +56,7 @@
                                                 <td>
                                                     @if ($post->type == 'music')
                                                         <div class=" d-flex justify-content-between">
-                                                            <form action="{{ route('admin.post.destroy', $post->id) }}"
+                                                            <form action="{{ route('dashboard.post.destroy', $post->id) }}"
                                                                 method="post"
                                                                 onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                                 @csrf
@@ -65,13 +65,13 @@
                                                                     class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
 
                                                             </form>
-                                                            <a href="{{ route('admin.post.edit', $post->id) }}"
+                                                            <a href="{{ route('dashboard.post.edit', $post->id) }}"
                                                                 class="btn btn-primary btn-sm ">edit</a>
                                                             <a href="#" class="btn btn-success">View Post</a>
                                                         </div>
                                                     @else
                                                         <div class=" d-flex justify-content-between">
-                                                            <form action="{{ route('admin.video.destroy', $post->id) }}"
+                                                            <form action="{{ route('dashboard.video.destroy', $post->id) }}"
                                                                 method="post"
                                                                 onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                                 @csrf
@@ -80,7 +80,7 @@
                                                                     class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
 
                                                             </form>
-                                                            <a href="{{ route('admin.video.edit', $post->id) }}"
+                                                            <a href="{{ route('dashboard.video.edit', $post->id) }}"
                                                                 class="btn btn-primary btn-sm ">edit</a>
                                                             <a href="#" class="btn btn-success">View Post</a>
                                                         </div>
@@ -116,9 +116,9 @@
                     <div class="modal-body">
                         <h5>What type of post do you want to make ?</h5>
                         <div class=" justify-content-space-between">
-                            <a href="{{ route('admin.post.create') }}" class="btn btn-secondary">Music</a>
-                            <a href="{{ route('admin.video.create') }}" class="btn btn-secondary">Video</a>
-                            <a href="{{ route('admin.news.create') }}" class="btn btn-secondary">News</a>
+                            <a href="{{ route('dashboard.post.create') }}" class="btn btn-secondary">Music</a>
+                            <a href="{{ route('dashboard.video.create') }}" class="btn btn-secondary">Video</a>
+                            <a href="{{ route('dashboard.news.create') }}" class="btn btn-secondary">News</a>
                         </div>
                     </div>
                 </div>

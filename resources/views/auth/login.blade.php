@@ -4,7 +4,7 @@
     {{-- <div class="container"></div>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <!-- <div  style="background-image: url('{{ $admin_assets}}/assets/img/bg-01.jpg');">
+            <!-- <div  style="background-image: url('{{ $dashboard_assets}}/assets/img/bg-01.jpg');">
             </div> -->
         </div>
         <div class="col-md-6">

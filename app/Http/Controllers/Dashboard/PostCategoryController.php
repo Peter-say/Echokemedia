@@ -60,7 +60,7 @@ class PostCategoryController extends Controller
             'name' => $request->input('name'),
             'cat_image' => $cat_image,
         ]);
-        return redirect()->route('admin.category.index')->with('success_message', 'Category added successfully');
+        return redirect()->route('dashboard.category.index')->with('success_message', 'Category added successfully');
     }
     /**
      * Display the specified resource.
@@ -108,10 +108,10 @@ class PostCategoryController extends Controller
 
 
             $category = PostCategory::where('id',$id)->update($data);
-            return redirect()->route('admin.category.index')->with('success_message', 'Category Updated successfully');
+            return redirect()->route('dashboard.category.index')->with('success_message', 'Category Updated successfully');
         } else {
             $category = PostCategory::where('id', $id)->update($data);
-            return redirect()->route('admin.category.index')->with('success_message', 'Category Updated successfully');
+            return redirect()->route('dashboard.category.index')->with('success_message', 'Category Updated successfully');
         }
     }
 

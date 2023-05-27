@@ -2,143 +2,55 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\MediaFilesHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Profile $profiles)
+    public function index()
     {
-      
-        $profiles = Profile::find(1);
-        return view('dashboards.profile.index' , [
-            'profiles' => $profiles
-        ]); 
+        $user = Auth::user();
+        return view('dashboards.profile.index', compact('user'));
     }
 
-    
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       
-        $profiles = Profile::find(1);
-        return view('dashboards.profile.create' , [
-            'profiles' => $profiles
-        ] );
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request , User $user)
-    {  
-     
-        $request->validate([
-            'role' => 'required',
-            'description' =>'required|string',
-            'avatar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-
-        ]);
-
-
-        $newImageName = uniqid() . '_' . $request->title . '.' .
-         $request->file('avatar')->getClientOriginalName();
-         $request->file('avatar')->move(public_path('admin/profileImages'), $newImageName);
-
-        /* Store $imageName name in DATABASE from HERE */
-
-        $request = Profile::create([
-            'image' => $newImageName,
-            'user_id' => $user->id
-        ]);
-        
-        return back()->with('success_message', ' Profile added successfully!');
-           
-
-    
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id , User $user)
-    { 
-         $user = auth()->user();
-        return view('dashboards.profile.edit' , [
-            'user' => $user
-         ] );
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'location' => 'required',
-            'role' => 'required',
-            'phone' => 'required',
-            'description' =>'required|string',
-            'avatar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        $data = $request->validate([
+            "avatar" => "nullable|image",
+            "name" => "required|string",
+            "email" => "required|email",
+            "linkedin_username" => "nullable|string",
+            "facebook_username" => "nullable|string",
+            "twitter_username" => "nullable|string",
+            "instagram_username" => "nullable|string",
 
         ]);
 
-        
-        $newImageName = uniqid() . '_' . $request->title . '.' .
-         $request->file('avatar')->getClientOriginalName();
-         $request->file('avatar')->move(public_path('admin/profileImages'), $newImageName);
+        $user = Auth()->user();
+        $existing_picture_path = $user->avatar;
+        if (!empty('avatar')) {
+            $picture_path = $existing_picture_path;
+        }
+        if ($request->hasFile('avatar')) {
+            $picture_path = MediaFilesHelper::saveFromRequest($request->avatar, 'ProfilePictures', $request);
+        }
 
-        /* Store $imageName name in DATABASE from HERE */
-       
-        $request = Profile::create();
-        
-        return back()->with('success_message', ' Post added successfully!');
-           
+        $data =  User::findOrFail($id);
+        $data['avatar'] = $picture_path;
+        $user = [
+            'picture' => $picture_path,
+            'name' =>  $request->name,
+            'email' =>  $request->email,
+            'linkedin_username' =>  $request->linkedin_username,
+            'facebook_username' =>  $request->facebook_username,
+            'twitter_username' =>  $request->twitter_username,
+            'instagram_username' =>  $request->github_username,
+        ];
 
-    
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $data->update($user);
+        return back()->with('success_message', 'Profile Updated successfully');
     }
 }

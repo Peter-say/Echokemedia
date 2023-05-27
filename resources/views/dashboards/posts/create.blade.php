@@ -21,7 +21,7 @@
 
                                         <h4>Create New Post
                                             <span class="fr">
-                                                <a href="{{ route('admin.category.create') }}"
+                                                <a href="{{ route('dashboard.category.create') }}"
                                                     class="btn btn-primary btn-sm ">New Category</a>
                                             </span>
                                         </h4>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="widget-content widget-content-area">
                                 <form enctype="multipart/form-data" class="form-row"
-                                    action="{{ route('admin.post.store') }}" method="POST"> @csrf
+                                    action="{{ route('dashboard.post.store') }}" method="POST"> @csrf
 
 
                                     <div class="form-group col-md-4">

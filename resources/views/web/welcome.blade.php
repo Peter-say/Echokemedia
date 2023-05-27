@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
-                    <img src="{{ $admin_assets }}/skrn/images/demo/home-1.jpg" class="img-fluid"
+                    <img src="{{ $dashboard_assets }}/skrn/images/demo/home-1.jpg" class="img-fluid"
                         alt="Watch in Any Devices">
                 </div>
                 <div class="col-md my-auto">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
-                    <img src="{{ $admin_assets }}/skrn/images/demo/home-2.jpg" class="img-fluid"
+                    <img src="{{ $dashboard_assets }}/skrn/images/demo/home-2.jpg" class="img-fluid"
                         alt="Make Your Own Playlist">
                 </div>
             </div><!-- close .row -->
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-md my-auto">
                     <!-- .my-auto vertically centers contents -->
-                    <img src="{{ $admin_assets }}/skrn/images/demo/home-3.jpg" class="img-fluid"
+                    <img src="{{ $dashboard_assets }}/skrn/images/demo/home-3.jpg" class="img-fluid"
                         alt="Watch in Ultra HD">
                 </div>
                 <div class="col-md my-auto">

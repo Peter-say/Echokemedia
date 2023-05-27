@@ -4,19 +4,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\DashboardController;
 use App\Http\Controllers\Users\NewsController;
-use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
 use App\Http\Controllers\Users\PostController;
-use App\Http\Controllers\Dashboard\AdminVideoController;
-use App\Http\Controllers\Dashboard\AdminMusicController;
+use App\Http\Controllers\Dashboard\VideoController;
+use App\Http\Controllers\Dashboard\MusicController;
 use App\Http\Controllers\Dashboard\NewController;
 // use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
-use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\dashboardMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +51,7 @@ Route::prefix("media")->as("media.")->group(function () {
 
   Route::resource('news', App\Http\Controllers\Web\NewsController::class);
   Route::get('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'index'])->name('contact');
-  Route::get('/share/', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
+  Route::get('/share', [App\Http\Controllers\Web\SharePostController::class, 'share'])->name('share');
   Route::post('/contact', [App\Http\Controllers\Web\ContactUsController::class, 'storeContact']);
 
   // Route::get('/comment', [App\Http\Controllers\Web\WelcomeController::class, 'comment'])->name('comment');
@@ -71,18 +70,22 @@ Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'ind
 
 
 
-Route::prefix("admin")->as("admin.")->middleware(["verified" , "admin"])->group(function () {
-  Route::get('/dashboard', [App\Http\Controllers\Dashboard\AdminController::class, 'admin'])->name('dashboard');
-  Route::get('/users_messages', [App\Http\Controllers\Dashboard\AdminController::class, 'usersMessages'])->name('users_messages');
-  // Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
+Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(function () {
+  Route::get('/home', [App\Http\Controllers\Dashboard\HomeController::class, 'home'])->name('home');
+  Route::get('/users_messages', [App\Http\Controllers\Dashboard\HomeController::class, 'usersMessages'])->name('users_messages');
+  Route::get('/create', [App\Http\Controllers\Dashboard\VideosController::class, 'create_video'])->name('create');
   Route::get('/earnings', [App\Http\Controllers\Dashboard\EarningsController::class, 'earnings'])->name('earnings.index');
-  Route::resource('post', AdminMusicController::class);
-  Route::resource('/video', AdminVideoController::class);
+  Route::resource('post', MusicController::class);
+  Route::resource('/video', VideoController::class);
   Route::resource('news', NewController::class);
 
   Route::resource('category', PostCategoryController::class);
   Route::resource('subcategory', SubCategoryController::class);
-  Route::resource('profile', ProfileController::class);
+
+  Route::prefix('profile')->as('profile.')->group(function () {
+    Route::get('index', [ProfileController::class, 'index'])->name('index');
+    Route::put('/{id}/update', [ProfileController::class, 'update'])->name('update');
+  });
 
   Route::resource('users', UsersController::class);
   Route::get('user/role',  [App\Http\Controllers\Dashboard\UsersController::class, 'role'])->name('user-role');

@@ -84,7 +84,7 @@
                                                                         @foreach (['Pending', 'Approved', 'Suspended'] as $status)
                                                                             <a class="dropdown-item"
                                                                                 onclick="return  confirm ('Are you sure of the action?')"
-                                                                                href="{{ route('admin.users_status', ['id' => $user->id, 'status' => $status]) }}">
+                                                                                href="{{ route('dashboard.users_status', ['id' => $user->id, 'status' => $status]) }}">
                                                                                 Mark as {{ ucfirst($status) }}
                                                                             </a>
                                                                         @endforeach
@@ -94,7 +94,7 @@
                                                         </ul>
                                                     <td>
                                                         <div class="d-flex justify-content-between">
-                                                            <form action="{{ route('admin.users.destroy', $user->id) }}"
+                                                            <form action="{{ route('dashboard.users.destroy', $user->id) }}"
                                                                 method="post"
                                                                 onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                                 @csrf
@@ -103,7 +103,7 @@
                                                                     onClick="$(this).parent().trigger('submit')">Delete</button>
                                                             </form>
                                                             {{-- <button class="btn btn-primary">Edit</button> --}}
-                                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                                            <a href="{{ route('dashboard.users.edit', $user->id) }}"
                                                                 class="btn btn-success btn-block disable"
                                                                 data-toggle="tooltip" data-placement="top"
                                                                 title="Edit"><i><i data-feather="edit-2"

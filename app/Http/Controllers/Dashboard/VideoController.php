@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\support\Str;
 
-class AdminVideoController extends Controller
+class VideoController extends Controller
 {
 
     /**
@@ -99,7 +99,7 @@ class AdminVideoController extends Controller
         $data['user_id'] = auth()->id();
         // dd($request->all());
         Post::create($data);
-        return redirect()->route('admin.post.index')->with('success_message', 'Post added successfully');
+        return redirect()->route('dashboard.post.index')->with('success_message', 'Post added successfully');
     }
 
     /**
@@ -172,7 +172,7 @@ class AdminVideoController extends Controller
                
             }
         Post::where('id', $id)->update($data);
-        return redirect()->route('admin.post.index')->with('success_meassage',  'Post updated successfully');
+        return redirect()->route('dashboard.post.index')->with('success_meassage',  'Post updated successfully');
     
     }
 

@@ -10,19 +10,19 @@
     <link
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpeg" >
+    <link rel="icon" type="image/x-icon" href="{{$dashboard_assets}}/assets/img/m-icon.jpeg" >
 
 
     <title>{{ config('', 'Echokemedia') }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ $admin_assets}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ $dashboard_assets}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/fontawesome.css">
-    <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="{{ $admin_assets}}/asap/css/owl.css">
+    <link rel="stylesheet" href="{{ $dashboard_assets}}/asap/css/fontawesome.css">
+    <link rel="stylesheet" href="{{ $dashboard_assets}}/asap/css/templatemo-stand-blog.css">
+    <link rel="stylesheet" href="{{ $dashboard_assets}}/asap/css/owl.css">
     <!--
 
 TemplateMo 551 Stand Blog

@@ -24,7 +24,7 @@
                             <div class="widget-content widget-content-area">
 
                                 <form enctype="multipart/form-data" class="form-row"
-                                    action="{{ route('admin.category.store') }}" method="POST"> @csrf
+                                    action="{{ route('dashboard.category.store') }}" method="POST"> @csrf
 
                                     <div class="form-group col-md-4">
                                         <label for="">Image<span class="required">*</span></label>
