@@ -90,31 +90,29 @@
                         </div>
                     </a>
                 </li>
-               
-               
-                <li class="menu">
-                    <a href="{{ route('dashboard.users.index') }}" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <i class="fa fa-users" style="font-size:20px;color:black"></i>
-                            <span>Users</span>
-                        </div>
-                    </a>
-                </li> 
-               
-                   
-                
 
+                @if (Auth::user()->role == 'Super-Admin' || Auth::user()->role == 'Admin')
+                    <li class="menu">
+                        <a href="{{ route('dashboard.users.index') }}" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-users" style="font-size:20px;color:black"></i>
+                                <span>Users</span>
+                            </div>
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::user()->role == 'Super-Admin')
+                    <li class="menu">
+                        <a href="{{ route('dashboard.authorization.role.index') }}" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-users" style="font-size:20px;color:black"></i>
+                                <span>Role</span>
+                            </div>
 
-                {{-- <li class="menu">
-                    <a href="{{ route('dashboard.user-role') }}" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <i class="fa fa-users" style="font-size:20px;color:black"></i>
-                            <span>Role</span>
-                        </div>
-
-                    </a>
-                </li> --}}
-
+                        </a>
+                    </li>
+                @endif
                 <li class="menu">
                     <a href="/" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
@@ -123,15 +121,6 @@
                         </div>
 
                     </a>
-                </li>
-
-                <li class="menu">
-
-                    <i class="fa fa-sign-out" style="font-size:20px;color:black"></i>
-
-                    <form action="{{ route('logout') }}" method="post">@csrf
-                        <button class="dropdown-item text-danger" type="submit">Sign-Out</button>
-                    </form>
                 </li>
 
             </ul>

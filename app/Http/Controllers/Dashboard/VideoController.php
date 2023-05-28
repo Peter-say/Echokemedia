@@ -36,31 +36,28 @@ class VideoController extends Controller
     public function create()
     {
 
-        //     $can_post =  User::where('user_id', auth()->id());
-        //     $status = User::where(["status" =>  Constants::APPROVED]);
+        if (Auth::user()->status == 'Approved') {
+            $boolOptions = Constants::BOOL_OPTIONS;
+            $types = Constants::VIDEO;
+            $maxPost = 15;
+            $todays_post = Post::where('user_id', auth()->id())
+                ->whereDate("created_at", today())->count();
 
-        //    if( $can_post !==  $status){
-        //        return  back()->with('error_message', 'not approved' );   
-        //    }
-
-        $boolOptions = Constants::BOOL_OPTIONS;
-        $types = Constants::VIDEO;
-        $maxPost = 15;
-        $todays_post = Post::where('user_id', auth()->id())
-            ->whereDate("created_at", today())->count();
-
-        if ($todays_post > $maxPost) {
-            return view('dashboards.503_error');
+            if ($todays_post > $maxPost) {
+                return view('dashboards.503_error');
+            } else {
+                $categories =  PostCategory::get();
+                return view(
+                    'dashboards.video.create',
+                    [
+                        'categories' => $categories,
+                        'types' => $types,
+                        'boolOptions' =>  $boolOptions,
+                    ]
+                );
+            }
         } else {
-            $categories =  PostCategory::get();
-            return view(
-                'dashboards.video.create',
-                [
-                    'categories' => $categories,
-                    'types' => $types,
-                    'boolOptions' =>  $boolOptions,
-                ]
-            );
+            abort(403, 'Request denied because your account is ' . ' ' . Auth::user()->status);
         }
     }
     /**
@@ -91,7 +88,7 @@ class VideoController extends Controller
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
         $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo" , $request);
+        $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo", $request);
 
         $data['cover_image'] = $image_path;
         $data['cover_video'] = $video_path;
@@ -121,18 +118,23 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::where("id", $id)->first();
-        $boolOptions = Constants::BOOL_OPTIONS;
-        $categories = PostCategory::get();
-        $type = Constants::VIDEO;
-        return view('dashboards.video.edit',
-            [
-                "post" => $post,
-                'categories' => $categories,
-                'type' => $type,
-                'boolOptions' =>  $boolOptions,
-            ]
-        );
+        if (Auth::user()->status == 'Approved') {
+            $post = Post::where("id", $id)->first();
+            $boolOptions = Constants::BOOL_OPTIONS;
+            $categories = PostCategory::get();
+            $type = Constants::VIDEO;
+            return view(
+                'dashboards.video.edit',
+                [
+                    "post" => $post,
+                    'categories' => $categories,
+                    'type' => $type,
+                    'boolOptions' =>  $boolOptions,
+                ]
+            );
+        } else {
+            abort(403, 'Request denied because your account is ' . ' ' . Auth::user()->status);
+        }
     }
 
     /**
@@ -144,7 +146,7 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $allowedOptions = Constants::ACTIVE . ",". Constants::INACTIVE;
+        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::VIDEO;
         $data = $request->validate([
             'category_id' => "required|string",
@@ -160,20 +162,17 @@ class VideoController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
-    
-         if ($request->file('cover_image')) {
-                 $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-                 $data['cover_image'] = $image_path;
-               
-            }
-            if ($request->file('cover_video')) {
-                 $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo", $request);
-                 $data['cover_video'] = $video_path;
-               
-            }
+
+        if ($request->file('cover_image')) {
+            $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+            $data['cover_image'] = $image_path;
+        }
+        if ($request->file('cover_video')) {
+            $video_path = MediaFilesHelper::saveFromRequest($request->cover_video, "postVideo", $request);
+            $data['cover_video'] = $video_path;
+        }
         Post::where('id', $id)->update($data);
         return redirect()->route('dashboard.post.index')->with('success_meassage',  'Post updated successfully');
-    
     }
 
     /**

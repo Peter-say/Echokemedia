@@ -17,10 +17,10 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'dashboardistrator',
-                'email' => 'echokemediadashboard@gmail.com',
+                'name' => 'administrator',
+                'email' => 'echokemediaadmin@gmail.com',
                 'username' => 'Sudo',
-                'role' => 'Super-dashboard',
+                'role' => 'Super-Admin',
                 'email_verified_at' => now(),
                 'password' => bcrypt('#123456@echoke@'),
                 'remember_token' => bcrypt(Str::random(10)),

@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'is_email_verified',
         'status',
+        'role',
         'linkedin_username',
         'facebook_username',
         'twitter_username',

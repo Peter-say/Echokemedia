@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Authorization\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\DashboardController;
@@ -12,7 +13,6 @@ use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\MusicController;
 use App\Http\Controllers\Dashboard\NewController;
-// use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 use App\Http\Middleware\dashboardMiddleware;
@@ -88,9 +88,13 @@ Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(func
   });
 
   Route::resource('users', UsersController::class);
-  Route::get('user/role',  [App\Http\Controllers\Dashboard\UsersController::class, 'role'])->name('user-role');
-  Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
+   Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
   Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
+
+  Route::prefix('authorization')->as('authorization.')->group( function () {
+    Route::get('role/index',  [RoleController::class, 'index'])->name('role.index');
+    Route::get('assign/{id}/role',  [RoleController::class, 'assign'])->name('assign.role');
+  });
 });
 
 

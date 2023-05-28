@@ -81,6 +81,10 @@
             width: 150px;
             height: 100px;
         }
+
+        .list-users-image{
+            width: 100px
+        }
     </style>
 </head>
 

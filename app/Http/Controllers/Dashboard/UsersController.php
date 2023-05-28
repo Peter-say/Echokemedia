@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -21,10 +21,14 @@ class UsersController extends Controller
     {
 
         // $this->authorize('users');
-        $users = User::orderby("created_at", "desc")
-            ->paginate(20);
-        $users->firstItem();
-        return view('dashboards.users.index', ['users' => $users]);
+
+        if (Auth::user()->role == 'Super-Admin' || Auth::user()->role == 'Admin') {
+            $users = User::orderby("created_at", "asc")
+                ->paginate(20);
+            return view('dashboards.users.index', ['users' => $users]);
+        } else {
+            abort(403, 'Unauthorized');
+        }
     }
 
 
@@ -103,13 +107,6 @@ class UsersController extends Controller
     // View andUpdate user role here
 
 
-    public function role(Request $request, $id)
-    {
-        User::findOrFail($id)->update([
-            "role" => $request->role,
-        ]);
-        return back()->with("success_message", "Role updated successfully!");
-    }
 
 
 

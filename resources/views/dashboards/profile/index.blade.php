@@ -17,7 +17,7 @@
                             </div>
                         @else
                             <div class="profile-image-container">
-                                <img class="img-fluid profile-image-container-img-fluid" src="{{ asset($user->avatar) }}" alt="avatar">
+                                <img class="img-fluid profile-image-container-img-fluid" src="{{ asset(Auth::user()->avatar) }}" alt="avatar">
                             </div>
                         @endif
 

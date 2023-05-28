@@ -51,17 +51,20 @@
                                                     if ($status == 'Suspended') {
                                                         $statusColor = 'text-danger';
                                                     }
+                                                    
+                                                    $can_not_edit_super_admin = '';
+                                                    if ($user->role == 'Super-Admin') {
+                                                        $can_not_edit_super_admin = 'text-danger';
+                                                    }
                                                 @endphp
-                                                <tr>
-
+                                                <tr class="{{ $can_not_edit_super_admin }}">
                                                     <td>{{ $user->id }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->username }}</td>
                                                     <td>
-                                                        <a href="{{ asset(auth()->user()->avatar) }}" target="_blank"
+                                                        <a href="{{ asset($user->avatar) }}" target="_blank"
                                                             rel="noopener noreferrer">
-                                                            <img class="img-fluid"
-                                                                src="{{ asset(auth()->user()->avatar) ?? 'N/A' }}"
+                                                            <img class="img-fluid list-users-image" src="{{ asset($user->avatar) ?? 'N/A' }}"
                                                                 alt="avatar">
                                                         </a>
                                                     </td>
@@ -70,48 +73,52 @@
                                                     </td>
 
                                                     <td>
-                                                        <ul class="table-controls">
-                                                            <li class="mb-3">
-                                                                <div class="dropdown">
-                                                                    <button class="btn dropdown-toggle btn-sm"
-                                                                        type="button" id="dropdownMenuButton"
-                                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Change Status
-                                                                    </button>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        @foreach (['Pending', 'Approved', 'Suspended'] as $status)
-                                                                            <a class="dropdown-item"
-                                                                                onclick="return  confirm ('Are you sure of the action?')"
-                                                                                href="{{ route('dashboard.users_status', ['id' => $user->id, 'status' => $status]) }}">
-                                                                                Mark as {{ ucfirst($status) }}
-                                                                            </a>
-                                                                        @endforeach
+                                                        @if ($user->role != 'Super-Admin')
+                                                            <ul class="table-controls">
+                                                                <li class="mb-3">
+                                                                    <div class="dropdown">
+                                                                        <button class="btn dropdown-toggle btn-sm"
+                                                                            type="button" id="dropdownMenuButton"
+                                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                                            aria-expanded="false">
+                                                                            Change Status
+                                                                        </button>
+                                                                        <div class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton">
+                                                                            @foreach (['Pending', 'Approved', 'Suspended'] as $status)
+                                                                                <a class="dropdown-item"
+                                                                                    onclick="return  confirm ('Are you sure of the action?')"
+                                                                                    href="{{ route('dashboard.users_status', ['id' => $user->id, 'status' => $status]) }}">
+                                                                                    Mark as {{ ucfirst($status) }}
+                                                                                </a>
+                                                                            @endforeach
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    <td>
-                                                        <div class="d-flex justify-content-between">
-                                                            <form action="{{ route('dashboard.users.destroy', $user->id) }}"
-                                                                method="post"
-                                                                onsubmit="return confirm('Are you sure you want to delete this record?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger"
-                                                                    onClick="$(this).parent().trigger('submit')">Delete</button>
-                                                            </form>
-                                                            {{-- <button class="btn btn-primary">Edit</button> --}}
-                                                            <a href="{{ route('dashboard.users.edit', $user->id) }}"
-                                                                class="btn btn-success btn-block disable"
-                                                                data-toggle="tooltip" data-placement="top"
-                                                                title="Edit"><i><i data-feather="edit-2"
-                                                                        class="text-info"></i>Edit
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                    <td>
+                                                                </li>
+                                                            </ul>
+
+                                                            <div class="d-flex justify-content-between">
+
+                                                                <form
+                                                                    action="{{ route('dashboard.users.destroy', $user->id) }}"
+                                                                    method="post"
+                                                                    onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger"
+                                                                        onClick="$(this).parent().trigger('submit')">Delete</button>
+                                                                </form>
+                                                                {{-- <button class="btn btn-primary">Edit</button> --}}
+                                                                <a href="{{ route('dashboard.users.edit', $user->id) }}"
+                                                                    class="btn btn-success btn-block disable"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title="Edit"><i><i data-feather="edit-2"
+                                                                            class="text-info"></i>Edit
+                                                                </a>
+                                                            </div>
+                                                        @else
+                                                            <div>You Can't Edit this</div>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

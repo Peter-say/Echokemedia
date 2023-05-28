@@ -22,18 +22,18 @@ class MusicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
-     public function index()
-     {
-         $posts = Post::whereHas("user")->get();
-         $post_type = Post::first();
-         $type = $post_type;
-         return view('dashboards.posts.index', [
-             'posts' => $posts,
-             'post_type' => $post_type,
-             'type' => $type,
-         ]);
-     }
+
+    public function index()
+    {
+        $posts = Post::whereHas("user")->get();
+        $post_type = Post::first();
+        $type = $post_type;
+        return view('dashboards.posts.index', [
+            'posts' => $posts,
+            'post_type' => $post_type,
+            'type' => $type,
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -42,32 +42,28 @@ class MusicController extends Controller
      */
     public function create(User $user)
     {
+        if ($user->status == "Approved") {
+            $boolOptions = Constants::BOOL_OPTIONS;
+            $types = Constants::MUSIC;
+            $maxPost = 15;
+            $todays_post = Post::where('user_id', auth()->id())
+                ->whereDate("created_at", today())->count();
 
-        //     $can_post =  User::where('user_id', auth()->id());
-        //     $status = User::where(["status" =>  Constants::APPROVED]);
-
-        //    if( $can_post !==  $status){
-        //        return  back()->with('error_message', 'not approved' );
-        //    }
-
-        $boolOptions = Constants::BOOL_OPTIONS;
-        $types = Constants::MUSIC;
-        $maxPost = 15;
-        $todays_post = Post::where('user_id', auth()->id())
-            ->whereDate("created_at", today())->count();
-
-        if ($todays_post > $maxPost) {
-            return view('dashboards.503_error');
+            if ($todays_post > $maxPost) {
+                return view('dashboards.503_error');
+            } else {
+                $categories =  PostCategory::get();
+                return view(
+                    'dashboards.posts.create',
+                    [
+                        'categories' => $categories,
+                        'types' => $types,
+                        'boolOptions' =>  $boolOptions,
+                    ]
+                );
+            }
         } else {
-            $categories =  PostCategory::get();
-            return view(
-                'dashboards.posts.create',
-                [
-                    'categories' => $categories,
-                    'types' => $types,
-                    'boolOptions' =>  $boolOptions,
-                ]
-            );
+            abort(403, 'Request denied because your account is ' . ' ' . Auth::user()->status);
         }
     }
     /**
@@ -127,6 +123,7 @@ class MusicController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->status == "Approved") {
         $post = Post::where("id", $id)->first();
         $boolOptions = Constants::BOOL_OPTIONS;
         $categories = PostCategory::get();
@@ -140,6 +137,9 @@ class MusicController extends Controller
                 'boolOptions' =>  $boolOptions,
             ]
         );
+    } else {
+        abort(403, 'Request denied because your account is ' . ' ' . Auth::user()->status);
+    }
     }
 
     /**
@@ -151,7 +151,7 @@ class MusicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $allowedOptions = Constants::ACTIVE . ",". Constants::INACTIVE;
+        $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
         $allowedTypes = Constants::MUSIC;
         $data = $request->validate([
             'category_id' => "required|string",
@@ -167,23 +167,20 @@ class MusicController extends Controller
             "is_published" => "required|string|in:$allowedOptions",
             "can_comment" => "required|string|in:$allowedOptions",
         ]);
-    
-         if ($request->file('cover_image')) {
-                 $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
-                 $data['cover_image'] = $image_path;
-               
-            }
-            if ($request->file('cover_music')) {
-                 $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
-                 $data['cover_music'] = $music_path;
-               
-            }
+
+        if ($request->file('cover_image')) {
+            $image_path = MediaFilesHelper::saveFromRequest($request->cover_image, "postImages", $request);
+            $data['cover_image'] = $image_path;
+        }
+        if ($request->file('cover_music')) {
+            $music_path = MediaFilesHelper::saveFromRequest($request->cover_music, "postMusic", $request);
+            $data['cover_music'] = $music_path;
+        }
         $post = Post::where('id', $id)->update($data);
         return redirect()->route('dashboard.post.index')->with('success_meassage',  'Post updated successfully');
-    
     }
 
-       
+
 
     /**
      * Remove the specified resource from storage.
