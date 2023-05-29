@@ -13,6 +13,8 @@ use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\MusicController;
 use App\Http\Controllers\Dashboard\NewController;
+use App\Http\Controllers\Dashboard\Settings\SettingsController;
+use App\Http\Controllers\Dashboard\Settings\UpdatePasswordController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
 use App\Http\Middleware\dashboardMiddleware;
@@ -69,7 +71,6 @@ Route::get('/video/download/{slug}', [App\Http\Controllers\Web\WelcomeController
 Route::get('/signup', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('signup');
 
 
-
 Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(function () {
   Route::get('/home', [App\Http\Controllers\Dashboard\HomeController::class, 'home'])->name('home');
   Route::get('/users_messages', [App\Http\Controllers\Dashboard\HomeController::class, 'usersMessages'])->name('users_messages');
@@ -81,17 +82,24 @@ Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(func
 
   Route::resource('category', PostCategoryController::class);
   Route::resource('subcategory', SubCategoryController::class);
-
+  
+  Route::prefix('user')->as('user.')->group(function () {
+    Route::prefix('settings')->as('settings.')->group(function () {
+      Route::get('/index', [SettingsController::class, 'index'])->name('index');
+      Route::get('change-password', [UpdatePasswordController::class, 'changePassword'])->name('change-password');
+      Route::post('update-password', [UpdatePasswordController::class, 'updatePassword'])->name('update-password');
+    });
+  });
   Route::prefix('profile')->as('profile.')->group(function () {
     Route::get('index', [ProfileController::class, 'index'])->name('index');
     Route::put('/{id}/update', [ProfileController::class, 'update'])->name('update');
   });
 
   Route::resource('users', UsersController::class);
-   Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
+  Route::get('users/status/{id}',  [App\Http\Controllers\Dashboard\UsersController::class, 'status'])->name('users_status');
   Route::get('/witdraw', [App\Http\Controllers\Dashboard\TransactionController::class, 'witdraw'])->name('witdraw');
 
-  Route::prefix('authorization')->as('authorization.')->group( function () {
+  Route::prefix('authorization')->as('authorization.')->group(function () {
     Route::get('role/index',  [RoleController::class, 'index'])->name('role.index');
     Route::get('assign/{id}/role',  [RoleController::class, 'assign'])->name('assign.role');
   });
