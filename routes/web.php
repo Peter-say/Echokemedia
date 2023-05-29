@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\MusicController;
 use App\Http\Controllers\Dashboard\NewController;
 use App\Http\Controllers\Dashboard\Settings\SettingsController;
+use App\Http\Controllers\Dashboard\Settings\UpdateEmailAddressController;
 use App\Http\Controllers\Dashboard\Settings\UpdatePasswordController;
 use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
@@ -82,12 +83,16 @@ Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(func
 
   Route::resource('category', PostCategoryController::class);
   Route::resource('subcategory', SubCategoryController::class);
-  
+
   Route::prefix('user')->as('user.')->group(function () {
     Route::prefix('settings')->as('settings.')->group(function () {
       Route::get('/index', [SettingsController::class, 'index'])->name('index');
       Route::get('change-password', [UpdatePasswordController::class, 'changePassword'])->name('change-password');
       Route::post('update-password', [UpdatePasswordController::class, 'updatePassword'])->name('update-password');
+
+      Route::get('change-email', [UpdateEmailAddressController::class, 'changeEmail'])->name('change-email');
+      Route::put('/{id}/update-email', [UpdateEmailAddressController::class, 'UpdateEmail'])->name('update-email');
+
     });
   });
   Route::prefix('profile')->as('profile.')->group(function () {

@@ -31,7 +31,7 @@
                             </div>
                             <div class="card-body d-flex justify-content-between mb-2">
                                 Want to switch your email?
-                                <a href="" class="btn btn-primary p-2">Change Email</a>
+                                <a href="{{route('dashboard.user.settings.change-email')}}" class="btn btn-primary p-2">Change Email</a>
                             </div>
                         </div>
                     </div>
