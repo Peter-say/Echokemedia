@@ -27,11 +27,12 @@ class CreatePostsTable extends Migration
             $table->string('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('access_level')->default("All");
+            $table->string('status')->default('Pending');
             $table->string('slug');
             $table->tinyInteger('is_top_story')->default(0);
             $table->tinyInteger('is_featured')->default(0);
             $table->tinyInteger('is_published')->default(0);
-            $table->tinyInteger('can_comment')->default(1);
+            $table->tinyInteger('can_comment')->default(0);
             $table->tinyInteger('is_sponsored')->default(0);
             $table->timestamps();
             $table->softDeletes();

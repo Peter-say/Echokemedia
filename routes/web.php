@@ -1,25 +1,22 @@
 <?php
 
 use App\Http\Controllers\Dashboard\Authorization\RoleController;
+use App\Http\Controllers\Dashboard\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Users\DashboardController;
-use App\Http\Controllers\Users\NewsController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PostCategoryController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
-use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\MusicController;
 use App\Http\Controllers\Dashboard\NewController;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\Settings\DeleteAccountController;
 use App\Http\Controllers\Dashboard\Settings\SettingsController;
 use App\Http\Controllers\Dashboard\Settings\UpdateEmailAddressController;
 use App\Http\Controllers\Dashboard\Settings\UpdatePasswordController;
-use App\Http\Controllers\UserPostController;
 use App\Mail\NewUserWelcomeMail;
-use App\Http\Middleware\dashboardMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +79,8 @@ Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(func
   Route::resource('/video', VideoController::class);
   Route::resource('news', NewController::class);
 
+  Route::get('approve/{id}/post', [PostController::class, 'approvePost'])->name('approve.post');
+
   Route::resource('category', PostCategoryController::class);
   Route::resource('subcategory', SubCategoryController::class);
 
@@ -114,21 +113,6 @@ Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(func
   });
 });
 
-
-
-Route::prefix("user")->as("user.")->middleware("verified")->group(function () {
-  Route::resource('dashboard', DashboardController::class);
-  Route::resource('news', NewsController::class);
-  Route::get('user/{user}/post', [App\Http\Controllers\Users\DashboardController::class, 'viewposts'])->name('user.post');
-  Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'index'])->name('profile');
-  Route::get('/edit-profile', [App\Http\Controllers\Users\ProfileController::class, 'edit'])->name('edit-profile');
-  Route::put('/update', [App\Http\Controllers\Users\ProfileController::class, 'update'])->name('update');
-  Route::get('/earnings', [App\Http\Controllers\Users\DashboardController::class, 'earnings'])->name('earnings');
-  Route::get('/user/{user:username}/post', [App\Http\Controllers\UserPostController::class, 'index'])->name('post');
-
-  // Route::resource('category', CategoryController::class);
-  Route::resource('post', PostController::class);
-});
 
 
 Route::get('/email', function () {

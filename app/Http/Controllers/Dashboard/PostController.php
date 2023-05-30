@@ -10,12 +10,18 @@ use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\support\Str;
 
-class MusicController extends Controller
+class PostController extends Controller
 {
+
+    public function approvePost(Request $request, Post $post, $id)
+    {
+        $post->where('id', $id)->update([
+            "status" => $request->status,
+        ]);
+        return back()->with('success_message', 'Post Status Updated');
+    }
 
     /**
      * Display a listing of the resource.
@@ -44,7 +50,7 @@ class MusicController extends Controller
     {
         if (Auth::user()->status == "Approved") {
             $boolOptions = Constants::BOOL_OPTIONS;
-            $types = Constants::MUSIC;
+            $types = [Constants::MUSIC, Constants::VIDEO];
             $maxPost = 15;
             $todays_post = Post::where('user_id', auth()->id())
                 ->whereDate("created_at", today())->count();
@@ -76,7 +82,7 @@ class MusicController extends Controller
     {
         // dd($request->all());
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
-        $allowedTypes = Constants::MUSIC;
+        $allowedTypes = [Constants::MUSIC, Constants::VIDEO];
         $data = $request->validate([
             'category_id' => "string|nullable",
             'name' => 'required|string',
@@ -152,7 +158,7 @@ class MusicController extends Controller
     public function update(Request $request, $id)
     {
         $allowedOptions = Constants::ACTIVE . "," . Constants::INACTIVE;
-        $allowedTypes = Constants::MUSIC;
+        $allowedTypes = [Constants::MUSIC, Constants::VIDEO];
         $data = $request->validate([
             'category_id' => "required|string",
             'name' => 'required|string',
@@ -195,6 +201,4 @@ class MusicController extends Controller
         Post::where('id', $id)->delete();
         return redirect()->route('dashboard.post.index')->with("error_message", "Deleted successfully!");
     }
-
-   
 }

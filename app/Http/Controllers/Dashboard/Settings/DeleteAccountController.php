@@ -25,7 +25,6 @@ class DeleteAccountController extends Controller
 
     public function delete(Request $request, $id)
     {
-        dd('kdjdh');
         $user = Auth::user();
         if (Hash::check($request->password, $user->password)) {
             $request->validate([

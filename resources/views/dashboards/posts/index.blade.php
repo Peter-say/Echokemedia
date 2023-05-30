@@ -36,6 +36,7 @@
                                             <th class="">Post Type</th>
                                             <th class="">Post By</th>
                                             <th class="">Cover Image</th>
+                                            <th class="">Status</th>
                                             <th class="">Created At</th>
                                             <th class="">action</th>
                                         </tr>
@@ -45,6 +46,23 @@
 
                                         @foreach ($posts as $post)
                                             <tr>
+                                                @php
+                                                    
+                                                    $statusColor = '';
+                                                    $status = $post->status;
+                                                    if ($status == 'Pending') {
+                                                        $statusColor = 'text-info';
+                                                    }
+                                                    if ($status == 'Approved') {
+                                                        $statusColor = 'text-success';
+                                                    }
+                                                    if ($status == 'Suspended') {
+                                                        $statusColor = 'text-warning';
+                                                    }
+                                                    if ($status == 'Rejected') {
+                                                        $statusColor = 'text-danger';
+                                                    }
+                                                @endphp
 
                                                 <td>{{ $post->id }}</td>
                                                 <td>{{ $post->type }}
@@ -52,44 +70,101 @@
                                                 <td> <img class="img-fluid post-img-size-on-dashboard"
                                                         src="{{ asset($post->cover_image) }}" alt="..." />
                                                 </td>
+                                                <td class="{{$statusColor}}">{{ $post->status }}
                                                 <td>{{ $post->created_at }}
                                                 <td>
                                                     @if ($post->type == 'music')
-                                                        <div class=" d-flex justify-content-between">
-                                                            <form action="{{ route('dashboard.post.destroy', $post->id) }}"
-                                                                method="post"
-                                                                onsubmit="return confirm('Are you sure you want to delete this record?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                    class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+                                                        <div class="row">
+                                                            <div class=" col-6 d-flex justify-content-between">
 
-                                                            </form>
-                                                            <a href="{{ route('dashboard.post.edit', $post->id) }}"
-                                                                class="btn btn-primary btn-sm ">edit</a>
-                                                            <a href="#" class="btn btn-success">View Post</a>
+                                                                <ul class="table-controls">
+                                                                    <li class="mb-3">
+                                                                        <div class="dropdown">
+                                                                            <button class="btn dropdown-toggle btn-sm"
+                                                                                type="button" id="dropdownMenuButton"
+                                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                                aria-expanded="false">
+                                                                                Change Status
+                                                                            </button>
+                                                                            <div class="dropdown-menu"
+                                                                                aria-labelledby="dropdownMenuButton">
+                                                                                @foreach (['Pending', 'Approved', 'Suspended', 'Rejected'] as $status)
+                                                                                    <a class="dropdown-item"
+                                                                                        onclick="return  confirm ('Are you sure of the action?')"
+                                                                                        href="{{ route('dashboard.approve.post', ['id' => $post->id, 'status' => $status]) }}">
+                                                                                        Mark as {{ ucfirst($status) }}
+                                                                                    </a>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+
+
+                                                            </div>
+
+                                                            <div class="col-6 d-flex justify-content-between">
+
+                                                                <form
+                                                                    action="{{ route('dashboard.post.destroy', $post->id) }}"
+                                                                    method="post"
+                                                                    onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+
+                                                                </form>
+
+                                                            </div>
                                                         </div>
                                                     @else
-                                                        <div class=" d-flex justify-content-between">
-                                                            <form action="{{ route('dashboard.video.destroy', $post->id) }}"
-                                                                method="post"
-                                                                onsubmit="return confirm('Are you sure you want to delete this record?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                    class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+                                                        <div class="row">
+                                                            <div class=" col-6 d-flex justify-content-between">
 
-                                                            </form>
-                                                            <a href="{{ route('dashboard.video.edit', $post->id) }}"
-                                                                class="btn btn-primary btn-sm ">edit</a>
-                                                            <a href="#" class="btn btn-success">View Post</a>
-                                                        </div>
+                                                                <ul class="table-controls">
+                                                                    <li class="mb-3">
+                                                                        <div class="dropdown">
+                                                                            <button class="btn dropdown-toggle btn-sm"
+                                                                                type="button" id="dropdownMenuButton"
+                                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                                aria-expanded="false">
+                                                                                Change Status
+                                                                            </button>
+                                                                            <div class="dropdown-menu"
+                                                                                aria-labelledby="dropdownMenuButton">
+                                                                                @foreach (['Pending', 'Approved', 'Suspended', 'Rejected'] as $status)
+                                                                                    <a class="dropdown-item"
+                                                                                        onclick="return  confirm ('Are you sure of the action?')"
+                                                                                        href="{{ route('dashboard.approve.post', ['id' => $post->id, 'status' => $status]) }}">
+                                                                                        Mark as {{ ucfirst($status) }}
+                                                                                    </a>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+
+                                                            <div class="col-6 d-flex justify-content-between">
+
+                                                                <form
+                                                                    action="{{ route('dashboard.post.destroy', $post->id) }}"
+                                                                    method="post"
+                                                                    onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+
+                                                                </form>
+
+                                                            </div>
                                                     @endif
                                                 </td>
                                             </tr>
                                         @endforeach
-
-
                                     </tbody>
                                 </table>
 
