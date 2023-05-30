@@ -42,7 +42,7 @@ class MusicController extends Controller
      */
     public function create(User $user)
     {
-        if ($user->status == "Approved") {
+        if (Auth::user()->status == "Approved") {
             $boolOptions = Constants::BOOL_OPTIONS;
             $types = Constants::MUSIC;
             $maxPost = 15;

@@ -5,7 +5,7 @@
 
     @include('web.layout.includes.header')
 
-
+    @include('notifications.flash_messages')
     @include('web.layout.includes.slider')
     <!-- close .progression-studios-slider - See /js/script.js file for options -->
 

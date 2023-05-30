@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 class UpdateEmailAddressController extends Controller
 {
@@ -20,8 +21,12 @@ class UpdateEmailAddressController extends Controller
     {
         $user = Auth::user();
         if (Hash::check($request->password, $user->password)) {
-            $request->validate(['email' => 'email|required']);
-            User::findOrFail($id)->update(['email' => $request->email]);
+            $request->validate(['email' => 'email|required|unique:users']);
+            if ($request->email == $user->email) {
+                return back()->with('error_message', ' Email has already been requestered by you');
+            } else {
+                User::findOrFail($id)->update(['email' => $request->email]);
+            }
             return back()->with('success_message', 'Email updated successfully');
         } else {
             return back()->with('error_message', "You can't change this email address because password is incorrect");

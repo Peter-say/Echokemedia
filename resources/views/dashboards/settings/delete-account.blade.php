@@ -31,7 +31,8 @@
                                         certain.</p>
                                 </div>
                                 <form enctype="multipart/form-data" class="form-row"
-                                    action="{{ route('dashboard.user.settings.delete-account', $user->id) }}" method="post">
+                                    action="{{ route('dashboard.user.settings.delete-account', $user->id) }}"
+                                    method="post">
                                     @csrf
 
                                     <div class="form-group col-xl-12 col-md-12 col-sm-12 col-12">
@@ -45,7 +46,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <input type="checkbox"
+                                        <input type="checkbox" id="confirm_delete_account"
                                             class="form-check-input ml-2 w-10 @error('confirm_delete_account') is-valid @enderror"
                                             name="confirm_delete_account" id=""
                                             {{ 'confirm_delete_account' ? 'checked' : '' }}>
@@ -59,10 +60,16 @@
 
 
                                     <div class="form-group col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <button class="btn btn-danger btn-lg">Submit</button>
+                                        <button id="delete-user-account" class="btn btn-danger btn-lg">Delete</button>
                                     </div>
 
-
+                                    <script>
+                                        const confirm_delete = document.getElementById('confirm_delete_account');
+                                        document.getElementById('delete-user-account').addEventListener('click', function() {
+                                           console.log(confirm_delete.checked);
+                                           }
+                                        })
+                                    </script>
 
                                 </form>
                             </div>

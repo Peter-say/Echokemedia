@@ -25,18 +25,16 @@ class DeleteAccountController extends Controller
 
     public function delete(Request $request, $id)
     {
+        dd('kdjdh');
         $user = Auth::user();
         if (Hash::check($request->password, $user->password)) {
             $request->validate([
                 'password' => 'password|required',
-                'confirm_delete_account' => 'required',
             ]);
-            
-            $data['confirm_delete_account'] = $request->confirm_delete_account;
             User::findOrFail($id)->delete();
             return redirect()->route('/')->with('success_message', 'Account deleted successfully');
         } else {
-            return back()->with('error_message', "You can't delete this account because password is incorrect");
+            return back()->with('error_message', "You can't delete this account because your password is empty/incorrect");
         }
     }
 }

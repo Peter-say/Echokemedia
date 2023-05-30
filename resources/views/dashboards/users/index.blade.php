@@ -62,7 +62,7 @@
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->username }}</td>
                                                     <td>
-                                                        <a href="{{ asset($user->avatar) }}" target="_blank"
+                                                        <a href="{{ empty(asset($user->avatar )) ?? 'N/A'}}" target="_blank"
                                                             rel="noopener noreferrer">
                                                             <img class="img-fluid list-users-image" src="{{ asset($user->avatar) ?? 'N/A' }}"
                                                                 alt="avatar">
