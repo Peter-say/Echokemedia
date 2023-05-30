@@ -43,7 +43,7 @@
                             </div>
                             <div class="card-body d-flex justify-content-between mb-2">
                                Don't want to continue using this product? 
-                                <a href="" class="btn btn-danger p-2">Remove Account</a>
+                                <a href="{{route('dashboard.user.settings.account.deletion')}}" class="btn btn-danger p-2">Remove Account</a>
                             </div>
                         </div>
                     </div>

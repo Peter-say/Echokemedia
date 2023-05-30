@@ -13,6 +13,7 @@ use App\Http\Controllers\Users\PostController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\MusicController;
 use App\Http\Controllers\Dashboard\NewController;
+use App\Http\Controllers\Dashboard\Settings\DeleteAccountController;
 use App\Http\Controllers\Dashboard\Settings\SettingsController;
 use App\Http\Controllers\Dashboard\Settings\UpdateEmailAddressController;
 use App\Http\Controllers\Dashboard\Settings\UpdatePasswordController;
@@ -92,6 +93,9 @@ Route::prefix("dashboard")->as("dashboard.")->middleware("verified")->group(func
 
       Route::get('change-email', [UpdateEmailAddressController::class, 'changeEmail'])->name('change-email');
       Route::put('/{id}/update-email', [UpdateEmailAddressController::class, 'UpdateEmail'])->name('update-email');
+
+      Route::get('account/deletion', [DeleteAccountController::class, 'deleteAccount'])->name('account.deletion');
+      Route::post('/{id}/delete-account', [DeleteAccountController::class, 'delete'])->name('delete-account');
 
     });
   });
