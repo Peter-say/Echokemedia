@@ -156,9 +156,7 @@
 
     </div><!-- close #content-pro -->
 
-    @include('web.layout.includes.footer')
-
-
+  
     <a href="#0" id="pro-scroll-top"><i class="fas fa-chevron-up"></i></a>
 
 

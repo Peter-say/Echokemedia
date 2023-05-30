@@ -1,161 +1,44 @@
+<style>
+    .go-dashboard-button hover{
+        background-color: white;
+    }
+</style>
+
 <header id="masthead-pro">
     <h1><a href="/"><img src="{{ $dashboard_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
     <div class="container">
 
-        @guest
-            <nav id="site-navigation-pro">
-                <ul class="sf-menu">
-                    <li class="normal-item-pro current-menu-item">
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="normal-item-pro">
-                        <a href="{{ route('media.music') }}">New Releases</a>
-                        <!-- Sub-Menu Example >
-                                            <ul class="sub-menu">
-                                                <li class="normal-item-pro">
-                                                    <a href="#!">Sub-menu item 1</a>
-                                                </li>
-                                                <li class="normal-item-pro">
-                                                    <a href="#!">Sub-menu item 2</a>
-                                                </li>
-                                                <li class="normal-item-pro">
-                                                    <a href="#!">Sub-menu item 3</a>
-                                                </li>
-                                            </ul>
-                                        < End Sub-Menu example -->
-                    </li>
-                    <li class="normal-item-pro current-menu-item">
-                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
-                    </li>
 
-                </ul>
-            </nav>
+        <nav id="site-navigation-pro">
+            <ul class="sf-menu">
+                <li class="normal-item-pro current-menu-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="normal-item-pro">
+                    <a href="{{ route('media.music') }}">Music</a>
+                </li>
+                <li class="normal-item-pro ">
+                    <a href="{{ route('media.videos') }}">Videos</a>
+                </li>
 
-            <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
-                In</button>
+            </ul>
+        </nav>
 
-            <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
-
-            <div class="clearfix"></div>
-
-
-            <nav id="mobile-navigation-pro">
-
-                <ul id="mobile-menu-pro">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('media.music') }}">New Releases</a>
-                        <!-- Mobile Sub-Menu Example >
-                                                <ul>
-                                                    <li class="normal-item-pro">
-                                                        <a href="#!">Sub-menu item 1</a>
-                                                    </li>
-                                                    <li class="normal-item-pro">
-                                                        <a href="#!">Sub-menu item 2</a>
-                                                    </li>
-                                                    <li class="normal-item-pro">
-                                                        <a href="#!">Sub-menu item 3</a>
-                                                    </li>
-                                                </ul>
-                                                < End Mobile Sub-Menu Example -->
-                    </li>
-                    <li class="normal-item-pro current-menu-item">
-                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
-                    </li>
-
-                </ul>
-                <div class="clearfix"></div>
-
-                <button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal"
-                    role="button">Sign In</button>
-
-            </nav>
+        @if (Auth::user() == true)
+            <button class="btn text-dark btn-header-pro go-dashboard-button ">
+                <a href="{{ route('dashboard.home') }}">Dashboard</a>
+            </button>
         @else
-            <nav id="site-navigation-pro">
-                <ul class="sf-menu">
-                    <li class="normal-item-pro current-menu-item">
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="normal-item-pro">
-                        <a href="{{ route('media.music') }}">New Releases</a>
-                        <!-- Sub-Menu Example >
-                                                        <ul class="sub-menu">
-                                                            <li class="normal-item-pro">
-                                                                <a href="#!">Sub-menu item 1</a>
-                                                            </li>
-                                                            <li class="normal-item-pro">
-                                                                <a href="#!">Sub-menu item 2</a>
-                                                            </li>
-                                                            <li class="normal-item-pro">
-                                                                <a href="#!">Sub-menu item 3</a>
-                                                            </li>
-                                                        </ul>
-                                        < End Sub-Menu example -->
-                    </li>
-                    <li class="normal-item-pro current-menu-item">
-                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard.home') }}">Dashboard</a>
-                    </li>
-
-
-                </ul>
-            </nav>
-
-            <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
+            <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal"
+                role="button">Sign
                 In</button>
 
             <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
+        @endif
 
-            <div class="clearfix"></div>
+
+        <div class="clearfix"></div>
 
 
-            <nav id="mobile-navigation-pro">
-
-                <ul id="mobile-menu-pro">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('media.music') }}">New Releases</a>
-                        <!-- Mobile Sub-Menu Example >
-                                                    <ul>
-                                                        <li class="normal-item-pro">
-                                                            <a href="#!">Sub-menu item 1</a>
-                                                        </li>
-                                                        <li class="normal-item-pro">
-                                                            <a href="#!">Sub-menu item 2</a>
-                                                        </li>
-                                                        <li class="normal-item-pro">
-                                                            <a href="#!">Sub-menu item 3</a>
-                                                        </li>
-                                                    </ul>
-                                                    < End Mobile Sub-Menu Example -->
-                    </li>
-                    <li class="normal-item-pro current-menu-item">
-                        <a href="{{ route('media.news.index') }}">Celebrity News</a>
-                    </li>
-                    @if (Auth::user()->role == 'dashboard')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.home') }}">Dashboard</a>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.home') }}">Dashboard</a>
-                        </li>
-                    @endif
-
-                </ul>
-                <div class="clearfix"></div>
-
-                <button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal"
-                    role="button">Sign In</button>
-
-            </nav>
-        @endguest
     </div>
 </header>

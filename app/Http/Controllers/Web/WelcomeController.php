@@ -32,8 +32,8 @@ class WelcomeController extends Controller
 
     public function videosPage(Request $request, PostCategory $category_id)
     {
-        $categories = PostCategory::with('subcategory')->where('Parent_Id', null)->where('status', 'Approved')->get();
-        $builder2 = Post::where('type', constants::VIDEO);
+        $categories = PostCategory::with('subcategory')->where('Parent_Id', null)->get();
+        $builder2 = Post::where('type', constants::VIDEO)->where('status', 'Approved');
         $videos = $builder2->orderby("created_at", "desc")->paginate(12);
         $popularPosts = $builder2->with('category')->limit(4)->get();
         return view('web.videos', [
