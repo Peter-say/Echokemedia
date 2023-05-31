@@ -1,7 +1,109 @@
 @extends('web.layout.app')
 
+@include('web.layout.includes.header')
+
 @section('contents')
-    {{-- <div class="container"></div>
+    <div class="container m-5">
+        <nav id="site-navigation-pro ">
+            <div class="modal-content">
+                <div class="row d-flex justify-content-center">
+                    <div class=" col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex justify-content-center">
+                        <div class="">
+                            <form method="POST" action="{{ route('login') }}">@csrf
+                                <div class="form-group">
+                                    <input id="email" type="text" placeholder="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current-password" placeholder="Password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-green-pro btn-display-block">Sign In</button>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="row no-gutters">
+                                        <div class="col checkbox-remember-pro"><input type="checkbox" id="checkbox-remember"
+                                                name="remember-me" name="remember" id="remember" {{ old('remember') ? 'checked' : ''}}><label for="checkbox-remember"
+                                                class="col-form-label">Remember me</label></div>
+                                        <div class="col forgot-your-password"><a href="#!">Forgot your password?</a>
+                                        </div>
+                                    </div>
+                                </div><!-- close .container-fluid -->
+
+                            </form>
+
+
+                        </div><!-- close .registration-social-login-container -->
+
+                    </div>
+                    {{-- <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex justify-content-center">
+                       <div>
+                        <b>Or</b>
+                       </div>
+                    </div>
+
+                    <div class=" col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex justify-content-center">
+                        <div class="registration-social-login-options">
+                            <h6>Sign in with your social account</h6>
+                            <div class="social-icon-login facebook-color"><i class="fab fa-facebook-f"></i> Facebook</div>
+                            <div class="social-icon-login twitter-color"><i class="fab fa-twitter"></i> Twitter</div>
+                            <div class="social-icon-login google-color"><i class="fab fa-google-plus-g"></i> Google</div>
+                        </div><!-- close .registration-social-login-options -->
+                    </div> --}}
+                </div>
+            </div>
+
+    </div>
+    {{-- 
+    <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
+        In</button> --}}
+    </div>
+
+    {{-- @include('web.layout.includes.modal') --}}
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <div class="container"></div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <!-- <div  style="background-image: url('{{ $dashboard_assets}}/assets/img/bg-01.jpg');">
@@ -76,18 +178,3 @@
     </div>
     
 </div> --}}
-<div class="container">
-    <nav id="site-navigation-pro">
-        <ul class="sf-menu">
-            <li class="normal-item-pro current-menu-item">
-                <a href="#">Link on the button to sign in/login in</a>
-            </li>
-        </ul>
-    </nav>
-
-    <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign
-        In</button>
-</div>
-
-    @include('web.layout.includes.modal')
-@endsection

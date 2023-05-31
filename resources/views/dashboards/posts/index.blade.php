@@ -70,12 +70,12 @@
                                                 <td> <img class="img-fluid post-img-size-on-dashboard"
                                                         src="{{ asset($post->cover_image) }}" alt="..." />
                                                 </td>
-                                                <td class="{{$statusColor}}">{{ $post->status }}
+                                                <td class="{{ $statusColor }}">{{ $post->status }}
                                                 <td>{{ $post->created_at }}
                                                 <td>
                                                     @if ($post->type == 'music')
-                                                        <div class="row">
-                                                            <div class=" col-6 d-flex justify-content-between">
+                                                        <div class="row d-flex justify-content-between">
+                                                            <div class=" col-3">
 
                                                                 <ul class="table-controls">
                                                                     <li class="mb-3">
@@ -99,12 +99,13 @@
                                                                         </div>
                                                                     </li>
                                                                 </ul>
-
-
                                                             </div>
 
-                                                            <div class="col-6 d-flex justify-content-between">
+                                                            <div class="col-3">
+                                                                <a href="{{route('dashboard.post.edit' , $post->id)}}" class="btn btn-secondary">Edit</a>
+                                                            </div>
 
+                                                            <div class="col-3">
                                                                 <form
                                                                     action="{{ route('dashboard.post.destroy', $post->id) }}"
                                                                     method="post"
@@ -117,10 +118,11 @@
                                                                 </form>
 
                                                             </div>
+
                                                         </div>
                                                     @else
-                                                        <div class="row">
-                                                            <div class=" col-6 d-flex justify-content-between">
+                                                        <div class="row d-flex justify-content-between">
+                                                            <div class=" col-3">
 
                                                                 <ul class="table-controls">
                                                                     <li class="mb-3">
@@ -147,7 +149,13 @@
 
                                                             </div>
 
-                                                            <div class="col-6 d-flex justify-content-between">
+                                                            <div class="col-3">
+                                                                <a href="{{route('dashboard.post.edit' , $post->id)}}" class="btn btn-secondary">Edit</a>
+
+                                                            </div>
+
+
+                                                            <div class="col-3 ">
 
                                                                 <form
                                                                     action="{{ route('dashboard.post.destroy', $post->id) }}"

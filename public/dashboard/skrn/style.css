@@ -2575,7 +2575,7 @@ h1.light-weight-heading, h2.light-weight-heading, h3.light-weight-heading, h4.li
 .registration-social-login-or {
 	position:absolute;
 	top:0px;
-	right:-22px;
+	/* right:-22px; */
 	padding:15px 0px 12px 0px;
 	width:40px;
 	background:#ffffff;

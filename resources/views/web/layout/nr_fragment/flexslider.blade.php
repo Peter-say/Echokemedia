@@ -10,9 +10,9 @@
 
 								<a class="progression-studios-slider-play-btn afterglow" href="{{asset($popularPost->cover_music)}}">
 
-								<video id="VideoLightbox-1"  width="100%" height="10">
-									<source src="{{asset($popularPost->cover_music)}}" type="video/mp4">
-								</video>
+								<audio id="AudioLightbox-1"  width="100%" height="10">
+									<source src="{{asset($popularPost->cover_music)}}" type="video/mp3">
+								</audio>
 
 								
 
