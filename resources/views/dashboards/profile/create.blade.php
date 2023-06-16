@@ -14,7 +14,7 @@
             <div class="row layout-top-spacing">
                 @include('notifications.flash_messages')
 
-                <form action="{{ route('admin.profile.store')}}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('dashboard.profile.store')}}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <form class="needs-validation" novalidate action="javascript:void(0);">
                         <div class="form-row">

@@ -4,7 +4,7 @@
           <ul class="navbar-item theme-brand flex-row  text-center">
               <li class="nav-item theme-logo">
                   <a href="index.html">
-                      <img src="{{ $admin_assets }}/assets/img/m-icon.jpg"  alt="">
+                      <img src="{{ $dashboard_assets }}/assets/img/m-icon.jpg"  alt="">
                   </a>
               </li>
               <li class="nav-item theme-text">

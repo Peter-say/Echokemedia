@@ -54,7 +54,7 @@
             <div class="col-lg-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-01.jpg" alt="">
+                  <img src="{{ $dashboard_assets}}/asap/images/blog-thumb-01.jpg" alt="">
                 </div>
                 <div class="down-content">
                   <span>Lifestyle</span>
@@ -62,7 +62,7 @@
                     <h4>Donec tincidunt leo</h4>
                   </a>
                   <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">dashboard</a></li>
                     <li><a href="#">May 31, 2020</a></li>
                     <li><a href="#">12 Comments</a></li>
                   </ul>
@@ -84,7 +84,7 @@
             <div class="col-lg-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-02.jpg" alt="">
+                  <img src="{{ $dashboard_assets}}/asap/images/blog-thumb-02.jpg" alt="">
                 </div>
                 <div class="down-content">
                   <span>Lifestyle</span>
@@ -92,7 +92,7 @@
                     <h4>Suspendisse et metus</h4>
                   </a>
                   <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">dashboard</a></li>
                     <li><a href="#">May 22, 2020</a></li>
                     <li><a href="#">26 Comments</a></li>
                   </ul>
@@ -114,7 +114,7 @@
             <div class="col-lg-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-03.jpg" alt="">
+                  <img src="{{ $dashboard_assets}}/asap/images/blog-thumb-03.jpg" alt="">
                 </div>
                 <div class="down-content">
                   <span>Lifestyle</span>
@@ -122,7 +122,7 @@
                     <h4>Donec tincidunt leo</h4>
                   </a>
                   <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">dashboard</a></li>
                     <li><a href="#">May 18, 2020</a></li>
                     <li><a href="#">42 Comments</a></li>
                   </ul>
@@ -144,7 +144,7 @@
             <div class="col-lg-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-04.jpg" alt="">
+                  <img src="{{ $dashboard_assets}}/asap/images/blog-thumb-04.jpg" alt="">
                 </div>
                 <div class="down-content">
                   <span>Lifestyle</span>
@@ -152,7 +152,7 @@
                     <h4>Mauris ac dolor ornare</h4>
                   </a>
                   <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">dashboard</a></li>
                     <li><a href="#">May 16, 2020</a></li>
                     <li><a href="#">28 Comments</a></li>
                   </ul>
@@ -174,7 +174,7 @@
             <div class="col-lg-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-05.jpg" alt="">
+                  <img src="{{ $dashboard_assets}}/asap/images/blog-thumb-05.jpg" alt="">
                 </div>
                 <div class="down-content">
                   <span>Lifestyle</span>
@@ -182,7 +182,7 @@
                     <h4>Donec tincidunt leo</h4>
                   </a>
                   <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">dashboard</a></li>
                     <li><a href="#">May 12, 2020</a></li>
                     <li><a href="#">16 Comments</a></li>
                   </ul>
@@ -204,7 +204,7 @@
             <div class="col-lg-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ $admin_assets}}/asap/images/blog-thumb-06.jpg" alt="">
+                  <img src="{{ $dashboard_assets}}/asap/images/blog-thumb-06.jpg" alt="">
                 </div>
                 <div class="down-content">
                   <span>Lifestyle</span>
@@ -212,7 +212,7 @@
                     <h4>Mauris ac dolor ornare</h4>
                   </a>
                   <ul class="post-info">
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">dashboard</a></li>
                     <li><a href="#">May 10, 2020</a></li>
                     <li><a href="#">3 Comments</a></li>
                   </ul>

@@ -1,6 +1,6 @@
 @foreach($popularPosts as $popularPost)
 	        <li class="progression_studios_animate_in">
-	            <div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{ $admin_assets }}/skrn/images/demo/dashboard-slide-2.jpg);">
+	            <div class="progression-studios-slider-dashboard-image-background" style="background-image:url({{ $dashboard_assets }}/skrn/images/demo/dashboard-slide-2.jpg);">
 	                <div class="progression-studios-slider-display-table">
 	                    <div class="progression-studios-slider-vertical-align">
 
@@ -45,12 +45,12 @@
 
 	                                    <h5 class="light-fonts-pro">Starring</h5>
 	                                    <ul class="progression-studios-staring-slider">
-	                                        <li><a href="#!"><img src="{{ $admin_assets }}/skrn/images/demo/user-1.jpg" alt="Starring"></a></li>
-	                                        <li><a href="#!"><img src="{{ $admin_assets }}/skrn/images/demo/user-2.jpg" alt="Starring"></a></li>
-	                                        <li><a href="#!"><img src="{{ $admin_assets }}/skrn/images/demo/user-3.jpg" alt="Starring"></a></li>
-	                                        <li><a href="#!"><img src="{{ $admin_assets }}/skrn/images/demo/user-4.jpg" alt="Starring"></a></li>
-	                                        <li><a href="#!"><img src="{{ $admin_assets }}/skrn/images/demo/user-5.jpg" alt="Starring"></a></li>
-	                                        <li><a href="#!"><img src="{{ $admin_assets }}/skrn/images/demo/user-6.jpg" alt="Starring"></a></li>
+	                                        <li><a href="#!"><img src="{{ $dashboard_assets }}/skrn/images/demo/user-1.jpg" alt="Starring"></a></li>
+	                                        <li><a href="#!"><img src="{{ $dashboard_assets }}/skrn/images/demo/user-2.jpg" alt="Starring"></a></li>
+	                                        <li><a href="#!"><img src="{{ $dashboard_assets }}/skrn/images/demo/user-3.jpg" alt="Starring"></a></li>
+	                                        <li><a href="#!"><img src="{{ $dashboard_assets }}/skrn/images/demo/user-4.jpg" alt="Starring"></a></li>
+	                                        <li><a href="#!"><img src="{{ $dashboard_assets }}/skrn/images/demo/user-5.jpg" alt="Starring"></a></li>
+	                                        <li><a href="#!"><img src="{{ $dashboard_assets }}/skrn/images/demo/user-6.jpg" alt="Starring"></a></li>
 	                                    </ul>
 
 	                                </div><!-- close .progression-studios-slider-caption-align -->

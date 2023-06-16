@@ -18,30 +18,24 @@
               <div class="progression-studios-slider-vertical-align">
 
                 <div class="container">
+                  
                   @if($post->cover_music)
-                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_music)}}"><i class="fas fa-play"></i></a>
+                  <a class="progression-studios-slider-play-btn afterglow" target="blank" href="{{asset($post->cover_music)}}"><i class="fas fa-play"></i></a>
 
                   <audio id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="960" height="140">
                     <source src="{{asset($post->cover_music)}}" type="audio/mp3">
                   </audio>
                   @else
-                  <a class="progression-studios-slider-play-btn afterglow" href="{{asset($post->cover_video)}}"><i class="fas fa-play"></i></a>
+                  <a class="progression-studios-slider-play-btn afterglow" target="blank" href="{{asset($post->cover_video)}}">
 
                   <video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="100%" height="140">
                     <source src="{{asset($post->cover_video)}}" type="video/mp4">
                   </video>
                   @endif
-                  <div class="circle-rating-pro" data-value="0.86" data-animation-start-value="0.86" data-size="70" data-thickness="6" data-fill="{
-								          &quot;color&quot;: &quot;#42b740&quot;
-								        }" data-empty-fill="#def6de" data-reverse="true"><span style="color:#42b740;">8.6</span></div>
-
+                 
                   <div class="progression-studios-slider-dashboard-caption-width">
                     <div class="progression-studios-slider-caption-align">
-                      @if($post->cover_video)
-                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('video.download' , $post->slug)}}"><i class="fas fa-play"></i> Download</a>
-                      @else
-                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{route('post.download' , $post->slug)}}"><i class="fas fa-play"></i> Download</a>
-                      @endif
+                       
                       <div class="clearfix"></div>
 
                     </div><!-- close .progression-studios-slider-caption-align -->

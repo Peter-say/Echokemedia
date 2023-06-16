@@ -1,4 +1,4 @@
-@extends('web.layout.app' , ["meta_title" => "newreleases"])
+@extends('web.layout.app' , ["meta_title" => "music"])
 
 
 @section('contents')

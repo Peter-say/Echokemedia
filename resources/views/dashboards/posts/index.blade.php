@@ -1,40 +1,42 @@
-@extends('dashboards.layouts.app' , ["meta_title" => "Posts"])
+@extends('dashboards.layouts.app', ['meta_title' => 'Posts'])
 
 @section('contents')
+    <div class="main-container" id="container">
 
-<div class="main-container" id="container">
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+        <!--  BEGIN CONTENT PART  -->
+        <div id="content" class="main-content">
+            <div class="layout-px-spacing">
 
-    <div class="overlay"></div>
-    <div class="search-overlay"></div>
-    <!--  BEGIN CONTENT PART  -->
-    <div id="content" class="main-content">
-        <div class="layout-px-spacing">
-
-            <div class="row layout-top-spacing">
-                @include('notifications.flash_messages')
+                <div class="row layout-top-spacing">
+                    @include('notifications.flash_messages')
 
 
-                <div id="tableCheckbox" class="">
-                    <div class="statbox widget box box-shadow mt-5">
-                        <div class="widget-header">
-                            <div class="row">
-                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Post Information</h4>
+                    <div id="tableCheckbox" class="">
+                        <div class="statbox widget box box-shadow mt-5">
+                            <div class="widget-header">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
+                                        <h4>Post Information</h4>
+                                        <a href="{{ route('dashboard.post.create') }}" class="btn btn-primary btn-sm "
+                                            data-toggle="modal" data-target="#postType">Add New
+                                            Post</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
+                                <table
+                                    class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
                                     <thead>
                                         <tr>
                                             <th class="">S/N</th>
                                             <th class="">Post Type</th>
                                             <th class="">Post By</th>
                                             <th class="">Cover Image</th>
-                                            <th class="">Cover Music</th>
-                                            <th class="">Cover Video</th>
-                                            <th class="">Description</th>
+                                            <th class="">Status</th>
                                             <th class="">Created At</th>
                                             <th class="">action</th>
                                         </tr>
@@ -42,43 +44,135 @@
                                     <tbody>
 
 
+                                        @foreach ($posts as $post)
+                                            <tr>
+                                                @php
+                                                    
+                                                    $statusColor = '';
+                                                    $status = $post->status;
+                                                    if ($status == 'Pending') {
+                                                        $statusColor = 'text-info';
+                                                    }
+                                                    if ($status == 'Approved') {
+                                                        $statusColor = 'text-success';
+                                                    }
+                                                    if ($status == 'Suspended') {
+                                                        $statusColor = 'text-warning';
+                                                    }
+                                                    if ($status == 'Rejected') {
+                                                        $statusColor = 'text-danger';
+                                                    }
+                                                @endphp
 
-                                        <tr>
-                                            @foreach($posts as $post)
-                                            <td>{{$post->id}}</td>
-                                            <td>{{$post->type}}
-                                            <td>{{$post->user->name}}</td>
-                                            <td> <img class="img-fluid" src="{{asset($post->cover_image)}}" alt="..." />
-                                            </td>
-                                            <td>
-                                                <a href="" target="_blank" rel="noopener noreferrer">
-                                                    <audio controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset($post->cover_music) ?? 'Not available'}}" type="music/mp3">
-                                                    </audio></a>
-                                            </td>
-                                            <td>
-                                                <a href="" target="_blank" rel="noopener noreferrer">
-                                                    <video controls class="img-fluid">
-                                                        <source class="img-fluid" src="{{asset($post->cover_video) ?? 'Not available'}}" type="music/mp4">
-                                                    </video></a>
-                                            </td>
-                                            <td>{!! Str::of($post->content_desccription)->limit(50) !!}</td>
-                                            <td>{{$post->created_at}}
+                                                <td>{{ $post->id }}</td>
+                                                <td>{{ $post->type }}
+                                                <td>{{ $post->user->name }}</td>
+                                                <td> <img class="img-fluid post-img-size-on-dashboard"
+                                                        src="{{ asset($post->cover_image) }}" alt="..." />
+                                                </td>
+                                                <td class="{{ $statusColor }}">{{ $post->status }}
+                                                <td>{{ $post->created_at }}
+                                                <td>
+                                                    @if ($post->type == 'music')
+                                                        <div class="row d-flex justify-content-between">
+                                                            <div class=" col-3">
+
+                                                                <ul class="table-controls">
+                                                                    <li class="mb-3">
+                                                                        <div class="dropdown">
+                                                                            <button class="btn dropdown-toggle btn-sm"
+                                                                                type="button" id="dropdownMenuButton"
+                                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                                aria-expanded="false">
+                                                                                Change Status
+                                                                            </button>
+                                                                            <div class="dropdown-menu"
+                                                                                aria-labelledby="dropdownMenuButton">
+                                                                                @foreach (['Pending', 'Approved', 'Suspended', 'Rejected'] as $status)
+                                                                                    <a class="dropdown-item"
+                                                                                        onclick="return  confirm ('Are you sure of the action?')"
+                                                                                        href="{{ route('dashboard.approve.post', ['id' => $post->id, 'status' => $status]) }}">
+                                                                                        Mark as {{ ucfirst($status) }}
+                                                                                    </a>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <a href="{{route('dashboard.post.edit' , $post->id)}}" class="btn btn-secondary">Edit</a>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <form
+                                                                    action="{{ route('dashboard.post.destroy', $post->id) }}"
+                                                                    method="post"
+                                                                    onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+
+                                                                </form>
+
+                                                            </div>
+
+                                                        </div>
+                                                    @else
+                                                        <div class="row d-flex justify-content-between">
+                                                            <div class=" col-3">
+
+                                                                <ul class="table-controls">
+                                                                    <li class="mb-3">
+                                                                        <div class="dropdown">
+                                                                            <button class="btn dropdown-toggle btn-sm"
+                                                                                type="button" id="dropdownMenuButton"
+                                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                                aria-expanded="false">
+                                                                                Change Status
+                                                                            </button>
+                                                                            <div class="dropdown-menu"
+                                                                                aria-labelledby="dropdownMenuButton">
+                                                                                @foreach (['Pending', 'Approved', 'Suspended', 'Rejected'] as $status)
+                                                                                    <a class="dropdown-item"
+                                                                                        onclick="return  confirm ('Are you sure of the action?')"
+                                                                                        href="{{ route('dashboard.approve.post', ['id' => $post->id, 'status' => $status]) }}">
+                                                                                        Mark as {{ ucfirst($status) }}
+                                                                                    </a>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <a href="{{route('dashboard.post.edit' , $post->id)}}" class="btn btn-secondary">Edit</a>
+
+                                                            </div>
 
 
-                                            <td>
-                                                <form action="{{ route('admin.post.destroy', $post->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onClick="$(this).parent().trigger('submit')">Delete</button>
-                                                </form>
-                                                <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-primary btn-sm mt-2">edit</a>
-                                            </td>
+                                                            <div class="col-3 ">
 
-                                        </tr>
+                                                                <form
+                                                                    action="{{ route('dashboard.post.destroy', $post->id) }}"
+                                                                    method="post"
+                                                                    onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger"onClick="$(this).parent().trigger('submit')">Delete</button>
+
+                                                                </form>
+
+                                                            </div>
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         @endforeach
-
-
                                     </tbody>
                                 </table>
 
@@ -87,8 +181,30 @@
                     </div>
                 </div>
 
-                <!--  END CONTENT PART  -->
 
             </div>
         </div>
-        @endsection
+
+        <!-- Modal -->
+        <div class="modal fade" id="postType" tabindex="-1" role="dialog" aria-labelledby="postTypeLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Select Post Type</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>What type of post do you want to make ?</h5>
+                        <div class=" justify-content-space-between">
+                            <a href="{{ route('dashboard.post.create') }}" class="btn btn-secondary">Music</a>
+                            <a href="{{ route('dashboard.video.create') }}" class="btn btn-secondary">Video</a>
+                            <a href="{{ route('dashboard.news.create') }}" class="btn btn-secondary">News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endsection

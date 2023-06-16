@@ -12,6 +12,7 @@ class Post extends Model
     use HasFactory , Notifiable;
 
     protected $guarded = [];
+    protected $fillable = ['status'];
 
     protected $primaryKey = 'user_id';
 

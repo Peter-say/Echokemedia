@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link href="{{ $admin_assets }}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
+    <link href="{{ $dashboard_assets }}/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
 
     <style>
         .image-width {

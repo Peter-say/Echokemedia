@@ -59,13 +59,13 @@
 
 
                                             <td>
-                                                <form action="{{route('admin.post.destroy' , $post->id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                                                <form action="{{route('dashboard.post.destroy' , $post->id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this record?')">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <a href="{{route('admin.post.edit' , $post->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
+                                                            <a href="{{route('dashboard.post.edit' , $post->id )}}"><i class="fa fa-edit" style="font-size:30px;color:green"></i></a>
                                                         </div>
                                                         <div class="col-6">
                                                         <a href=""onClick="$(this).parent().trigger('submit')"> <i type="submit" class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+
 use App\Http\Controllers\Controller;
 use App\Models\Creator;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -18,12 +19,18 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderby("created_at", "desc")
-        ->paginate(20);
-        $users->firstItem();
-        return view('dashboards.users.index', ['users' => $users]);
+
+        // $this->authorize('users');
+
+        if (Auth::user()->role == 'Super-Admin' || Auth::user()->role == 'Admin') {
+            $users = User::orderby("created_at", "asc")
+                ->paginate(20);
+            return view('dashboards.users.index', ['users' => $users]);
+        } else {
+            abort(403, 'Unauthorized');
+        }
     }
-   
+
 
     /**
      * Show the form for creating a new resource.
@@ -88,7 +95,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function status(Request $request , $id)
+    public function status(Request $request, $id)
     {
         User::findOrFail($id)->update([
             "status" => $request->status,
@@ -97,11 +104,15 @@ class UsersController extends Controller
     }
 
 
+    // View andUpdate user role here
+
+
+
+
 
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with("error_message" , "Deleted successfully!");
+        return back()->with("error_message", "Deleted successfully!");
     }
-   
 }

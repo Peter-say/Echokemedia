@@ -71,7 +71,6 @@
 				</div><!-- close .row -->
 				<div id="video-search-header-buttons">
 					<button type="submit" class="btn btn-green-pro">Filter Search</button>
-					<button type="submit" class="btn">Reset</button>
 				</div><!-- close #video-search-header-buttons -->
 		</form><!-- #video-search-header-filtering-padding -->
 	</div><!-- close #video-search-header-filtering -->

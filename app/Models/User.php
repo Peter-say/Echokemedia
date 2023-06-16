@@ -10,10 +10,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable implements MustVerifyEmail
+
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +30,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
         'is_email_verified',
-        'status'
+        'status',
+        'role',
+        'confirm_delete_account',
+        'linkedin_username',
+        'facebook_username',
+        'twitter_username',
+        'instagram_username',
+        
     ];
 
     /**

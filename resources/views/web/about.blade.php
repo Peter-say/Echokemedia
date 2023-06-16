@@ -28,9 +28,9 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <img src="{{ $admin_assets }}/skrn/images/m1.jpeg" alt="" width="100px" height="150px">
+                    <img src="{{ $dashboard_assets }}/skrn/images/m1.jpeg" alt="" width="100px" height="150px">
                     <p><b>Listen And View The Unexpected</b>
-                        <a rel="nofollow" href="{{ route('media.newreleases') }}" target="_parent">Lastest Jam</a>, <a
+                        <a rel="nofollow" href="{{ route('media.music') }}" target="_parent">Lastest Jam</a>, <a
                             rel="nofollow" href="{{ route('media.news.index') }}" target="_parent">Celebrity News</a>
 
                     </p>

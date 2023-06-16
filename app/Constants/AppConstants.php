@@ -10,30 +10,18 @@ class AppConstants
 
     const MAX_PROFILE_PIC_SIZE = 2048;
 
-    const MALE = 'Male';
-    const FEMALE = 'Female';
-    const OTHERS = 'Others';
+    const SUPER_ADMIN = 'Super-Admin';
+    const ADMIN = 'Admin';
+    const MODERATOR = 'Moderator';
+    const AUTHOR = 'Author';
 
-    const SINGLE = 'Single';
-    const MARRIED = 'Married';
-    const WIDOWED = 'Widowed';
-    const DIVORCED = 'Divorced';
-    const SEPERATED = 'Seperated';
+     const ROLES = [
+       self::SUPER_ADMIN,
+       self::ADMIN,
+       self::MODERATOR,
+       self::AUTHOR,
+     ];
 
-    const MARITAL_STATUS = [
-        self::SINGLE,
-        self::MARRIED,
-        self::WIDOWED,
-        self::DIVORCED,
-        self::SEPERATED,
-    ];
-
-
-    const GENDERS = [
-        self::MALE,
-        self::FEMALE,
-        self::OTHERS,
-    ];
 
     const PILL_CLASSES = [
         TransactionConstants::CREDIT => "success",
@@ -61,9 +49,9 @@ class AppConstants
 
    const SUDO_EMAIL = "sudo@amfw.com";
 
-   const ADMIN_PAGINATION_SIZE = 100;
+   const dashboard_PAGINATION_SIZE = 100;
 
-   const ADMIN_USER = "Admin";
+   const dashboard_USER = "dashboard";
    const REGULAR_USER = "User";
 
 }

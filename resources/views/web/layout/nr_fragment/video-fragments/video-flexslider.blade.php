@@ -8,7 +8,7 @@
 
 							<div class="container">
 
-								<a class="progression-studios-slider-play-btn afterglow" href="{{asset($popularPost->cover_video)}}"><i class="fas fa-play"></i></a>
+								<a class="progression-studios-slider-play-btn afterglow" href="{{asset($popularPost->cover_video)}}">
 
 								<video id="VideoLightbox-1" poster="../files/View_From_A_Blue_Moon_Trailer-HD.jpg" width="100%" height="140">
 									<source src="{{asset($popularPost->cover_video)}}" type="video/mp4">
@@ -28,7 +28,7 @@
 										</ul>
 										<p class="progression-studios-slider-description">{!! Str::of($popularPost->content_desccription)->limit(160) !!}.</p>
 										
-										<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{asset($popularPost->cover_video)}}"><i class="fas fa-play"></i>Play Music</a>
+										<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="{{asset($popularPost->cover_video)}}"><i class="fas fa-play"></i>Play Video</a>
 		
 										<div class="progression-studios-slider-more-options">
 											<i class="fas fa-ellipsis-h"></i>

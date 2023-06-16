@@ -8,7 +8,7 @@
             </a>
         </li>
         <li class="normal-item-pro">
-            <a href="{{ route('media.newreleases') }}">
+            <a href="{{ route('media.music') }}">
                 <span class="icon-Old-TV"></span>
                 Music
             </a>

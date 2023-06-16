@@ -1,11 +1,11 @@
 <style>
-	#video-logo-background{
+	#video-logo-background {
 		color: black;
 	}
 </style>
 <header id="videohead-pro" class="sticky-header">
-	<div id="video-logo-background"> 
-		   <h1><a href="/"><img src="{{ $admin_assets }}/skrn/images/log.png" alt="Logo"></a></h1> 
+	<div id="video-logo-background">
+		<h1><a href="/"><img src="{{ $dashboard_assets }}/skrn/images/log.png" alt="Logo"></a></h1>
 
 	</div>
 
@@ -15,7 +15,7 @@
 			<input type="text" name="query" placeholder="Search for Movies or TV Series" aria-label="Search">
 			<div id="video-search-header-filtering">
 				<div class="row">
-					<div class="col-sm extra-padding">
+					<div class="">
 						<h5>Type:</h5>
 
 						<div class="row">
@@ -106,7 +106,7 @@
 
 	<div id="header-user-profile">
 		<div id="header-user-profile-click" class="noselect">
-			<img src="{{ $admin_assets }}/skrn/images/demo/user-profile.png" alt="Suzie">
+			<img src="{{ $dashboard_assets }}/skrn/images/demo/user-profile.png" alt="Suzie">
 			<div id="header-username">Echokemedia.</div><i class="fas fa-angle-down"></i>
 		</div><!-- close #header-user-profile-click -->
 		<div id="header-user-profile-menu">
@@ -127,9 +127,9 @@
 			<h3>Notifications</h3>
 			<div id="header-notification-menu-padding">
 				<ul id="header-user-notification-list">
-					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">check the just dropped music jam from your Favorite artist <div class="header-user-notify-time">2mins ago</div></a></li>
-					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia just drop the lastest hot music video <div class="header-user-notify-time">1hour ago</div></a></li>
-					<li><a href="{{route('media.newreleases')}}"><img src="{{ $admin_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia with the most funny comedy videos <div class="header-user-notify-time">30mins ago</div></a></li>
+					<li><a href="{{route('media.music')}}"><img src="{{ $dashboard_assets }}/skrn/images/logo.png" alt="Profile">check the just dropped music jam from your Favorite artist <div class="header-user-notify-time">2mins ago</div></a></li>
+					<li><a href="{{route('media.music')}}"><img src="{{ $dashboard_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia just drop the lastest hot music video <div class="header-user-notify-time">1hour ago</div></a></li>
+					<li><a href="{{route('media.music')}}"><img src="{{ $dashboard_assets }}/skrn/images/logo.png" alt="Profile">Echokemedia with the most funny comedy videos <div class="header-user-notify-time">30mins ago</div></a></li>
 				</ul>
 				<div class="clearfix"></div>
 			</div><!-- close #header-user-profile-menu -->
@@ -143,12 +143,19 @@
 	<nav id="mobile-navigation-pro">
 
 		<ul id="mobile-menu-pro">
-			<li class="current-menu-item">
-				<a href="dashboard-home.html">
-					<span class="icon-Old-TV"></span>
-					TV Series
-				</a>
+
 			<li>
+				<a href="{{ route('media.music') }}">
+					<span class="icon-Old-TV"></span>
+					Music
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('media.videos') }}">
+					<span class="icon-Reel"></span>
+					Music Video
+				</a>
+			</li>
 			<li>
 				<a href="dashboard-movies.html">
 					<span class="icon-Reel"></span>
@@ -182,11 +189,15 @@
 			</li>
 		</ul>
 		<div class="clearfix"></div>
+		<form action="{{route('web.search')}}">
 
-		<div id="search-mobile-nav-pro">
-			<input type="text" placeholder="Search for Movies or TV Series" aria-label="Search">
-		</div>
-
+			<div id="search-mobile-nav-pro">
+				<input type="text" name="query" placeholder="Search for Movies or TV Series" aria-label="Search">
+			</div>
+			<div id="video-search-header-buttons">
+				<button type="submit" class="btn btn-green-pro">Filter Search</button>
+			</div>
+		</form>
 	</nav>
 
 </header>

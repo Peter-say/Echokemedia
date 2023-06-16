@@ -47,7 +47,7 @@
      <nav class=" navbar navbar-expand-lg ">
          <div class="container">
              {{-- <a class="navbar-brand" href="{{ route("media.about") }}">
-            <img src="{{$admin_assets}}/assets/img/m-logo.png" alt="">
+            <img src="{{$dashboard_assets}}/assets/img/m-logo.png" alt="">
             </a> --}}
 
              <a class="navbar-brand" href="/">
@@ -105,9 +105,9 @@
                                                 </form>
                                                 
                                                 </li>  -->
-                         @if (Auth::user()->role == 'Admin')
+                         @if (Auth::user()->role == 'dashboard')
                              <li class="nav-item">
-                                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                 <a class="nav-link" href="{{ route('dashboard.dashboard') }}">Dashboard</a>
                              </li>
                          @else
                              <li class="nav-item">

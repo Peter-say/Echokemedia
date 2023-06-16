@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpg" />
+    <link rel="icon" type="image/x-icon" href="{{$dashboard_assets}}/assets/img/m-icon.jpg" />
     <title>{{ config('', 'Media-Creator') }}</title>
 
     <!-- Scripts -->
@@ -16,7 +16,7 @@
 
     <!-- clone bootstrap -->
 
-    <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpeg" />
+    <link rel="icon" type="image/x-icon" href="{{$dashboard_assets}}/assets/img/m-icon.jpeg" />
     <!-- Bootstrap Icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Google fonts-->
@@ -25,7 +25,7 @@
     <!-- SimpleLightbox plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ $admin_assets}}/css/styles.css" rel="stylesheet" />
+    <link href="{{ $dashboard_assets}}/css/styles.css" rel="stylesheet" />
 
     <!-- end copy bootstrap -->
 
@@ -45,7 +45,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <link rel="icon" type="image/x-icon" href="{{$admin_assets}}/assets/img/m-icon.jpg" />
+            <link rel="icon" type="image/x-icon" href="{{$dashboard_assets}}/assets/img/m-icon.jpg" />
 
             <a class="navbar-brand" href="#page-top">Media_Creator</a>
 
@@ -72,7 +72,7 @@
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('admin.dashboard')}}">back</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('dashboard.dashboard')}}">back</a></li>
 
 
                     @endguest
@@ -90,7 +90,7 @@
     <!-- SimpleLightbox plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
     <!-- Core theme JS-->
-    <script src="{{ $admin_assets}}/js/scripts.js"></script>
+    <script src="{{ $dashboard_assets}}/js/scripts.js"></script>
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

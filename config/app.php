@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'mediaEchoke'),
 
     /*
     |--------------------------------------------------------------------------
@@ -163,7 +163,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        // Jorenvh\Share\Providers\ShareServiceProvider::class,
         /*
          * Package Service Providers...
          */

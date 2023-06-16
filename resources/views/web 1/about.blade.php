@@ -28,7 +28,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <img src="{{ $admin_assets }}/asap/images/about-us.jpg" alt="">
+                    <img src="{{ $dashboard_assets }}/asap/images/about-us.jpg" alt="">
                     <p>Please tell your friends about Media Creation. Thank you. You can browse through different categories
                         <a rel="nofollow" href="" target="_parent">business</a>, <a rel="nofollow" href="/"
                             target="_parent">portfolio</a>, <a rel="nofollow" href="/" target="_parent">restaurant</a>

@@ -112,7 +112,7 @@
                                                 <line x1="1" y1="10" x2="23" y2="10"></line>
                                             </svg></a>
                                     </div>
-                                    <a href="{{route('admin.witdraw')}}">witdraw</a>
+                                    <a href="{{route('dashboard.witdraw')}}">witdraw</a>
                                 </div>
                             </div>
                         </div>
